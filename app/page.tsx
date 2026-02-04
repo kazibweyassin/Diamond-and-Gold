@@ -228,6 +228,60 @@ export default function Home() {
         </div>
       </section>
 
+      {/* News Section */}
+      <section className="mx-auto max-w-6xl px-4 py-16">
+        <div className="mb-10">
+          <p className="text-xs uppercase tracking-[0.35em] text-amber-300/70">Industry insights</p>
+          <h2 className="mt-4 text-3xl font-semibold">Latest gold market news</h2>
+          <p className="mt-2 text-slate-400">Stay informed on Uganda's gold industry trends and supply chain updates.</p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {[
+            {
+              title: "Uganda's Gold Production Reaches Record Levels in 2025",
+              date: 'January 2026',
+              category: 'Mining',
+              excerpt: 'Uganda solidifies its position as Africa\'s leading gold producer with unprecedented output levels.',
+            },
+            {
+              title: 'International Gold Standards Boost Uganda\'s Competitive Edge',
+              date: 'December 2025',
+              category: 'Compliance',
+              excerpt: 'KIMBERLEY PROCESS adoption and conflict-free sourcing enhance investor confidence.',
+            },
+            {
+              title: 'East African Gold Trade Corridor Expands Opportunities',
+              date: 'October 2025',
+              category: 'Trade',
+              excerpt: 'Trade agreements improve export logistics and cross-border gold commerce.',
+            },
+            {
+              title: 'Technology Integration Improves Gold Processing Efficiency',
+              date: 'September 2025',
+              category: 'Technology',
+              excerpt: 'Advanced assay systems and blockchain tracking boost quality standards.',
+            },
+          ].map((article, idx) => (
+            <a key={idx} href="/news" className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition cursor-pointer block">
+              <div className="flex items-center justify-between mb-3">
+                <span className="rounded-full bg-amber-400/20 px-2 py-1 text-xs font-semibold text-amber-200">
+                  {article.category}
+                </span>
+                <span className="text-xs text-slate-400">{article.date}</span>
+              </div>
+              <h3 className="font-semibold text-lg">{article.title}</h3>
+              <p className="mt-2 text-sm text-slate-400">{article.excerpt}</p>
+              <p className="mt-4 text-xs font-semibold text-amber-300 hover:text-amber-200">Read full article →</p>
+            </a>
+          ))}
+        </div>
+        <div className="mt-10 text-center">
+          <a href="/news" className="inline-block rounded-full border border-amber-400/60 px-6 py-3 text-sm font-semibold text-amber-200 hover:bg-amber-400/10 transition">
+            Read all news articles →
+          </a>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid gap-10 md:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-8">

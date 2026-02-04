@@ -17,6 +17,7 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Products', href: '/products' },
+    { label: 'News', href: '/news' },
     { label: 'Compliance', href: '/compliance' },
     { label: 'Process', href: '/process' },
     { label: 'FAQ', href: '/faq' },

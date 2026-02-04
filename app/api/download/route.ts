@@ -26,7 +26,8 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ error: 'File not found' }, { status: 404 });
     }
 
-    return new NextResponse(pdfBuffer, {
+    const pdfUint8Array = new Uint8Array(pdfBuffer);
+    return new NextResponse(pdfUint8Array, {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="${file}"`,
@@ -45,10 +46,10 @@ function generateSpecSheet(): Buffer {
   let yPos = 20;
 
   // Colors
-  const goldColor = [251, 191, 36]; // #fbbf24
-  const darkColor = [11, 17, 22]; // #0b1116
-  const textColor = [226, 232, 240]; // Light text
-  const darkText = [11, 17, 22];
+  const goldColor = [251, 191, 36] as const; // #fbbf24
+  const darkColor = [11, 17, 22] as const; // #0b1116
+  const textColor = [226, 232, 240] as const; // Light text
+  const darkText = [11, 17, 22] as const;
 
   // Header background
   doc.setFillColor(...darkColor);
@@ -179,9 +180,9 @@ function generatePricingList(): Buffer {
   const pageHeight = doc.internal.pageSize.getHeight();
   let yPos = 20;
 
-  const goldColor = [251, 191, 36];
-  const darkColor = [11, 17, 22];
-  const darkText = [11, 17, 22];
+  const goldColor = [251, 191, 36] as const;
+  const darkColor = [11, 17, 22] as const;
+  const darkText = [11, 17, 22] as const;
 
   // Header
   doc.setFillColor(...darkColor);
@@ -336,9 +337,9 @@ function generateComplianceGuide(): Buffer {
   const pageHeight = doc.internal.pageSize.getHeight();
   let yPos = 20;
 
-  const goldColor = [251, 191, 36];
-  const darkColor = [11, 17, 22];
-  const darkText = [11, 17, 22];
+  const goldColor = [251, 191, 36] as const;
+  const darkColor = [11, 17, 22] as const;
+  const darkText = [11, 17, 22] as const;
 
   // Header
   doc.setFillColor(...darkColor);
