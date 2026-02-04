@@ -1,6 +1,8 @@
+
 'use client';
 
 import { useState } from 'react';
+import Header from '@/app/components/Header';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -21,7 +23,25 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    // Create email body
+    const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+    `.trim();
+    
+    // Create mailto link
+    const mailtoLink = `mailto:info@victoriagold.ac.ug?subject=${encodeURIComponent(formData.subject || 'Inquiry from Website')}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
     setSubmitted(true);
     setTimeout(() => {
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
@@ -31,33 +51,26 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
-      <header className="border-b border-white/10 bg-slate-950/90 backdrop-blur">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full border border-amber-400/40 text-amber-300">
-              VG
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-amber-300/80">Victoria Gold</p>
-              <p className="text-xs text-slate-400">Uganda • Congo</p>
-            </div>
-          </div>
-          <ul className="hidden items-center gap-6 text-sm font-medium text-slate-200 md:flex">
-            <li><a href="/" className="hover:text-amber-300 transition">Home</a></li>
-            <li><a href="/about" className="hover:text-amber-300 transition">About</a></li>
-            <li><a href="/products" className="hover:text-amber-300 transition">Products</a></li>
-            <li><a href="/contact" className="hover:text-amber-300 transition">Contact</a></li>
-          </ul>
-          <a
-            href="/products"
-            className="rounded-full border border-amber-400/60 px-4 py-2 text-sm font-semibold text-amber-200 transition hover:bg-amber-400/10"
-          >
-            View catalog
-          </a>
-        </nav>
-      </header>
+      <Header cta={{ label: 'View catalog', href: '/products' }} />
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="relative py-16">
+        {/* Map Background */}
+        <div className="absolute inset-0 z-0">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7434408369827!2d32.58260752346896!3d0.3475965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb3a7275c1b1%3A0x1234567890abcdef!2sKampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1234567890"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-full w-full"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/90 to-slate-950/85" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-6xl px-4">
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-amber-300/70">Contact</p>
@@ -71,7 +84,7 @@ export default function Contact() {
               {[
                 { label: 'Location', value: 'Kampala, Uganda' },
                 { label: 'Email', value: 'info@victoriagold.ac.ug' },
-                { label: 'Phone', value: '+256 (0) 123 456 789' },
+                { label: 'Phone', value: '+256 (0) 704 833 021' },
                 { label: 'Hours', value: 'Mon–Fri, 8:00–18:00 EAT' },
               ].map((item) => (
                 <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-5">
@@ -174,7 +187,10 @@ export default function Contact() {
             )}
           </div>
         </div>
+        </div>
       </section>
+
+      {/* Footer */}
 
       <footer className="border-t border-white/10 bg-slate-950 py-14">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
@@ -198,6 +214,9 @@ export default function Contact() {
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
               <li><a href="/about" className="hover:text-amber-300 transition">About us</a></li>
               <li><a href="/products" className="hover:text-amber-300 transition">Products</a></li>
+              <li><a href="/compliance" className="hover:text-amber-300 transition">Compliance</a></li>
+              <li><a href="/process" className="hover:text-amber-300 transition">Process</a></li>
+              <li><a href="/faq" className="hover:text-amber-300 transition">FAQ</a></li>
               <li><a href="/contact" className="hover:text-amber-300 transition">Contact</a></li>
             </ul>
           </div>
@@ -207,7 +226,7 @@ export default function Contact() {
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
               <li>Kampala, Uganda</li>
               <li><a href="mailto:info@victoriagold.ac.ug" className="hover:text-amber-300 transition">info@victoriagold.ac.ug</a></li>
-              <li><a href="tel:+256123456789" className="hover:text-amber-300 transition">+256 (0) 123 456 789</a></li>
+              <li><a href="tel:+256704833021" className="hover:text-amber-300 transition">+256 (0) 704 833 021</a></li>
             </ul>
           </div>
 

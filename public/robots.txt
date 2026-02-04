@@ -1,0 +1,29 @@
+# Victoria Gold - robots.txt
+# https://www.robotstxt.org/
+
+User-agent: *
+Allow: /
+Disallow: /.next
+Disallow: /api
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+# Allow search engines to crawl
+Allow: /
+
+# Sitemaps
+Sitemap: https://victoriagold.ac.ug/sitemap.xml
+
+# Crawl delays
+Crawl-delay: 1
+Request-rate: 1/5s
+
+# Google-specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing-specific rules
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

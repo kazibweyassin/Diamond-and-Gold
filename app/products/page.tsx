@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Header from '@/app/components/Header';
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
@@ -70,31 +71,7 @@ export default function Products() {
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/90 backdrop-blur">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full border border-amber-400/40 text-amber-300">
-              VG
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-amber-300/80">Victoria Gold</p>
-              <p className="text-xs text-slate-400">Uganda • Congo</p>
-            </div>
-          </div>
-          <ul className="hidden items-center gap-6 text-sm font-medium text-slate-200 md:flex">
-            <li><a href="/" className="hover:text-amber-300 transition">Home</a></li>
-            <li><a href="/about" className="hover:text-amber-300 transition">About</a></li>
-            <li><a href="/products" className="hover:text-amber-300 transition">Products</a></li>
-            <li><a href="/contact" className="hover:text-amber-300 transition">Contact</a></li>
-          </ul>
-          <a
-            href="/contact"
-            className="rounded-full border border-amber-400/60 px-4 py-2 text-sm font-semibold text-amber-200 transition hover:bg-amber-400/10"
-          >
-            Request Quote
-          </a>
-        </nav>
-      </header>
+      <Header cta={{ label: 'Request Quote', href: '/contact' }} />
 
       <section className="mx-auto max-w-6xl px-4 py-14">
         <p className="text-xs uppercase tracking-[0.35em] text-amber-300/70">Our catalog</p>
@@ -104,6 +81,24 @@ export default function Products() {
         <p className="mt-4 text-lg text-slate-400">
           Lab-tested, certified, and ready for immediate fulfillment.
         </p>
+        <div className="mt-8 grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-slate-300 md:grid-cols-4">
+          <div>
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Purity range</p>
+            <p className="mt-2 text-amber-200">91.67% - 99.99%</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Forms</p>
+            <p className="mt-2 text-amber-200">Bars, dust, powder, coins</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Availability</p>
+            <p className="mt-2 text-amber-200">48-72h dispatch</p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Documentation</p>
+            <p className="mt-2 text-amber-200">Assay + custody pack</p>
+          </div>
+        </div>
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-6 px-4 pb-20">
@@ -177,7 +172,7 @@ export default function Products() {
                     <span className="text-amber-300">Email:</span> <a href="mailto:info@victoriagold.ac.ug" className="text-slate-400 hover:text-amber-300">info@victoriagold.ac.ug</a>
                   </p>
                   <p>
-                    <span className="text-amber-300">Phone:</span> <a href="tel:+256123456789" className="text-slate-400 hover:text-amber-300">+256 (0) 123 456 789</a>
+                    <span className="text-amber-300">Phone:</span> <a href="tel:+256704833021" className="text-slate-400 hover:text-amber-300">+256 (0) 704 833 021</a>
                   </p>
                 </div>
               </div>
@@ -193,7 +188,7 @@ export default function Products() {
             <p className="mt-2 text-sm text-slate-800">We can source and prepare gold to your exact requirements.</p>
           </div>
           <a href="/contact" className="rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-amber-200 hover:bg-slate-900 transition">
-            Discuss your needs
+            Request a formal quote
           </a>
         </div>
       </section>
@@ -220,6 +215,9 @@ export default function Products() {
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
               <li><a href="/about" className="hover:text-amber-300 transition">About us</a></li>
               <li><a href="/products" className="hover:text-amber-300 transition">Products</a></li>
+              <li><a href="/compliance" className="hover:text-amber-300 transition">Compliance</a></li>
+              <li><a href="/process" className="hover:text-amber-300 transition">Process</a></li>
+              <li><a href="/faq" className="hover:text-amber-300 transition">FAQ</a></li>
               <li><a href="/contact" className="hover:text-amber-300 transition">Contact</a></li>
             </ul>
           </div>
@@ -229,7 +227,7 @@ export default function Products() {
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
               <li>Kampala, Uganda</li>
               <li><a href="mailto:info@victoriagold.ac.ug" className="hover:text-amber-300 transition">info@victoriagold.ac.ug</a></li>
-              <li><a href="tel:+256123456789" className="hover:text-amber-300 transition">+256 (0) 123 456 789</a></li>
+              <li><a href="tel:+256704833021" className="hover:text-amber-300 transition">+256 (0) 704 833 021</a></li>
             </ul>
           </div>
 

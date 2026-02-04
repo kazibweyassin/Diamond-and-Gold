@@ -24,3 +24,51 @@ body {
   color: var(--foreground);
   font-family: "Geist", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: heroFade 18s infinite;
+}
+
+.hero-slide-1 {
+  background-image: url("/hero/gem-1.svg");
+  animation-delay: 0s;
+}
+
+.hero-slide-2 {
+  background-image: url("/hero/gem-2.svg");
+  animation-delay: 6s;
+}
+
+.hero-slide-3 {
+  background-image: url("/hero/gem-3.svg");
+  animation-delay: 12s;
+}
+
+@keyframes heroFade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

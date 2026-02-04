@@ -1,31 +1,9 @@
+import Header from '@/app/components/Header';
+
 export default function About() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
-      <header className="border-b border-white/10 bg-slate-950/90 backdrop-blur">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full border border-amber-400/40 text-amber-300">
-              VG
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-amber-300/80">Victoria Gold</p>
-              <p className="text-xs text-slate-400">Uganda • Congo</p>
-            </div>
-          </div>
-          <ul className="hidden items-center gap-6 text-sm font-medium text-slate-200 md:flex">
-            <li><a href="/" className="hover:text-amber-300 transition">Home</a></li>
-            <li><a href="/about" className="hover:text-amber-300 transition">About</a></li>
-            <li><a href="/products" className="hover:text-amber-300 transition">Products</a></li>
-            <li><a href="/contact" className="hover:text-amber-300 transition">Contact</a></li>
-          </ul>
-          <a
-            href="/contact"
-            className="rounded-full border border-amber-400/60 px-4 py-2 text-sm font-semibold text-amber-200 transition hover:bg-amber-400/10"
-          >
-            Speak to us
-          </a>
-        </nav>
-      </header>
+      <Header cta={{ label: 'Speak to us', href: '/contact' }} />
 
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid gap-10 md:grid-cols-2">
@@ -55,6 +33,82 @@ export default function About() {
               <div className="flex items-center justify-between">
                 <span>Quality Control</span>
                 <span className="text-amber-200">Lab verified</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-16">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-amber-300/70">Field gallery</p>
+            <h2 className="mt-3 text-3xl font-semibold">Operations across mines and minerals</h2>
+          </div>
+          <a href="/contact" className="text-sm font-semibold text-amber-200 hover:text-amber-100">
+            Request site visit info →
+          </a>
+        </div>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {[
+            {
+              label: "gold",
+              src: "https://images.unsplash.com/photo-1624365168056-daf44387e2ae?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            },
+            {
+              label: "mine",
+              src: "/man-pouring-melted-metal-workshop-large.jpg",
+            },
+            {
+              label: "minerals",
+              src: "https://images.pexels.com/photos/34522438/pexels-photo-34522438.jpeg?_gl=1*wqnbf*_ga*MTA4OTYyMTc3LjE3NzAyMzY2MTM.*_ga_8JE65Q40S6*czE3NzAyMzY2MTMkbzEkZzEkdDE3NzAyMzY2NDYkajI3JGwwJGgw",
+            },
+          ].map((item) => (
+            <div key={item.label} className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+              <img
+                src={item.src}
+                alt={`Victoria Gold ${item.label}`}
+                className="h-56 w-full object-cover"
+                loading="lazy"
+              />
+              <div className="p-4">
+                <p className="text-xs uppercase tracking-[0.25em] text-slate-500">{item.label}</p>
+                <p className="mt-2 text-sm text-slate-300">On-site visibility and documented custody.</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-y border-white/10 bg-slate-950/70 py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p className="text-xs uppercase tracking-[0.35em] text-amber-300/70">Regulatory alignment</p>
+              <h2 className="mt-4 text-3xl font-semibold">Compliance-ready documentation</h2>
+              <p className="mt-4 text-slate-300">
+                We prepare full documentation packs for buyers, including origin verification, assay reports,
+                and shipment custody records to support due diligence and regulatory requirements.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-400">Certification badges</p>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {[
+                  "Assay certified",
+                  "Origin verified",
+                  "Custody documented",
+                  "KYC-ready",
+                  "Export compliant",
+                  "Insured logistics",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-full border border-amber-400/30 bg-amber-400/5 px-3 py-2 text-xs text-amber-200"
+                  >
+                    {item}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -144,6 +198,9 @@ export default function About() {
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
               <li><a href="/about" className="hover:text-amber-300 transition">About us</a></li>
               <li><a href="/products" className="hover:text-amber-300 transition">Products</a></li>
+              <li><a href="/compliance" className="hover:text-amber-300 transition">Compliance</a></li>
+              <li><a href="/process" className="hover:text-amber-300 transition">Process</a></li>
+              <li><a href="/faq" className="hover:text-amber-300 transition">FAQ</a></li>
               <li><a href="/contact" className="hover:text-amber-300 transition">Contact</a></li>
             </ul>
           </div>
@@ -153,7 +210,7 @@ export default function About() {
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
               <li>Kampala, Uganda</li>
               <li><a href="mailto:info@victoriagold.ac.ug" className="hover:text-amber-300 transition">info@victoriagold.ac.ug</a></li>
-              <li><a href="tel:+256123456789" className="hover:text-amber-300 transition">+256 (0) 123 456 789</a></li>
+              <li><a href="tel:+256704833021" className="hover:text-amber-300 transition">+256 (0) 704 833 021</a></li>
             </ul>
           </div>
 
