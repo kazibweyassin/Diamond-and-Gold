@@ -1,4 +1,4 @@
-# Victoria Gold
+# Diamond Capital Africa
 
 Premium gold trading website for a business based in Uganda with sourcing in Uganda and Congo.
 
@@ -26,4 +26,4 @@ Open http://localhost:3000
 
 ## Domain
 
-https://victoriagold.ac.ug
+https://diamondcapitalafrica.com

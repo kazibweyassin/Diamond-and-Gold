@@ -1,4 +1,4 @@
-# Victoria Gold - robots.txt
+# Diamond Capital Africa - robots.txt
 # https://www.robotstxt.org/
 
 User-agent: *
@@ -12,7 +12,7 @@ Disallow: /*?*filter=
 Allow: /
 
 # Sitemaps
-Sitemap: https://victoriagold.ac.ug/sitemap.xml
+Sitemap: https://diamondcapitalafrica.com/sitemap.xml
 
 # Crawl delays
 Crawl-delay: 1

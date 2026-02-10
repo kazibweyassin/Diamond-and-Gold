@@ -24,7 +24,7 @@
   <!-- Inner gold circle with glow -->
   <circle cx="256" cy="256" r="180" fill="none" stroke="url(#goldGradient)" stroke-width="12" filter="url(#glow)"/>
   
-  <!-- VG Text with shadow -->
+  <!-- DCA Text with shadow -->
   <text 
     x="256" 
     y="300" 
@@ -34,7 +34,7 @@
     fill="url(#goldGradient)" 
     text-anchor="middle" 
     letter-spacing="8"
-    filter="url(#glow)">VG</text>
+    filter="url(#glow)">DCA</text>
   
   <!-- Subtle shine effect -->
   <circle cx="256" cy="256" r="180" fill="none" stroke="#fbbf24" stroke-width="2" opacity="0.5"/>

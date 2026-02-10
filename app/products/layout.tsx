@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Gold Products & Catalog - Victoria Gold',
-  description: 'Browse our certified gold products: 24K gold bars, coins, dust, and custom forms. 99.5%+ purity, competitive pricing, instant quotes available.',
-  keywords: 'gold products, gold bars, gold coins, gold dust, certified gold, bulk gold, gold catalog, gold pricing',
+  title: 'Gold Trading Services - Diamond Capital Africa',
+  description: 'End-to-end gold trading services: sourcing, sales & export, assay coordination, logistics, compliance documentation, and secure vaulting. Professional gold trading solutions.',
+  keywords: 'gold trading services, gold sourcing, gold export, assay coordination, gold logistics, compliance documentation, gold vaulting',
   openGraph: {
-    title: 'Gold Products & Catalog - Victoria Gold',
-    description: 'Certified gold products available: bars, coins, dust, and custom forms.',
-    url: 'https://victoriagold.ac.ug/products',
+    title: 'Gold Trading Services - Diamond Capital Africa',
+    description: 'Comprehensive gold trading services: sourcing, export, assay, logistics, compliance, and vaulting.',
+    url: 'https://diamondcapitalafrica.com/products',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://victoriagold.ac.ug/products',
+    canonical: 'https://diamondcapitalafrica.com/products',
   },
 };
 

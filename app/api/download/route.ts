@@ -13,13 +13,13 @@ export async function GET(request: NextRequest) {
     let pdfBuffer: Buffer;
 
     switch (file) {
-      case 'Victoria_Gold_Spec_Sheet.pdf':
+      case 'Diamond_Capital_Africa_Spec_Sheet.pdf':
         pdfBuffer = generateSpecSheet();
         break;
-      case 'Victoria_Gold_Pricing.pdf':
+      case 'Diamond_Capital_Africa_Pricing.pdf':
         pdfBuffer = generatePricingList();
         break;
-      case 'Victoria_Gold_Compliance.pdf':
+      case 'Diamond_Capital_Africa_Compliance.pdf':
         pdfBuffer = generateComplianceGuide();
         break;
       default:
@@ -59,11 +59,11 @@ function generateSpecSheet(): Buffer {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(28);
   doc.setTextColor(...goldColor);
-  doc.text('VG', 20, 25);
+  doc.text('DCA', 20, 25);
 
   // Company name
   doc.setFontSize(12);
-  doc.text('VICTORIA GOLD', 40, 20);
+  doc.text('DIAMOND CAPITAL AFRICA', 40, 20);
   doc.setFontSize(9);
   doc.setTextColor(180, 180, 180);
   doc.text('Premium Certified Gold Supply', 40, 26);
@@ -83,7 +83,7 @@ function generateSpecSheet(): Buffer {
   doc.setFont('helvetica', 'normal');
   doc.text('Location: Kampala, Uganda • Congo', 20, yPos);
   yPos += 5;
-  doc.text('Contact: info@victoriagold.ac.ug | +256 (0) 704 833 021', 20, yPos);
+  doc.text('Contact: info@diamondcapitalafrica.com | +256 (0) 704 833 021', 20, yPos);
   yPos += 12;
 
   // Section: Product Forms
@@ -168,8 +168,8 @@ function generateSpecSheet(): Buffer {
   // Footer
   doc.setFontSize(8);
   doc.setTextColor(150, 150, 150);
-  doc.text('Victoria Gold | Premium Certified Gold from Uganda & Congo', 20, pageHeight - 10);
-  doc.text('Document valid as of February 2026 | victoriagold.ac.ug', 20, pageHeight - 5);
+  doc.text('Diamond Capital Africa | Premium Certified Gold from Uganda & Congo', 20, pageHeight - 10);
+  doc.text('Document valid as of February 2026 | diamondcapitalafrica.com', 20, pageHeight - 5);
 
   return Buffer.from(doc.output('arraybuffer'));
 }
@@ -191,7 +191,7 @@ function generatePricingList(): Buffer {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(24);
   doc.setTextColor(...goldColor);
-  doc.text('VICTORIA GOLD', 20, 20);
+  doc.text('DIAMOND CAPITAL AFRICA', 20, 20);
 
   yPos = 45;
 
@@ -317,7 +317,7 @@ function generatePricingList(): Buffer {
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
-  doc.text('Email: info@victoriagold.ac.ug', 25, yPos);
+  doc.text('Email: info@diamondcapitalafrica.com', 25, yPos);
   yPos += 5;
   doc.text('WhatsApp: +256 704 833 021', 25, yPos);
   yPos += 5;
@@ -348,7 +348,7 @@ function generateComplianceGuide(): Buffer {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(18);
   doc.setTextColor(...goldColor);
-  doc.text('VICTORIA GOLD', 20, 20);
+  doc.text('DIAMOND CAPITAL AFRICA', 20, 20);
 
   yPos = 45;
 
@@ -478,7 +478,7 @@ function generateComplianceGuide(): Buffer {
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
-  doc.text('compliance@victoriagold.ac.ug', 25, yPos);
+  doc.text('compliance@diamondcapitalafrica.com', 25, yPos);
 
   // Footer
   doc.setFontSize(8);

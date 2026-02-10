@@ -27,7 +27,7 @@ export default function Icon() {
           border: '2px solid #fbbf24',
         }}
       >
-        VG
+        DCA
       </div>
     ),
     {

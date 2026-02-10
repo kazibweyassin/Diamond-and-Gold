@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Victoria Gold'
+export const alt = 'Diamond Capital Africa'
 export const size = {
   width: 1200,
   height: 630,
@@ -67,7 +67,7 @@ export default async function Image() {
             }}
           />
           
-          {/* VG Logo */}
+          {/* DCA Logo */}
           <div
             style={{
               fontSize: 200,
@@ -78,7 +78,7 @@ export default async function Image() {
               marginBottom: '40px',
             }}
           >
-            VG
+            DCA
           </div>
           
           {/* Company name */}
@@ -92,7 +92,7 @@ export default async function Image() {
               marginTop: '180px',
             }}
           >
-            Victoria Gold
+            Diamond Capital Africa
           </div>
           
           {/* Tagline */}

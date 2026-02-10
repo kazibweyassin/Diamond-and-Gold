@@ -127,30 +127,12 @@ ${formData.message}
         <div className="relative z-10 mx-auto max-w-6xl px-4">
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-xs uppercase tracking-[0.35em] text-red-700/80"
-            >
-              Contact
-            </motion.p>
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mt-4 text-4xl font-semibold text-slate-900"
-            >
-              Let&apos;s discuss your gold supply needs.
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-4 text-slate-800"
-            >
+            <p className="text-xs uppercase tracking-[0.35em] text-amber-700/80">Contact</p>
+            <h1 className="mt-4 text-4xl font-semibold text-slate-900">Let’s discuss your gold supply needs.</h1>
+            <p className="mt-4 text-slate-800">
               Share your requirements and our team will respond with pricing, documentation details, and logistics
               timelines.
-            </motion.p>
+            </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
@@ -158,40 +140,24 @@ ${formData.message}
                 { label: 'Email', value: 'info@diamondcapitalafrica.com' },
                 { label: 'Phone', value: '+256 (0) 704 833 021' },
                 { label: 'Hours', value: 'Mon–Fri, 8:00–18:00 EAT' },
-              ].map((item, index) => (
-                <motion.div 
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  whileHover={{ y: -2 }}
-                  className="rounded-2xl border border-red-200/70 bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
-                >
+              ].map((item) => (
+                <div key={item.label} className="rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm">
                   <p className="text-xs uppercase tracking-[0.25em] text-slate-700">{item.label}</p>
                   <p className="mt-3 text-sm text-slate-900">{item.value}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="rounded-2xl border border-red-200/70 bg-white p-8 shadow-sm"
-          >
+          <div className="rounded-2xl border border-amber-200/70 bg-white p-8 shadow-sm">
             <h2 className="text-xl font-semibold text-slate-900">Send an inquiry</h2>
-            <p className="mt-2 text-sm text-slate-800">We&apos;ll respond within one business day.</p>
+            <p className="mt-2 text-sm text-slate-800">We’ll respond within one business day.</p>
 
             {submitted ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="mt-6 rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-700"
-              >
+              <div className="mt-6 rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-700">
                 <p className="font-semibold">Thank you!</p>
                 <p className="mt-1">Your message has been received. We will follow up shortly.</p>
-              </motion.div>
+              </div>
             ) : (
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -202,18 +168,10 @@ ${formData.message}
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`mt-2 w-full rounded-lg border ${errors.name ? 'border-red-400' : 'border-red-200/70'} bg-white px-3 py-2 text-sm text-slate-900 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 transition`}
+                      required
+                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
                       placeholder="Your name"
                     />
-                    {errors.name && (
-                      <motion.p 
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-1 text-xs text-red-600"
-                      >
-                        {errors.name}
-                      </motion.p>
-                    )}
                   </div>
                   <div>
                     <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Email</label>
@@ -222,18 +180,10 @@ ${formData.message}
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`mt-2 w-full rounded-lg border ${errors.email ? 'border-red-400' : 'border-red-200/70'} bg-white px-3 py-2 text-sm text-slate-900 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 transition`}
+                      required
+                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
                       placeholder="you@email.com"
                     />
-                    {errors.email && (
-                      <motion.p 
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-1 text-xs text-red-600"
-                      >
-                        {errors.email}
-                      </motion.p>
-                    )}
                   </div>
                 </div>
 
@@ -245,18 +195,9 @@ ${formData.message}
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`mt-2 w-full rounded-lg border ${errors.phone ? 'border-red-400' : 'border-red-200/70'} bg-white px-3 py-2 text-sm text-slate-900 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 transition`}
+                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
                       placeholder="+256 000 000 000"
                     />
-                    {errors.phone && (
-                      <motion.p 
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-1 text-xs text-red-600"
-                      >
-                        {errors.phone}
-                      </motion.p>
-                    )}
                   </div>
                   <div>
                     <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Subject</label>
@@ -264,7 +205,8 @@ ${formData.message}
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className={`mt-2 w-full rounded-lg border ${errors.subject ? 'border-red-400' : 'border-red-200/70'} bg-white px-3 py-2 text-sm text-slate-900 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 transition`}
+                      required
+                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
                     >
                       <option value="">Select a subject</option>
                       <option value="Product Inquiry">Product Inquiry</option>
@@ -273,15 +215,6 @@ ${formData.message}
                       <option value="Certification">Certification Information</option>
                       <option value="Other">Other</option>
                     </select>
-                    {errors.subject && (
-                      <motion.p 
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-1 text-xs text-red-600"
-                      >
-                        {errors.subject}
-                      </motion.p>
-                    )}
                   </div>
                 </div>
 
@@ -291,43 +224,22 @@ ${formData.message}
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
+                    required
                     rows={5}
-                    className={`mt-2 w-full rounded-lg border ${errors.message ? 'border-red-400' : 'border-red-200/70'} bg-white px-3 py-2 text-sm text-slate-900 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 transition`}
+                    className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
                     placeholder="Share order quantities, timelines, or any requirements..."
                   />
-                  {errors.message && (
-                    <motion.p 
-                      initial={{ opacity: 0, y: -5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-1 text-xs text-red-600"
-                    >
-                      {errors.message}
-                    </motion.p>
-                  )}
                 </div>
 
-                <motion.button
+                <button
                   type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`w-full rounded-full bg-red-700 px-4 py-3 text-sm font-semibold text-white transition ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-red-800'}`}
+                  className="w-full rounded-full bg-amber-600 px-4 py-3 text-sm font-semibold text-white hover:bg-amber-700 transition"
                 >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    'Send inquiry'
-                  )}
-                </motion.button>
+                  Send inquiry
+                </button>
               </form>
             )}
-          </motion.div>
+          </div>
         </div>
         </div>
       </section>
@@ -338,11 +250,13 @@ ${formData.message}
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <img 
-                src="/Logo.png" 
-                alt="Diamond Capital Africa" 
-                className="h-12 w-auto object-contain"
-              />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-500/60 text-amber-700">
+                DCA
+              </div>
+              <div>
+                <p className="text-sm uppercase tracking-[0.25em] text-slate-900">Diamond Capital Africa</p>
+                <p className="text-xs text-slate-800">Uganda • Congo</p>
+              </div>
             </div>
             <p className="mt-4 text-sm text-slate-800">
               Premium gold supply with verified sourcing, compliance documentation, and secure logistics.
@@ -352,11 +266,11 @@ ${formData.message}
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Company</p>
             <ul className="mt-4 space-y-2 text-sm text-slate-800">
-              <li><a href="/about" className="hover:text-emerald-700 transition">About us</a></li>
-              <li><a href="/products" className="hover:text-emerald-700 transition">Services</a></li>
-              <li><a href="/compliance" className="hover:text-emerald-700 transition">Compliance</a></li>
-              <li><a href="/process" className="hover:text-emerald-700 transition">Process</a></li>
-              <li><a href="/faq" className="hover:text-emerald-700 transition">FAQ</a></li>
+              <li><a href="/about" className="hover:text-amber-700 transition">About us</a></li>
+              <li><a href="/products" className="hover:text-amber-700 transition">Services</a></li>
+              <li><a href="/compliance" className="hover:text-amber-700 transition">Compliance</a></li>
+              <li><a href="/process" className="hover:text-amber-700 transition">Process</a></li>
+              <li><a href="/faq" className="hover:text-amber-700 transition">FAQ</a></li>
               <li><a href="/contact" className="hover:text-amber-700 transition">Contact</a></li>
             </ul>
           </div>
@@ -365,8 +279,8 @@ ${formData.message}
             <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Contact</p>
             <ul className="mt-4 space-y-2 text-sm text-slate-800">
               <li>Kampala, Uganda</li>
-              <li><a href="mailto:info@diamondcapitalafrica.com" className="hover:text-emerald-700 transition">info@diamondcapitalafrica.com</a></li>
-              <li><a href="tel:+256704833021" className="hover:text-emerald-700 transition">+256 (0) 704 833 021</a></li>
+              <li><a href="mailto:info@diamondcapitalafrica.com" className="hover:text-amber-700 transition">info@diamondcapitalafrica.com</a></li>
+              <li><a href="tel:+256704833021" className="hover:text-amber-700 transition">+256 (0) 704 833 021</a></li>
             </ul>
           </div>
 

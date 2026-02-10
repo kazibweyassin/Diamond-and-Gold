@@ -45,7 +45,7 @@ export default function AppleIcon() {
             borderRadius: '50%',
           }}
         />
-        <div style={{ position: 'relative', letterSpacing: '4px' }}>VG</div>
+        <div style={{ position: 'relative', letterSpacing: '4px' }}>DCA</div>
       </div>
     ),
     {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -13,13 +13,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Victoria Gold - Premium Certified Gold from Uganda & Congo",
-  description: "Ethically sourced, lab-verified gold from Uganda and Congo. Certified 99.5%+ purity bars, competitive pricing, secure logistics. Trusted gold supplier for businesses worldwide.",
-  keywords: "gold supplier, certified gold, gold bars, Uganda gold, Congo gold, precious metals, ethical sourcing, gold trading, investment gold",
-  authors: [{ name: "Victoria Gold" }],
-  creator: "Victoria Gold",
-  publisher: "Victoria Gold",
+  metadataBase: new URL("https://diamondcapitalafrica.com"),
+  title: "Diamond Capital Africa - Certified Gold Supply from Uganda & Congo",
+  description: "Ethically sourced, lab-verified gold from Uganda and Congo. Certified 99.5%+ purity bars, competitive pricing, secure logistics. Trusted gold supplier for institutional buyers worldwide.",
+  keywords: "gold supplier, certified gold, gold bars, Uganda gold, Congo gold, precious metals, ethical sourcing, gold trading, investment gold, compliance documentation",
+  authors: [{ name: "Diamond Capital Africa" }],
+  creator: "Diamond Capital Africa",
+  publisher: "Diamond Capital Africa",
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -32,27 +45,27 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://victoriagold.ac.ug",
-    title: "Victoria Gold - Premium Certified Gold Supply",
+    url: "https://diamondcapitalafrica.com",
+    title: "Diamond Capital Africa - Certified Gold Supply",
     description: "Ethically sourced, lab-verified gold from Uganda and Congo with full documentation.",
-    siteName: "Victoria Gold",
+    siteName: "Diamond Capital Africa",
     locale: "en_US",
     images: [
       {
         url: "https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg",
         width: 1200,
         height: 630,
-        alt: "Gold refining - Victoria Gold",
+        alt: "Certified gold supply - Diamond Capital Africa",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Victoria Gold - Premium Gold from Uganda & Congo",
+    title: "Diamond Capital Africa - Premium Gold from Uganda & Congo",
     description: "Certified gold supply with verified sourcing and secure logistics.",
   },
   alternates: {
-    canonical: "https://victoriagold.ac.ug",
+    canonical: "https://diamondcapitalafrica.com",
   },
   robots: {
     index: true,
@@ -89,11 +102,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              name: "Victoria Gold",
-              description: "Premium certified gold supplier from Uganda and Congo",
-              url: "https://victoriagold.ac.ug",
+              name: "Diamond Capital Africa",
+              description: "Certified gold supplier from Uganda and Congo with full compliance support",
+              url: "https://diamondcapitalafrica.com",
               telephone: "+256704833021",
-              email: "info@victoriagold.ac.ug",
+              email: "info@diamondcapitalafrica.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Kampala",
@@ -111,7 +124,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${sourceSans.variable} antialiased`}
       >
         {children}
         <WhatsAppButton />

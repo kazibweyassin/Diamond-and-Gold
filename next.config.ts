@@ -3,8 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* Domain configuration */
   env: {
-    NEXT_PUBLIC_SITE_URL: "https://victoriagold.ac.ug",
-    NEXT_PUBLIC_SITE_NAME: "Victoria Gold",
+    NEXT_PUBLIC_SITE_URL: "https://diamondcapitalafrica.com",
+    NEXT_PUBLIC_SITE_NAME: "Diamond Capital Africa",
   },
   /* Image optimization */
   images: {

@@ -1,8 +1,8 @@
 {
-  "name": "victoria-gold",
+  "name": "diamond-capital-africa",
   "version": "1.0.0",
-  "description": "Victoria Gold - Premium gold trading from Uganda and Congo",
-  "homepage": "https://victoriagold.ac.ug",
+  "description": "Diamond Capital Africa - Premium gold trading from Uganda and Congo",
+  "homepage": "https://diamondcapitalafrica.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/kazibweyassin/Diamond-and-Gold"
@@ -15,6 +15,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "framer-motion": "^12.34.0",
     "jspdf": "^4.1.0",
     "next": "16.1.6",
     "react": "19.2.3",

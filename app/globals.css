@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b1116;
-  --foreground: #e2e8f0;
+  --background: #fdfbf7;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -14,15 +14,25 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fdfbf7;
+    --foreground: #0f172a;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Geist", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-source-sans), "Helvetica Neue", Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+  letter-spacing: -0.01em;
 }
 
 .hero-slideshow {
@@ -37,22 +47,17 @@ body {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: heroFade 18s infinite;
+  animation: heroFade 12s infinite;
 }
 
 .hero-slide-1 {
-  background-image: url("/hero/gem-1.svg");
+  background-image: url("https://images.unsplash.com/photo-1737815914093-becb6c9ac064?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   animation-delay: 0s;
 }
 
 .hero-slide-2 {
-  background-image: url("/hero/gem-2.svg");
+  background-image: url("https://images.unsplash.com/photo-1762463176417-2c5e63767bd2?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   animation-delay: 6s;
-}
-
-.hero-slide-3 {
-  background-image: url("/hero/gem-3.svg");
-  animation-delay: 12s;
 }
 
 @keyframes heroFade {

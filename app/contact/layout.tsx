@@ -1,17 +1,17 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Victoria Gold',
-  description: 'Get in touch with Victoria Gold. Call, email, or submit an inquiry for gold pricing, orders, and partnership opportunities.',
-  keywords: 'contact Victoria Gold, gold inquiry, pricing request, gold order, partnership',
+  title: 'Contact Us - Diamond Capital Africa',
+  description: 'Get in touch with Diamond Capital Africa. Call, email, or submit an inquiry for gold pricing, orders, and partnership opportunities.',
+  keywords: 'contact Diamond Capital Africa, gold inquiry, pricing request, gold order, partnership',
   openGraph: {
-    title: 'Contact Victoria Gold',
+    title: 'Contact Diamond Capital Africa',
     description: 'Contact our team for gold quotes, orders, and business inquiries.',
-    url: 'https://victoriagold.ac.ug/contact',
+    url: 'https://diamondcapitalafrica.com/contact',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://victoriagold.ac.ug/contact',
+    canonical: 'https://diamondcapitalafrica.com/contact',
   },
 };
 
