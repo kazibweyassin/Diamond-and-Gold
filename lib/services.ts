@@ -53,7 +53,7 @@ export const services: Service[] = [
     terms: 'Insured transport',
     description: 'Insured transport with live tracking and coordinated export delivery worldwide.',
     features: ['Secure custody', 'Insured routes', 'Live tracking', 'Delivery SLAs'],
-    image: '/man-pouring-melted-metal-workshop-large.jpg-',
+    image: '/public/secure-logistics-1.jpg.webp',
   },
   {
     id: 'compliance-docs',
