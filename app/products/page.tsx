@@ -3,78 +3,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/app/components/Header';
+import { services } from '@/lib/services';
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
-
-  const services = [
-    {
-      id: 'gold-sourcing',
-      name: 'Gold Buying & Sourcing',
-      coverage: 'Uganda & Congo',
-      turnaround: '7-14 days',
-      documentation: 'KYC + custody pack',
-      terms: 'NDA available',
-      description: 'Direct sourcing from verified partners with transparent documentation.',
-      features: ['Verified origin', 'Pre-screened supply', 'Chain-of-custody', 'Volume capacity'],
-      image: 'https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'gold-export',
-      name: 'Gold Sales & Export',
-      coverage: 'Global delivery',
-      turnaround: '48-72h dispatch',
-      documentation: 'Export-ready files',
-      terms: 'Buyer escrow options',
-      description: 'Structured export coordination with insured logistics and delivery timelines.',
-      features: ['Custom packing', 'Secure dispatch', 'Buyer updates', 'Regulated routing'],
-      image: 'https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'assay-coordination',
-      name: 'Assay & Testing Coordination',
-      coverage: 'Certified labs',
-      turnaround: '24-72h results',
-      documentation: 'Assay certificates',
-      terms: 'Independent verification',
-      description: 'Third-party purity verification arranged with accredited laboratories.',
-      features: ['XRF testing', 'Independent labs', 'Digital reports', 'Buyer-ready files'],
-      image: 'https://images.pexels.com/photos/256262/pexels-photo-256262.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'logistics-shipping',
-      name: 'Logistics & Shipping',
-      coverage: 'Air & ground',
-      turnaround: '48-72h dispatch',
-      documentation: 'Insurance + tracking',
-      terms: 'Insured transport',
-      description: 'Secure delivery options with full tracking and insured handling.',
-      features: ['Secure custody', 'Insured routes', 'Live tracking', 'Delivery SLAs'],
-      image: 'https://images.pexels.com/photos/4246091/pexels-photo-4246091.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'compliance-docs',
-      name: 'Compliance & Documentation',
-      coverage: 'Regulatory ready',
-      turnaround: '3-5 days',
-      documentation: 'Full compliance pack',
-      terms: 'Audit support',
-      description: 'Structured documentation for origin, KYC, and export compliance.',
-      features: ['Origin verification', 'Custody records', 'KYC support', 'Export compliance'],
-      image: 'https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 'vaulting-storage',
-      name: 'Vaulting & Secure Storage',
-      coverage: 'Kampala hub',
-      turnaround: 'Immediate',
-      documentation: 'Access logs',
-      terms: 'Short-term holds',
-      description: 'Secure storage with documented access and custody tracking.',
-      features: ['Controlled access', 'Secure vaults', 'Custody logs', 'Short-term holding'],
-      image: 'https://images.pexels.com/photos/164501/pexels-photo-164501.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-  ];
 
   return (
     <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
@@ -92,10 +24,10 @@ export default function Products() {
           <div className="max-w-2xl">
             <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Our services</p>
             <h1 className="mt-4 text-4xl font-semibold md:text-5xl text-slate-900">
-              End-to-end gold trading services for institutional buyers.
+              End-to-end precious metals &amp; mineral services for institutional clients.
             </h1>
             <p className="mt-4 text-lg text-slate-800">
-              From sourcing to export, we coordinate the full transaction with compliance-first documentation.
+              From sourcing and refining to export and compliance, we manage every step with sustainability and transparency.
             </p>
           </div>
         </div>
@@ -105,11 +37,11 @@ export default function Products() {
         <div className="grid gap-4 rounded-2xl border border-amber-200/70 bg-white p-6 text-sm text-slate-800 md:grid-cols-4">
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Coverage</p>
-            <p className="mt-2 text-amber-700">Uganda & Congo</p>
+            <p className="mt-2 text-amber-700">Uganda, Congo &amp; global</p>
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Scope</p>
-            <p className="mt-2 text-amber-700">Sourcing, compliance, export</p>
+            <p className="mt-2 text-amber-700">Full transaction support</p>
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Dispatch</p>
@@ -117,7 +49,7 @@ export default function Products() {
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Documentation</p>
-            <p className="mt-2 text-amber-700">KYC + custody pack</p>
+            <p className="mt-2 text-amber-700">KYC &amp; compliance pack</p>
           </div>
         </div>
       </section>
@@ -248,6 +180,7 @@ export default function Products() {
         <h2 className="text-3xl font-semibold text-slate-900 mb-8">Complete service offerings</h2>
         {services.map((service) => (
           <div
+            id={service.id}
             key={service.id}
             className="group rounded-2xl border border-amber-200/70 bg-white overflow-hidden transition hover:border-amber-300 hover:shadow-sm"
           >

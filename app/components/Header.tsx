@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { services } from '@/lib/services';
 
 interface HeaderProps {
   cta?: {
@@ -13,10 +14,12 @@ interface HeaderProps {
 
 export default function Header({ cta = { label: 'Request Quote', href: '/contact' } }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
+    // Services handled specially to show dropdown
     { label: 'Services', href: '/products' },
     { label: 'News', href: '/news' },
     { label: 'Compliance', href: '/compliance' },
@@ -39,17 +42,42 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
 
         {/* Desktop Navigation */}
         <ul className="hidden items-center gap-6 text-sm font-medium text-slate-900 md:flex">
-          {navLinks.map((link) => (
-            <motion.li 
-              key={link.href}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link href={link.href} className="hover:text-emerald-700 transition">
-                {link.label}
-              </Link>
-            </motion.li>
-          ))}
+          {navLinks.map((link) => {
+            if (link.label === 'Services') {
+              return (
+                <li key={link.href} className="relative group">
+                  <Link href={link.href} className="hover:text-emerald-700 transition">
+                    {link.label}
+                  </Link>
+                  {/* dropdown on hover */}
+                  <ul className="absolute left-0 mt-2 hidden w-48 rounded bg-white shadow-lg group-hover:block">
+                    {services.map((s) => (
+                      <li key={s.id}>
+                        <Link
+                          href={`/products#${s.id}`}
+                          className="block px-4 py-2 text-sm text-slate-900 hover:bg-amber-100"
+                        >
+                          {s.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            }
+
+            return (
+              <motion.li 
+                key={link.href}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link href={link.href} className="hover:text-emerald-700 transition">
+                  {link.label}
+                </Link>
+              </motion.li>
+            );
+          })}
         </ul>
 
         {/* CTA Button & Mobile Menu Button */}
@@ -68,7 +96,10 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
 
           {/* Mobile Hamburger Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              setMobileMenuOpen(!mobileMenuOpen);
+              if (mobileMenuOpen) setMobileServicesOpen(false);
+            }}
             className="md:hidden flex flex-col gap-1.5 p-2"
             aria-label="Toggle menu"
           >
@@ -90,22 +121,65 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
             className="border-t border-amber-200/60 bg-[#fdfbf7] md:hidden overflow-hidden"
           >
             <ul className="flex flex-col space-y-0 px-4 py-3">
-              {navLinks.map((link, index) => (
-                <motion.li 
-                  key={link.href}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <Link
-                    href={link.href}
-                    className="block py-3 text-sm font-medium text-slate-900 hover:text-amber-700 transition border-b border-amber-100 last:border-b-0"
-                    onClick={() => setMobileMenuOpen(false)}
+              {navLinks.map((link, index) => {
+                if (link.label === 'Services') {
+                  return (
+                    <React.Fragment key={link.href}>
+                      <motion.li
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.05 }}
+                      >
+                        <button
+                          className="w-full flex justify-between py-3 text-sm font-medium text-slate-900 hover:text-amber-700 transition border-b border-amber-100 last:border-b-0"
+                          onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                        >
+                          {link.label}
+                          <span className="ml-2">{mobileServicesOpen ? '▲' : '▼'}</span>
+                        </button>
+                      </motion.li>
+                      {mobileServicesOpen && (
+                        services.map((s) => (
+                          <motion.li
+                            key={s.id}
+                            initial={{ x: -20, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ delay: (index + 1) * 0.05 }}
+                          >
+                            <Link
+                              href={`/products#${s.id}`}
+                              className="block pl-6 py-2 text-sm text-slate-900 hover:text-amber-700 transition border-b border-amber-100"
+                              onClick={() => {
+                                setMobileMenuOpen(false);
+                                setMobileServicesOpen(false);
+                              }}
+                            >
+                              {s.name}
+                            </Link>
+                          </motion.li>
+                        ))
+                      )}
+                    </React.Fragment>
+                  );
+                }
+
+                return (
+                  <motion.li 
+                    key={link.href}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={link.href}
+                      className="block py-3 text-sm font-medium text-slate-900 hover:text-amber-700 transition border-b border-amber-100 last:border-b-0"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.li>
+                );
+              })}
               <motion.li 
                 className="pt-2"
                 initial={{ x: -20, opacity: 0 }}
