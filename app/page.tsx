@@ -17,7 +17,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-5xl px-4 py-24 md:py-32">
           <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Diamond Capital Africa — Kampala, Uganda</p>
           <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-tight text-slate-900 md:text-6xl">
-            Reliable gold trading with complete documentation and export readiness.
+            We source gold from Uganda. Every shipment is verified, documented, and ready to export.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-slate-900">
             We coordinate sourcing, assay verification, compliance files, and secure logistics for buyers
