@@ -28,7 +28,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL("https://diamondcapitalafrica.com"),
   title: "Diamond Capital Africa - Certified Gold Supply from Uganda & Congo",
-  description: "Ethically sourced, lab-verified gold from Uganda and Congo. Certified 99.5%+ purity bars, competitive pricing, secure logistics. Trusted gold supplier for institutional buyers worldwide.",
+  description: "Ethically sourced, lab-verified gold from Uganda and Congo. Certified 99.5%+ purity bars, competitive pricing, secure logistics. Trusted gold supplier for  buyers worldwide.",
   keywords: "gold supplier, certified gold, gold bars, Uganda gold, Congo gold, precious metals, ethical sourcing, gold trading, investment gold, compliance documentation",
   authors: [{ name: "Diamond Capital Africa" }],
   creator: "Diamond Capital Africa",
@@ -52,10 +52,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg",
+        url: "https://diamondcapitalafrica.com/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Certified gold supply - Diamond Capital Africa",
+        alt: "Diamond Capital Africa — Certified gold supply from Uganda & Congo",
       },
     ],
   },
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
   },
   verification: {
-    google: "google-site-verification-code",
+    google: "Y0oslBbll3uymWk3j9qEtfh7nH5G1ppQyP3_ydVLTcQ",
   },
 };
 
@@ -89,7 +89,7 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#0b1116" />
+        <meta name="theme-color" content="#fdfbf7" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -118,7 +118,7 @@ export default function RootLayout({
               areaServed: ["UG", "CD", "Global"],
               priceRange: "$$",
               sameAs: [],
-              image: "https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg",
+              image: "https://diamondcapitalafrica.com/opengraph-image",
             }),
           }}
         />

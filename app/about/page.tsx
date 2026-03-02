@@ -31,7 +31,7 @@ export default function About() {
         <div className="grid gap-10 md:grid-cols-2">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-amber-700/80">About us</p>
-            <h1 className="mt-4 text-4xl font-semibold text-slate-900">Integrity-led gold trading for global buyers.</h1>
+            <h2 className="mt-4 text-4xl font-semibold text-slate-900">Integrity-led gold trading for global buyers.</h2>
             <p className="mt-6 text-lg text-slate-800">
               Diamond Capital Africa is based in Kampala, Uganda, with verified partners in Uganda and Congo. We supply
               certified gold products with full documentation, quality checks, and secure logistics.
@@ -366,7 +366,7 @@ export default function About() {
         </div>
 
         <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-amber-200/60 px-4 pt-6 text-xs text-slate-700 md:flex-row md:items-center md:justify-between">
-          <p>&copy; 2024 Diamond Capital Africa. All rights reserved.</p>
+          <p>&copy; 2026 Diamond Capital Africa. All rights reserved.</p>
           <p>Serving East & Central Africa • Global delivery available</p>
         </div>
       </footer>

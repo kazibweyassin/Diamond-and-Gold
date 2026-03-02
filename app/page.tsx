@@ -26,11 +26,11 @@ export default function Home() {
                 across Africa, the Middle East, and Europe.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <a href="/products" className="rounded-full bg-red-700 px-7 py-3 text-sm font-semibold text-white hover:bg-red-800 transition">
-                  Explore services
-                </a>
-                <a href="/contact" className="rounded-full border border-red-700 px-7 py-3 text-sm font-semibold text-red-700 hover:bg-red-50 transition">
+                <a href="/contact" className="rounded-full bg-red-700 px-7 py-3 text-sm font-semibold text-white hover:bg-red-800 transition">
                   Request consultation
+                </a>
+                <a href="/products" className="rounded-full border border-red-700 px-7 py-3 text-sm font-semibold text-red-700 hover:bg-red-50 transition">
+                  Explore services
                 </a>
               </div>
             </div>
@@ -73,7 +73,7 @@ export default function Home() {
                 WHY CHOOSE US
               </p>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight text-slate-900">
-                Experience professionalism, security, and success in the gold industry.
+                Uganda-licensed gold trading with direct miner access, independent assay, and export-ready documentation.
               </h2>
               <motion.a
                 href="/contact"
@@ -105,7 +105,7 @@ export default function Home() {
                   Transparent and competitive prices
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Working directly with local artisanal miners enables us to sale at competitive prices thereby cutting costs of middle men.
+                  Working directly with local artisanal miners enables us to sell at competitive prices thereby cutting out middlemen.
                 </p>
               </motion.div>
 
@@ -171,7 +171,7 @@ export default function Home() {
                   Quality and Timely delivery
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  NGL delivers the ordered products within stipulated time without compromising quality.
+                  Diamond Capital Africa delivers every order on schedule with no compromise on purity, documentation, or custody chain.
                 </p>
               </motion.div>
             </div>
@@ -287,19 +287,19 @@ export default function Home() {
             {[
               {
                 title: "Licensed Trader",
-                detail: "Registered gold trading entity in Uganda",
+                detail: "Uganda Minerals & Mining licensed operator — license available to verified buyers on request",
               },
               {
-                title: "ISO Certified Labs",
-                detail: "Partner assay facilities with international accreditation",
+                title: "ISO-Certified Assay Labs",
+                detail: "Third-party purity testing via accredited independent facilities — certificates included with every shipment",
               },
               {
-                title: "Export Compliance",
-                detail: "Full adherence to OECD due diligence guidelines",
+                title: "OECD Due Diligence",
+                detail: "Full adherence to OECD Guidance for Responsible Mineral Supply Chains, 5th Edition",
               },
               {
                 title: "Insured Logistics",
-                detail: "All shipments covered by comprehensive insurance",
+                detail: "Full-value shipment insurance with real-time tracking from dispatch to confirmed delivery",
               },
             ].map((item) => (
               <div key={item.title} className="rounded-xl border border-amber-200/70 bg-amber-50/40 p-6 text-center">
@@ -325,53 +325,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Trusted Partners Section */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center">
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Client Success Stories</p>
-            <h2 className="mt-4 text-4xl font-semibold text-slate-900">Trusted by Global Gold Traders</h2>
+            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Why Buyers Choose Us</p>
+            <h2 className="mt-4 text-4xl font-semibold text-slate-900">Verified Sourcing. Complete Compliance. Real Results.</h2>
             <p className="mt-4 text-lg text-slate-800">
-              See what our clients say about working with Diamond Capital Africa
+              We deliver what institutional gold buyers need: traceability, documentation, and reliability
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {[
               {
-                quote: "Diamond Capital Africa provided 500kg of certified bars on schedule. Their documentation was flawless and the logistics were seamless.",
-                author: "Ahmed K.",
-                title: "Gold Importer, Dubai",
-                volume: "500kg order",
-                rating: 5,
+                icon: "📋",
+                title: "Complete Documentation",
+                description: "Every shipment includes origin certificates, independent assay reports, custody chain records, and KYC-ready compliance packages.",
               },
               {
-                quote: "As a jewelry manufacturer, I needed verified sourcing. Their compliance package saved us months of due diligence.",
-                author: "Maria S.",
-                title: "Refinery Manager, Europe",
-                volume: "250kg order",
-                rating: 5,
+                icon: "✓",
+                title: "Lab-Verified Purity",
+                description: "No exceptions. Every bar is assayed by ISO-certified independent laboratories and documented with stamped certificates.",
               },
               {
-                quote: "Fast turnaround, competitive pricing, and honest communication. We've already placed a second order.",
-                author: "James M.",
-                title: "Precious Metals Dealer, UK",
-                volume: "150kg order",
-                rating: 5,
+                icon: "🚚",
+                title: "Insured & Tracked Delivery",
+                description: "Secure logistics with real-time tracking, insurance coverage, and dedicated account management from order to delivery.",
               },
-            ].map((testimonial, idx) => (
+            ].map((item, idx) => (
               <div key={idx} className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-8 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.3em] text-amber-700 mb-6">Rated 5/5</p>
-                <p className="text-slate-900 leading-relaxed mb-6">"{testimonial.quote}"</p>
-                <div className="flex items-center gap-4 border-t border-amber-200/60 pt-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-100 text-amber-700 font-semibold text-lg">
-                    {testimonial.author.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-slate-900">{testimonial.author}</p>
-                    <p className="text-sm text-slate-800">{testimonial.title}</p>
-                    <p className="mt-1 text-xs text-amber-700 font-medium">Verified {testimonial.volume}</p>
-                  </div>
-                </div>
+                <p className="text-3xl mb-4">{item.icon}</p>
+                <h3 className="font-semibold text-slate-900 mb-3 text-lg">{item.title}</h3>
+                <p className="text-slate-800 text-sm leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -496,7 +481,7 @@ export default function Home() {
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-semibold leading-tight text-slate-900">
-            Ready to Source Premium African Gold?
+            Source certified Ugandan gold — verified, documented, and delivered.
           </h2>
           <p className="mt-6 text-xl text-slate-800">
             Connect with our team to discuss your requirements. We provide complete gold trading services with 
@@ -581,7 +566,7 @@ export default function Home() {
         </div>
 
         <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-amber-200/60 px-4 pt-6 text-xs text-slate-700 md:flex-row md:items-center md:justify-between">
-          <p>&copy; 2024 Diamond Capital Africa. All rights reserved.</p>
+          <p>&copy; 2026 Diamond Capital Africa. All rights reserved.</p>
           <p>Serving East & Central Africa • Global delivery available</p>
         </div>
       </footer>

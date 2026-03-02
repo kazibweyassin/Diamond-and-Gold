@@ -295,7 +295,7 @@ ${formData.message}
         </div>
 
         <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-amber-200/60 px-4 pt-6 text-xs text-slate-700 md:flex-row md:items-center md:justify-between">
-          <p>&copy; 2024 Diamond Capital Africa. All rights reserved.</p>
+          <p>&copy; 2026 Diamond Capital Africa. All rights reserved.</p>
           <p>Serving East & Central Africa • Global delivery available</p>
         </div>
       </footer>
