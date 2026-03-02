@@ -18,11 +18,10 @@ export default function About() {
             </p>
           </div>
           <h1 className="text-5xl md:text-6xl font-semibold leading-tight text-slate-900">
-            Building trust through transparent gold trading.
+            We trade gold the way it should be done — openly, with paperwork you can actually verify.
           </h1>
           <p className="mt-6 text-xl text-slate-800 leading-relaxed">
-            Diamond Capital Africa connects responsible gold miners with global buyers through ethical sourcing,
-            comprehensive compliance, and secure logistics.
+            We're based in Kampala and work directly with licensed miners across Uganda and Congo. If you need to buy gold responsibly, this is how we can help.
           </p>
         </div>
       </section>
@@ -33,15 +32,13 @@ export default function About() {
             <p className="text-xs uppercase tracking-[0.35em] text-amber-700/80">About us</p>
             <h2 className="mt-4 text-4xl font-semibold text-slate-900">Integrity-led gold trading for global buyers.</h2>
             <p className="mt-6 text-lg text-slate-800">
-              Diamond Capital Africa is based in Kampala, Uganda, with verified partners in Uganda and Congo. We supply
-              certified gold products with full documentation, quality checks, and secure logistics.
+              We're based in Kampala, with verified partners across Uganda and Congo. Every order comes with proper documentation, independent quality checks, and logistics we handle start to finish.
             </p>
           </div>
           <div className="rounded-2xl border border-amber-200/70 bg-white p-8 shadow-sm">
             <h2 className="text-xl font-semibold text-slate-900">Mission</h2>
             <p className="mt-4 text-slate-800">
-              Provide premium gold products while protecting communities, complying with regulations, and
-              promoting transparent trade practices.
+              Supply good gold at fair terms — without cutting corners on where it came from or how it gets to you.
             </p>
             <div className="mt-6 grid gap-4 text-sm text-slate-800">
               <div className="flex items-center justify-between border-b border-amber-200/60 pb-3">
@@ -76,7 +73,7 @@ export default function About() {
                 OUR PRINCIPLES
               </p>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight text-slate-900">
-                Values that guide every transaction and partnership.
+                What we believe in, and how it shows up at work.
               </h2>
               <motion.a
                 href="/contact"
@@ -108,7 +105,7 @@ export default function About() {
                   Integrity
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Honest communication and transparent operations in every transaction.
+                  We tell you what's possible, what's not, and why. No hidden steps in our process.
                 </p>
               </motion.div>
 
@@ -130,7 +127,7 @@ export default function About() {
                   Compliance First
                 </h3>
                 <p className="text-sm text-red-100 leading-relaxed">
-                  Full adherence to international gold trading standards and regulations.
+                  We don't cut corners on documentation. Every transaction follows international standards — because your buyers and banks will check.
                 </p>
               </motion.div>
 
@@ -152,7 +149,7 @@ export default function About() {
                   Ethical Sourcing
                 </h3>
                 <p className="text-sm text-amber-50 leading-relaxed">
-                  Verified origin, community respect, and environmental responsibility.
+                  We only work with miners we've visited. If we can't verify where the gold came from, we don't buy it.
                 </p>
               </motion.div>
 
@@ -174,7 +171,7 @@ export default function About() {
                   Professional Service
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed">
-                  Dedicated account management and responsive customer support.
+                  You'll have a real contact at our Kampala office who knows your order and picks up the phone.
                 </p>
               </motion.div>
             </div>
@@ -186,7 +183,7 @@ export default function About() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-amber-700/80">Field gallery</p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-900">Operations across mines and minerals</h2>
+            <h2 className="mt-3 text-3xl font-semibold text-slate-900">What it looks like on the ground</h2>
           </div>
           <a href="/contact" className="text-sm font-semibold text-amber-700 hover:text-amber-800">
             Request site visit info →
@@ -216,7 +213,7 @@ export default function About() {
               />
               <div className="p-4">
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-700">{item.label}</p>
-                <p className="mt-2 text-sm text-slate-800">On-site visibility and documented custody.</p>
+                <p className="mt-2 text-sm text-slate-800">Every visit logged. Every transfer documented.</p>
               </div>
             </div>
           ))}
@@ -228,10 +225,9 @@ export default function About() {
           <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-amber-700/80">Regulatory alignment</p>
-              <h2 className="mt-4 text-3xl font-semibold text-slate-900">Compliance-ready documentation</h2>
+              <h2 className="mt-4 text-3xl font-semibold text-slate-900">Everything buyers need, prepared in advance</h2>
               <p className="mt-4 text-slate-800">
-                We prepare full documentation packs for buyers, including origin verification, assay reports,
-                and shipment custody records to support due diligence and regulatory requirements.
+                Before anything ships, we prepare the full documentation pack — origin verification, assay reports, custody records. Your compliance team won't have to ask twice.
               </p>
             </div>
             <div className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-6">
@@ -264,15 +260,15 @@ export default function About() {
             {[
               {
                 title: "Responsible sourcing",
-                body: "We verify mining partners, ensure lawful procurement, and maintain documentation at every stage.",
+                body: "We know the miners we work with. Licensed, visited, and documented before we buy from them.",
               },
               {
                 title: "Verified supply",
-                body: "Gold is tested for purity and accompanied by compliance and export-ready documentation.",
+                body: "Every lot goes through an independent lab. The results come with your shipment.",
               },
               {
                 title: "Buyer support",
-                body: "Dedicated account managers coordinate inspections, logistics, and secure delivery.",
+                body: "Your account manager handles everything — from booking the assay to confirming delivery.",
               },
             ].map((item) => (
               <div key={item.title} className="rounded-2xl border border-amber-200/70 bg-white p-6 shadow-sm">
@@ -287,10 +283,9 @@ export default function About() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid gap-10 md:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-semibold text-slate-900">Operating standards</h2>
+            <h2 className="text-2xl font-semibold text-slate-900">How we run things</h2>
             <p className="mt-4 text-slate-800">
-              Our procedures align with international trading standards, local regulations, and ethical sourcing
-              initiatives to ensure safe and compliant operations.
+              We follow Uganda's mining regulations, OECD due diligence guidelines, and the expectations of the international buyers we work with. No shortcuts.
             </p>
             <ul className="mt-6 space-y-3 text-sm text-slate-800">
               <li>• Origin verification and custody tracking</li>
@@ -304,15 +299,15 @@ export default function About() {
             <div className="mt-6 space-y-5 text-sm text-slate-800">
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Kampala hub</p>
-                <p className="mt-2">Client services, compliance checks, and logistics coordination.</p>
+                <p className="mt-2">Where we take your calls, process your paperwork, and organise your shipment.</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Field verification</p>
-                <p className="mt-2">On-site inspections with partner mine operations and custody documentation.</p>
+                <p className="mt-2">We physically visit our partner mines. What we see is what we document.</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Global delivery</p>
-                <p className="mt-2">Secure shipping options aligned to buyer requirements and timelines.</p>
+                <p className="mt-2">We arrange the logistics around your schedule and destination — insured, tracked, confirmed.</p>
               </div>
             </div>
           </div>

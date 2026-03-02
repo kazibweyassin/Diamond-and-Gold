@@ -20,8 +20,7 @@ export default function Home() {
             We source gold from Uganda. Every shipment is verified, documented, and ready to export.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-slate-900">
-            We coordinate sourcing, assay verification, compliance files, and secure logistics for buyers
-            across Africa, the Middle East, and Europe.
+            Tell us what you need. We handle the sourcing, lab testing, paperwork, and delivery — so it arrives clean and on time.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-5">
             <a href="/contact" className="rounded-full bg-red-700 px-7 py-3 text-sm font-semibold text-white hover:bg-red-800 transition">
@@ -92,7 +91,7 @@ export default function Home() {
                 WHY CHOOSE US
               </p>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight text-slate-900">
-                Uganda-licensed gold trading with direct miner access, independent assay, and export-ready documentation.
+                We know the mines, hold the licenses, and have done this before. Your paperwork will be clean.
               </h2>
               <motion.a
                 href="/contact"
@@ -146,7 +145,7 @@ export default function Home() {
                   Authenticity and legitimacy
                 </h3>
                 <p className="text-sm text-red-100 leading-relaxed">
-                  We possess all the licences necessary to transact in gold in Uganda. All our licenses can be verified with the issuing authorities upon request.
+                  We're fully licensed to buy and export gold in Uganda. Ask us for the documentation — we'll send it.
                 </p>
               </motion.div>
 
@@ -168,7 +167,7 @@ export default function Home() {
                   Professionalism and experience
                 </h3>
                 <p className="text-sm text-amber-50 leading-relaxed">
-                  We combine professionalism and experience to deliver trouble free transaction in gold trade.
+                  Gold trade has a lot of moving parts. We've been doing this long enough to know where things go wrong — and how to stop them.
                 </p>
               </motion.div>
 
@@ -275,7 +274,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Compliance & Standards</p>
-            <h2 className="mt-4 text-3xl font-semibold text-slate-900">Licensed & Verified Operations</h2>
+            <h2 className="mt-4 text-3xl font-semibold text-slate-900">What we can show you in writing</h2>
           </div>
           
           <div className="grid gap-6 md:grid-cols-4">
@@ -309,8 +308,7 @@ export default function Home() {
           
           <div className="mt-12 rounded-2xl border border-amber-200/60 bg-[#faf8f2] p-8 text-center">
             <p className="text-slate-900 text-lg">
-              All transactions include complete documentation packages: origin certificates, independent assay reports, 
-              custody chain records, and export compliance verification.
+              Every order comes with the full paper trail: origin certificate, lab assay report, custody records, and export docs. Nothing missing, nothing you'll have to chase us for.
             </p>
             <a href="/compliance" className="mt-6 inline-flex items-center gap-2 text-amber-700 hover:text-amber-800 font-semibold">
               View our compliance documentation
@@ -325,27 +323,27 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center">
             <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Why Buyers Choose Us</p>
-            <h2 className="mt-4 text-4xl font-semibold text-slate-900">Verified Sourcing. Complete Compliance. Real Results.</h2>
+            <h2 className="mt-4 text-4xl font-semibold text-slate-900">What you actually get when you order</h2>
             <p className="mt-4 text-lg text-slate-800">
-              We deliver what institutional gold buyers need: traceability, documentation, and reliability
+              Not vague promises — specific things you can check and verify yourself.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {[
               {
                 icon: "📋",
-                title: "Complete Documentation",
-                description: "Every shipment includes origin certificates, independent assay reports, custody chain records, and KYC-ready compliance packages.",
+                title: "Every document, included",
+                description: "Origin certificate, assay report, custody records, KYC package — all included. Nothing you'll need to chase us for.",
               },
               {
                 icon: "✓",
                 title: "Lab-Verified Purity",
-                description: "No exceptions. Every bar is assayed by ISO-certified independent laboratories and documented with stamped certificates.",
+                description: "We don't self-certify. Every shipment goes through an independent ISO-certified lab. You get the stamped certificate with your order.",
               },
               {
                 icon: "🚚",
                 title: "Insured & Tracked Delivery",
-                description: "Secure logistics with real-time tracking, insurance coverage, and dedicated account management from order to delivery.",
+                description: "Your shipment is insured, tracked, and handled by someone who knows your order and answers your calls.",
               },
             ].map((item, idx) => (
               <div key={idx} className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-8 shadow-sm">
@@ -460,8 +458,7 @@ export default function Home() {
             Source certified Ugandan gold — verified, documented, and delivered.
           </h2>
           <p className="mt-6 text-xl text-slate-800">
-            Connect with our team to discuss your requirements. We provide complete gold trading services with 
-            full transparency, compliance documentation, and secure delivery.
+            Tell us what you need — volume, purity, timeline. We'll come back with a straight quote and answer your questions directly.
           </p>
           <div className="mt-10 flex flex-wrap justify-center items-center gap-6">
             <a href="/contact" className="rounded-full bg-red-700 px-8 py-4 text-base font-semibold text-white hover:bg-red-800 transition">
@@ -506,7 +503,7 @@ export default function Home() {
               />
             </div>
             <p className="mt-4 text-sm text-slate-800">
-              Premium gold supply with verified sourcing, compliance documentation, and secure logistics.
+              Gold from Uganda — properly sourced, fully documented, and delivered.
             </p>
           </div>
 
