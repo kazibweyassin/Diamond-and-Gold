@@ -13,47 +13,66 @@ export default function Home() {
           <div className="hero-slide hero-slide-2" aria-hidden="true" />
         </div>
         <div className="absolute inset-0 bg-white/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/60 to-transparent" />
-        <div className="relative mx-auto max-w-6xl px-4 py-24 md:py-28">
-          <div className="grid gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-            <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Diamond Capital Africa</p>
-              <h1 className="mt-4 text-5xl font-semibold leading-tight text-slate-900 md:text-6xl">
-                Reliable gold trading with complete documentation and export readiness.
-              </h1>
-              <p className="mt-6 max-w-xl text-lg text-slate-900">
-                We coordinate sourcing, assay verification, compliance files, and secure logistics for buyers
-                across Africa, the Middle East, and Europe.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a href="/contact" className="rounded-full bg-red-700 px-7 py-3 text-sm font-semibold text-white hover:bg-red-800 transition">
-                  Request consultation
-                </a>
-                <a href="/products" className="rounded-full border border-red-700 px-7 py-3 text-sm font-semibold text-red-700 hover:bg-red-50 transition">
-                  Explore services
-                </a>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/75 to-white/40" />
+        <div className="relative mx-auto max-w-5xl px-4 py-24 md:py-32">
+          <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Diamond Capital Africa — Kampala, Uganda</p>
+          <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-tight text-slate-900 md:text-6xl">
+            Reliable gold trading with complete documentation and export readiness.
+          </h1>
+          <p className="mt-6 max-w-xl text-lg text-slate-900">
+            We coordinate sourcing, assay verification, compliance files, and secure logistics for buyers
+            across Africa, the Middle East, and Europe.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-5">
+            <a href="/contact" className="rounded-full bg-red-700 px-7 py-3 text-sm font-semibold text-white hover:bg-red-800 transition">
+              Request consultation
+            </a>
+            <a href="/products" className="text-sm font-semibold text-red-700 hover:text-red-800 transition">
+              Explore services →
+            </a>
+          </div>
+          {/* Above-the-fold trust strip */}
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-2xl">
+            {[
+              { label: "Purity", value: "99.5%+" },
+              { label: "Uganda Licensed", value: "Verified" },
+              { label: "Dispatch", value: "48–72h" },
+              { label: "Documentation", value: "KYC-ready" },
+            ].map((item) => (
+              <div key={item.label} className="rounded-xl border border-amber-200/70 bg-white/90 px-4 py-3 backdrop-blur-sm">
+                <p className="text-xs uppercase tracking-[0.2em] text-slate-600">{item.label}</p>
+                <p className="mt-1 text-sm font-semibold text-slate-900">{item.value}</p>
               </div>
-            </div>
-            <div className="rounded-2xl border border-amber-200/70 bg-white/80 p-6 shadow-lg">
-              <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Service coverage</p>
-              <h2 className="mt-3 text-2xl font-semibold text-slate-900">Uganda & Congo supply</h2>
-              <p className="mt-4 text-sm text-slate-900">
-                Verified partners, independent assay coordination, and export documentation for each shipment.
-              </p>
-              <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                {[
-                  { label: "Purity", value: "99.5%+" },
-                  { label: "Compliance", value: "KYC-ready" },
-                  { label: "Dispatch", value: "48-72h" },
-                  { label: "Capacity", value: "50kg+" },
-                ].map((item) => (
-                  <div key={item.label} className="rounded-xl border border-amber-200/60 bg-amber-50 px-4 py-3">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-800">{item.label}</p>
-                    <p className="mt-2 text-sm font-semibold text-slate-900">{item.value}</p>
-                  </div>
-                ))}
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works — process inline, above feature cards */}
+      <section className="bg-white border-b border-amber-200/60 py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mb-12">
+            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">How it works</p>
+            <h2 className="mt-3 text-3xl font-semibold text-slate-900">From inquiry to delivery — 4 clear steps</h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { step: "01", title: "Submit requirements", body: "Share quantity, form factor, purity, and delivery needs. Receive a formal quote within 24 hours." },
+              { step: "02", title: "Compliance review", body: "We align on KYC documentation, buyer approvals, and regulatory checks before proceeding." },
+              { step: "03", title: "Assay & verification", body: "Independent ISO-certified lab testing confirms purity and weight before packing begins." },
+              { step: "04", title: "Insured dispatch", body: "Coordinated export documentation, insured logistics, and real-time tracking to confirmed delivery." },
+            ].map((item) => (
+              <div key={item.step} className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-6">
+                <p className="text-4xl font-bold text-amber-300">{item.step}</p>
+                <h3 className="mt-3 text-base font-semibold text-slate-900">{item.title}</h3>
+                <p className="mt-2 text-sm text-slate-700 leading-relaxed">{item.body}</p>
               </div>
-            </div>
+            ))}
+          </div>
+          <div className="mt-8">
+            <a href="/process" className="text-sm font-semibold text-amber-700 hover:text-amber-800">
+              See full process details →
+            </a>
           </div>
         </div>
       </section>
@@ -176,30 +195,6 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="border-y border-amber-200/60 bg-[#faf8f2] py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-3">
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Our Footprint</p>
-            <h2 className="mt-4 text-2xl font-semibold text-slate-900">Operations across East & Central Africa</h2>
-            <p className="mt-4 text-slate-800">
-              We operate through vetted partners in Uganda and Congo, ensuring ethical practices and community impact.
-            </p>
-          </div>
-          {[
-            { title: "Kampala HQ", detail: "Client services, compliance, logistics" },
-            { title: "Field Sites", detail: "Partner mines with on-site verification" },
-          ].map((site) => (
-            <motion.div key={site.title} whileHover={{ y: -4, scale: 1.02 }} transition={{ duration: 0.2 }} className="rounded-2xl border border-amber-200/70 bg-white p-6 shadow-sm hover:shadow-lg">
-              <h3 className="text-lg font-semibold text-slate-900">{site.title}</h3>
-              <p className="mt-3 text-sm text-slate-800">{site.detail}</p>
-              <a href="/about" className="mt-6 inline-flex text-sm font-semibold text-amber-700 hover:text-amber-800">
-                Learn more →
-              </a>
-            </motion.div>
-          ))}
         </div>
       </section>
 
@@ -452,25 +447,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-10 md:grid-cols-2">
-          <div className="rounded-2xl border border-amber-200/70 bg-white p-8 shadow-sm">
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Responsible sourcing</p>
-            <h3 className="mt-4 text-2xl font-semibold text-slate-900">Ethics-first procurement</h3>
-            <p className="mt-4 text-slate-800">
-              We verify origin, ensure compliance with local regulations, and maintain documented custody chains.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-amber-200/70 bg-white p-8 shadow-sm">
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Buyer confidence</p>
-            <h3 className="mt-4 text-2xl font-semibold text-slate-900">Secure transactions & delivery</h3>
-            <p className="mt-4 text-slate-800">
-              Dedicated account managers coordinate inspection, packing, and insured export logistics.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA Section */}
       <section className="relative overflow-hidden bg-[#faf8f2] py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(251,191,36,0.12),_transparent_70%)]" />
@@ -487,12 +463,12 @@ export default function Home() {
             Connect with our team to discuss your requirements. We provide complete gold trading services with 
             full transparency, compliance documentation, and secure delivery.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <div className="mt-10 flex flex-wrap justify-center items-center gap-6">
             <a href="/contact" className="rounded-full bg-red-700 px-8 py-4 text-base font-semibold text-white hover:bg-red-800 transition">
               Get started today
             </a>
-            <a href="/products" className="rounded-full border border-red-700 px-8 py-4 text-base font-semibold text-red-700 hover:bg-red-50 transition">
-              View all services
+            <a href="/products" className="text-sm font-semibold text-red-700 hover:text-red-800 transition">
+              View all services →
             </a>
           </div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
