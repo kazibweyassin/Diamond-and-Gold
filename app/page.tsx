@@ -198,7 +198,7 @@ export default function Home() {
             <p className="text-sm text-slate-600">
               Want to invest in Uganda&apos;s gold sector, not just buy from it?{' '}
               <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-emerald-700 hover:underline">
-                We can guide you →
+                Invest in Uganda →
               </a>
             </p>
           </div>
@@ -479,7 +479,7 @@ export default function Home() {
           <p className="mt-8 text-sm text-slate-600">
             Want to invest in Uganda&apos;s gold sector, not just buy from it?{' '}
             <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="font-medium text-emerald-700 hover:underline">
-              We can guide you →
+              Invest in Uganda →
             </a>
           </p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
