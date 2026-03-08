@@ -30,6 +30,18 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
 
   return (
     <header className="sticky top-0 z-50 border-b border-emerald-200/60 bg-[#fdfbf7]/90 backdrop-blur">
+      {/* Announcement bar */}
+      <div className="bg-amber-500 px-4 py-2 text-center text-xs font-semibold text-white">
+        Want to invest in Uganda&apos;s gold sector?{' '}
+        <a
+          href="https://invest.diamondcapitalafrica.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-amber-100 transition"
+        >
+          Invest in Uganda →
+        </a>
+      </div>
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
@@ -193,6 +205,22 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
                 >
                   {cta.label}
                 </Link>
+              </motion.li>
+              <motion.li
+                className="pt-1"
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: (navLinks.length + 1) * 0.05 }}
+              >
+                <a
+                  href="https://invest.diamondcapitalafrica.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full rounded-full bg-amber-500 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-amber-600 transition"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Invest in Uganda →
+                </a>
               </motion.li>
             </ul>
           </motion.div>
