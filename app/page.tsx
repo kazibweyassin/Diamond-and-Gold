@@ -194,6 +194,14 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
+          <div className="mt-10 pt-8 border-t border-amber-200/60">
+            <p className="text-sm text-slate-600">
+              Want to invest in Uganda&apos;s gold sector, not just buy from it?{' '}
+              <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-emerald-700 hover:underline">
+                We can guide you →
+              </a>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -468,6 +476,12 @@ export default function Home() {
               View all services →
             </a>
           </div>
+          <p className="mt-8 text-sm text-slate-600">
+            Want to invest in Uganda&apos;s gold sector, not just buy from it?{' '}
+            <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="font-medium text-emerald-700 hover:underline">
+              We can guide you →
+            </a>
+          </p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               {
@@ -516,6 +530,7 @@ export default function Home() {
               <li><a href="/process" className="hover:text-emerald-700 transition">Process</a></li>
               <li><a href="/faq" className="hover:text-emerald-700 transition">FAQ</a></li>
               <li><a href="/contact" className="hover:text-emerald-700 transition">Contact</a></li>
+              <li><a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-700 transition">Investor advisory ↗</a></li>
             </ul>
           </div>
 
