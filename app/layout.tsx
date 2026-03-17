@@ -96,6 +96,18 @@ export default function RootLayout({
         <link rel="alternate icon" type="image/png" href="/icon" />
         <link rel="apple-touch-icon" href="/apple-icon" />
         <link rel="manifest" href="/manifest.json" />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18021829324"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-18021829324');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
