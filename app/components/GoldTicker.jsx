@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const DCA_PREMIUM = 0.018; // 1.8% facilitation premium
+const DCA_PREMIUM = 0.018;
 
 function fmt(n, dec = 2) {
   return n.toLocaleString("en-US", {
@@ -14,7 +14,6 @@ function fmt(n, dec = 2) {
 export default function GoldTicker() {
   const [data, setData] = useState(null);
   const [updatedAt, setUpdatedAt] = useState("Fetching…");
-  const intervalRef = useRef(null);
 
   async function fetchGold() {
     setUpdatedAt("Updating…");
@@ -34,28 +33,30 @@ export default function GoldTicker() {
         spotKg: spotOz * 32.1507,
         dcaOz: spotOz * (1 + DCA_PREMIUM),
         chg,
+        up: chg >= 0,
       });
       setUpdatedAt(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
     } catch {
-      const fallback = 3320;
-      setData({
-        spotOz: fallback,
-        spotG: fallback / 31.1035,
-        spotKg: fallback * 32.1507,
-        dcaOz: fallback * (1 + DCA_PREMIUM),
-        chg: 0.41,
-      });
-      setUpdatedAt("Delayed data");
+      if (!data) {
+        const fallback = 3320;
+        setData({
+          spotOz: fallback,
+          spotG: fallback / 31.1035,
+          spotKg: fallback * 32.1507,
+          dcaOz: fallback * (1 + DCA_PREMIUM),
+          chg: 0.41,
+          up: true,
+        });
+        setUpdatedAt("Delayed data");
+      }
     }
   }
 
   useEffect(() => {
     fetchGold();
-    intervalRef.current = setInterval(fetchGold, 60000);
-    return () => clearInterval(intervalRef.current);
+    const id = setInterval(fetchGold, 60000);
+    return () => clearInterval(id);
   }, []);
-
-  const up = data?.chg >= 0;
 
   return (
     <div className="rounded-xl border border-stone-200 bg-white p-5 w-full max-w-sm shadow-sm">
@@ -74,11 +75,8 @@ export default function GoldTicker() {
             {data ? "$" + fmt(data.spotOz) : "—"}
           </div>
           <div className="flex items-center gap-1 mt-1">
-            <span
-              className="text-xs font-medium"
-              style={{ color: up ? "#3B6D11" : "#A32D2D" }}
-            >
-              {data ? (up ? "+" : "") + fmt(data.chg) + "%" : "—"}
+            <span className="text-xs font-medium" style={{ color: data?.up ? "#3B6D11" : "#A32D2D" }}>
+              {data ? (data.up ? "+" : "") + fmt(data.chg) + "%" : "—"}
             </span>
             <span className="text-xs text-stone-400">24h</span>
           </div>
@@ -97,8 +95,8 @@ export default function GoldTicker() {
       <div className="grid grid-cols-3 gap-2 mb-4">
         {[
           { label: "Per gram", value: data ? "$" + fmt(data.spotG) : "—" },
-          { label: "Per kg", value: data ? "$" + fmt(data.spotKg, 0) : "—" },
-          { label: "Purity basis", value: "99.5%" },
+          { label: "Per kg",   value: data ? "$" + fmt(data.spotKg, 0) : "—" },
+          { label: "Purity",   value: "99.5%" },
         ].map(({ label, value }) => (
           <div key={label} className="bg-stone-50 rounded-lg p-2">
             <div className="text-[11px] text-stone-400 mb-1">{label}</div>

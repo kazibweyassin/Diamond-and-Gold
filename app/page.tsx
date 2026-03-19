@@ -8,49 +8,66 @@ export default function Home() {
     <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
       <Header />
 
-      <section className="relative overflow-hidden">
-        <div className="hero-slideshow">
-          <div className="hero-slide hero-slide-1" aria-hidden="true" />
-          <div className="hero-slide hero-slide-2" aria-hidden="true" />
-        </div>
-        <div className="absolute inset-0 bg-white/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/75 to-white/40" />
-        <div className="relative mx-auto max-w-5xl px-4 py-24 md:py-32">
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
-            <div className="flex-1">
-              <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Diamond Capital Africa — Kampala, Uganda</p>
-              <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-tight text-slate-900 md:text-6xl">
-                We source gold from Uganda. Every shipment is verified, documented, and ready to export.
-              </h1>
-              <p className="mt-6 max-w-xl text-lg text-slate-900">
-                Tell us what you need. We handle the sourcing, lab testing, paperwork, and delivery — so it arrives clean and on time.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-5">
-                <a href="/contact" className="rounded-full bg-red-700 px-7 py-3 text-sm font-semibold text-white hover:bg-red-800 transition">
-                  Request consultation
-                </a>
-                <a href="/products" className="text-sm font-semibold text-red-700 hover:text-red-800 transition">
-                  Explore services →
-                </a>
-              </div>
+      <section className="bg-[#0f0d09] px-12 py-16">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+          <div className="flex-1">
+            {/* License badge */}
+            <div className="inline-flex items-center gap-2 bg-[#1e1a10] border border-[#3a2e0e] rounded-full px-4 py-1.5 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BA7517]" />
+              <span className="text-[11px] text-[#BA7517] tracking-widest uppercase">
+                Uganda minerals & mining licensed operator
+              </span>
             </div>
-            <div className="w-full md:w-80 lg:w-96 flex-shrink-0 mt-8 md:mt-0">
-              <GoldTicker />
+            {/* Headline */}
+            <h1 className="font-serif text-[#f5f0e8] text-5xl font-normal leading-tight tracking-tight max-w-2xl mb-5">
+              Certified gold from Uganda fully documented, independently verified, export-ready.
+            </h1>
+            {/* Sub-copy */}
+            <p className="text-[#8a7d65] text-base leading-relaxed max-w-xl mb-9">
+              We manage the full transaction , sourcing, assay, compliance, and insured delivery.
+              Every shipment arrives with a complete paper trail: origin certificate, ISO lab report,
+              KYC package, and custody records.
+            </p>
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3 mb-12">
+              <a
+                href="https://wa.me/256704833021"
+                className="inline-flex items-center gap-2.5 bg-[#BA7517] text-white text-sm font-medium px-6 py-3 rounded-lg no-underline"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.861L.057 23.5l5.79-1.452A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.214-3.716.931.99-3.63-.236-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
+                </svg>
+                Talk to our team
+              </a>
+              <a
+                href="/compliance"
+                className="inline-flex items-center gap-2 text-[#c9b98a] text-sm px-6 py-3 rounded-lg border border-[#3a2e0e] no-underline"
+              >
+                View compliance documentation →
+              </a>
+            </div>
+            {/* Trust stats */}
+            <div className="border-t border-[#2a2215] pt-8 grid grid-cols-2 sm:grid-cols-5 gap-6">
+              {[
+                { value: "99.5%+", label: "Purity guaranteed" },
+                { value: "48–72h", label: "Dispatch window" },
+                { value: "24h",    label: "Quote response" },
+                { value: "ISO",    label: "Certified assay labs" },
+                { value: "OECD",   label: "Due diligence" },
+              ].map(({ value, label }) => (
+                <div key={label}>
+                  <div className="font-serif text-[#EF9F27] text-3xl font-normal tracking-tight">{value}</div>
+                  <div className="text-[#5a4f3a] text-xs uppercase tracking-wider mt-1">{label}</div>
+                </div>
+              ))}
             </div>
           </div>
-          {/* Above-the-fold trust strip */}
-          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-2xl">
-            {[
-              { label: "Purity", value: "99.5%+" },
-              { label: "Uganda Licensed", value: "Verified" },
-              { label: "Dispatch", value: "48–72h" },
-              { label: "Documentation", value: "KYC-ready" },
-            ].map((item) => (
-              <div key={item.label} className="rounded-xl border border-amber-200/70 bg-white/90 px-4 py-3 backdrop-blur-sm">
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-600">{item.label}</p>
-                <p className="mt-1 text-sm font-semibold text-slate-900">{item.value}</p>
-              </div>
-            ))}
+          <div className="w-full md:w-80 lg:w-96 flex-shrink-0 mt-8 md:mt-0">
+            <div className="bg-[#1e1a10] border border-[#3a2e0e] rounded-2xl p-6 shadow-lg flex flex-col items-center">
+              <div className="text-[#EF9F27] text-lg font-bold mb-2">Live Gold Price</div>
+              <GoldTicker />
+            </div>
           </div>
         </div>
       </section>
