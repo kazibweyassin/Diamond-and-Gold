@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Header from '@/app/components/Header';
+import GoldTicker from '@/app/components/GoldTicker';
 
 export default function Home() {
   return (
@@ -15,20 +16,27 @@ export default function Home() {
         <div className="absolute inset-0 bg-white/60" />
         <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/75 to-white/40" />
         <div className="relative mx-auto max-w-5xl px-4 py-24 md:py-32">
-          <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Diamond Capital Africa — Kampala, Uganda</p>
-          <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-tight text-slate-900 md:text-6xl">
-            We source gold from Uganda. Every shipment is verified, documented, and ready to export.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-slate-900">
-            Tell us what you need. We handle the sourcing, lab testing, paperwork, and delivery — so it arrives clean and on time.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-5">
-            <a href="/contact" className="rounded-full bg-red-700 px-7 py-3 text-sm font-semibold text-white hover:bg-red-800 transition">
-              Request consultation
-            </a>
-            <a href="/products" className="text-sm font-semibold text-red-700 hover:text-red-800 transition">
-              Explore services →
-            </a>
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <div className="flex-1">
+              <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Diamond Capital Africa — Kampala, Uganda</p>
+              <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-tight text-slate-900 md:text-6xl">
+                We source gold from Uganda. Every shipment is verified, documented, and ready to export.
+              </h1>
+              <p className="mt-6 max-w-xl text-lg text-slate-900">
+                Tell us what you need. We handle the sourcing, lab testing, paperwork, and delivery — so it arrives clean and on time.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-5">
+                <a href="/contact" className="rounded-full bg-red-700 px-7 py-3 text-sm font-semibold text-white hover:bg-red-800 transition">
+                  Request consultation
+                </a>
+                <a href="/products" className="text-sm font-semibold text-red-700 hover:text-red-800 transition">
+                  Explore services →
+                </a>
+              </div>
+            </div>
+            <div className="w-full md:w-80 lg:w-96 flex-shrink-0 mt-8 md:mt-0">
+              <GoldTicker />
+            </div>
           </div>
           {/* Above-the-fold trust strip */}
           <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-2xl">
