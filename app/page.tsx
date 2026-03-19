@@ -3,7 +3,36 @@ import { motion } from 'framer-motion';
 import Header from '@/app/components/Header';
 import GoldTicker from '@/app/components/GoldTicker';
 
+import { useEffect, useState } from 'react';
+
+const HERO_HEADLINES = [
+  "We source gold from Uganda. Every shipment is verified, documented, and ready to export.",
+  "Certified gold supply with full compliance and export documentation.",
+  "Gold bars, lab-tested and KYC-ready, delivered worldwide.",
+  "Licensed Uganda gold exporter — trusted by institutional buyers.",
+  "Ethically sourced gold, ISO-certified assay, secure logistics."
+];
+
+const HERO_SUBCOPIES = [
+  "Tell us what you need. We handle the sourcing, lab testing, paperwork, and delivery — so it arrives clean and on time.",
+  "Get a formal quote, compliance review, and insured dispatch — all handled by our team.",
+  "Every shipment comes with origin certificate, lab report, and custody records.",
+  "We manage the full transaction: sourcing, assay, compliance, and delivery.",
+  "Your gold arrives with a complete paper trail and verified purity."
+];
+
 export default function Home() {
+  const [headlineIdx, setHeadlineIdx] = useState(0);
+  const [subcopyIdx, setSubcopyIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeadlineIdx((i) => (i + 1) % HERO_HEADLINES.length);
+      setSubcopyIdx((i) => (i + 1) % HERO_SUBCOPIES.length);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
       <Header />
@@ -22,13 +51,12 @@ export default function Home() {
 
             {/* Headline */}
             <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight max-w-2xl mb-5 text-slate-900">
-              We source gold from Uganda. Every shipment is verified, documented, and ready to export.
+              {HERO_HEADLINES[headlineIdx]}
             </h1>
 
             {/* Sub-copy */}
             <p className="text-slate-600 text-base leading-relaxed max-w-xl mb-9">
-              Tell us what you need. We handle the sourcing, lab testing, paperwork, and
-              delivery — so it arrives clean and on time.
+              {HERO_SUBCOPIES[subcopyIdx]}
             </p>
 
             {/* CTAs */}
