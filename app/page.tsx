@@ -29,7 +29,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setHeadlineIdx((i) => (i + 1) % HERO_HEADLINES.length);
       setSubcopyIdx((i) => (i + 1) % HERO_SUBCOPIES.length);
-    }, 1000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
