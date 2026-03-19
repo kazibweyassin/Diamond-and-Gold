@@ -29,7 +29,7 @@ export default function Home() {
     const interval = setInterval(() => {
       setHeadlineIdx((i) => (i + 1) % HERO_HEADLINES.length);
       setSubcopyIdx((i) => (i + 1) % HERO_SUBCOPIES.length);
-    }, 5000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -38,8 +38,29 @@ export default function Home() {
       <Header />
 
       {/* ── Hero ── */}
-      <section className="relative bg-[#fdfbf7] px-12 py-20">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12 max-w-6xl mx-auto">
+      <section className="relative bg-[#fdfbf7] px-12 py-20 overflow-hidden">
+        {/* Decorative SVG background pattern */}
+        <svg
+          className="absolute left-0 top-0 w-full h-full pointer-events-none select-none z-0"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 1440 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ opacity: 0.18 }}
+        >
+          <defs>
+            <linearGradient id="gold-gradient" x1="0" y1="0" x2="1440" y2="600" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#F7E7B0" />
+              <stop offset="1" stopColor="#E6C77B" />
+            </linearGradient>
+          </defs>
+          <circle cx="300" cy="200" r="180" fill="url(#gold-gradient)" />
+          <ellipse cx="1200" cy="100" rx="220" ry="120" fill="url(#gold-gradient)" />
+          <path d="M0 500 Q 400 400 900 550 T 1440 500" stroke="#E6C77B" strokeWidth="40" fill="none" opacity="0.25" />
+          <circle cx="900" cy="400" r="90" fill="#F7E7B0" opacity="0.25" />
+        </svg>
+        <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-12 max-w-6xl mx-auto">
           <div className="flex-1">
             {/* License badge */}
             <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-1.5 mb-8">
