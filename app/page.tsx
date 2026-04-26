@@ -22,14 +22,24 @@ const HERO_SUBCOPIES = [
   "Your gold arrives with a complete paper trail and verified purity."
 ];
 
+const HERO_IMAGES = [
+  '/gold-bar.jpg',
+  '/Gold-bars.webp',
+  '/goldsmelting.webp',
+  '/secure-logistics-1.jpg.webp',
+  '/man-pouring-melted-metal-workshop-large.jpg',
+];
+
 export default function Home() {
   const [headlineIdx, setHeadlineIdx] = useState(0);
   const [subcopyIdx, setSubcopyIdx] = useState(0);
+  const [slideIdx, setSlideIdx] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setHeadlineIdx((i) => (i + 1) % HERO_HEADLINES.length);
       setSubcopyIdx((i) => (i + 1) % HERO_SUBCOPIES.length);
+      setSlideIdx((i) => (i + 1) % HERO_IMAGES.length);
     }, 10000);
     return () => clearInterval(interval);
   }, []);
@@ -39,9 +49,19 @@ export default function Home() {
       <Header />
 
       {/* ── Hero ── */}
-      <section className="relative bg-pattern-hero px-4 sm:px-6 lg:px-12 py-16 sm:py-20 overflow-hidden">        {/* FIX 1: SVG opacity reduced from 0.18 → 0.07 so it stops washing out the headline */}
+      <section className="relative bg-pattern-hero px-4 sm:px-6 lg:px-12 py-16 sm:py-20 overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {HERO_IMAGES.map((src, idx) => (
+            <div
+              key={src}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${idx === slideIdx ? 'opacity-100' : 'opacity-0'}`}
+              style={{ backgroundImage: `url(${src})`, filter: 'brightness(1.1) contrast(1.05) saturate(1.15)' }}
+            />
+          ))}
+          <div className="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-slate-950/80 via-slate-950/30 to-transparent" />
+        </div>
         <svg
-          className="absolute left-0 top-0 w-full h-full pointer-events-none select-none z-0"
+          className="absolute left-0 top-0 w-full h-full pointer-events-none select-none z-10"
           aria-hidden="true"
           focusable="false"
           viewBox="0 0 1440 600"
@@ -60,23 +80,22 @@ export default function Home() {
           <path d="M0 500 Q 400 400 900 550 T 1440 500" stroke="#E6C77B" strokeWidth="40" fill="none" opacity="0.25" />
           <circle cx="900" cy="400" r="90" fill="#F7E7B0" opacity="0.25" />
         </svg>
-        <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-12 max-w-6xl mx-auto">
-          <div className="flex-1">
+        <div className="relative z-20 flex flex-col md:flex-row md:items-start md:justify-between gap-12 max-w-6xl mx-auto">
+          <div className="flex-1 text-white" style={{ color: '#fff' }}>
             {/* License badge */}
-            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-1.5 mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-              <span className="text-[11px] text-emerald-700 tracking-widest uppercase">
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-slate-100 rounded-full px-4 py-1.5 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-[11px] tracking-widest uppercase">
                 Uganda minerals &amp; mining licensed operator
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight max-w-2xl mb-5 text-slate-900">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight max-w-3xl mb-5" style={{ color: '#fff', textShadow: '0 20px 50px rgba(15, 23, 42, 0.55)' }}>
               {HERO_HEADLINES[headlineIdx]}
             </h1>
 
-            {/* FIX 2: text-slate-600 → text-slate-700 for better contrast on cream background */}
-            <p className="text-slate-700 text-base leading-relaxed max-w-xl mb-9">
+            <p className="text-lg leading-relaxed max-w-3xl mb-9" style={{ color: '#f8fafc', textShadow: '0 12px 35px rgba(15, 23, 42, 0.3)' }}>
               {HERO_SUBCOPIES[subcopyIdx]}
             </p>
 
