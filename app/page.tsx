@@ -35,6 +35,12 @@ export default function Home() {
   const [subcopyIdx, setSubcopyIdx] = useState(0);
   const [slideIdx, setSlideIdx] = useState(0);
 
+  const setHeroIndex = (idx: number) => {
+    setHeadlineIdx(idx);
+    setSubcopyIdx(idx);
+    setSlideIdx(idx);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setHeadlineIdx((i) => (i + 1) % HERO_HEADLINES.length);
@@ -100,10 +106,10 @@ export default function Home() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap mb-12">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap mb-6">
               <a
                 href="https://wa.me/256704833021"
-                className="inline-flex w-full justify-center sm:w-auto items-center gap-2.5 bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-6 py-3 rounded-lg no-underline transition"
+                className="inline-flex w-full justify-center sm:w-auto items-center gap-2.5 bg-gradient-to-r from-red-700 to-red-600 hover:from-red-800 hover:to-red-700 text-white text-sm font-semibold px-6 py-3 rounded-full no-underline shadow-lg shadow-red-700/20 transition duration-300"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -115,16 +121,27 @@ export default function Home() {
                 href="https://invest.diamondcapitalafrica.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full justify-center sm:w-auto items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-lg bg-amber-600 hover:bg-amber-700 no-underline transition"
+                className="inline-flex w-full justify-center sm:w-auto items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-600 hover:to-amber-500 no-underline shadow-lg shadow-amber-500/20 transition duration-300"
               >
                 Investor opportunities →
               </a>
               <a
                 href="/products"
-                className="inline-flex w-full justify-center sm:w-auto items-center gap-2 text-slate-700 text-sm font-semibold px-6 py-3 rounded-lg border border-slate-300 no-underline hover:bg-slate-50 transition"
+                className="inline-flex w-full justify-center sm:w-auto items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 no-underline transition duration-300"
               >
                 Explore services →
               </a>
+            </div>
+            <div className="flex items-center gap-3 mb-10">
+              {HERO_IMAGES.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => setHeroIndex(idx)}
+                  className={`h-3.5 w-3.5 rounded-full transition-all duration-300 ${idx === slideIdx ? 'bg-white shadow-xl shadow-white/30 scale-110' : 'bg-white/30 hover:bg-white/60'}`}
+                  aria-label={`Slide ${idx + 1}`}
+                />
+              ))}
             </div>
 
             {/* Trust stats — FIX 3: border-amber-200 (full opacity, was /70) */}
