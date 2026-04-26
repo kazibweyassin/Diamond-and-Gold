@@ -12,6 +12,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Force light mode even when system prefers dark */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #fdfbf7;
@@ -21,12 +22,16 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-source-sans), "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -37,8 +42,33 @@ h5,
 h6 {
   font-family: var(--font-playfair), Georgia, serif;
   letter-spacing: -0.01em;
+  color: #0f172a;
 }
 
+/* ── Global link reset ── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Tailwind opacity modifier overrides ──
+   Force all /60 /70 /80 amber borders and
+   text colours to render at full strength site-wide */
+
+[class*="border-amber-200"] { --tw-border-opacity: 1; }
+[class*="border-amber-300"] { --tw-border-opacity: 1; }
+[class*="border-amber-500"] { --tw-border-opacity: 1; }
+
+[class*="text-emerald-700"] { --tw-text-opacity: 1; }
+[class*="text-red-800"]     { --tw-text-opacity: 1; }
+
+/* Nudge slate-600 to slate-700 equivalent (#334155) globally.
+   Tailwind's slate-600 (#475569) has insufficient contrast on #fdfbf7 cream. */
+.text-slate-600 {
+  color: #334155;
+}
+
+/* ── Hero slideshow ── */
 .hero-slideshow {
   position: absolute;
   inset: 0;
@@ -51,33 +81,85 @@ h6 {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: heroFade 12s infinite;
+  animation: heroFade 18s infinite;
 }
 
 .hero-slide-1 {
-  background-image: url("https://images.unsplash.com/photo-1737815914093-becb6c9ac064?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url("https://images.unsplash.com/photo-1737815914093-becb6c9ac064?q=80&w=1800&auto=format&fit=crop");
   animation-delay: 0s;
 }
 
 .hero-slide-2 {
-  background-image: url("https://images.unsplash.com/photo-1762463176417-2c5e63767bd2?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  animation-delay: 6s;
+  background-image: url("https://images.unsplash.com/photo-1762463176417-2c5e63767bd2?q=80&w=1800&auto=format&fit=crop");
+  animation-delay: 9s;
 }
 
 @keyframes heroFade {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.6;
-  }
-  30% {
-    opacity: 0.6;
-  }
-  40% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  45%  { opacity: 1; }
+  55%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 12, 20, 0.45) 0%,
+    rgba(10, 12, 20, 0.25) 50%,
+    rgba(10, 12, 20, 0.55) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Partners ribbon animation ── */
+@keyframes scroll-ribbon {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 3)); }
+}
+
+/* ── Background patterns ── */
+
+/* Hero section — diamond grid (gold, subtle) */
+.bg-pattern-hero {
+  background-color: #fdfbf7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M16 2 L30 16 L16 30 L2 16 Z' fill='none' stroke='%23c9a84c' stroke-width='0.6' opacity='0.28'/%3E%3C/svg%3E");
+  background-size: 32px 32px;
+}
+
+/* Section variant — dot grid */
+.bg-pattern-dots {
+  background-color: #fdfbf7;
+  background-image: radial-gradient(circle, rgba(201,168,76,0.35) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* Section variant — crosshatch */
+.bg-pattern-cross {
+  background-color: #fdfbf7;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.18) 1px, transparent 1px),
+    radial-gradient(circle, rgba(201,168,76,0.28) 1px, transparent 1px);
+  background-size: 28px 28px, 28px 28px, 28px 28px;
+  background-position: 0 0, 0 0, 14px 14px;
+}
+
+/* Diagonal lines — for white sections */
+.bg-pattern-hatch {
+  background-color: #ffffff;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(201,168,76,0.1) 10px,
+    rgba(201,168,76,0.1) 11px
+  );
 }

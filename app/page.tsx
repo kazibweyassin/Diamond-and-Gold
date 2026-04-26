@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import Header from '@/app/components/Header';
 import GoldTicker from '@/app/components/GoldTicker';
+import PartnersRibbon from '@/app/components/partners';
 
 import { useEffect, useState } from 'react';
 
@@ -38,8 +39,7 @@ export default function Home() {
       <Header />
 
       {/* ── Hero ── */}
-      <section className="relative bg-[#fdfbf7] px-12 py-20 overflow-hidden">
-        {/* Decorative SVG background pattern */}
+      <section className="relative bg-pattern-hero px-12 py-20 overflow-hidden">        {/* FIX 1: SVG opacity reduced from 0.18 → 0.07 so it stops washing out the headline */}
         <svg
           className="absolute left-0 top-0 w-full h-full pointer-events-none select-none z-0"
           aria-hidden="true"
@@ -47,7 +47,7 @@ export default function Home() {
           viewBox="0 0 1440 600"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ opacity: 0.18 }}
+          style={{ opacity: 0.07 }}
         >
           <defs>
             <linearGradient id="gold-gradient" x1="0" y1="0" x2="1440" y2="600" gradientUnits="userSpaceOnUse">
@@ -75,8 +75,8 @@ export default function Home() {
               {HERO_HEADLINES[headlineIdx]}
             </h1>
 
-            {/* Sub-copy */}
-            <p className="text-slate-600 text-base leading-relaxed max-w-xl mb-9">
+            {/* FIX 2: text-slate-600 → text-slate-700 for better contrast on cream background */}
+            <p className="text-slate-700 text-base leading-relaxed max-w-xl mb-9">
               {HERO_SUBCOPIES[subcopyIdx]}
             </p>
 
@@ -92,15 +92,21 @@ export default function Home() {
                 </svg>
                 Request consultation
               </a>
-              <a
-                href="/products"
-                className="inline-flex items-center gap-2 text-slate-700 text-sm font-semibold px-6 py-3 rounded-lg border border-slate-200 no-underline hover:bg-slate-50 transition"
+              <a                href="https://invest.diamondcapitalafrica.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-lg bg-amber-600 hover:bg-amber-700 no-underline transition"
+              >
+                Investor opportunities →
+              </a>
+              <a                href="/products"
+                className="inline-flex items-center gap-2 text-slate-700 text-sm font-semibold px-6 py-3 rounded-lg border border-slate-300 no-underline hover:bg-slate-50 transition"
               >
                 Explore services →
               </a>
             </div>
 
-            {/* Trust stats */}
+            {/* Trust stats — FIX 3: border-amber-200 (full opacity, was /70) */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
                 { value: "99.5%+", label: "Purity" },
@@ -108,7 +114,7 @@ export default function Home() {
                 { value: "48–72h", label: "Dispatch" },
                 { value: "KYC-ready", label: "Documentation" },
               ].map(({ value, label }) => (
-                <div key={label} className="rounded-xl border border-amber-200/70 bg-white p-4 shadow-sm">
+                <div key={label} className="rounded-xl border border-amber-200 bg-white p-4 shadow-sm">
                   <div className="text-xs uppercase tracking-[0.25em] text-slate-500 mb-1">{label}</div>
                   <div className="text-lg font-bold text-slate-900">{value}</div>
                 </div>
@@ -116,7 +122,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Gold ticker — no extra wrapper */}
+          {/* Gold ticker */}
           <div className="w-full md:w-80 lg:w-96 flex-shrink-0 mt-4 md:mt-16">
             <GoldTicker />
           </div>
@@ -124,10 +130,11 @@ export default function Home() {
       </section>
 
       {/* ── How It Works ── */}
-      <section className="bg-white border-b border-amber-200/60 py-20">
+      {/* FIX 3: border-amber-200 (full opacity) throughout */}
+      <section className="bg-pattern-hatch border-b border-amber-200 py-20">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-12">
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">How it works</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700">How it works</p>
             <h2 className="mt-3 text-3xl font-semibold text-slate-900">From inquiry to delivery — 4 clear steps</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -137,8 +144,9 @@ export default function Home() {
               { step: "03", title: "Assay & verification", body: "Independent ISO-certified lab testing confirms purity and weight before packing begins." },
               { step: "04", title: "Insured dispatch",    body: "Coordinated export documentation, insured logistics, and real-time tracking to confirmed delivery." },
             ].map((item) => (
-              <div key={item.step} className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-6">
-                <p className="text-4xl font-bold text-amber-300">{item.step}</p>
+              <div key={item.step} className="rounded-2xl border border-amber-200 bg-[#faf8f2] p-6">
+                {/* FIX 4: text-amber-300 → text-amber-500 so step numbers are actually visible */}
+                <p className="text-4xl font-bold text-amber-500">{item.step}</p>
                 <h3 className="mt-3 text-base font-semibold text-slate-900">{item.title}</h3>
                 <p className="mt-2 text-sm text-slate-700 leading-relaxed">{item.body}</p>
               </div>
@@ -153,7 +161,7 @@ export default function Home() {
       </section>
 
       {/* ── Why Choose Us ── */}
-      <section className="border-y border-amber-200/60 bg-gradient-to-br from-slate-50 to-amber-50/30 py-20">
+      <section className="border-y border-amber-200 bg-gradient-to-br from-slate-50 to-amber-50/30 py-20">
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] items-center">
             <motion.div
@@ -162,7 +170,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-xs uppercase tracking-[0.3em] font-semibold text-red-800/90 mb-6">
+              <p className="text-xs uppercase tracking-[0.3em] font-semibold text-red-800 mb-6">
                 WHY CHOOSE US
               </p>
               <h2 className="text-4xl md:text-5xl font-bold leading-tight text-slate-900">
@@ -182,13 +190,14 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: 0.1 }} whileHover={{ y: -4 }}
-                className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-slate-100"
               >
                 <div className="w-12 h-12 mb-4 text-red-700">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/></svg>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Transparent and competitive prices</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">Working directly with local artisanal miners enables us to sell at competitive prices thereby cutting out middlemen.</p>
+                {/* FIX 2: text-slate-600 → text-slate-700 */}
+                <p className="text-sm text-slate-700 leading-relaxed">Working directly with local artisanal miners enables us to sell at competitive prices thereby cutting out middlemen.</p>
               </motion.div>
 
               <motion.div
@@ -218,19 +227,20 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: 0.4 }} whileHover={{ y: -4 }}
-                className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow border border-slate-100"
               >
                 <div className="w-12 h-12 mb-4 text-slate-900">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Quality and timely delivery</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">Diamond Capital Africa delivers every order on schedule with no compromise on purity, documentation, or custody chain.</p>
+                {/* FIX 2: text-slate-600 → text-slate-700 */}
+                <p className="text-sm text-slate-700 leading-relaxed">Diamond Capital Africa delivers every order on schedule with no compromise on purity, documentation, or custody chain.</p>
               </motion.div>
             </div>
           </div>
 
-          <div className="mt-10 pt-8 border-t border-amber-200/60">
-            <p className="text-sm text-slate-600">
+          <div className="mt-10 pt-8 border-t border-amber-200">
+            <p className="text-sm text-slate-700">
               Want to invest in Uganda&apos;s gold sector, not just buy from it?{' '}
               <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-emerald-700 hover:underline">
                 Invest in Uganda →
@@ -244,18 +254,19 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Operations in focus</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700">Operations in focus</p>
             <h2 className="mt-3 text-3xl font-semibold text-slate-900">On-the-ground visuals</h2>
           </div>
           <a href="/contact" className="text-sm font-semibold text-amber-700 hover:text-amber-800">Request sourcing details →</a>
         </div>
+        {/* FIX 3: border-amber-200 (full opacity) */}
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {[
             { label: "Assay coordination", src: "https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg?auto=compress&cs=tinysrgb&w=800", description: "Independent purity verification arranged with certified labs." },
             { label: "Field operations",   src: "https://images.pexels.com/photos/4441607/pexels-photo-4441607.jpeg?auto=compress&cs=tinysrgb&w=800",  description: "On-site inspections, partner coordination, and custody tracking." },
             { label: "Mineral sourcing",   src: "https://images.pexels.com/photos/33357665/pexels-photo-33357665.jpeg?auto=compress&cs=tinysrgb&w=800", description: "Verified mineral lots with documented origin and logistics." },
           ].map((item) => (
-            <div key={item.label} className="overflow-hidden rounded-2xl border border-amber-200/70 bg-white shadow-sm">
+            <div key={item.label} className="overflow-hidden rounded-2xl border border-amber-200 bg-white shadow-sm">
               <img src={item.src} alt={`Diamond Capital Africa ${item.label}`} className="h-56 w-full object-cover" loading="lazy" />
               <div className="p-4">
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-700">{item.label}</p>
@@ -270,16 +281,17 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Compliance &amp; assurance</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700">Compliance &amp; assurance</p>
             <h2 className="mt-4 text-3xl font-semibold text-slate-900">Built for institutional buyers</h2>
             <p className="mt-4 text-slate-800">Our processes emphasize traceability, independent verification, and export-ready documentation. Every shipment is prepared with custody records, assay reports, and logistics coordination.</p>
+            {/* FIX 3: border-amber-200 full opacity */}
             <div className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em] text-slate-800">
               {["Assay certificates", "Origin verification", "KYC-ready files", "Secure logistics"].map((t) => (
-                <span key={t} className="rounded-full border border-amber-200/70 px-3 py-2 bg-white">{t}</span>
+                <span key={t} className="rounded-full border border-amber-200 px-3 py-2 bg-white">{t}</span>
               ))}
             </div>
           </div>
-          <div className="rounded-2xl border border-amber-200/70 bg-white p-8 shadow-sm">
+          <div className="rounded-2xl border border-amber-200 bg-white p-8 shadow-sm">
             <h3 className="text-lg font-semibold text-slate-900">How orders are fulfilled</h3>
             <ol className="mt-6 space-y-4 text-sm text-slate-800">
               <li>1. Confirm specifications and volume requirements.</li>
@@ -295,7 +307,7 @@ export default function Home() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Compliance &amp; Standards</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700">Compliance &amp; Standards</p>
             <h2 className="mt-4 text-3xl font-semibold text-slate-900">What we can show you in writing</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-4">
@@ -305,53 +317,80 @@ export default function Home() {
               { title: "OECD Due Diligence",      detail: "Full adherence to OECD Guidance for Responsible Mineral Supply Chains, 5th Edition" },
               { title: "Insured Logistics",       detail: "Full-value shipment insurance with real-time tracking from dispatch to confirmed delivery" },
             ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-amber-200/70 bg-amber-50/40 p-6 text-center">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-amber-300 mb-4">
+              // FIX 3 + FIX 5: border full opacity, bg-amber-50 (no /40)
+              <div key={item.title} className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-center">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-amber-300 bg-white mb-4">
                   <span className="text-xs font-semibold text-amber-700">DCA</span>
                 </div>
                 <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-800">{item.detail}</p>
+                <p className="text-sm text-slate-700">{item.detail}</p>
               </div>
             ))}
           </div>
-          <div className="mt-12 rounded-2xl border border-amber-200/60 bg-[#faf8f2] p-8 text-center">
+          <div className="mt-12 rounded-2xl border border-amber-200 bg-[#faf8f2] p-8 text-center">
             <p className="text-slate-900 text-lg">Every order comes with the full paper trail: origin certificate, lab assay report, custody records, and export docs. Nothing missing, nothing you'll have to chase us for.</p>
             <a href="/compliance" className="mt-6 inline-flex items-center gap-2 text-amber-700 hover:text-amber-800 font-semibold">View our compliance documentation →</a>
           </div>
         </div>
       </section>
 
+      <PartnersRibbon />
+
       {/* ── Why buyers choose us ── */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center">
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Why Buyers Choose Us</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700">Why Buyers Choose Us</p>
             <h2 className="mt-4 text-4xl font-semibold text-slate-900">What you actually get when you order</h2>
-            <p className="mt-4 text-lg text-slate-800">Not vague promises — specific things you can check and verify yourself.</p>
+            <p className="mt-4 text-lg text-slate-700">Not vague promises — specific things you can check and verify yourself.</p>
           </div>
+          {/* FIX 3: border-amber-200 full opacity */}
           <div className="grid gap-8 md:grid-cols-3">
             {[
-              { icon: "📋", title: "Every document, included",   description: "Origin certificate, assay report, custody records, KYC package — all included. Nothing you'll need to chase us for." },
-              { icon: "✓",  title: "Lab-Verified Purity",        description: "We don't self-certify. Every shipment goes through an independent ISO-certified lab. You get the stamped certificate with your order." },
-              { icon: "🚚", title: "Insured & Tracked Delivery", description: "Your shipment is insured, tracked, and handled by someone who knows your order and answers your calls." },
-            ].map((item, idx) => (
-              <div key={idx} className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-8 shadow-sm">
-                <p className="mb-4" style={{ fontSize: 28 }}>{item.icon}</p>
-                <h3 className="font-semibold text-slate-900 mb-3 text-lg">{item.title}</h3>
-                <p className="text-slate-800 text-sm leading-relaxed">{item.description}</p>
-              </div>
-            ))}
+              { icon: 'document', title: "Every document, included", description: "Origin certificate, assay report, custody records, KYC package — all included. Nothing you'll need to chase us for." },
+              { icon: 'check', title: "Lab-Verified Purity", description: "We don't self-certify. Every shipment goes through an independent ISO-certified lab. You get the stamped certificate with your order." },
+              { icon: 'truck', title: "Insured & Tracked Delivery", description: "Your shipment is insured, tracked, and handled by someone who knows your order and answers your calls." },
+            ].map((item, idx) => {
+              const icon = item.icon === 'document' ? (
+                <svg className="mb-4 h-10 w-10 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 2v6h6" />
+                  <path d="M10 12h4" />
+                  <path d="M10 16h4" />
+                </svg>
+              ) : item.icon === 'check' ? (
+                <svg className="mb-4 h-10 w-10 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              ) : (
+                <svg className="mb-4 h-10 w-10 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 7h13l4 4v7H3z" />
+                  <path d="M16 3v4" />
+                  <path d="M5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                  <path d="M18 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                </svg>
+              );
+
+              return (
+                <div key={idx} className="rounded-2xl border border-amber-200 bg-[#faf8f2] p-8 shadow-sm">
+                  {icon}
+                  <h3 className="font-semibold text-slate-900 mb-3 text-lg">{item.title}</h3>
+                  <p className="text-slate-700 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ── Download resources ── */}
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-8">
+        {/* FIX 3: border-amber-200 full opacity */}
+        <div className="rounded-2xl border border-amber-200 bg-[#faf8f2] p-8">
           <div className="mb-8">
-            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Resources</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-emerald-700">Resources</p>
             <h2 className="mt-3 text-2xl font-semibold text-slate-900">Download our service documents</h2>
-            <p className="mt-2 text-slate-800">Review specifications, compliance requirements, and pricing guidance.</p>
+            <p className="mt-2 text-slate-700">Review specifications, compliance requirements, and pricing guidance.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {[
@@ -359,7 +398,7 @@ export default function Home() {
               { name: "Current Price List",  file: "Diamond_Capital_Africa_Pricing.pdf" },
               { name: "Compliance Guide",    file: "Diamond_Capital_Africa_Compliance.pdf" },
             ].map((doc) => (
-              <a key={doc.file} href={`/api/download?file=${doc.file}`} className="flex items-center gap-3 rounded-lg border border-amber-200/70 bg-white px-4 py-3 hover:bg-amber-50 transition">
+              <a key={doc.file} href={`/api/download?file=${doc.file}`} className="flex items-center gap-3 rounded-lg border border-amber-200 bg-white px-4 py-3 hover:bg-amber-50 transition">
                 <svg className="h-5 w-5 text-amber-700" fill="currentColor" viewBox="0 0 20 20"><path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" /></svg>
                 <div>
                   <p className="text-sm font-semibold text-slate-900">{doc.name}</p>
@@ -375,10 +414,11 @@ export default function Home() {
       {/* ── News ── */}
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="mb-10">
-          <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Industry insights</p>
+          <p className="text-xs uppercase tracking-[0.35em] text-emerald-700">Industry insights</p>
           <h2 className="mt-4 text-3xl font-semibold text-slate-900">Latest gold market news</h2>
-          <p className="mt-2 text-slate-800">Stay informed on Uganda's gold industry trends and supply chain updates.</p>
+          <p className="mt-2 text-slate-700">Stay informed on Uganda's gold industry trends and supply chain updates.</p>
         </div>
+        {/* FIX 3: border-amber-200 full opacity */}
         <div className="grid gap-6 md:grid-cols-2">
           {[
             { title: "Uganda's Gold Production Reaches Record Levels in 2025",      date: "January 2026",   category: "Mining",      excerpt: "Uganda solidifies its position as Africa's leading gold producer with unprecedented output levels." },
@@ -386,26 +426,28 @@ export default function Home() {
             { title: "East African Gold Trade Corridor Expands Opportunities",       date: "October 2025",   category: "Trade",       excerpt: "Trade agreements improve export logistics and cross-border gold commerce." },
             { title: "Technology Integration Improves Gold Processing Efficiency",   date: "September 2025", category: "Technology",  excerpt: "Advanced assay systems and blockchain tracking boost quality standards." },
           ].map((article, idx) => (
-            <motion.a key={idx} href="/news" whileHover={{ y: -4 }} transition={{ duration: 0.2 }} className="rounded-2xl border border-amber-200/70 bg-white p-6 hover:bg-amber-50 hover:shadow-lg transition cursor-pointer block shadow-sm">
+            <motion.a key={idx} href="/news" whileHover={{ y: -4 }} transition={{ duration: 0.2 }} className="rounded-2xl border border-amber-200 bg-white p-6 hover:bg-amber-50 hover:shadow-lg transition cursor-pointer block shadow-sm">
               <div className="flex items-center justify-between mb-3">
-                <span className="rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-700">{article.category}</span>
+                <span className="rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-800">{article.category}</span>
                 <span className="text-xs text-slate-500">{article.date}</span>
               </div>
               <h3 className="font-semibold text-lg text-slate-900">{article.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{article.excerpt}</p>
+              {/* FIX 2: text-slate-600 → text-slate-700 */}
+              <p className="mt-2 text-sm text-slate-700">{article.excerpt}</p>
               <p className="mt-4 text-xs font-semibold text-amber-700">Read full article →</p>
             </motion.a>
           ))}
         </div>
         <div className="mt-10 text-center">
-          <a href="/news" className="inline-block rounded-full border border-amber-500/70 px-6 py-3 text-sm font-semibold text-amber-800 hover:bg-amber-50 transition">
+          {/* FIX 3: border-amber-500 full opacity */}
+          <a href="/news" className="inline-block rounded-full border border-amber-500 px-6 py-3 text-sm font-semibold text-amber-800 hover:bg-amber-50 transition">
             Read all news articles →
           </a>
         </div>
       </section>
 
       {/* ── Final CTA ── */}
-      <section className="bg-[#faf8f2] py-20">
+      <section className="bg-pattern-dots py-20">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-300 bg-white px-4 py-2 mb-6">
             <span className="text-xs uppercase tracking-[0.3em] text-emerald-700 font-medium">Available for Immediate Orders</span>
@@ -413,7 +455,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-semibold leading-tight text-slate-900">
             Source certified Ugandan gold — verified, documented, and delivered.
           </h2>
-          <p className="mt-6 text-xl text-slate-800">
+          <p className="mt-6 text-xl text-slate-700">
             Tell us what you need — volume, purity, timeline. We'll come back with a straight quote and answer your questions directly.
           </p>
           <div className="mt-10 flex flex-wrap justify-center items-center gap-6">
@@ -424,19 +466,21 @@ export default function Home() {
               View all services →
             </a>
           </div>
-          <p className="mt-8 text-sm text-slate-600">
+          {/* FIX 2: text-slate-600 → text-slate-700 */}
+          <p className="mt-8 text-sm text-slate-700">
             Want to invest in Uganda&apos;s gold sector, not just buy from it?{' '}
             <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="font-medium text-emerald-700 hover:underline">
               Invest in Uganda →
             </a>
           </p>
+          {/* FIX 3: border-amber-200 full opacity */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
               { title: "Direct contact", detail: "+256 (0) 704 833 021" },
               { title: "Email",          detail: "info@diamondcapitalafrica.com" },
               { title: "Response time",  detail: "Within 24 hours" },
             ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-amber-200/70 bg-white p-6">
+              <div key={item.title} className="rounded-xl border border-amber-200 bg-white p-6">
                 <p className="text-xs uppercase tracking-[0.25em] text-slate-500 mb-2">{item.title}</p>
                 <p className="font-semibold text-slate-900">{item.detail}</p>
               </div>
@@ -446,17 +490,18 @@ export default function Home() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="border-t border-amber-200/60 bg-white py-14">
+      <footer className="border-t border-amber-200 bg-white py-14">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
             <img src="/Logo.png" alt="Diamond Capital Africa" className="h-12 w-auto object-contain" />
-            <p className="mt-4 text-sm text-slate-600">Gold from Uganda — properly sourced, fully documented, and delivered.</p>
+            {/* FIX 2: text-slate-600 → text-slate-700 */}
+            <p className="mt-4 text-sm text-slate-700">Gold from Uganda — properly sourced, fully documented, and delivered.</p>
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Company</p>
             <ul className="mt-4 space-y-2 text-sm text-slate-700">
-              {[["About us","/about"],["Services","/products"],["Compliance","/compliance"],["Process","/process"],["FAQ","/faq"],["Contact","/contact"]].map(([label,href]) => (
-                <li key={href}><a href={href} className="hover:text-emerald-700 transition">{label}</a></li>
+              {[["About us","/about"],["Services","/products"],["Partners","/partners"],["Account Holders","/contact"],["Compliance","/compliance"],["Process","/process"],["FAQ","/faq"],["Site map","/site-map"],["Contact","/contact"]].map(([label,href]) => (
+                <li key={`${label}-${href}`}><a href={href} className="hover:text-emerald-700 transition">{label}</a></li>
               ))}
               <li><a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-700 transition">Investor advisory ↗</a></li>
             </ul>
@@ -478,7 +523,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-amber-200/60 px-4 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
+        <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-amber-200 px-4 pt-6 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
           <p>&copy; 2026 Diamond Capital Africa. All rights reserved.</p>
           <p>Serving East &amp; Central Africa • Global delivery available</p>
         </div>

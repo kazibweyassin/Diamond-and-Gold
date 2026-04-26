@@ -108,21 +108,7 @@ ${formData.message}
       <Header cta={{ label: 'View catalog', href: '/products' }} />
 
       <section className="relative py-16">
-        {/* Map Background */}
-        <div className="absolute inset-0 z-0">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7434408369827!2d32.58260752346896!3d0.3475965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb3a7275c1b1%3A0x1234567890abcdef!2sKampala%2C%20Uganda!5e0!3m2!1sen!2sus!4v1234567890"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen={true}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="h-full w-full"
-          />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/80 to-white/70" />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-amber-50 via-white to-white" />
 
         <div className="relative z-10 mx-auto max-w-6xl px-4">
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
@@ -130,9 +116,9 @@ ${formData.message}
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-xs uppercase tracking-[0.35em] text-red-700/80"
+              className="text-xs uppercase tracking-[0.35em] text-amber-700/80"
             >
-              Contact
+              Account Holders
             </motion.p>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -140,7 +126,7 @@ ${formData.message}
               transition={{ delay: 0.1 }}
               className="mt-4 text-4xl font-semibold text-slate-900"
             >
-              Let&apos;s discuss your gold supply needs.
+              Structured onboarding for recurring buyers and verified accounts.
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -148,9 +134,23 @@ ${formData.message}
               transition={{ delay: 0.2 }}
               className="mt-4 text-slate-800"
             >
-              Share your requirements and our team will respond with pricing, documentation details, and logistics
-              timelines.
+              Submit requirements, upload KYC documents, complete verification, and activate your buyer account with DCA.
             </motion.p>
+
+            <div className="mt-10 grid gap-4 xl:grid-cols-4">
+              {[
+                { step: '01', title: 'Submit requirements', copy: 'Tell us your order, timeline, and compliance needs.' },
+                { step: '02', title: 'KYC documents', copy: 'Upload company registration, beneficial ownership, and AML paperwork.' },
+                { step: '03', title: 'Verification', copy: 'Our compliance team reviews and confirms your eligibility.' },
+                { step: '04', title: 'Account activation', copy: 'Receive account details and priority ordering status.' },
+              ].map((item) => (
+                <div key={item.step} className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-5">
+                  <div className="text-2xl font-bold text-amber-700">{item.step}</div>
+                  <h3 className="mt-3 text-base font-semibold text-slate-900">{item.title}</h3>
+                  <p className="mt-2 text-sm text-slate-800 leading-relaxed">{item.copy}</p>
+                </div>
+              ))}
+            </div>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
@@ -165,7 +165,7 @@ ${formData.message}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                   whileHover={{ y: -2 }}
-                  className="rounded-2xl border border-red-200/70 bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
+                  className="rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <p className="text-xs uppercase tracking-[0.25em] text-slate-700">{item.label}</p>
                   <p className="mt-3 text-sm text-slate-900">{item.value}</p>
@@ -178,10 +178,10 @@ ${formData.message}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 }}
-            className="rounded-2xl border border-red-200/70 bg-white p-8 shadow-sm"
+            className="rounded-2xl border border-amber-200/70 bg-white p-8 shadow-sm"
           >
-            <h2 className="text-xl font-semibold text-slate-900">Send an inquiry</h2>
-            <p className="mt-2 text-sm text-slate-800">We&apos;ll respond within one business day.</p>
+            <h2 className="text-xl font-semibold text-slate-900">Begin your account holder onboarding</h2>
+            <p className="mt-2 text-sm text-slate-800">Submit your details and KYC documents to start verification.</p>
 
             {submitted ? (
               <motion.div 
@@ -267,10 +267,10 @@ ${formData.message}
                       className={`mt-2 w-full rounded-lg border ${errors.subject ? 'border-red-400' : 'border-red-200/70'} bg-white px-3 py-2 text-sm text-slate-900 focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 transition`}
                     >
                       <option value="">Select a subject</option>
+                      <option value="Account Holder Application">Account Holder Application</option>
+                      <option value="KYC Submission">KYC Submission</option>
+                      <option value="Verification Query">Verification Query</option>
                       <option value="Product Inquiry">Product Inquiry</option>
-                      <option value="Bulk Order">Bulk Order</option>
-                      <option value="Partnership">Partnership Opportunity</option>
-                      <option value="Certification">Certification Information</option>
                       <option value="Other">Other</option>
                     </select>
                     {errors.subject && (
@@ -354,9 +354,11 @@ ${formData.message}
             <ul className="mt-4 space-y-2 text-sm text-slate-800">
               <li><a href="/about" className="hover:text-emerald-700 transition">About us</a></li>
               <li><a href="/products" className="hover:text-emerald-700 transition">Services</a></li>
+              <li><a href="/partners" className="hover:text-emerald-700 transition">Partners</a></li>
               <li><a href="/compliance" className="hover:text-emerald-700 transition">Compliance</a></li>
               <li><a href="/process" className="hover:text-emerald-700 transition">Process</a></li>
               <li><a href="/faq" className="hover:text-emerald-700 transition">FAQ</a></li>
+              <li><a href="/site-map" className="hover:text-emerald-700 transition">Site map</a></li>
               <li><a href="/contact" className="hover:text-amber-700 transition">Contact</a></li>
             </ul>
           </div>

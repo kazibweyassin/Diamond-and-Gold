@@ -142,9 +142,13 @@ export default function News() {
                 onClick={() => {
                   document.getElementById(`modal-${article.id}`)?.classList.add('hidden');
                 }}
-                className="float-right mb-4 text-2xl text-slate-700 hover:text-slate-900"
+                className="float-right mb-4 rounded-full border border-slate-200 bg-slate-50 p-2 text-slate-700 hover:border-slate-300 hover:text-slate-900"
+                aria-label="Close article"
               >
-                ✕
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
 
               {/* Article content */}

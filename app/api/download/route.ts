@@ -150,7 +150,7 @@ function generateSpecSheet(): Buffer {
   doc.text('QUALITY ASSURANCE', 22, yPos);
   yPos += 12;
 
-  const qualities = ['✓ Lab-verified purity (XRF testing)', '✓ Independent assay certificates', '✓ Custody chain documentation', '✓ Insurance covered during handling'];
+  const qualities = ['• Lab-verified purity (XRF testing)', '• Independent assay certificates', '• Custody chain documentation', '• Insurance covered during handling'];
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
@@ -368,11 +368,11 @@ function generateComplianceGuide(): Buffer {
   yPos += 10;
 
   const frameworks = [
-    '✓ Uganda Geological Survey regulations',
-    '✓ Congo ICGLR compliance',
-    '✓ UN OECD Due Diligence Guidance',
-    '✓ Conflict Minerals Regulation (3TG)',
-    '✓ EU Fair Supply Chain requirements',
+    '• Uganda Geological Survey regulations',
+    '• Congo ICGLR compliance',
+    '• UN OECD Due Diligence Guidance',
+    '• Conflict Minerals Regulation (3TG)',
+    '• EU Fair Supply Chain requirements',
   ];
 
   doc.setFont('helvetica', 'normal');

@@ -21,11 +21,12 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
     { label: 'About', href: '/about' },
     // Services handled specially to show dropdown
     { label: 'Services', href: '/products' },
+    { label: 'Partners', href: '/partners' },
+    { label: 'Account Holders', href: '/contact' },
     { label: 'News', href: '/news' },
     { label: 'Compliance', href: '/compliance' },
     { label: 'Process', href: '/process' },
     { label: 'FAQ', href: '/faq' },
-    { label: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -94,17 +95,27 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
 
         {/* CTA Button & Mobile Menu Button */}
         <div className="flex items-center gap-4">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link
-              href={cta.href}
-              className="hidden rounded-full border border-amber-500/70 px-4 py-2 text-sm font-semibold text-amber-800 transition hover:bg-amber-200/40 md:inline-block"
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href="https://invest.diamondcapitalafrica.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-600"
             >
-              {cta.label}
-            </Link>
-          </motion.div>
+              Invest in Uganda
+            </a>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link
+                href={cta.href}
+                className="hidden rounded-full border border-amber-500/70 px-4 py-2 text-sm font-semibold text-amber-800 transition hover:bg-amber-200/40 md:inline-block"
+              >
+                {cta.label}
+              </Link>
+            </motion.div>
+          </div>
 
           {/* Mobile Hamburger Button */}
           <button
