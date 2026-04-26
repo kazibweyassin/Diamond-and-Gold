@@ -461,7 +461,7 @@ export default function Home() {
             Tell us what you need — volume, purity, timeline. We'll come back with a straight quote and answer your questions directly.
           </p>
           <div className="mt-10 flex flex-wrap justify-center items-center gap-6">
-            <a href="/contact" className="rounded-full bg-red-700 hover:bg-red-800 px-8 py-4 text-base font-semibold text-white transition">
+            <a href="/account-holders" className="rounded-full bg-red-700 hover:bg-red-800 px-8 py-4 text-base font-semibold text-white transition">
               Get started today
             </a>
             <a href="/products" className="text-sm font-semibold text-red-700 hover:text-red-800 transition">
@@ -502,7 +502,7 @@ export default function Home() {
           <div>
             <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Company</p>
             <ul className="mt-4 space-y-2 text-sm text-slate-700">
-              {[["About us","/about"],["Services","/products"],["Partners","/partners"],["Account Holders","/contact"],["Compliance","/compliance"],["Process","/process"],["FAQ","/faq"],["Site map","/site-map"],["Contact","/contact"]].map(([label,href]) => (
+              {[["About us","/about"],["Services","/products"],["Partners","/partners"],["Account Holders","/account-holders"],["Compliance","/compliance"],["Process","/process"],["FAQ","/faq"],["Site map","/site-map"],["Contact","/contact"]].map(([label,href]) => (
                 <li key={`${label}-${href}`}><a href={href} className="hover:text-emerald-700 transition">{label}</a></li>
               ))}
               <li><a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-700 transition">Investor advisory ↗</a></li>

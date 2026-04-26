@@ -22,7 +22,7 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
     // Services handled specially to show dropdown
     { label: 'Services', href: '/products' },
     { label: 'Partners', href: '/partners' },
-    { label: 'Account Holders', href: '/contact' },
+    { label: 'Account Holders', href: '/account-holders' },
     { label: 'News', href: '/news' },
     { label: 'Compliance', href: '/compliance' },
     { label: 'Process', href: '/process' },

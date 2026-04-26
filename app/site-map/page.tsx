@@ -9,7 +9,7 @@ const pages = [
   { title: 'About', href: '/about' },
   { title: 'Services', href: '/products' },
   { title: 'Partners & Licenses', href: '/partners' },
-  { title: 'Account Holders', href: '/contact' },
+  { title: 'Account Holders', href: '/account-holders' },
   { title: 'News', href: '/news' },
   { title: 'Compliance', href: '/compliance' },
   { title: 'Process', href: '/process' },
@@ -52,7 +52,7 @@ export default function SiteMapPage() {
             <p className="mt-3 text-slate-700">This page is a single reference for the site’s main public pages. Share it with stakeholders or use it to verify navigation completeness.</p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <Link href="/partners" className="rounded-2xl border border-amber-200/70 bg-white px-5 py-4 text-sm font-semibold text-slate-900 hover:bg-amber-50 transition">Partners & Licenses</Link>
-              <Link href="/contact" className="rounded-2xl border border-amber-200/70 bg-white px-5 py-4 text-sm font-semibold text-slate-900 hover:bg-amber-50 transition">Account Holders</Link>
+              <Link href="/account-holders" className="rounded-2xl border border-amber-200/70 bg-white px-5 py-4 text-sm font-semibold text-slate-900 hover:bg-amber-50 transition">Account Holders</Link>
             </div>
           </div>
         </div>
