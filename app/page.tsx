@@ -18,7 +18,7 @@ const HERO_SUBCOPIES = [
   "Tell us what you need. We handle the sourcing, lab testing, paperwork, and delivery — so it arrives clean and on time.",
   "Get a formal quote, compliance review, and insured dispatch — all handled by our team.",
   "Every shipment comes with origin certificate, lab report, and custody records.",
-  "We manage the full transaction: sourcing, assay, compliance, and delivery.",
+  "We handle sourcing, assay, compliance and delivery so your order is export-ready.",
   "Your gold arrives with a complete paper trail and verified purity."
 ];
 
@@ -39,7 +39,7 @@ export default function Home() {
       <Header />
 
       {/* ── Hero ── */}
-      <section className="relative bg-pattern-hero px-12 py-20 overflow-hidden">        {/* FIX 1: SVG opacity reduced from 0.18 → 0.07 so it stops washing out the headline */}
+      <section className="relative bg-pattern-hero px-4 sm:px-6 lg:px-12 py-16 sm:py-20 overflow-hidden">        {/* FIX 1: SVG opacity reduced from 0.18 → 0.07 so it stops washing out the headline */}
         <svg
           className="absolute left-0 top-0 w-full h-full pointer-events-none select-none z-0"
           aria-hidden="true"
@@ -71,7 +71,7 @@ export default function Home() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight max-w-2xl mb-5 text-slate-900">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight max-w-2xl mb-5 text-slate-900">
               {HERO_HEADLINES[headlineIdx]}
             </h1>
 
@@ -81,10 +81,10 @@ export default function Home() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-3 mb-12">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap mb-12">
               <a
                 href="https://wa.me/256704833021"
-                className="inline-flex items-center gap-2.5 bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-6 py-3 rounded-lg no-underline transition"
+                className="inline-flex w-full justify-center sm:w-auto items-center gap-2.5 bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-6 py-3 rounded-lg no-underline transition"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -92,15 +92,17 @@ export default function Home() {
                 </svg>
                 Request consultation
               </a>
-              <a                href="https://invest.diamondcapitalafrica.com"
+              <a
+                href="https://invest.diamondcapitalafrica.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-lg bg-amber-600 hover:bg-amber-700 no-underline transition"
+                className="inline-flex w-full justify-center sm:w-auto items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-lg bg-amber-600 hover:bg-amber-700 no-underline transition"
               >
                 Investor opportunities →
               </a>
-              <a                href="/products"
-                className="inline-flex items-center gap-2 text-slate-700 text-sm font-semibold px-6 py-3 rounded-lg border border-slate-300 no-underline hover:bg-slate-50 transition"
+              <a
+                href="/products"
+                className="inline-flex w-full justify-center sm:w-auto items-center gap-2 text-slate-700 text-sm font-semibold px-6 py-3 rounded-lg border border-slate-300 no-underline hover:bg-slate-50 transition"
               >
                 Explore services →
               </a>
@@ -348,7 +350,7 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-3">
             {[
               { icon: 'document', title: "Every document, included", description: "Origin certificate, assay report, custody records, KYC package — all included. Nothing you'll need to chase us for." },
-              { icon: 'check', title: "Lab-Verified Purity", description: "We don't self-certify. Every shipment goes through an independent ISO-certified lab. You get the stamped certificate with your order." },
+              { icon: 'check', title: "Lab-Verified Purity", description: "Independent ISO-certified laboratories verify every shipment. You receive the stamped assay certificate with your order." },
               { icon: 'truck', title: "Insured & Tracked Delivery", description: "Your shipment is insured, tracked, and handled by someone who knows your order and answers your calls." },
             ].map((item, idx) => {
               const icon = item.icon === 'document' ? (

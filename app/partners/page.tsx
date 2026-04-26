@@ -33,7 +33,7 @@ export default function PartnersPage() {
                 transition={{ delay: 0.2 }}
                 className="mt-6 text-slate-800 max-w-2xl"
               >
-                This page is designed so buyers can confidently share compliance proof. It shows our Uganda Minerals &amp; Mining license, audit partners, and shipping credentials.
+                This page gives buyers and compliance teams a clear, shareable view of our Uganda Minerals &amp; Mining license, audit partners, and freight credentials.
               </motion.p>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -67,7 +67,7 @@ export default function PartnersPage() {
                 <p className="text-xs uppercase tracking-[0.28em] text-amber-300">License scan</p>
                 <h2 className="mt-4 text-2xl font-semibold">Uganda Minerals &amp; Mining Licensed Operator</h2>
                 <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-                  Buyers should screenshot this page and share it with compliance teams during purchase evaluation.
+                  Compliance teams can use this page as a visual reference during purchase review.
                 </p>
               </div>
             </motion.div>
@@ -78,7 +78,7 @@ export default function PartnersPage() {
       <section className="mx-auto max-w-6xl px-4 py-20">
         <div className="grid gap-8 md:grid-cols-3">
           {[
-            { name: 'Assay Services', file: '/partners/as.png', description: 'Trusted assay and testing verification for buyers.' },
+            { name: 'Assay Services', file: '/partners/as.png', description: 'Independent assay and testing partners trusted for verification.' },
             { name: 'ISO Certified Labs', file: '/partners/iso.png', description: 'Independent lab partners for purity testing and reporting.' },
             { name: 'Ministry Authorization', file: '/partners/moe-sm-1.png', description: 'Ugandan regulatory and mining authority validation.' },
           ].map((logo) => (
