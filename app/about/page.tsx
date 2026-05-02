@@ -1,370 +1,194 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Header from '@/app/components/Header';
+import { motion, useScroll, useTransform, cubicBezier } from 'framer-motion';
+import { useRef } from 'react';
+import Navbar from '@/app/components/Navbar';
 
+// ── Shared motion helpers ─────────────────────────────────────────────────────
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+  transition: {
+    duration: 0.65,
+    delay,
+    ease: cubicBezier(0.22, 1, 0.36, 1),
+  },
+});
+
+const fadeIn = (delay = 0) => ({
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.8, delay },
+});
+
+// ── Data ──────────────────────────────────────────────────────────────────────
+const PRINCIPLES = [
+  {
+    n: '01',
+    title: 'Integrity',
+    body: 'We tell you what is possible, what is not, and why. No hidden steps, no inflated margins, no surprises at the end.',
+  },
+  {
+    n: '02',
+    title: 'Compliance first',
+    body: "We don't cut corners on documentation. Every transaction follows international standards — because your buyers and banks will check.",
+  },
+  {
+    n: '03',
+    title: 'Ethical sourcing',
+    body: "We only work with miners we've visited. If we can't verify where the gold came from, we don't buy it.",
+  },
+  {
+    n: '04',
+    title: 'Professional service',
+    body: "You'll have a real contact at our Kampala office who knows your order and picks up the phone.",
+  },
+];
+
+const CREDENTIALS = [
+  { code: 'UG-MIN', label: 'Licensed Trader', body: 'Uganda Minerals & Mining licensed operator. Documentation available on request.' },
+  { code: 'ISO', label: 'Certified Assay', body: 'ISO 17025-accredited independent labs verify every shipment. Certificate ships with every order.' },
+  { code: 'OECD', label: 'Due Diligence', body: 'Full adherence to OECD Guidance for Responsible Mineral Supply Chains, 5th Edition.' },
+  { code: 'INS', label: 'Insured Logistics', body: 'Full-value shipment insurance with real-time tracking from dispatch to delivery.' },
+];
+
+const OPERATIONS = [
+  {
+    label: 'Assay coordination',
+    src: 'https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    body: 'Third-party ISO-certified labs verify purity and weight before every shipment is packed.',
+  },
+  {
+    label: 'Field operations',
+    src: 'https://images.pexels.com/photos/4441607/pexels-photo-4441607.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    body: 'We physically visit partner mines. On-site inspections, partner coordination, and custody tracking.',
+  },
+  {
+    label: 'Mineral sourcing',
+    src: 'https://images.pexels.com/photos/33357665/pexels-photo-33357665.jpeg?auto=compress&cs=tinysrgb&w=800',
+    body: 'Verified mineral lots with documented origin — licensed, visited, and authenticated before purchase.',
+  },
+];
+
+const STATS = [
+  { value: '5+', label: 'Years operating' },
+  { value: '99.5%', label: 'Minimum purity' },
+  { value: 'OECD', label: 'Due diligence' },
+  { value: '100%', label: 'KYC-compliant' },
+];
+
+const HOW = [
+  { label: 'Kampala hub', body: 'Where we take your calls, process paperwork, and organise your shipment.' },
+  { label: 'Field verification', body: 'We physically visit our partner mines. What we see is what we document.' },
+  { label: 'Global delivery', body: 'We arrange logistics around your schedule — insured, tracked, confirmed.' },
+];
+
+// ── Component ─────────────────────────────────────────────────────────────────
 export default function About() {
+  const heroRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const heroOpac = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
   return (
-    <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
-      <Header cta={{ label: 'Speak to us', href: '/contact' }} />
+    <main style={{
+      minHeight: '100vh',
+      background: '#F7F6F2',
+      color: '#0D0D0D',
+      fontFamily: "'Sora', system-ui, sans-serif",
+      WebkitFontSmoothing: 'antialiased',
+    }}>
+      <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.12),_transparent_60%)]" />
-        <div className="relative mx-auto max-w-4xl px-4 text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-4 py-2">
-            <p className="text-xs uppercase tracking-[0.3em] text-amber-700 font-medium">
-              Established in Uganda
-            </p>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-semibold leading-tight text-slate-900">
-            We trade gold the way it should be done — openly, with paperwork you can actually verify.
-          </h1>
-          <p className="mt-6 text-xl text-slate-800 leading-relaxed">
-            We're based in Kampala and work directly with licensed miners across Uganda and Congo. If you need to buy gold responsibly, this is how we can help.
-          </p>
-        </div>
-      </section>
+      {/* ── HERO ──────────────────────────────────────────────────────────── */}
+      <section ref={heroRef} className="about-hero">
+        <motion.div className="hero-img" style={{ y: heroY }} />
+        <div className="hero-overlay" />
 
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-amber-700/80">About us</p>
-            <h2 className="mt-4 text-4xl font-semibold text-slate-900">Integrity-led gold trading for global buyers.</h2>
-            <p className="mt-6 text-lg text-slate-800">
-              We're based in Kampala, with verified partners across Uganda and Congo. Every order comes with proper documentation, independent quality checks, and logistics we handle start to finish.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-amber-200/70 bg-white p-8 shadow-sm">
-            <h2 className="text-xl font-semibold text-slate-900">Mission</h2>
-            <p className="mt-4 text-slate-800">
-              Supply good gold at fair terms — without cutting corners on where it came from or how it gets to you.
-            </p>
-            <div className="mt-6 grid gap-4 text-sm text-slate-800">
-              <div className="flex items-center justify-between border-b border-amber-200/60 pb-3">
-                <span>Traceability</span>
-                <span className="text-amber-700">End-to-end</span>
-              </div>
-              <div className="flex items-center justify-between border-b border-amber-200/60 pb-3">
-                <span>Compliance</span>
-                <span className="text-amber-700">Documented</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Quality Control</span>
-                <span className="text-amber-700">Lab verified</span>
-              </div>
+        <motion.div className="hero-content" style={{ opacity: heroOpac }}>
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+            <div className="hero-badge">
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ADE80' }} />
+              Established in Kampala, Uganda
             </div>
-          </div>
-        </div>
+          </motion.div>
+
+          <motion.h1
+            className="hero-h1"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45 }}
+          >
+            We trade gold the way<br />
+            it should be done —<br />
+            <strong>openly, with paperwork<br />you can verify.</strong>
+          </motion.h1>
+
+          <motion.p
+            className="hero-sub"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+          >
+            Based in Kampala. Working directly with licensed miners across Uganda.
+          </motion.p>
+        </motion.div>
       </section>
 
-      {/* Core Values Section */}
-      <section className="bg-gradient-to-br from-slate-50 to-amber-50/30 py-20 border-y border-amber-200/60">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] items-center">
-            {/* Left Side - Heading & CTA */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <p className="text-xs uppercase tracking-[0.3em] font-semibold text-red-800/90 mb-6">
-                OUR PRINCIPLES
+      {/* ── INTRO ─────────────────────────────────────────────────────────── */}
+      <section style={{ background: '#fff', borderBottom: '1px solid var(--rule-md)' }}>
+        <div className="intro-grid">
+
+          <motion.div className="intro-left" {...fadeUp(0)}>
+            <div className="eyebrow">About us</div>
+            <h2 className="section-title">
+              Integrity-led gold trading<br />
+              <strong>for global buyers.</strong>
+            </h2>
+
+            <div className="intro-stat-grid">
+              {STATS.map((s, i) => (
+                <motion.div key={s.label} className="intro-stat" {...fadeUp(i * 0.08)}>
+                  <div className="intro-stat-val">{s.value}</div>
+                  <div className="intro-stat-lbl">{s.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div className="intro-right" {...fadeUp(0.1)}>
+            <div className="mission-card">
+              <div className="eyebrow">Mission</div>
+              <p style={{ color: 'rgba(255,255,255,0.6)' }}>
+                Supply gold with full transparency, compliance, and verified sourcing.
               </p>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight text-slate-900">
-                What we believe in, and how it shows up at work.
-              </h2>
-              <motion.a
-                href="/contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-8 inline-block bg-red-700 hover:bg-red-800 text-white font-semibold px-8 py-4 rounded transition"
-              >
-                Partner With Us
-              </motion.a>
-            </motion.div>
-
-            {/* Right Side - 2x2 Grid of Value Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {/* Card 1 - White */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                whileHover={{ y: -4 }}
-                className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 mb-4 text-amber-600">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  Integrity
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  We tell you what's possible, what's not, and why. No hidden steps in our process.
-                </p>
-              </motion.div>
-
-              {/* Card 2 - Red */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                whileHover={{ y: -4 }}
-                className="bg-red-700 rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 mb-4 text-white">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">
-                  Compliance First
-                </h3>
-                <p className="text-sm text-red-100 leading-relaxed">
-                  We don't cut corners on documentation. Every transaction follows international standards — because your buyers and banks will check.
-                </p>
-              </motion.div>
-
-              {/* Card 3 - Amber */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                whileHover={{ y: -4 }}
-                className="bg-amber-500 rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 mb-4 text-white">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">
-                  Ethical Sourcing
-                </h3>
-                <p className="text-sm text-amber-50 leading-relaxed">
-                  We only work with miners we've visited. If we can't verify where the gold came from, we don't buy it.
-                </p>
-              </motion.div>
-
-              {/* Card 4 - White */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                whileHover={{ y: -4 }}
-                className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 mb-4 text-slate-900">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3z"/>
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  Professional Service
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  You'll have a real contact at our Kampala office who knows your order and picks up the phone.
-                </p>
-              </motion.div>
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-amber-700/80">Field gallery</p>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-900">What it looks like on the ground</h2>
-          </div>
-          <a href="/contact" className="text-sm font-semibold text-amber-700 hover:text-amber-800">
-            Request site visit info →
-          </a>
-        </div>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {[
-            {
-              label: "gold",
-              src: "https://images.unsplash.com/photo-1624365168056-daf44387e2ae?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            },
-            {
-              label: "mine",
-              src: "/man-pouring-melted-metal-workshop-large.jpg",
-            },
-            {
-              label: "minerals",
-              src: "https://images.pexels.com/photos/34522438/pexels-photo-34522438.jpeg?auto=compress&cs=tinysrgb&w=800",
-            },
-          ].map((item) => (
-            <div key={item.label} className="overflow-hidden rounded-2xl border border-amber-200/70 bg-white shadow-sm">
-              <img
-                src={item.src}
-                alt={`Diamond Capital Africa ${item.label}`}
-                className="h-56 w-full object-cover"
-                loading="lazy"
-              />
-              <div className="p-4">
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-700">{item.label}</p>
-                <p className="mt-2 text-sm text-slate-800">Every visit logged. Every transfer documented.</p>
+      {/* ── PRINCIPLES ────────────────────────────────────────────────────── */}
+      <section style={{ background: '#fff', padding: '6rem 2rem' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          {PRINCIPLES.map((p, i) => (
+            <motion.div key={p.n} {...fadeUp(i * 0.1)} className="principle-item">
+              <div className="principle-n">{p.n}</div>
+              <div>
+                <div className="principle-title">{p.title}</div>
+                <div className="principle-body">{p.body}</div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
-
-      <section className="border-y border-amber-200/60 bg-white py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-amber-700/80">Regulatory alignment</p>
-              <h2 className="mt-4 text-3xl font-semibold text-slate-900">Everything buyers need, prepared in advance</h2>
-              <p className="mt-4 text-slate-800">
-                Before anything ships, we prepare the full documentation pack — origin verification, assay reports, custody records. Your compliance team won't have to ask twice.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-amber-200/70 bg-[#faf8f2] p-6">
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Certification badges</p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {[
-                  "Assay certified",
-                  "Origin verified",
-                  "Custody documented",
-                  "KYC-ready",
-                  "Export compliant",
-                  "Insured logistics",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-full border border-amber-200/70 bg-white px-3 py-2 text-xs text-amber-700"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-amber-200/60 bg-[#faf8f2] py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-8 md:grid-cols-3">
-            {[
-              {
-                title: "Responsible sourcing",
-                body: "We know the miners we work with. Licensed, visited, and documented before we buy from them.",
-              },
-              {
-                title: "Verified supply",
-                body: "Every lot goes through an independent lab. The results come with your shipment.",
-              },
-              {
-                title: "Buyer support",
-                body: "Your account manager handles everything — from booking the assay to confirming delivery.",
-              },
-            ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-amber-200/70 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-4 text-sm text-slate-800">{item.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-semibold text-slate-900">How we run things</h2>
-            <p className="mt-4 text-slate-800">
-              We follow Uganda's mining regulations, OECD due diligence guidelines, and the expectations of the international buyers we work with. No shortcuts.
-            </p>
-            <ul className="mt-6 space-y-3 text-sm text-slate-800">
-              <li>• Origin verification and custody tracking</li>
-              <li>• Independent purity testing</li>
-              <li>• Export readiness and logistics compliance</li>
-              <li>• Community engagement and environmental awareness</li>
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-amber-200/70 bg-white p-8 shadow-sm">
-            <h3 className="text-lg font-semibold text-slate-900">Operational highlights</h3>
-            <div className="mt-6 space-y-5 text-sm text-slate-800">
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Kampala hub</p>
-                <p className="mt-2">Where we take your calls, process your paperwork, and organise your shipment.</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Field verification</p>
-                <p className="mt-2">We physically visit our partner mines. What we see is what we document.</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Global delivery</p>
-                <p className="mt-2">We arrange the logistics around your schedule and destination — insured, tracked, confirmed.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="border-t border-amber-200/60 bg-white py-14">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
-          <div>
-            <div className="flex items-center gap-3">
-              <img 
-                src="/Logo.png" 
-                alt="Diamond Capital Africa" 
-                className="h-12 w-auto object-contain"
-              />
-            </div>
-            <p className="mt-4 text-sm text-slate-800">
-              Premium gold supply with verified sourcing, compliance documentation, and secure logistics.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Company</p>
-            <ul className="mt-4 space-y-2 text-sm text-slate-800">
-              <li><a href="/about" className="hover:text-emerald-700 transition">About us</a></li>
-              <li><a href="/products" className="hover:text-emerald-700 transition">Services</a></li>
-              <li><a href="/compliance" className="hover:text-emerald-700 transition">Compliance</a></li>
-              <li><a href="/process" className="hover:text-emerald-700 transition">Process</a></li>
-              <li><a href="/faq" className="hover:text-amber-700 transition">FAQ</a></li>
-              <li><a href="/contact" className="hover:text-amber-700 transition">Contact</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Contact</p>
-            <ul className="mt-4 space-y-2 text-sm text-slate-800">
-              <li>Kampala, Uganda</li>
-              <li><a href="mailto:info@diamondcapitalafrica.com" className="hover:text-emerald-700 transition">info@diamondcapitalafrica.com</a></li>
-              <li><a href="tel:+256704833021" className="hover:text-emerald-700 transition">+256 (0) 704 833 021</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Compliance</p>
-            <ul className="mt-4 space-y-2 text-sm text-slate-800">
-              <li>Responsible sourcing</li>
-              <li>Custody documentation</li>
-              <li>Lab-verified purity</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-amber-200/60 px-4 pt-6 text-xs text-slate-700 md:flex-row md:items-center md:justify-between">
-          <p>&copy; 2026 Diamond Capital Africa. All rights reserved.</p>
-          <p>Serving East & Central Africa • Global delivery available</p>
-        </div>
-      </footer>
     </main>
   );
 }
