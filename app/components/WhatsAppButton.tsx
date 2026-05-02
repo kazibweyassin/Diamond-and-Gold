@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { CONTACT } from '@/lib/constants';
 
 export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
-  const phoneNumber = '256704833021'; // Without + or spaces
   const message = 'Hello, I am interested in your gold products.';
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/${CONTACT.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
   return (
     <a

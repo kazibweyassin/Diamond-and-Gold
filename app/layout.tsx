@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono, Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "./components/WhatsAppButton";
+import { SITE } from "@/lib/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +30,17 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL("https://diamondcapitalafrica.com"),
   title: "Diamond Capital Africa - Certified Gold Supply from Uganda & Congo",
-  description: "Ethically sourced, lab-verified gold from Uganda and Congo. Certified 99.5%+ purity bars, competitive pricing, secure logistics. Trusted gold supplier for  buyers worldwide.",
+  description: "Ethically sourced, lab-verified gold from Uganda and Congo. Certified 99.5%+ purity bars, competitive pricing, secure logistics. Trusted gold supplier for buyers worldwide.",
   keywords: "gold supplier, certified gold, gold bars, Uganda gold, Congo gold, precious metals, ethical sourcing, gold trading, investment gold, compliance documentation",
   authors: [{ name: "Diamond Capital Africa" }],
   creator: "Diamond Capital Africa",
   publisher: "Diamond Capital Africa",
+  viewport: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Diamond Capital Africa",
+  },
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -96,18 +104,7 @@ export default function RootLayout({
         <link rel="alternate icon" type="image/png" href="/icon" />
         <link rel="apple-touch-icon" href="/apple-icon" />
         <link rel="manifest" href="/manifest.json" />
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18021829324"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-18021829324');
-            `,
-          }}
-        />
+        {/* JSON-LD Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -121,15 +118,14 @@ export default function RootLayout({
               email: "info@diamondcapitalafrica.com",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Kampala",
+                streetAddress: "Plot X, Kampala",
                 addressLocality: "Kampala",
-                addressRegion: "Uganda",
-                postalCode: "",
+                addressRegion: "Central",
+                postalCode: "100001",
                 addressCountry: "UG",
               },
               areaServed: ["UG", "CD", "Global"],
-              priceRange: "$$",
-              sameAs: [],
+              priceRange: "$$$$",
               image: "https://diamondcapitalafrica.com/opengraph-image",
             }),
           }}
@@ -140,6 +136,24 @@ export default function RootLayout({
       >
         {children}
         <WhatsAppButton />
+        
+        {/* Google Analytics */}
+        {SITE.GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${SITE.GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${SITE.GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

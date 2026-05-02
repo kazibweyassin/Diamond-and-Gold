@@ -55,25 +55,30 @@ export default function Home() {
       <Header />
 
       {/* ── Hero ── */}
-      <section className="relative bg-pattern-hero px-4 sm:px-6 lg:px-12 py-16 sm:py-20 overflow-hidden">
+      <section className="relative bg-cream px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">
           {HERO_IMAGES.map((src, idx) => (
             <div
               key={src}
               className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${idx === slideIdx ? 'opacity-100' : 'opacity-0'}`}
-              style={{ backgroundImage: `url(${src})`, filter: 'brightness(1.1) contrast(1.05) saturate(1.15)' }}
+              style={{
+                backgroundImage: `url(${src})`,
+                backgroundPosition: 'center',
+                filter: 'brightness(1.1) contrast(1.05) saturate(1.15)'
+              }}
             />
           ))}
-          <div className="absolute inset-y-0 left-0 w-full md:w-1/2 bg-gradient-to-r from-slate-950/80 via-slate-950/30 to-transparent" />
+          <div className="absolute inset-y-0 left-0 w-full sm:w-3/4 md:w-1/2 bg-gradient-to-r from-slate-950/85 via-slate-950/40 to-transparent" />
         </div>
         <svg
           className="absolute left-0 top-0 w-full h-full pointer-events-none select-none z-10"
           aria-hidden="true"
           focusable="false"
           viewBox="0 0 1440 600"
+          preserveAspectRatio="xMidYMid slice"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ opacity: 0.07 }}
+          style={{ opacity: 0.04 }}
         >
           <defs>
             <linearGradient id="gold-gradient" x1="0" y1="0" x2="1440" y2="600" gradientUnits="userSpaceOnUse">
@@ -86,82 +91,89 @@ export default function Home() {
           <path d="M0 500 Q 400 400 900 550 T 1440 500" stroke="#E6C77B" strokeWidth="40" fill="none" opacity="0.25" />
           <circle cx="900" cy="400" r="90" fill="#F7E7B0" opacity="0.25" />
         </svg>
-        <div className="relative z-20 flex flex-col md:flex-row md:items-start md:justify-between gap-12 max-w-6xl mx-auto">
-          <div className="flex-1 text-white" style={{ color: '#fff' }}>
-            {/* License badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-slate-100 rounded-full px-4 py-1.5 mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span className="text-[11px] tracking-widest uppercase">
-                Uganda minerals &amp; mining licensed operator
+        <div className="relative z-20 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-12 max-w-7xl mx-auto">
+          <div className="flex-1 text-white w-full lg:w-auto">
+            {/* License badge - improved responsiveness */}
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-slate-100 rounded-full px-3 sm:px-4 py-2 mb-6 sm:mb-8 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
+              <span className="text-[10px] sm:text-[11px] tracking-widest uppercase font-medium whitespace-nowrap">
+                Uganda licensed operator
               </span>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight max-w-3xl mb-5" style={{ color: '#fff', textShadow: '0 20px 50px rgba(15, 23, 42, 0.55)' }}>
+            {/* Headline - improved typography */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-4 sm:mb-6 text-white hero-heading-shadow">
               {HERO_HEADLINES[headlineIdx]}
             </h1>
 
-            <p className="text-lg leading-relaxed max-w-3xl mb-9" style={{ color: '#f8fafc', textShadow: '0 12px 35px rgba(15, 23, 42, 0.3)' }}>
+            {/* Subheading */}
+            <p className="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 text-slate-100 hero-text-shadow max-w-2xl">
               {HERO_SUBCOPIES[subcopyIdx]}
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap mb-6">
+            {/* CTAs - mobile-optimized */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-6 sm:mb-10">
               <a
                 href="https://wa.me/256704833021"
-                className="inline-flex w-full justify-center sm:w-auto items-center gap-2.5 bg-gradient-to-r from-red-700 to-red-600 hover:from-red-800 hover:to-red-700 text-white text-sm font-semibold px-6 py-3 rounded-full no-underline shadow-lg shadow-red-700/20 transition duration-300"
+                className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 active:from-red-800 active:to-red-700 text-white text-sm font-semibold px-5 sm:px-6 py-3 rounded-full no-underline shadow-lg shadow-red-600/30 transition duration-300 min-h-12 sm:min-h-auto"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                   <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.861L.057 23.5l5.79-1.452A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.214-3.716.931.99-3.63-.236-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
                 </svg>
-                Request consultation
+                <span className="hidden sm:inline">Request consultation</span>
+                <span className="sm:hidden">Chat with us</span>
               </a>
               <a
                 href="https://invest.diamondcapitalafrica.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full justify-center sm:w-auto items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-600 hover:to-amber-500 no-underline shadow-lg shadow-amber-500/20 transition duration-300"
+                className="inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-5 sm:px-6 py-3 rounded-full bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-600 hover:to-gold-500 active:from-gold-700 active:to-gold-600 no-underline shadow-lg shadow-gold-500/30 transition duration-300 min-h-12 sm:min-h-auto"
               >
-                Investor opportunities →
+                <span className="hidden sm:inline">Invest opportunities</span>
+                <span className="sm:hidden">Invest</span>
+                <span>→</span>
               </a>
               <a
                 href="/products"
-                className="inline-flex w-full justify-center sm:w-auto items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full border border-white/20 bg-white/10 hover:bg-white/20 no-underline transition duration-300"
+                className="hidden sm:inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full border border-white/30 bg-white/5 hover:bg-white/15 active:bg-white/25 no-underline transition duration-300 backdrop-blur-sm"
               >
                 Explore services →
               </a>
             </div>
-            <div className="flex items-center gap-3 mb-10">
+
+            {/* Slide indicators */}
+            <div className="flex items-center gap-2 mb-8 sm:mb-12">
               {HERO_IMAGES.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setHeroIndex(idx)}
-                  className={`h-3.5 w-3.5 rounded-full transition-all duration-300 ${idx === slideIdx ? 'bg-white shadow-xl shadow-white/30 scale-110' : 'bg-white/30 hover:bg-white/60'}`}
+                  className={`h-2 sm:h-2.5 rounded-full transition-all duration-300 ${idx === slideIdx ? 'bg-white shadow-lg w-6 sm:w-8' : 'bg-white/40 hover:bg-white/60 w-2 sm:w-2.5'}`}
                   aria-label={`Slide ${idx + 1}`}
+                  aria-current={idx === slideIdx}
                 />
               ))}
             </div>
 
-            {/* Trust stats — FIX 3: border-amber-200 (full opacity, was /70) */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {/* Trust stats - mobile optimized */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
               {[
                 { value: "99.5%+", label: "Purity" },
-                { value: "Verified", label: "Uganda licensed" },
+                { value: "Verified", label: "Licensed" },
                 { value: "48–72h", label: "Dispatch" },
-                { value: "KYC-ready", label: "Documentation" },
+                { value: "KYC-ready", label: "Docs" },
               ].map(({ value, label }) => (
-                <div key={label} className="rounded-xl border border-amber-200 bg-white p-4 shadow-sm">
-                  <div className="text-xs uppercase tracking-[0.25em] text-slate-500 mb-1">{label}</div>
-                  <div className="text-lg font-bold text-slate-900">{value}</div>
+                <div key={label} className="rounded-lg sm:rounded-xl border border-gold-200 bg-white/95 backdrop-blur-sm p-3 sm:p-4 shadow-sm">
+                  <div className="text-[10px] sm:text-xs uppercase tracking-wider text-slate-500 mb-1 font-semibold">{label}</div>
+                  <div className="text-lg sm:text-xl font-bold text-slate-900">{value}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Gold ticker */}
-          <div className="w-full md:w-80 lg:w-96 flex-shrink-0 mt-4 md:mt-16">
+          {/* Gold ticker - mobile optimized */}
+          <div className="w-full lg:w-80 lg:flex-shrink-0 mt-8 lg:mt-0">
             <GoldTicker />
           </div>
         </div>

@@ -73,34 +73,39 @@ export default function Contact() {
     }
 
     setIsSubmitting(true);
-    
-    // Create email body
-    const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Subject: ${formData.subject}
 
-Message:
-${formData.message}
-    `.trim();
-    
-    // Simulate a brief delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 500));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Create mailto link
-    const mailtoLink = `mailto:info@diamondcapitalafrica.com?subject=${encodeURIComponent(formData.subject || 'Inquiry from Website')}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success message
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setTimeout(() => {
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrors({ submit: data.error || 'Failed to send message' });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Show success message
+      setSubmitted(true);
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-      setSubmitted(false);
-    }, 3000);
+      setErrors({});
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setErrors({ submit: 'An error occurred. Please try again later.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -160,6 +165,12 @@ ${formData.message}
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                {errors.submit && (
+                  <div className="rounded-xl border border-red-300 bg-red-50 p-4 text-sm text-red-700">
+                    {errors.submit}
+                  </div>
+                )}
+
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Name</label>
@@ -169,9 +180,11 @@ ${formData.message}
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
+                      disabled={isSubmitting}
+                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="Your name"
                     />
+                    {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
                   </div>
                   <div>
                     <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Email</label>
@@ -181,9 +194,11 @@ ${formData.message}
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
+                      disabled={isSubmitting}
+                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="you@email.com"
                     />
+                    {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
                   </div>
                 </div>
 
@@ -195,9 +210,11 @@ ${formData.message}
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
+                      disabled={isSubmitting}
+                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="+256 000 000 000"
                     />
+                    {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
                   </div>
                   <div>
                     <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Subject</label>
@@ -206,7 +223,8 @@ ${formData.message}
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
+                      disabled={isSubmitting}
+                      className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="">Select a subject</option>
                       <option value="Product Inquiry">Product Inquiry</option>
@@ -215,6 +233,7 @@ ${formData.message}
                       <option value="Certification">Certification Information</option>
                       <option value="Other">Other</option>
                     </select>
+                    {errors.subject && <p className="text-xs text-red-600 mt-1">{errors.subject}</p>}
                   </div>
                 </div>
 
@@ -225,17 +244,20 @@ ${formData.message}
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                     rows={5}
-                    className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none"
+                    className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Share order quantities, timelines, or any requirements..."
                   />
+                  {errors.message && <p className="text-xs text-red-600 mt-1">{errors.message}</p>}
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-amber-600 px-4 py-3 text-sm font-semibold text-white hover:bg-amber-700 transition"
+                  disabled={isSubmitting}
+                  className="w-full rounded-full bg-amber-600 hover:bg-amber-700 disabled:bg-amber-400 disabled:cursor-not-allowed px-4 py-3 text-sm font-semibold text-white transition"
                 >
-                  Send inquiry
+                  {isSubmitting ? 'Sending...' : 'Send inquiry'}
                 </button>
               </form>
             )}

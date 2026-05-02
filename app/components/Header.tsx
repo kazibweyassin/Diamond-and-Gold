@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { services } from '@/lib/services';
 
 interface HeaderProps {
@@ -30,36 +31,39 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-emerald-200/60 bg-[#fdfbf7]/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-gold-200 bg-cream/90 backdrop-blur">
       {/* Announcement bar */}
-      <div className="bg-amber-500 px-4 py-2 text-center text-xs font-semibold text-white">
+      <div className="bg-gold-600 px-4 py-2 text-center text-xs font-semibold text-white">
         Want to invest in Uganda&apos;s gold sector?{' '}
         <a
           href="https://invest.diamondcapitalafrica.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-2 hover:text-amber-100 transition"
+          className="underline underline-offset-2 hover:text-gold-100 transition"
         >
           Invest in Uganda →
         </a>
       </div>
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-3 sm:px-4 py-3 sm:py-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <img 
+        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+          <Image 
             src="/Logo.png" 
-            alt="Diamond Capital Africa" 
-            className="h-12 w-auto object-contain"
+            alt="Diamond Capital Africa - Premium Gold Trading"
+            width={40}
+            height={40}
+            priority
+            className="h-10 sm:h-12 w-auto object-contain"
           />
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden items-center gap-6 text-sm font-medium text-slate-900 md:flex">
+        <ul className="hidden items-center gap-6 text-sm font-medium text-text-primary md:flex">
           {navLinks.map((link) => {
             if (link.label === 'Services') {
               return (
                 <li key={link.href} className="relative group">
-                  <Link href={link.href} className="hover:text-emerald-700 transition">
+                  <Link href={link.href} className="hover:text-gold-600 transition">
                     {link.label}
                   </Link>
                   {/* dropdown on hover */}
@@ -68,7 +72,7 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
                       <li key={s.id}>
                         <Link
                           href={`/products#${s.id}`}
-                          className="block px-4 py-2 text-sm text-slate-900 hover:bg-amber-100"
+                          className="block px-4 py-2 text-sm text-text-primary hover:bg-gold-50"
                         >
                           {s.name}
                         </Link>
@@ -85,7 +89,7 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link href={link.href} className="hover:text-emerald-700 transition">
+                <Link href={link.href} className="hover:text-gold-600 transition">
                   {link.label}
                 </Link>
               </motion.li>
@@ -100,7 +104,7 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
               href="https://invest.diamondcapitalafrica.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-600"
+              className="rounded-full bg-gold-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gold-700"
             >
               Invest in Uganda
             </a>
@@ -110,7 +114,7 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
             >
               <Link
                 href={cta.href}
-                className="hidden rounded-full border border-amber-500/70 px-4 py-2 text-sm font-semibold text-amber-800 transition hover:bg-amber-200/40 md:inline-block"
+                className="hidden rounded-full border border-gold-600/70 px-4 py-2 text-sm font-semibold text-gold-800 transition hover:bg-gold-50 md:inline-block"
               >
                 {cta.label}
               </Link>
@@ -123,12 +127,13 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
               setMobileMenuOpen(!mobileMenuOpen);
               if (mobileMenuOpen) setMobileServicesOpen(false);
             }}
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="md:hidden flex flex-col gap-1.5 p-2 sm:p-3 rounded-lg hover:bg-gold-50 transition"
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
-            <span className={`block h-0.5 w-5 bg-emerald-700 transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block h-0.5 w-5 bg-emerald-700 transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 w-5 bg-emerald-700 transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`block h-0.5 w-5 bg-gold-600 transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`block h-0.5 w-5 bg-gold-600 transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block h-0.5 w-5 bg-gold-600 transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
           </button>
         </div>
       </nav>
@@ -141,98 +146,83 @@ export default function Header({ cta = { label: 'Request Quote', href: '/contact
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="border-t border-amber-200/60 bg-[#fdfbf7] md:hidden overflow-hidden"
+            className="md:hidden overflow-auto max-h-[calc(100vh-120px)]"
+            style={{
+              paddingBottom: 'max(env(safe-area-inset-bottom), 1rem)',
+              paddingLeft: 'max(env(safe-area-inset-left), 1rem)',
+              paddingRight: 'max(env(safe-area-inset-right), 1rem)',
+            }}
           >
-            <ul className="flex flex-col space-y-0 px-4 py-3">
-              {navLinks.map((link, index) => {
+            <ul className="flex flex-col divide-y divide-gold-100 border-t border-gold-200">
+              {navLinks.map((link) => {
                 if (link.label === 'Services') {
                   return (
-                    <React.Fragment key={link.href}>
-                      <motion.li
-                        initial={{ x: -20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: index * 0.05 }}
+                    <li key={link.href}>
+                      <button
+                        onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                        className="w-full text-left px-4 py-4 sm:py-3 text-base sm:text-sm font-medium text-text-primary hover:bg-gold-50 flex justify-between items-center transition"
                       >
-                        <button
-                          className="w-full flex justify-between py-3 text-sm font-medium text-slate-900 hover:text-amber-700 transition border-b border-amber-100 last:border-b-0"
-                          onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                        >
-                          {link.label}
-                          <span className="ml-2">{mobileServicesOpen ? '▲' : '▼'}</span>
-                        </button>
-                      </motion.li>
-                      {mobileServicesOpen && (
-                        services.map((s) => (
-                          <motion.li
-                            key={s.id}
-                            initial={{ x: -20, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: (index + 1) * 0.05 }}
+                        {link.label}
+                        <span className={`transform transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`}>▼</span>
+                      </button>
+                      <AnimatePresence>
+                        {mobileServicesOpen && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden bg-gold-50 border-t border-gold-100"
                           >
-                            <Link
-                              href={`/products#${s.id}`}
-                              className="block pl-6 py-2 text-sm text-slate-900 hover:text-amber-700 transition border-b border-amber-100"
-                              onClick={() => {
-                                setMobileMenuOpen(false);
-                                setMobileServicesOpen(false);
-                              }}
-                            >
-                              {s.name}
-                            </Link>
-                          </motion.li>
-                        ))
-                      )}
-                    </React.Fragment>
+                            {services.map((s) => (
+                              <li key={s.id}>
+                                <Link
+                                  href={`/products#${s.id}`}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="block px-4 py-3 pl-8 text-sm text-text-primary hover:bg-gold-100 transition"
+                                >
+                                  {s.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+                    </li>
                   );
                 }
 
                 return (
-                  <motion.li 
-                    key={link.href}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
+                  <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="block py-3 text-sm font-medium text-slate-900 hover:text-amber-700 transition border-b border-amber-100 last:border-b-0"
                       onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-4 sm:py-3 text-base sm:text-sm font-medium text-text-primary hover:bg-gold-50 transition"
                     >
                       {link.label}
                     </Link>
-                  </motion.li>
+                  </li>
                 );
               })}
-              <motion.li 
-                className="pt-2"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: navLinks.length * 0.05 }}
-              >
+              <li className="pt-2">
                 <Link
                   href={cta.href}
-                  className="block w-full rounded-full border border-amber-500/70 px-4 py-2 text-center text-sm font-semibold text-amber-800 hover:bg-amber-200/40 transition"
+                  className="block w-full rounded-full border border-gold-600/70 px-4 py-3 sm:py-2 text-center text-sm font-semibold text-gold-800 hover:bg-gold-50 transition mx-4 mb-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {cta.label}
                 </Link>
-              </motion.li>
-              <motion.li
-                className="pt-1"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: (navLinks.length + 1) * 0.05 }}
-              >
+              </li>
+              <li className="pb-2">
                 <a
                   href="https://invest.diamondcapitalafrica.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full rounded-full bg-amber-500 px-4 py-2 text-center text-sm font-semibold text-white hover:bg-amber-600 transition"
+                  className="block w-full rounded-full bg-gold-600 px-4 py-3 sm:py-2 text-center text-sm font-semibold text-white hover:bg-gold-700 transition mx-4"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Invest in Uganda →
                 </a>
-              </motion.li>
+              </li>
             </ul>
           </motion.div>
         )}

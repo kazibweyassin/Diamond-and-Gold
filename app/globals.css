@@ -23,6 +23,13 @@
 html {
   scroll-behavior: smooth;
   color-scheme: light;
+  font-size: 16px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 17px;
+  }
 }
 
 body {
@@ -32,6 +39,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  padding-top: max(env(safe-area-inset-top), 0.5rem);
+  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+  padding-left: max(env(safe-area-inset-left), 1rem);
+  padding-right: max(env(safe-area-inset-right), 1rem);
 }
 
 h1,
@@ -51,13 +62,47 @@ a {
   text-decoration: none;
 }
 
-/* ── Tailwind opacity modifier overrides ──
-   Force all /60 /70 /80 amber borders and
-   text colours to render at full strength site-wide */
+/* ── Utility Classes ── */
 
-[class*="border-amber-200"] { --tw-border-opacity: 1; }
-[class*="border-amber-300"] { --tw-border-opacity: 1; }
-[class*="border-amber-500"] { --tw-border-opacity: 1; }
+/* Text shadows for hero sections */
+.hero-heading-shadow {
+  text-shadow: 0 20px 50px rgba(15, 23, 42, 0.55);
+}
+
+.hero-text-shadow {
+  text-shadow: 0 12px 35px rgba(15, 23, 42, 0.3);
+}
+
+/* ── Responsive Typography System ── */
+
+h1 {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+}
+
+h2 {
+  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+}
+
+h3 {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+}
+
+p {
+  line-height: 1.6;
+}
+
+small {
+  @apply text-xs sm:text-sm;
+}
+
+button, a {
+  @apply min-h-11 sm:min-h-10;
+}
+
+/* ── Tailwind utilities - ensure colors are at full opacity ── */
+
+[class*="border-gold"] { --tw-border-opacity: 1; }
+[class*="text-gold"] { --tw-text-opacity: 1; }
 
 [class*="text-emerald-700"] { --tw-text-opacity: 1; }
 [class*="text-red-800"]     { --tw-text-opacity: 1; }
@@ -66,6 +111,41 @@ a {
    Tailwind's slate-600 (#475569) has insufficient contrast on #fdfbf7 cream. */
 .text-slate-600 {
   color: #334155;
+}
+
+/* ── Touch Device Optimizations ── */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch target sizes */
+  button, a {
+    @apply min-h-12 min-w-12;
+  }
+
+  /* Increase padding for touch interaction */
+  input, textarea, select {
+    @apply py-3 px-4;
+  }
+
+  /* Reduce animations on touch devices */
+  * {
+    @apply transition-none;
+  }
+  
+  *:active {
+    @apply transition-colors duration-100;
+  }
+}
+
+/* Remove tap highlight on iOS */
+@supports (-webkit-touch-callout: none) {
+  input, button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Fix mobile font size on input focus */
+input, textarea, select {
+  font-size: 16px; /* Prevents zoom on focus */
 }
 
 /* ── Hero slideshow ── */
