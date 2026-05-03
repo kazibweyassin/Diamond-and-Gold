@@ -65,6 +65,41 @@ const STATS = [
   { value: 'OECD',   label: 'Due diligence standard',   unit: 'STD' },
 ];
 
+function getStatIcon(unit: string) {
+  switch (unit) {
+    case 'XAU':
+      return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+          <path d="M4 10h16l-8 10-8-10z" />
+          <path d="M7 10l5-6 5 6" />
+        </svg>
+      );
+    case 'HRS':
+      return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="8" />
+          <path d="M12 8v5l3 2" />
+        </svg>
+      );
+    case 'DOCS':
+      return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+          <path d="M14 3v5h5" />
+          <path d="M9 14l2 2 4-4" />
+        </svg>
+      );
+    case 'STD':
+      return (
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+          <path d="M12 3l2.3 4.7 5.2.8-3.8 3.7.9 5.3L12 15l-4.6 2.5.9-5.3-3.8-3.7 5.2-.8L12 3z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
 const STEPS = [
   { n: '01', title: 'Submit requirements',  body: 'Share quantity, form factor, purity, and delivery needs. Receive a formal quote within 24 hours.' },
   { n: '02', title: 'Compliance review',    body: 'We align on KYC documentation, buyer approvals, and regulatory checks before proceeding.' },
@@ -296,7 +331,7 @@ export default function Home() {
         .hero-actions {
           display: flex;
           flex-wrap: wrap;
-          gap: 12px;
+          gap: 180px;
           margin-bottom: clamp(1.75rem, 3vw, 2.25rem);
         }
         .btn-primary {
@@ -426,6 +461,24 @@ export default function Home() {
           color: rgba(232, 201, 106, 0.85);
           margin-bottom: 8px;
         }
+        .stat-top {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+        }
+        .stat-icon {
+          width: 22px;
+          height: 22px;
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--gold-lt);
+          border: 1px solid rgba(232, 201, 106, 0.35);
+          background: rgba(232, 201, 106, 0.08);
+          flex-shrink: 0;
+        }
         .stat-val {
           font-size: clamp(1.15rem, 2.4vw, 1.45rem);
           font-weight: 600;
@@ -510,6 +563,40 @@ export default function Home() {
         .dl-card { display: flex; align-items: center; gap: 1rem; border: 1px solid var(--rule-md); border-radius: 4px; background: #fff; padding: 1.25rem 1.5rem; transition: border-color 0.2s; }
         .dl-card:hover { border-color: var(--navy); }
 
+        /* CORPORATE PROFILE TEASER */
+        .corp-profile-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+          gap: 2rem;
+          align-items: center;
+        }
+        .corp-mini-cols {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 0.75rem;
+          margin-top: 1.25rem;
+        }
+        .corp-mini {
+          border: 1px solid var(--rule-md);
+          border-radius: 4px;
+          background: #fff;
+          padding: 0.75rem 0.9rem;
+        }
+        .corp-mini-k {
+          font-family: var(--mono);
+          font-size: 9px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: rgba(10,22,40,0.35);
+          margin-bottom: 6px;
+        }
+        .corp-mini-v {
+          font-size: 12px;
+          color: rgba(10,22,40,0.58);
+          line-height: 1.5;
+          font-weight: 300;
+        }
+
         /* COMPLIANCE fulfillment */
         .fulfill-item { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.58); line-height: 1.65; font-weight: 300; }
         .fulfill-dot { width: 16px; height: 16px; flex-shrink: 0; border: 1px solid rgba(184,146,42,0.45); border-radius: 50%; margin-top: 2px; background: radial-gradient(circle, rgba(184,146,42,0.25) 0%, transparent 70%); }
@@ -522,7 +609,19 @@ export default function Home() {
         @media (max-width: 768px) {
           .hero-inner   { flex-direction: column; align-items: stretch; }
           .hero-aside   { width: 100% !important; max-width: none; }
+          .hero-actions { gap: 12px; }
           .hero-metrics { grid-template-columns: repeat(2, 1fr) !important; }
+          .corp-profile-grid { grid-template-columns: 1fr !important; }
+          .corp-mini-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .hero-badge { font-size: 9px; }
+          .hero-h1 { font-size: clamp(1.9rem, 7.8vw, 2.4rem); }
+          .hero-sub { font-size: 13px; line-height: 1.55; }
+          .section-title { font-size: clamp(1.55rem, 7vw, 2rem); }
+          .stat-unit { font-size: 7px; }
+          .stat-val { font-size: clamp(1rem, 5vw, 1.2rem); }
+          .stat-lbl { font-size: 9px; }
+          .step-title { font-size: 14px; }
+          .step-body, .why-body, .news-excerpt, .ops-desc, .cred-body { font-size: 12px; }
           .why-cols    { grid-template-columns: 1fr !important; }
           .ops-cols    { grid-template-columns: 1fr !important; }
           .buyers-cols { grid-template-columns: 1fr !important; }
@@ -533,6 +632,14 @@ export default function Home() {
           .cred-grid   { grid-template-columns: 1fr !important; }
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
           .hero-slide-row { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 480px) {
+          .hero-actions { gap: 10px; }
+          .corp-mini-cols { grid-template-columns: 1fr; }
+          .hero-sub { font-size: 12px; }
+          .section-title { font-size: 1.45rem; }
+          .stat-val { font-size: 0.95rem; }
+          .stat-lbl { font-size: 8.5px; }
         }
       `}</style>
 
@@ -584,13 +691,6 @@ export default function Home() {
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
               <div className="hero-actions">
                 <a href="/products" className="btn-primary">Explore services →</a>
-                <a href="https://wa.me/256704833021" className="btn-wa">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
-                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.861L.057 23.5l5.79-1.452A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.214-3.716.931.99-3.63-.236-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
-                  </svg>
-                  WhatsApp us
-                </a>
                 <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">Investor portal →</a>
               </div>
 
@@ -618,7 +718,10 @@ export default function Home() {
               <div className="hero-metrics">
                 {STATS.map(({ value, label, unit }) => (
                   <div key={label} className="hero-stat">
-                    <div className="stat-unit">{unit}</div>
+                    <div className="stat-top">
+                      <span className="stat-icon">{getStatIcon(unit)}</span>
+                      <div className="stat-unit" style={{ marginBottom: 0 }}>{unit}</div>
+                    </div>
                     <div className="stat-val">{value}</div>
                     <div className="stat-lbl">{label}</div>
                   </div>
@@ -659,6 +762,43 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Corporate profile teaser */}
+      <hr className="rule" />
+      <section style={{ padding: '5rem 2rem', background: '#fff' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }} className="corp-profile-grid">
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div className="eyebrow">Corporate profile</div>
+            <h2 className="section-title">About Diamond Capital Africa —<br /><strong>trust, licences, and capability.</strong></h2>
+            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', lineHeight: 1.7, marginTop: '1rem', fontWeight: 300 }}>
+              Read our corporate profile for licences, operating footprint, and client references. Downloadable PDF and contact points are included.
+            </p>
+            <div className="corp-mini-cols">
+              <div className="corp-mini">
+                <div className="corp-mini-k">Licences</div>
+                <div className="corp-mini-v">Verified Uganda operating approvals.</div>
+              </div>
+              <div className="corp-mini">
+                <div className="corp-mini-k">Footprint</div>
+                <div className="corp-mini-v">Sourcing, assay, and export coordination.</div>
+              </div>
+              <div className="corp-mini">
+                <div className="corp-mini-k">Contacts</div>
+                <div className="corp-mini-v">Direct team details and response windows.</div>
+              </div>
+            </div>
+            <Link href="/corporate-profile" className="btn-primary" style={{ marginTop: '1.25rem', display: 'inline-block', padding: '10px 20px' }}>
+              View corporate profile →
+            </Link>
+          </div>
+          <div style={{ width: 'min(100%, 360px)', justifySelf: 'end' }}>
+            <img src="/partners/office.jpg" alt="Our offices" style={{ width: '100%', maxWidth: '100%', borderRadius: 6, display: 'block', height: 'auto' }} />
+            <p style={{ marginTop: '0.65rem', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(10,22,40,0.45)' }}>
+              Lubowa, Kampala, Uganda
+            </p>
           </div>
         </div>
       </section>
