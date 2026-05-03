@@ -4,23 +4,25 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Navbar from '@/app/components/Navbar';
 
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.6, delay, ease: EASE },
 });
 const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -32 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.65, delay, ease: EASE },
 });
 const fadeRight = (delay = 0) => ({
   initial: { opacity: 0, x: 32 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.65, delay, ease: EASE },
 });
 
 const PRINCIPLES = [
@@ -148,16 +150,16 @@ export default function About() {
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.6 }}>
             <div className="hero-badge"><span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ADE80' }} />Established in Kampala, Uganda</div>
           </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.7 }}
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.7, ease: EASE }}
             style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', fontWeight: 300, lineHeight: 1.08, letterSpacing: '-0.025em', color: '#fff', maxWidth: 800, marginBottom: '1.5rem' }}>
             We trade gold the way it should be done —{' '}
             <strong style={{ fontWeight: 600, color: 'var(--gold-lt)' }}>openly, with paperwork you can actually verify.</strong>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42, duration: 0.6 }}
+          <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42, duration: 0.6, ease: EASE }}
             style={{ fontSize: 15, lineHeight: 1.75, fontWeight: 300, color: 'rgba(255,255,255,0.52)', maxWidth: 520, marginBottom: '2.5rem' }}>
             Based in Kampala, working directly with licensed miners across Uganda. If you need to buy gold responsibly, this is how we can help.
           </motion.p>
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.56, duration: 0.5 }}>
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.56, duration: 0.5, ease: EASE }}>
             <div className="hero-stats-wrap" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, auto)', gap: 0, width: 'fit-content', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 4, overflow: 'hidden' }}>
               {[{ unit: 'XAU', val: '99.5%+', lbl: 'Minimum purity' }, { unit: 'HRS', val: '48–72h', lbl: 'Dispatch window' }, { unit: 'STD', val: 'OECD', lbl: 'Due diligence' }].map(({ unit, val, lbl }) => (
                 <div key={lbl} className="hero-stat">
@@ -241,7 +243,7 @@ export default function About() {
         </div>
         <motion.div className="gallery-mosaic" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           {GALLERY.map((item, i) => (
-            <motion.div key={item.label} className={`gallery-item${item.wide ? ' wide' : ''}`} initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.07, duration: 0.5 }}>
+            <motion.div key={item.label} className={`gallery-item${item.wide ? ' wide' : ''}`} initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.07, duration: 0.5, ease: EASE }}>
               <img src={item.src} alt={item.label} className="gallery-img" loading="lazy" />
               <div className="gallery-caption">
                 <div className="gallery-label">{item.label}</div>
@@ -265,7 +267,7 @@ export default function About() {
                 We follow Uganda's mining regulations, OECD due diligence guidelines, and the expectations of the international buyers we work with.
               </p>
               {['Origin verification and custody tracking', 'Independent purity testing at certified labs', 'Export readiness and logistics compliance', 'Community engagement and environmental awareness'].map((item, i) => (
-                <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + i * 0.07 }}
+                <motion.div key={i} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + i * 0.07, ease: EASE }}
                   style={{ display: 'flex', alignItems: 'flex-start', gap: 12, padding: '1rem 0', borderBottom: i < 3 ? '1px solid var(--rule-md)' : 'none' }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--gold)', flexShrink: 0, marginTop: 6 }} />
                   <span style={{ fontSize: 13, color: 'rgba(10,22,40,0.65)', lineHeight: 1.6, fontWeight: 300 }}>{item}</span>
@@ -274,7 +276,7 @@ export default function About() {
             </motion.div>
             <motion.div {...fadeRight()} style={{ background: 'var(--navy)', padding: '3rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               {OPERATIONS.map((op, i) => (
-                <motion.div key={op.label} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                <motion.div key={op.label} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, ease: EASE }}
                   style={{ paddingBottom: i < OPERATIONS.length - 1 ? '2rem' : 0, borderBottom: i < OPERATIONS.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold-lt)', marginBottom: 8 }}>{op.label}</div>
                   <div style={{ fontSize: 13, lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', fontWeight: 300 }}>{op.body}</div>
