@@ -30,10 +30,10 @@ export default function Footer() {
     {
       label: 'Standards',
       links: [
-        { name: 'Responsible sourcing', href: '#' },
-        { name: 'Custody documentation', href: '#' },
-        { name: 'Lab-verified purity', href: '#' },
-        { name: 'OECD compliance', href: '#' },
+        { name: 'Responsible sourcing', href: '/compliance' },
+        { name: 'Custody documentation', href: '/compliance' },
+        { name: 'Lab-verified purity', href: '/compliance' },
+        { name: 'OECD compliance', href: '/compliance' },
       ],
     },
   ];

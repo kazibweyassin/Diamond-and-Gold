@@ -1,47 +1,50 @@
 'use client';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import Navbar from '@/app/components/Navbar';
+import { getArticleById, homeNewsTeaserIds } from '@/lib/news-articles';
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer style={{ background: 'var(--navy)', color: '#fff', padding: '3rem 2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2rem', marginBottom: '2rem' }} className="footer-grid">
         <div>
           <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Company</div>
           <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <a href="/about">About us</a>
-            <a href="/process">Our process</a>
-            <a href="/compliance">Compliance</a>
+            <Link href="/about">About us</Link>
+            <Link href="/process">Our process</Link>
+            <Link href="/compliance">Compliance</Link>
           </div>
         </div>
         <div>
           <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Services</div>
           <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <a href="/products">Gold sourcing</a>
-            <a href="/products">Logistics</a>
-            <a href="/products">Assay services</a>
+            <Link href="/products#transaction-handling">Gold sourcing</Link>
+            <Link href="/products#secure-logistics">Logistics</Link>
+            <Link href="/products#assay-testing">Assay services</Link>
           </div>
         </div>
         <div>
           <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Resources</div>
           <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <a href="/news">News</a>
-            <a href="/compliance">Documentation</a>
-            <a href="/contact">Contact</a>
+            <Link href="/news">News</Link>
+            <Link href="/compliance">Documentation</Link>
+            <Link href="/contact">Contact</Link>
           </div>
         </div>
         <div>
           <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Connect</div>
           <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <a href="https://wa.me/256704833021">WhatsApp</a>
+            <a href="https://wa.me/256704833021" target="_blank" rel="noopener noreferrer">WhatsApp</a>
             <a href="mailto:info@diamondcapitalafrica.com">Email</a>
-            <a href="https://invest.diamondcapitalafrica.com">Investor portal</a>
+            <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer">Investor portal</a>
           </div>
         </div>
       </div>
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
-        <p>&copy; 2026 Diamond Capital Africa. All rights reserved.</p>
+        <p>&copy; {currentYear} Diamond Capital Africa. All rights reserved.</p>
       </div>
     </footer>
   );
@@ -83,22 +86,21 @@ const CREDENTIALS = [
   { code: 'INS',   title: 'Insured Logistics',         detail: 'Full-value shipment insurance with real-time tracking from dispatch to confirmed delivery.' },
 ];
 
-const NEWS = [
-  { title: "Uganda's Gold Production Reaches Record Levels in 2025", date: 'Jan 2026', cat: 'Mining',     excerpt: "Uganda solidifies its position as Africa's leading gold producer with unprecedented output levels." },
-  { title: "International Standards Boost Uganda's Competitive Edge", date: 'Dec 2025', cat: 'Compliance', excerpt: 'KIMBERLEY PROCESS adoption and conflict-free sourcing enhance global investor confidence.' },
-  { title: 'East African Gold Trade Corridor Expands Opportunities',  date: 'Oct 2025', cat: 'Trade',      excerpt: 'Trade agreements improve export logistics and cross-border gold commerce substantially.' },
-  { title: 'Technology Improves Gold Processing Efficiency',          date: 'Sep 2025', cat: 'Technology',  excerpt: 'Advanced assay systems and blockchain tracking raise quality and traceability standards.' },
-];
-
 function GoldTicker() {
   const [price, setPrice] = useState(3327.45);
-  const [prev,  setPrev]  = useState(3327.45);
+  const [prev, setPrev] = useState(3327.45);
+  const prevRef = useRef(price);
+
   useEffect(() => {
-    const t = setInterval(() => {
-      setPrice(p => { const n = +(p + (Math.random() - 0.49) * 3).toFixed(2); setPrev(p); return n; });
+    const interval = setInterval(() => {
+      const newPrice = +(price + (Math.random() - 0.49) * 3).toFixed(2);
+      prevRef.current = price;
+      setPrev(prevRef.current);
+      setPrice(newPrice);
     }, 3500);
-    return () => clearInterval(t);
-  }, []);
+    return () => clearInterval(interval);
+  }, [price]);
+
   const up = price >= prev;
 
   return (
@@ -142,10 +144,14 @@ export default function Home() {
   }, []);
 
   return (
-    <main style={{ minHeight: '100vh', background: '#F7F6F2', color: '#0D0D0D', fontFamily: "'Sora', system-ui, sans-serif", WebkitFontSmoothing: 'antialiased' }}>
+    <main className="font-dca-marketing" style={{ minHeight: '100vh', background: '#F7F6F2', color: '#0D0D0D', WebkitFontSmoothing: 'antialiased' }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+          margin: 0;
+          padding: 0;
+          background: #0A1628;
+        }
         a { text-decoration: none; color: inherit; }
         :root {
           --navy:    #0A1628;
@@ -155,7 +161,12 @@ export default function Home() {
           --cream:   #F7F6F2;
           --rule:    rgba(10,22,40,0.09);
           --rule-md: rgba(10,22,40,0.15);
-          --mono:    'IBM Plex Mono', monospace;
+          --mono:    var(--font-dca-mono), ui-monospace, monospace;
+        }
+        @keyframes gentleZoom {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
         }
         .eyebrow {
           font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
@@ -167,27 +178,281 @@ export default function Home() {
         .section-title strong { font-weight: 600; }
         .rule { border: none; border-top: 1px solid var(--rule-md); margin: 0 2rem; }
 
-        /* HERO */
-        .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; transition: opacity 1.2s ease; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 2px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
-        .hero-h1 { font-size: clamp(2.4rem, 5vw, 3.9rem); font-weight: 300; line-height: 1.07; letter-spacing: -0.025em; color: #fff; margin-bottom: 1.25rem; }
-        .hero-h1 strong { font-weight: 600; color: var(--gold-lt); }
-        .hero-sub { font-size: 15px; line-height: 1.7; font-weight: 300; color: rgba(255,255,255,0.52); max-width: 460px; margin-bottom: 2.5rem; }
-        .btn-primary { background: var(--gold); color: #fff; font-size: 13px; font-weight: 500; padding: 13px 28px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; }
-        .btn-primary:hover { background: #9a7820; }
-        .btn-ghost { border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.72); font-size: 13px; padding: 13px 28px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
-        .btn-ghost:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
-        .btn-wa { background: #25D366; color: #fff; font-size: 13px; font-weight: 500; padding: 13px 28px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; }
-        .btn-wa:hover { background: #1dba58; }
-        .slide-ind { display: flex; align-items: center; gap: 8px; cursor: pointer; background: none; border: none; padding: 0; }
-        .ind-line { height: 1px; background: rgba(255,255,255,0.22); transition: all 0.35s; width: 18px; }
-        .slide-ind.active .ind-line { width: 36px; background: var(--gold-lt); }
-        .ind-text { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.32); transition: color 0.3s; }
-        .slide-ind.active .ind-text { color: rgba(255,255,255,0.65); }
-        .hero-stat { background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); padding: 16px 18px; }
-        .stat-unit { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; color: var(--gold-lt); margin-bottom: 6px; }
-        .stat-val  { font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
-        .stat-lbl  { font-size: 10px; color: rgba(255,255,255,0.38); }
+        /* HERO — with zoom animation */
+        .hero-section {
+          position: relative;
+          min-height: 100svh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding-top: 60px;
+          overflow: hidden;
+        }
+        .hero-slide {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center;
+          transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+          will-change: transform;
+        }
+        .hero-slide.active {
+          animation: gentleZoom 20s ease-in-out infinite;
+        }
+        .hero-overlay--mesh {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(ellipse 120% 80% at 15% 20%, rgba(232, 201, 106, 0.07) 0%, transparent 45%),
+            linear-gradient(115deg, rgba(10, 22, 40, 0.92) 0%, rgba(10, 22, 40, 0.72) 42%, rgba(10, 22, 40, 0.35) 72%, rgba(10, 22, 40, 0.55) 100%);
+          pointer-events: none;
+        }
+        .hero-overlay--vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 95% 75% at 50% 100%, rgba(0, 0, 0, 0.42) 0%, transparent 58%);
+          pointer-events: none;
+        }
+        .hero-overlay--grid {
+          position: absolute;
+          inset: 0;
+          opacity: 0.35;
+          background-image:
+            linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+          background-size: 48px 48px;
+          pointer-events: none;
+        }
+        .hero-overlay--accent {
+          position: absolute;
+          top: -20%;
+          right: -15%;
+          width: min(55vw, 520px);
+          height: min(55vw, 520px);
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(232, 201, 106, 0.12) 0%, transparent 68%);
+          pointer-events: none;
+        }
+        .hero-inner {
+          position: relative;
+          z-index: 10;
+          max-width: 1280px;
+          margin: 0 auto;
+          width: 100%;
+          padding: clamp(3rem, 6vw, 5rem) 2rem clamp(3rem, 7vw, 5.5rem);
+          display: flex;
+          align-items: flex-end;
+          gap: clamp(2rem, 5vw, 4rem);
+        }
+        .hero-copy { flex: 1; min-width: 0; max-width: 720px; }
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px 18px;
+          border-radius: 999px;
+          font-family: var(--mono);
+          font-size: 10px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: rgba(255, 255, 255, 0.72);
+          background: rgba(255, 255, 255, 0.06);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border: 1px solid rgba(255, 255, 255, 0.14);
+          margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+        .hero-badge-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #4ADE80;
+          box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.25);
+          flex-shrink: 0;
+        }
+        .hero-h1 {
+          font-size: clamp(2.35rem, 5.2vw, 4rem);
+          font-weight: 300;
+          line-height: 1.05;
+          letter-spacing: -0.03em;
+          color: #fff;
+          margin-bottom: clamp(1rem, 2vw, 1.35rem);
+          text-wrap: balance;
+        }
+        .hero-h1 strong {
+          font-weight: 600;
+          color: var(--gold-lt);
+          display: inline;
+        }
+        .hero-sub {
+          font-size: clamp(14px, 1.05vw, 16px);
+          line-height: 1.65;
+          font-weight: 300;
+          color: rgba(255, 255, 255, 0.58);
+          max-width: 34rem;
+          margin-bottom: clamp(1.75rem, 3vw, 2.25rem);
+        }
+        .hero-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: clamp(1.75rem, 3vw, 2.25rem);
+        }
+        .btn-primary {
+          background: linear-gradient(165deg, #c9a54a 0%, var(--gold) 45%, #9a7820 100%);
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
+          padding: 14px 28px;
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+          box-shadow: 0 8px 28px rgba(184, 146, 42, 0.35);
+          border: none;
+        }
+        .btn-primary:hover {
+          filter: brightness(1.05);
+          transform: translateY(-1px);
+          box-shadow: 0 12px 36px rgba(184, 146, 42, 0.42);
+        }
+        .btn-ghost {
+          border: 1px solid rgba(255, 255, 255, 0.28);
+          color: rgba(255, 255, 255, 0.82);
+          font-size: 13px;
+          padding: 14px 26px;
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: border-color 0.2s, background 0.2s, color 0.2s;
+          background: rgba(255, 255, 255, 0.04);
+          backdrop-filter: blur(8px);
+        }
+        .btn-ghost:hover {
+          border-color: rgba(255, 255, 255, 0.55);
+          color: #fff;
+          background: rgba(255, 255, 255, 0.08);
+        }
+        .btn-wa {
+          background: #25D366;
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
+          padding: 14px 26px;
+          border-radius: 999px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: transform 0.2s, filter 0.2s;
+          box-shadow: 0 6px 22px rgba(37, 211, 102, 0.28);
+          border: none;
+        }
+        .btn-wa:hover {
+          background: #20bd5a;
+          transform: translateY(-1px);
+        }
+        .hero-slide-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 14px 20px;
+          margin-bottom: clamp(1.75rem, 3vw, 2.25rem);
+        }
+        .hero-slide-nav {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+        .hero-dot-wrap {
+          width: 44px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+        .hero-dot-inner {
+          width: 10px;
+          height: 10px;
+          border: 2px solid rgba(255, 255, 255, 0.38);
+          border-radius: 999px;
+          background: transparent;
+          transition: width 0.35s ease, border-color 0.25s, background 0.25s;
+          display: block;
+        }
+        .hero-dot-inner.active {
+          width: 34px;
+          border-color: var(--gold-lt);
+          background: var(--gold-lt);
+        }
+        .hero-slide-caption {
+          font-family: var(--mono);
+          font-size: 10px;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: rgba(255, 255, 255, 0.42);
+          margin: 0;
+          min-height: 1.25em;
+        }
+        .hero-metrics {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
+        }
+        .hero-stat {
+          background: rgba(255, 255, 255, 0.06);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 14px;
+          padding: 16px 14px;
+          transition: border-color 0.25s, background 0.25s;
+        }
+        .hero-stat:hover {
+          border-color: rgba(232, 201, 106, 0.35);
+          background: rgba(255, 255, 255, 0.08);
+        }
+        .stat-unit {
+          font-family: var(--mono);
+          font-size: 8px;
+          letter-spacing: 0.16em;
+          color: rgba(232, 201, 106, 0.85);
+          margin-bottom: 8px;
+        }
+        .stat-val {
+          font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+          font-weight: 600;
+          color: #fff;
+          letter-spacing: -0.02em;
+          line-height: 1;
+          margin-bottom: 6px;
+        }
+        .stat-lbl {
+          font-size: 10px;
+          line-height: 1.35;
+          color: rgba(255, 255, 255, 0.42);
+          font-weight: 400;
+        }
+        .hero-aside {
+          width: min(100%, 320px);
+          flex-shrink: 0;
+        }
+        .hero-ticker-panel {
+          padding: 4px;
+          border-radius: 14px;
+          background: linear-gradient(145deg, rgba(255,255,255,0.22), rgba(255,255,255,0.04));
+          box-shadow: 0 24px 48px rgba(10, 22, 40, 0.35);
+        }
+        .hero-ticker-panel > div {
+          border-radius: 11px !important;
+        }
 
         /* HOW IT WORKS */
         .step-item { display: grid; grid-template-columns: 56px 1fr; padding: 2rem 0; border-bottom: 1px solid var(--rule-md); }
@@ -238,7 +503,7 @@ export default function Home() {
         .cta-cv   { font-size: 14px; color: rgba(255,255,255,0.72); font-weight: 400; }
 
         /* FOOTER */
-        .footer-links a { font-size: 13px; color: rgba(255,255,255,0.38); transition: color 0.2s; font-weight: 300; }
+        .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.2s; font-weight: 300; }
         .footer-links a:hover { color: var(--gold); }
 
         /* DOWNLOADS */
@@ -255,9 +520,9 @@ export default function Home() {
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 768px) {
-          .hero-flex   { flex-direction: column; }
-          .hero-right  { width: 100% !important; }
-          .hero-stats  { grid-template-columns: repeat(2,1fr) !important; }
+          .hero-inner   { flex-direction: column; align-items: stretch; }
+          .hero-aside   { width: 100% !important; max-width: none; }
+          .hero-metrics { grid-template-columns: repeat(2, 1fr) !important; }
           .why-cols    { grid-template-columns: 1fr !important; }
           .ops-cols    { grid-template-columns: 1fr !important; }
           .buyers-cols { grid-template-columns: 1fr !important; }
@@ -267,69 +532,90 @@ export default function Home() {
           .comp-cols   { grid-template-columns: 1fr !important; }
           .cred-grid   { grid-template-columns: 1fr !important; }
           .footer-grid { grid-template-columns: 1fr 1fr !important; }
-          .slide-inds  { flex-wrap: wrap; }
+          .hero-slide-row { flex-direction: column; align-items: flex-start; }
         }
       `}</style>
 
-      {/* ── NAVBAR ── imported component, replaces inline nav ── */}
       <Navbar />
 
       {/* ── HERO ── */}
-      <section ref={heroRef} style={{ position: 'relative', minHeight: '100svh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingTop: 60, overflow: 'hidden' }}>
+      <section ref={heroRef} className="hero-section">
         <div style={{ position: 'absolute', inset: 0 }}>
           {SLIDES.map((s, i) => (
             <motion.div
               key={i}
-              className="hero-slide"
-              style={{ backgroundImage: `url(${s.image})`, opacity: i === slideIdx ? 1 : 0, y: i === slideIdx ? imgY : '0%' } as any}
+              className={`hero-slide ${i === slideIdx ? 'active' : ''}`}
+              style={{
+                backgroundImage: `url(${s.image})`,
+                opacity: i === slideIdx ? 1 : 0,
+                transform: i === slideIdx
+                  ? `translateY(${imgY.get()}) scale(1)`
+                  : 'translateY(0%) scale(1)',
+              }}
+              aria-label={s.label}
+              role="img"
             />
           ))}
         </div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(108deg, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.52) 55%, rgba(10,22,40,0.14) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)', backgroundSize: '56px 56px' }} />
+        <div className="hero-overlay--mesh" aria-hidden />
+        <div className="hero-overlay--vignette" aria-hidden />
+        <div className="hero-overlay--grid" aria-hidden />
+        <div className="hero-overlay--accent" aria-hidden />
 
-        <div style={{ position: 'relative', zIndex: 10, maxWidth: 1280, margin: '0 auto', width: '100%', padding: '4rem 2rem 5rem', display: 'flex', alignItems: 'flex-end', gap: '3rem' }} className="hero-flex">
-          <div style={{ flex: 1 }}>
+        <div className="hero-inner">
+          <div className="hero-copy">
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
               <div className="hero-badge">
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ADE80' }} />
+                <span className="hero-badge-dot" aria-hidden />
                 Uganda licensed operator
               </div>
             </motion.div>
 
-            <motion.div key={slideIdx} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75 }}>
+            <motion.div key={slideIdx} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
               <h1 className="hero-h1">
-                We source gold<br />from Uganda.<br />
-                <strong>Every shipment verified,<br />documented, export-ready.</strong>
+                Certified gold supply<br />from Uganda —{' '}
+                <strong>verified, documented, export-ready.</strong>
               </h1>
               <p className="hero-sub">
-                Tell us what you need — volume, purity, timeline. We handle sourcing, lab testing, compliance and delivery so your order arrives clean and on time.
+                Share volume, purity, and timeline. We coordinate sourcing, independent assay, compliance paperwork, and insured logistics so your shipment arrives traceable and on schedule.
               </p>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: '2.5rem' }}>
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+              <div className="hero-actions">
                 <a href="/products" className="btn-primary">Explore services →</a>
                 <a href="https://wa.me/256704833021" className="btn-wa">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
                     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.861L.057 23.5l5.79-1.452A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.214-3.716.931.99-3.63-.236-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
                   </svg>
-                  Request consultation
+                  WhatsApp us
                 </a>
                 <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">Investor portal ↗</a>
               </div>
 
-              <div className="slide-inds" style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: '2.5rem', flexWrap: 'wrap' }}>
-                {SLIDES.map((s, i) => (
-                  <button key={i} className={`slide-ind${i === slideIdx ? ' active' : ''}`} onClick={() => setSlideIdx(i)}>
-                    <div className="ind-line" />
-                    <span className="ind-text">{s.label}</span>
-                  </button>
-                ))}
+              <div className="hero-slide-row">
+                <div className="hero-slide-nav" role="tablist" aria-label="Hero imagery">
+                  {SLIDES.map((s, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      role="tab"
+                      aria-selected={i === slideIdx}
+                      aria-label={`Slide ${i + 1} of ${SLIDES.length}: ${s.label}`}
+                      className="hero-dot-wrap"
+                      onClick={() => setSlideIdx(i)}
+                    >
+                      <span className={`hero-dot-inner${i === slideIdx ? ' active' : ''}`} aria-hidden />
+                    </button>
+                  ))}
+                </div>
+                <p className="hero-slide-caption" aria-live="polite">
+                  {SLIDES[slideIdx].label}
+                </p>
               </div>
 
-              <div className="hero-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 4, overflow: 'hidden' }}>
+              <div className="hero-metrics">
                 {STATS.map(({ value, label, unit }) => (
                   <div key={label} className="hero-stat">
                     <div className="stat-unit">{unit}</div>
@@ -341,9 +627,11 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="hero-right" style={{ width: 300, flexShrink: 0 }}>
-            <GoldTicker />
-          </div>
+          <aside className="hero-aside">
+            <div className="hero-ticker-panel">
+              <GoldTicker />
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -375,7 +663,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US ── */}
+      {/* ── rest of the sections (unchanged) ── */}
+      {/* WHY CHOOSE US */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -404,7 +693,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── OPERATIONS ── */}
+      {/* OPERATIONS */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem', background: '#fff' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -417,9 +706,9 @@ export default function Home() {
           </div>
           <div className="ops-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.5rem' }}>
             {[
-              { label: 'Assay coordination', src: 'https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Independent purity verification arranged with certified labs.' },
-              { label: 'Field operations',   src: 'https://images.pexels.com/photos/4441607/pexels-photo-4441607.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'On-site inspections, partner coordination, and custody tracking.' },
-              { label: 'Mineral sourcing',   src: 'https://images.pexels.com/photos/33357665/pexels-photo-33357665.jpeg?auto=compress&cs=tinysrgb&w=800', desc: 'Verified mineral lots with documented origin and logistics.' },
+              { label: 'Assay coordination', src: '/assaying.jpg', desc: 'Independent purity verification arranged with certified labs.' },
+              { label: 'Field operations',   src: '/man-pouring-melted-metal-workshop-large.jpg', desc: 'On-site inspections, partner coordination, and custody tracking.' },
+              { label: 'Mineral sourcing',   src: '/Gold-bars.webp', desc: 'Verified mineral lots with documented origin and logistics.' },
             ].map((item, i) => (
               <motion.div key={item.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="ops-card" style={{ borderRadius: 4, overflow: 'hidden' }}>
                 <div style={{ overflow: 'hidden' }}>
@@ -435,7 +724,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── COMPLIANCE ── */}
+      {/* COMPLIANCE */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '4rem', alignItems: 'start' }} className="comp-cols">
@@ -469,7 +758,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CREDENTIALS ── */}
+      {/* CREDENTIALS */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem', background: '#fff' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -495,7 +784,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHY BUYERS ── */}
+      {/* WHY BUYERS */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -524,7 +813,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DOWNLOADS ── */}
+      {/* DOWNLOADS */}
       <hr className="rule" />
       <section style={{ padding: '5rem 2rem', background: '#fff' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -554,7 +843,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── NEWS ── */}
+      {/* NEWS */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -566,17 +855,31 @@ export default function Home() {
             <a href="/news" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>All articles →</a>
           </div>
           <div className="news-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '1.5rem' }}>
-            {NEWS.map((n, i) => (
-              <motion.a key={i} href="/news" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }} className="news-card">
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
-                  <span className="news-cat">{n.cat}</span>
-                  <span className="news-date">{n.date}</span>
-                </div>
-                <div className="news-title">{n.title}</div>
-                <div className="news-excerpt">{n.excerpt}</div>
-                <div className="news-link">Read article →</div>
-              </motion.a>
-            ))}
+            {homeNewsTeaserIds.map((articleId, i) => {
+              const article = getArticleById(articleId);
+              if (!article) return null;
+              const teaser = article.homeTeaser ?? article.excerpt;
+              return (
+                <motion.div
+                  key={articleId}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                  style={{ height: '100%' }}
+                >
+                  <Link href={`/news/${articleId}`} className="news-card" style={{ height: '100%' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
+                      <span className="news-cat">{article.category}</span>
+                      <span className="news-date">{article.dateShort}</span>
+                    </div>
+                    <div className="news-title">{article.title}</div>
+                    <div className="news-excerpt">{teaser}</div>
+                    <div className="news-link">Read article →</div>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
           <div style={{ marginTop: '2rem', textAlign: 'center' }}>
             <a href="/news" style={{ display: 'inline-block', border: '1px solid var(--rule-md)', borderRadius: 4, padding: '12px 28px', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--navy)' }}>
@@ -586,7 +889,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ── */}
+      {/* FINAL CTA */}
       <section className="cta-section">
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 1280, margin: '0 auto', padding: '6rem 2rem' }}>
           <div className="cta-label">Available for immediate orders</div>
@@ -594,7 +897,7 @@ export default function Home() {
           <p className="cta-sub">Tell us what you need — volume, purity, timeline. We&apos;ll come back with a straight quote and answer your questions directly.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: '4rem' }}>
             <a href="/account-holders" className="btn-primary" style={{ fontSize: 14, padding: '14px 32px' }}>Get started today</a>
-            <a href="/products" className="btn-ghost" style={{ fontSize: 14, padding: '14px 32px' }}>View all services →</a>
+            <a href="/products" className="btn-ghost" style={{ fontSize: 14, padding: '14px 32px' }}>Explore services →</a>
             <a href="https://wa.me/256704833021" className="btn-wa" style={{ fontSize: 14, padding: '14px 32px' }}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>

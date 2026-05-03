@@ -45,6 +45,18 @@ body {
   padding-right: max(env(safe-area-inset-right), 1rem);
 }
 
+/* Marketing pages (home, about) — Sora + IBM Plex Mono from next/font in layout */
+.font-dca-marketing {
+  font-family: var(--font-dca-sora), ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-ping-ring {
+    animation: none !important;
+    opacity: 0;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -95,7 +107,7 @@ small {
   @apply text-xs sm:text-sm;
 }
 
-button, a {
+button {
   @apply min-h-11 sm:min-h-10;
 }
 
@@ -116,8 +128,8 @@ button, a {
 /* ── Touch Device Optimizations ── */
 
 @media (hover: none) and (pointer: coarse) {
-  /* Increase touch target sizes */
-  button, a {
+  /* Primary controls only — avoid forcing min size on all inline text links */
+  button {
     @apply min-h-12 min-w-12;
   }
 

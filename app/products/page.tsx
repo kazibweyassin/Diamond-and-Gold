@@ -1,12 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '@/app/components/Header';
 import ProductHeader from '@/app/components/ProductHeader';
 import { services } from '@/lib/services';
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+
+  useEffect(() => {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (!hash) return;
+    const found = services.find((s) => s.id === hash);
+    if (!found) return;
+    setSelectedProduct(hash);
+    const t = requestAnimationFrame(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    return () => cancelAnimationFrame(t);
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
@@ -100,7 +112,10 @@ function ServiceCard({ service, selectedProduct, setSelectedProduct }: any) {
   const isOpen = selectedProduct === service.id;
 
   return (
-    <div className="rounded-2xl border border-amber-200 bg-white overflow-hidden">
+    <div
+      id={service.id}
+      className="scroll-mt-28 rounded-2xl border border-amber-200 bg-white overflow-hidden"
+    >
       <div className="grid md:grid-cols-2">
         <img
           src={service.image}

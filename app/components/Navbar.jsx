@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_LINKS = [
@@ -9,9 +10,16 @@ const NAV_LINKS = [
   { label: 'Compliance', href: '/compliance' },
   { label: 'Process',    href: '/process' },
   { label: 'News',       href: '/news' },
+  { label: 'Contact',    href: '/contact' },
 ];
 
+function isNavActive(pathname, href) {
+  if (href === '/news') return pathname === '/news' || pathname.startsWith('/news/');
+  return pathname === href;
+}
+
 export default function Navbar() {
+  const pathname = usePathname() ?? '';
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled]     = useState(false);
 
@@ -34,7 +42,7 @@ export default function Navbar() {
           --gold:    #B8922A;
           --cream:   #F7F6F2;
           --rule-md: rgba(10,22,40,0.15);
-          --mono:    'IBM Plex Mono', monospace;
+          --mono:    var(--font-dca-mono), ui-monospace, monospace;
         }
         .dca-nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -42,7 +50,7 @@ export default function Navbar() {
           background: rgba(247,246,242,0.94);
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
-          font-family: 'Sora', system-ui, sans-serif;
+          font-family: var(--font-dca-sora), ui-sans-serif, system-ui, sans-serif;
           transition: border-color 0.25s, box-shadow 0.25s;
           border-bottom: 1px solid transparent;
         }
@@ -66,6 +74,10 @@ export default function Navbar() {
           text-decoration: none; color: inherit; transition: color 0.2s;
         }
         .nav-links-desktop a:hover { color: var(--navy); }
+        .nav-links-desktop a.nav-link-active {
+          color: var(--navy);
+          font-weight: 600;
+        }
 
         .nav-ctas { display: flex; gap: 8px; align-items: center; }
 
@@ -115,7 +127,7 @@ export default function Navbar() {
           overflow-y: auto;
           display: flex; flex-direction: column;
           padding: 1.5rem 2rem 3rem;
-          font-family: 'Sora', system-ui, sans-serif;
+          font-family: var(--font-dca-sora), ui-sans-serif, system-ui, sans-serif;
         }
         .mobile-link {
           display: block; text-decoration: none;
@@ -125,6 +137,10 @@ export default function Navbar() {
           transition: color 0.2s;
         }
         .mobile-link:hover { color: var(--gold); }
+        .mobile-link.mobile-link-active {
+          color: var(--navy);
+          font-weight: 500;
+        }
         .mobile-ctas {
           margin-top: 2rem;
           display: flex; flex-direction: column; gap: 12px;
@@ -170,7 +186,9 @@ export default function Navbar() {
           <ul className="nav-links-desktop">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href}>
-                <Link href={href}>{label}</Link>
+                <Link href={href} className={isNavActive(pathname, href) ? 'nav-link-active' : ''}>
+                  {label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -228,7 +246,7 @@ export default function Navbar() {
                   <Link
                     key={href}
                     href={href}
-                    className="mobile-link"
+                    className={`mobile-link${isNavActive(pathname, href) ? ' mobile-link-active' : ''}`}
                     onClick={() => setMobileOpen(false)}
                   >
                     {label}
