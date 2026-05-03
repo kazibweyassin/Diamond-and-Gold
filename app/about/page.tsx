@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { ArrowRight, BookOpenCheck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -133,6 +134,22 @@ export default function About() {
           .cred-grid { grid-template-columns: 1fr !important; }
           .hero-stats-wrap { grid-template-columns: 1fr 1fr !important; }
         }
+        @media (max-width: 560px) {
+          .hero-content { padding: 0 1rem 1.5rem; }
+          .hero-badge { font-size: 8px; letter-spacing: 0.12em; padding: 5px 11px; margin-bottom: 1rem; }
+          .hero-title { font-size: 1.8rem; line-height: 1.08; margin-bottom: 1rem; }
+          .hero-subtitle { font-size: 0.88rem; line-height: 1.55; }
+          .hero-stats { margin-top: 1.75rem; }
+          .hero-stat { padding: 0.9rem 0.85rem; }
+          .stat-unit { font-size: 7px; }
+          .stat-val { font-size: 1.1rem; }
+          .stat-lbl { font-size: 8px; }
+          .section { padding: 3rem 1rem; }
+          .section-title { font-size: 1.25rem; line-height: 1.15; }
+          .p-title, .service-title, .cred-title, .value-title, .ops-label { font-size: 13px; }
+          .p-body, .service-body, .cred-body, .value-body, .ops-body { font-size: 11px; line-height: 1.6; }
+          .cta-button { width: 100%; text-align: center; }
+        }
       `}</style>
 
       <Navbar />
@@ -238,7 +255,10 @@ export default function About() {
               <div className="eyebrow">Field gallery</div>
               <h2 className="section-title"><strong>What it looks like</strong> on the ground</h2>
             </div>
-            <a href="/contact" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>Request site visit info →</a>
+            <a href="/contact" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              Request site visit info
+              <ArrowRight size={14} strokeWidth={2} />
+            </a>
           </motion.div>
         </div>
         <motion.div className="gallery-mosaic" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
@@ -320,7 +340,14 @@ export default function About() {
           <div className="cred-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1.5rem' }}>
             {CREDENTIALS.map((c, i) => (
               <motion.div key={c.code} className="cred-card" {...fadeUp(i * 0.08)}>
-                <div className="cred-code">{c.code}</div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem', marginBottom: '1rem' }}>
+                  <div className="cred-code" style={{ marginBottom: 0 }}>{c.code}</div>
+                  {c.code === 'OECD' && (
+                    <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 34, height: 34, borderRadius: 999, background: 'rgba(184,146,42,0.08)', color: 'var(--gold)' }} aria-hidden="true">
+                      <BookOpenCheck size={18} strokeWidth={2} />
+                    </span>
+                  )}
+                </div>
                 <div className="cred-title">{c.title}</div>
                 <div className="cred-body">{c.body}</div>
               </motion.div>
@@ -344,7 +371,10 @@ export default function About() {
               Tell us what you need — volume, purity, timeline. We will come back with a straight quote and answer your questions directly.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-              <a href="/contact" className="btn-gold">Get in touch →</a>
+              <a href="/contact" className="btn-gold">
+                Get in touch
+                <ArrowRight size={14} strokeWidth={2} />
+              </a>
               <a href="/products" className="btn-outline-w">View services</a>
             </div>
           </motion.div>
