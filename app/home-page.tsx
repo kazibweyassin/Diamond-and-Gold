@@ -60,7 +60,7 @@ const SLIDES = [
 
 const STATS = [
   { value: '99.5%+', label: 'Minimum purity',          unit: 'XAU' },
-  { value: '48ΓÇô72h', label: 'Dispatch window',          unit: 'HRS' },
+  { value: '48–72h', label: 'Dispatch window',          unit: 'HRS' },
   { value: '100%',   label: 'KYC-compliant orders',     unit: 'DOCS' },
   { value: 'OECD',   label: 'Due diligence standard',   unit: 'STD' },
 ];
@@ -73,9 +73,9 @@ const STEPS = [
 ];
 
 const FEATURES = [
-  { title: 'Transparent pricing',   body: 'Working directly with local artisanal miners eliminates intermediaries ΓÇö enabling prices no broker can match.' },
-  { title: 'Licensed & legitimate', body: "Fully licensed to buy and export gold in Uganda. Ask for our documentation ΓÇö we'll send it immediately." },
-  { title: 'Complete paper trail',  body: 'Origin certificate, assay report, custody records, KYC package ΓÇö all included. Nothing you need to chase us for.' },
+  { title: 'Transparent pricing',   body: 'Working directly with local artisanal miners eliminates intermediaries — enabling prices no broker can match.' },
+  { title: 'Licensed & legitimate', body: "Fully licensed to buy and export gold in Uganda. Ask for our documentation — we'll send it immediately." },
+  { title: 'Complete paper trail',  body: 'Origin certificate, assay report, custody records, KYC package — all included. Nothing you need to chase us for.' },
   { title: 'Insured delivery',      body: 'Full-value shipment insurance with real-time tracking from dispatch to confirmed delivery anywhere in the world.' },
 ];
 
@@ -108,7 +108,7 @@ function GoldTicker() {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
         <span style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.15em', color: 'rgba(10,22,40,0.4)' }}>XAU / USD</span>
         <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 500, padding: '2px 8px', borderRadius: 2, background: up ? '#ECFDF5' : '#FEF2F2', color: up ? '#059669' : '#DC2626' }}>
-          {up ? 'Γû▓' : 'Γû╝'} {Math.abs(price - prev).toFixed(2)}
+          {up ? '▲' : '▼'} {Math.abs(price - prev).toFixed(2)}
         </span>
       </div>
       <div style={{ fontSize: '2rem', fontWeight: 600, letterSpacing: '-0.03em', color: 'var(--navy)', marginBottom: 4 }}>${price.toFixed(2)}</div>
@@ -126,7 +126,7 @@ function GoldTicker() {
         ))}
       </div>
       <a href="/products" style={{ display: 'block', textAlign: 'center', background: 'var(--navy)', color: '#fff', fontSize: 12, fontWeight: 500, padding: 11, borderRadius: 4, letterSpacing: '0.02em' }}>
-        Explore services ΓåÆ
+        Explore services →
       </a>
     </div>
   );
@@ -178,7 +178,7 @@ export default function Home() {
         .section-title strong { font-weight: 600; }
         .rule { border: none; border-top: 1px solid var(--rule-md); margin: 0 2rem; }
 
-        /* HERO ΓÇö with zoom animation */
+        /* HERO — with zoom animation */
         .hero-section {
           position: relative;
           min-height: 100svh;
@@ -538,7 +538,7 @@ export default function Home() {
 
       <Navbar />
 
-      {/* ΓöÇΓöÇ HERO ΓöÇΓöÇ */}
+      {/* HERO */}
       <section ref={heroRef} className="hero-section">
         <div style={{ position: 'absolute', inset: 0 }}>
           {SLIDES.map((s, i) => (
@@ -573,7 +573,7 @@ export default function Home() {
 
             <motion.div key={slideIdx} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
               <h1 className="hero-h1">
-                Certified gold supply<br />from Uganda ΓÇö{' '}
+                Certified gold supply<br />from Uganda —{' '}
                 <strong>verified, documented, export-ready.</strong>
               </h1>
               <p className="hero-sub">
@@ -583,7 +583,7 @@ export default function Home() {
 
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
               <div className="hero-actions">
-                <a href="/products" className="btn-primary">Explore services ΓåÆ</a>
+                <a href="/products" className="btn-primary">Explore services →</a>
                 <a href="https://wa.me/256704833021" className="btn-wa">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
@@ -591,7 +591,7 @@ export default function Home() {
                   </svg>
                   WhatsApp us
                 </a>
-                <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">Investor portal Γåù</a>
+                <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">Investor portal →</a>
               </div>
 
               <div className="hero-slide-row">
@@ -635,18 +635,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ΓöÇΓöÇ HOW IT WORKS ΓöÇΓöÇ */}
+      {/* HOW IT WORKS */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem', background: '#fff' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.7fr', gap: '5rem', alignItems: 'start' }} className="lg-grid-2">
           <div>
             <div className="eyebrow">Process</div>
-            <h2 className="section-title">From inquiry to delivery ΓÇö<br /><strong>four clear steps.</strong></h2>
+            <h2 className="section-title">From inquiry to delivery —<br /><strong>four clear steps.</strong></h2>
             <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', lineHeight: 1.7, marginTop: '1.25rem', fontWeight: 300, maxWidth: 300 }}>
               Every order follows a documented workflow so nothing falls through the cracks and your compliance team can verify every stage.
             </p>
             <a href="/process" style={{ display: 'inline-block', marginTop: '1.5rem', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>
-              See full process ΓåÆ
+              See full process →
             </a>
           </div>
           <div>
@@ -663,7 +663,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ΓöÇΓöÇ rest of the sections (unchanged) ΓöÇΓöÇ */}
+      {/* rest of the sections (unchanged) */}
       {/* WHY CHOOSE US */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
@@ -673,7 +673,7 @@ export default function Home() {
               <div className="eyebrow">Why choose us</div>
               <h2 className="section-title">We know the mines, hold the<br /><strong>licences, and have done this before.</strong></h2>
             </div>
-            <a href="/contact" style={{ background: 'var(--navy)', color: '#fff', fontSize: 12, fontWeight: 500, padding: '12px 24px', borderRadius: 4, whiteSpace: 'nowrap' }}>Contact us ΓåÆ</a>
+            <a href="/contact" style={{ background: 'var(--navy)', color: '#fff', fontSize: 12, fontWeight: 500, padding: '12px 24px', borderRadius: 4, whiteSpace: 'nowrap' }}>Contact us →</a>
           </div>
           <div className="why-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '1px', background: 'var(--rule-md)', border: '1px solid var(--rule-md)', borderRadius: 6, overflow: 'hidden' }}>
             {FEATURES.map((f, i) => (
@@ -687,7 +687,7 @@ export default function Home() {
           <div style={{ marginTop: '1rem', padding: '1.25rem 1.5rem', background: 'rgba(27,107,58,0.05)', border: '1px solid rgba(27,107,58,0.18)', borderRadius: 4 }}>
             <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.55)', fontWeight: 300 }}>
               Want to invest in Uganda&apos;s gold sector, not just buy from it?{' '}
-              <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--green)', fontWeight: 500 }}>Investor portal ΓåÆ</a>
+              <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--green)', fontWeight: 500 }}>Investor portal →</a>
             </p>
           </div>
         </div>
@@ -702,7 +702,7 @@ export default function Home() {
               <div className="eyebrow">Operations in focus</div>
               <h2 className="section-title"><strong>On-the-ground</strong> visuals</h2>
             </div>
-            <a href="/contact" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>Request sourcing details ΓåÆ</a>
+            <a href="/contact" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>Request sourcing details →</a>
           </div>
           <div className="ops-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.5rem' }}>
             {[
@@ -779,7 +779,7 @@ export default function Home() {
             <p style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(10,22,40,0.58)', maxWidth: 600 }}>
               Every order ships with the full paper trail: origin certificate, lab assay report, custody records, and export documentation. Nothing missing, nothing you&apos;ll need to chase us for.
             </p>
-            <a href="/compliance" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em', color: 'var(--gold)', whiteSpace: 'nowrap' }}>View compliance docs ΓåÆ</a>
+            <a href="/compliance" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em', color: 'var(--gold)', whiteSpace: 'nowrap' }}>View compliance docs →</a>
           </div>
         </div>
       </section>
@@ -791,11 +791,11 @@ export default function Home() {
           <div style={{ marginBottom: '2.5rem' }}>
             <div className="eyebrow">Why buyers choose us</div>
             <h2 className="section-title">What you actually get <strong>when you order</strong></h2>
-            <p style={{ fontSize: 14, color: 'rgba(10,22,40,0.48)', marginTop: '0.75rem', fontWeight: 300 }}>Not vague promises ΓÇö specific things you can check and verify yourself.</p>
+            <p style={{ fontSize: 14, color: 'rgba(10,22,40,0.48)', marginTop: '0.75rem', fontWeight: 300 }}>Not vague promises — specific things you can check and verify yourself.</p>
           </div>
           <div className="buyers-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.5rem' }}>
             {[
-              { title: 'Every document, included',    body: 'Origin certificate, assay report, custody records, KYC package ΓÇö all included with every shipment.',
+              { title: 'Every document, included',    body: 'Origin certificate, assay report, custody records, KYC package — all included with every shipment.',
                 icon: <svg style={{ width: 36, height: 36, color: 'var(--navy)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M10 12h4M10 16h4"/></svg> },
               { title: 'Lab-verified purity',          body: 'Independent ISO-certified laboratories verify every shipment. Stamped assay certificate ships with your order.',
                 icon: <svg style={{ width: 36, height: 36, color: 'var(--navy)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg> },
@@ -836,7 +836,7 @@ export default function Home() {
                   <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--navy)', marginBottom: 2 }}>{doc.name}</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', color: 'rgba(10,22,40,0.33)' }}>PDF DOCUMENT</div>
                 </div>
-                <div style={{ marginLeft: 'auto', color: 'rgba(10,22,40,0.28)', fontSize: 16 }}>Γåô</div>
+                <div style={{ marginLeft: 'auto', color: 'rgba(10,22,40,0.28)', fontSize: 16 }}>↘</div>
               </a>
             ))}
           </div>
@@ -852,7 +852,7 @@ export default function Home() {
               <div className="eyebrow">Industry insights</div>
               <h2 className="section-title">Latest gold market <strong>news</strong></h2>
             </div>
-            <a href="/news" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>All articles ΓåÆ</a>
+            <a href="/news" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>All articles →</a>
           </div>
           <div className="news-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '1.5rem' }}>
             {homeNewsTeaserIds.map((articleId, i) => {
@@ -875,7 +875,7 @@ export default function Home() {
                     </div>
                     <div className="news-title">{article.title}</div>
                     <div className="news-excerpt">{teaser}</div>
-                    <div className="news-link">Read article ΓåÆ</div>
+                    <div className="news-link">Read article →</div>
                   </Link>
                 </motion.div>
               );
@@ -883,7 +883,7 @@ export default function Home() {
           </div>
           <div style={{ marginTop: '2rem', textAlign: 'center' }}>
             <a href="/news" style={{ display: 'inline-block', border: '1px solid var(--rule-md)', borderRadius: 4, padding: '12px 28px', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--navy)' }}>
-              Read all articles ΓåÆ
+              Read all articles →
             </a>
           </div>
         </div>
@@ -893,11 +893,11 @@ export default function Home() {
       <section className="cta-section">
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 1280, margin: '0 auto', padding: '6rem 2rem' }}>
           <div className="cta-label">Available for immediate orders</div>
-          <h2 className="cta-h2">Source certified Ugandan gold ΓÇö<br /><strong>verified, documented, delivered.</strong></h2>
-          <p className="cta-sub">Tell us what you need ΓÇö volume, purity, timeline. We&apos;ll come back with a straight quote and answer your questions directly.</p>
+          <h2 className="cta-h2">Source certified Ugandan gold —<br /><strong>verified, documented, delivered.</strong></h2>
+          <p className="cta-sub">Tell us what you need — volume, purity, timeline. We&apos;ll come back with a straight quote and answer your questions directly.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: '4rem' }}>
             <a href="/account-holders" className="btn-primary" style={{ fontSize: 14, padding: '14px 32px' }}>Get started today</a>
-            <a href="/products" className="btn-ghost" style={{ fontSize: 14, padding: '14px 32px' }}>Explore services ΓåÆ</a>
+            <a href="/products" className="btn-ghost" style={{ fontSize: 14, padding: '14px 32px' }}>Explore services →</a>
             <a href="https://wa.me/256704833021" className="btn-wa" style={{ fontSize: 14, padding: '14px 32px' }}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
@@ -920,7 +920,7 @@ export default function Home() {
           </div>
           <p style={{ marginTop: '2rem', fontSize: 13, color: 'rgba(255,255,255,0.35)', fontWeight: 300 }}>
             Want to invest in Uganda&apos;s gold sector?{' '}
-            <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" style={{ color: '#4ADE80', fontWeight: 400 }}>Investor portal ΓåÆ</a>
+            <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" style={{ color: '#4ADE80', fontWeight: 400 }}>Investor portal →</a>
           </p>
         </div>
       </section>
