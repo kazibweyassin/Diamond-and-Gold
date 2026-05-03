@@ -795,7 +795,7 @@ export default function Home() {
             </Link>
           </div>
           <div style={{ width: 'min(100%, 360px)', justifySelf: 'end' }}>
-            <img src="/partners/office.jpg" alt="Our offices" style={{ width: '100%', maxWidth: '100%', borderRadius: 6, display: 'block', height: 'auto' }} />
+            <img src="/office.jpg" alt="Our offices" style={{ width: '100%', maxWidth: '100%', borderRadius: 6, display: 'block', height: 'auto' }} />
             <p style={{ marginTop: '0.65rem', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(10,22,40,0.45)' }}>
               Lubowa, Kampala, Uganda
             </p>
