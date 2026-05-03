@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     "max-video-preview": -1,
   },
   verification: {
-    google: "Y0oslBbll3uymWk3j9qEtfh7nH5G1ppQyP3_ydVLTcQ",
+    google: "eh-8hxTROd5PJUjdN6IlYi36qSOpbD3n2J6QIiNPkT0",
   },
 };
 

@@ -12,7 +12,7 @@ Disallow: /*?*filter=
 Allow: /
 
 # Sitemaps
-Sitemap: https://diamondcapitalafrica.com/sitemap.xml
+Sitemap: https://www.diamondcapitalafrica.com/sitemap.xml
 
 # Crawl delays
 Crawl-delay: 1
