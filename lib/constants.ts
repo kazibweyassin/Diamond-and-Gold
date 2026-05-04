@@ -21,6 +21,7 @@ export const SITE = {
   NAME: process.env.NEXT_PUBLIC_SITE_NAME || "Diamond Capital Africa",
   URL: process.env.NEXT_PUBLIC_SITE_URL || "https://diamondcapitalafrica.com",
   GA_ID: process.env.NEXT_PUBLIC_GA_ID || "",
+  GOOGLE_TAG_ID: process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || "AW-18021829324",
 };
 
 // API Configuration

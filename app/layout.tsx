@@ -173,6 +173,24 @@ export default function RootLayout({
             </Script>
           </>
         )}
+
+        {/* Google Ads Conversion Tag */}
+        {SITE.GOOGLE_TAG_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${SITE.GOOGLE_TAG_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-ads" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${SITE.GOOGLE_TAG_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
