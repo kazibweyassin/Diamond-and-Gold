@@ -518,7 +518,7 @@ export default function CorporateProfile() {
             </div>
           </div>
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>
-            <p>© 2024 Diamond Capital Africa. All rights reserved. | <a href="/compliance" style={{ color: 'inherit' }}>Compliance</a> | <a href="/" style={{ color: 'inherit' }}>Privacy</a></p>
+            <p>© 2024 Diamond Capital Africa. All rights reserved. | <a href="/compliance" style={{ color: 'inherit' }}>Compliance</a> | <a href="/privacy-policy" style={{ color: 'inherit' }}>Privacy Policy</a></p>
           </div>
         </div>
       </footer>

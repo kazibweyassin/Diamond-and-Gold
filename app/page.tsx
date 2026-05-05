@@ -46,7 +46,7 @@ function Footer() {
         </div>
       </div>
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
-        <p>&copy; {currentYear} Diamond Capital Africa. All rights reserved.</p>
+        <p>&copy; {currentYear} Diamond Capital Africa. All rights reserved. <a href="/privacy-policy" style={{ color: '#fff', textDecoration: 'underline' }}>Privacy Policy</a></p>
       </div>
     </footer>
   );
