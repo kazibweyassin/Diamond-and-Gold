@@ -9,6 +9,7 @@ import {
   Source_Sans_3,
 } from "next/font/google";
 import "./globals.css";
+import PageUpButton from "./components/PageUpButton";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { SITE } from "@/lib/constants";
 
@@ -154,6 +155,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${sourceSans.variable} ${sora.variable} ${ibmPlexMono.variable} antialiased`}
       >
         {children}
+        <PageUpButton />
         <WhatsAppButton />
         
         {/* Google Analytics */}
