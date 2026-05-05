@@ -192,7 +192,10 @@ export default function Process() {
 
         <div className="mx-auto mt-10 max-w-6xl border-t border-amber-200/60 px-4 pt-6 text-xs text-slate-600 flex justify-between">
           <p>© 2026 Diamond Capital Africa</p>
-          <p>Uganda • Global delivery</p>
+          <div className="flex items-center gap-4">
+            <a href="/privacy-policy" className="hover:text-amber-700 transition">Privacy Policy</a>
+            <p>Uganda • Global delivery</p>
+          </div>
         </div>
       </footer>
     </main>

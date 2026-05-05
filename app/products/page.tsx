@@ -172,7 +172,10 @@ function Footer() {
     <footer className="border-t py-10 text-sm text-slate-700">
       <div className="max-w-6xl mx-auto px-4 flex justify-between">
         <p>© 2026 Diamond Capital Africa</p>
-        <p>Uganda • Global delivery</p>
+        <div className="flex items-center gap-4">
+          <a href="/privacy-policy" className="hover:text-amber-700 transition">Privacy Policy</a>
+          <p>Uganda • Global delivery</p>
+        </div>
       </div>
     </footer>
   );
