@@ -1,20 +1,25 @@
+import Header from '@/app/components/Header';
+
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-[#080E18] text-white pt-32 pb-20">
-      <div className="max-w-3xl mx-auto px-6">
+    <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
+      <Header cta={{ label: 'Contact us', href: '/contact' }} />
+      
+      <div className="pt-24 pb-20">
+        <div className="max-w-3xl mx-auto px-6">
         <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-8">
           Privacy Policy
         </h1>
 
-        <div className="space-y-8 text-white/80 leading-relaxed">
+        <div className="space-y-8 text-slate-700 leading-relaxed">
           {/* Last Updated */}
-          <p className="text-sm text-white/50 italic">
+          <p className="text-sm text-slate-500 italic">
             Last updated: May 5, 2026
           </p>
 
           {/* Introduction */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               1. Introduction
             </h2>
             <p>
@@ -24,12 +29,12 @@ export default function PrivacyPolicy() {
 
           {/* Information We Collect */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               2. Information We Collect
             </h2>
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
                   A. Personal Information You Provide
                 </h3>
                 <p>
@@ -45,7 +50,7 @@ export default function PrivacyPolicy() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
                   B. Information Collected Automatically
                 </h3>
                 <p>
@@ -63,7 +68,7 @@ export default function PrivacyPolicy() {
 
           {/* How We Use Information */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               3. How We Use Your Information
             </h2>
             <p className="mb-3">
@@ -82,7 +87,7 @@ export default function PrivacyPolicy() {
 
           {/* Data Security */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               4. Data Security
             </h2>
             <p>
@@ -92,7 +97,7 @@ export default function PrivacyPolicy() {
 
           {/* Third-Party Sharing */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               5. Sharing Your Information
             </h2>
             <p className="mb-3">
@@ -108,7 +113,7 @@ export default function PrivacyPolicy() {
 
           {/* Compliance */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               6. Compliance Standards
             </h2>
             <p>
@@ -118,7 +123,7 @@ export default function PrivacyPolicy() {
 
           {/* Cookies */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               7. Cookies and Tracking Technologies
             </h2>
             <p>
@@ -128,7 +133,7 @@ export default function PrivacyPolicy() {
 
           {/* Your Rights */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               8. Your Rights
             </h2>
             <p className="mb-3">
@@ -149,7 +154,7 @@ export default function PrivacyPolicy() {
 
           {/* Data Retention */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               9. Data Retention
             </h2>
             <p>
@@ -159,7 +164,7 @@ export default function PrivacyPolicy() {
 
           {/* International Transfers */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               10. International Data Transfers
             </h2>
             <p>
@@ -169,7 +174,7 @@ export default function PrivacyPolicy() {
 
           {/* Third-Party Links */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               11. Third-Party Links
             </h2>
             <p>
@@ -179,13 +184,13 @@ export default function PrivacyPolicy() {
 
           {/* Contact Us */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               12. Contact Us
             </h2>
             <p className="mb-3">
               If you have questions about this Privacy Policy or our privacy practices, please contact us at:
             </p>
-            <div className="bg-white/5 border border-white/10 rounded-lg p-6">
+            <div className="bg-slate-50 border border-slate-200 rounded-lg p-6">
               <p className="mb-2">
                 <strong>Diamond Capital Africa</strong>
               </p>
@@ -193,12 +198,12 @@ export default function PrivacyPolicy() {
                 📍 Kampala, Uganda
               </p>
               <p className="mb-1">
-                📧 <a href="mailto:info@diamondcapitalafrica.com" className="text-yellow-400 hover:text-yellow-300 transition">
+                <a href="mailto:info@diamondcapitalafrica.com" className="text-amber-600 hover:text-amber-700 transition">
                   info@diamondcapitalafrica.com
                 </a>
               </p>
               <p>
-                📞 <a href="tel:+256704833021" className="text-yellow-400 hover:text-yellow-300 transition">
+                <a href="tel:+256704833021" className="text-amber-600 hover:text-amber-700 transition">
                   +256 (0) 704 833 021
                 </a>
               </p>
@@ -207,7 +212,7 @@ export default function PrivacyPolicy() {
 
           {/* Policy Changes */}
           <section>
-            <h2 className="text-2xl font-playfair font-bold text-white mb-4">
+            <h2 className="text-2xl font-playfair font-bold text-slate-900 mb-4">
               13. Changes to This Privacy Policy
             </h2>
             <p>
@@ -216,13 +221,68 @@ export default function PrivacyPolicy() {
           </section>
 
           {/* Acknowledgment */}
-          <section className="pt-8 border-t border-white/10">
-            <p className="text-sm text-white/60">
+          <section className="pt-8 border-t border-slate-200">
+            <p className="text-sm text-slate-600">
               By using Diamond Capital Africa's website and services, you acknowledge that you have read and understood this Privacy Policy and agree to its terms.
             </p>
           </section>
         </div>
+        </div>
       </div>
-    </div>
+
+      {/* Footer */}
+      <footer className="border-t border-amber-200/60 bg-white py-14">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="grid gap-8 md:grid-cols-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Company</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-800">
+                <li><a href="/about" className="hover:text-emerald-700 transition">About us</a></li>
+                <li><a href="/products" className="hover:text-emerald-700 transition">Services</a></li>
+                <li><a href="/compliance" className="hover:text-emerald-700 transition">Compliance</a></li>
+                <li><a href="/process" className="hover:text-emerald-700 transition">Process</a></li>
+                <li><a href="/faq" className="hover:text-emerald-700 transition">FAQ</a></li>
+                <li><a href="/contact" className="hover:text-emerald-700 transition">Contact</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Contact</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-800">
+                <li>Kampala, Uganda</li>
+                <li><a href="mailto:info@diamondcapitalafrica.com" className="hover:text-emerald-700 transition">info@diamondcapitalafrica.com</a></li>
+                <li><a href="tel:+256704833021" className="hover:text-emerald-700 transition">+256 (0) 704 833 021</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Compliance</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-800">
+                <li>Responsible sourcing</li>
+                <li>Custody documentation</li>
+                <li>Lab-verified purity</li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Resources</p>
+              <ul className="mt-4 space-y-2 text-sm text-slate-800">
+                <li><a href="/news" className="hover:text-emerald-700 transition">News</a></li>
+                <li><a href="/privacy-policy" className="hover:text-emerald-700 transition">Privacy</a></li>
+                <li><a href="/site-map" className="hover:text-emerald-700 transition">Site map</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-amber-200/60 px-4 pt-6 text-xs text-slate-700 md:flex-row md:items-center md:justify-between">
+            <p>&copy; 2026 Diamond Capital Africa. All rights reserved.</p>
+            <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
+              <a href="/privacy-policy" className="hover:text-amber-700 transition">Privacy Policy</a>
+              <p>Serving East & Central Africa • Global delivery available</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }

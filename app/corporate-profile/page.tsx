@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Navbar from '@/app/components/Navbar';
+import SharedFooter from '@/app/components/SharedFooter';
 import { Lucid, Shovel, Globe, Microscope, BrickWallShield, Truck, Scale, FileCheck, Shield } from '@/app/components/Icons';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -485,43 +486,7 @@ export default function CorporateProfile() {
       </section>
 
       {/* Footer */}
-      <footer style={{ background: 'var(--navy)', color: '#fff', padding: '3rem 2rem', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginBottom: '2rem', textAlign: 'left' }}>
-            <div>
-              <h3 style={{ fontSize: '13px', fontWeight: 600, marginBottom: '1rem', color: 'var(--gold-lt)' }}>COMPANY</h3>
-              <ul style={{ listStyle: 'none', fontSize: '13px', lineHeight: '1.8', color: 'rgba(255,255,255,0.6)' }}>
-                <li><a href="/about" style={{ color: 'inherit', textDecoration: 'none' }}>About</a></li>
-                <li><a href="/corporate-profile" style={{ color: 'inherit', textDecoration: 'none' }}>Corporate Profile</a></li>
-                <li><a href="/compliance" style={{ color: 'inherit', textDecoration: 'none' }}>Compliance</a></li>
-                <li><a href="/news" style={{ color: 'inherit', textDecoration: 'none' }}>News</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 style={{ fontSize: '13px', fontWeight: 600, marginBottom: '1rem', color: 'var(--gold-lt)' }}>SERVICES</h3>
-              <ul style={{ listStyle: 'none', fontSize: '13px', lineHeight: '1.8', color: 'rgba(255,255,255,0.6)' }}>
-                <li><a href="/products" style={{ color: 'inherit', textDecoration: 'none' }}>Products</a></li>
-                <li><a href="/process" style={{ color: 'inherit', textDecoration: 'none' }}>Process</a></li>
-                <li><a href="/faq" style={{ color: 'inherit', textDecoration: 'none' }}>FAQ</a></li>
-                <li><a href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 style={{ fontSize: '13px', fontWeight: 600, marginBottom: '1rem', color: 'var(--gold-lt)' }}>CONTACT</h3>
-              <ul style={{ listStyle: 'none', fontSize: '13px', lineHeight: '1.8', color: 'rgba(255,255,255,0.6)' }}>
-                <li>Kampala, Uganda</li>
-                <li><a href="mailto:hello@diamondcapitalafrika.com" style={{ color: 'var(--gold-lt)', textDecoration: 'none' }}>hello@diamondcapitalafrika.com</a></li>
-                <li style={{ marginTop: '1rem' }}>
-                  <a href="/contact" style={{ color: 'var(--gold)', textDecoration: 'none', fontWeight: 600 }}>Get in Touch →</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', fontSize: '12px', color: 'rgba(255,255,255,0.4)' }}>
-            <p>© 2024 Diamond Capital Africa. All rights reserved. | <a href="/compliance" style={{ color: 'inherit' }}>Compliance</a> | <a href="/privacy-policy" style={{ color: 'inherit' }}>Privacy Policy</a></p>
-          </div>
-        </div>
-      </footer>
+      <SharedFooter variant="compact" />
     </main>
   );
 }

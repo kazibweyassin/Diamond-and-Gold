@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight, BookOpenCheck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
+import SharedFooter from '@/app/components/SharedFooter';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -390,29 +391,7 @@ export default function About() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ background: 'var(--navy)', color: '#fff', padding: '3rem 2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-        <div className="footer-grid" style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2rem', marginBottom: '2rem' }}>
-          <div>
-            <img src="/Logo.png" alt="Diamond Capital Africa" style={{ height: 32, width: 'auto', marginBottom: '1rem' }} />
-            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.38)', lineHeight: 1.6, fontWeight: 300 }}>Gold from Uganda — properly sourced, fully documented, and delivered.</p>
-          </div>
-          {[
-            { heading: 'Company',   links: [['About us', '/about'], ['Services', '/products'], ['Our process', '/process'], ['Compliance', '/compliance']] },
-            { heading: 'Resources', links: [['News', '/news'], ['FAQ', '/faq'], ['Contact', '/contact']] },
-            { heading: 'Connect',   links: [['WhatsApp', 'https://wa.me/256704833021'], ['Email', 'mailto:info@diamondcapitalafrica.com'], ['Investor portal', 'https://invest.diamondcapitalafrica.com']] },
-          ].map(({ heading, links }) => (
-            <div key={heading}>
-              <div style={{ fontWeight: 600, marginBottom: '1rem', fontSize: 13 }}>{heading}</div>
-              <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {links.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
-          <p>&copy; 2026 Diamond Capital Africa. All rights reserved. <a href="/privacy-policy" style={{ color: '#fff', textDecoration: 'underline' }}>Privacy Policy</a></p>
-        </div>
-      </footer>
+      <SharedFooter variant="compact" />
     </main>
   );
 }
