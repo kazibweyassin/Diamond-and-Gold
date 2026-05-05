@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   env: {
     NEXT_PUBLIC_SITE_URL: "https://diamondcapitalafrica.com",
     NEXT_PUBLIC_SITE_NAME: "Diamond Capital Africa",

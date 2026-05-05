@@ -26,6 +26,7 @@ interface ContactFormData {
   phone: string;
   subject: string;
   message: string;
+  company?: string;
 }
 
 function validateEmail(email: string): boolean {
@@ -34,6 +35,9 @@ function validateEmail(email: string): boolean {
 }
 
 function validateForm(data: ContactFormData): string | null {
+  if (data.company?.trim()) {
+    return 'Spam detected';
+  }
   if (!data.name?.trim()) {
     return 'Name is required';
   }
@@ -73,18 +77,31 @@ ${data.message}
   `.trim();
 }
 
+function getClientIp(request: NextRequest): string {
+  const forwardedFor = request.headers.get('x-forwarded-for');
+
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0]?.trim() || 'unknown';
+  }
+
+  return request.headers.get('x-real-ip') || 'unknown';
+}
+
 export async function POST(request: NextRequest) {
+  const requestId = globalThis.crypto?.randomUUID?.() ?? `req_${Date.now().toString(36)}`;
+  const startedAt = Date.now();
+
   try {
-    // Get client IP for rate limiting
-    const ip = request.headers.get('x-forwarded-for') || 
-               request.headers.get('x-real-ip') || 
-               'unknown';
+    const ip = getClientIp(request);
+
+    console.info('[contact-form] request received', { requestId, ip });
 
     // Rate limiting check
     if (!checkRateLimit(ip)) {
+      console.warn('[contact-form] rate limit exceeded', { requestId, ip });
       return NextResponse.json(
         { error: 'Too many requests. Please try again later.' },
-        { status: 429 }
+        { status: 429, headers: { 'X-Request-Id': requestId } }
       );
     }
 
@@ -94,9 +111,10 @@ export async function POST(request: NextRequest) {
     // Validate form data
     const validationError = validateForm(data);
     if (validationError) {
+      console.warn('[contact-form] validation failed', { requestId, ip, validationError });
       return NextResponse.json(
         { error: validationError },
-        { status: 400 }
+        { status: 400, headers: { 'X-Request-Id': requestId } }
       );
     }
 
@@ -106,7 +124,12 @@ export async function POST(request: NextRequest) {
     // 3. Queue for processing
     
     // For now, we'll log it (in production, replace this)
-    console.log('Contact form submission:', data);
+    console.info('[contact-form] submission accepted', {
+      requestId,
+      ip,
+      subject: data.subject,
+      durationMs: Date.now() - startedAt,
+    });
 
     // TODO: Implement actual email sending
     // Example with Resend:
@@ -135,13 +158,13 @@ export async function POST(request: NextRequest) {
         success: true,
         message: 'Your message has been received. We will get back to you within 24 hours.',
       },
-      { status: 200 }
+      { status: 200, headers: { 'X-Request-Id': requestId } }
     );
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('[contact-form] unexpected error', { requestId, error });
     return NextResponse.json(
       { error: 'An error occurred. Please try again later.' },
-      { status: 500 }
+      { status: 500, headers: { 'X-Request-Id': requestId } }
     );
   }
 }

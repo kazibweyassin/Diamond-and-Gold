@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import {
   Geist,
   Geist_Mono,
@@ -10,8 +9,8 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import PageUpButton from "./components/PageUpButton";
+import ConsentAndTracking from "./components/ConsentAndTracking";
 import WhatsAppButton from "./components/WhatsAppButton";
-import { SITE } from "@/lib/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -157,42 +156,7 @@ export default function RootLayout({
         {children}
         <PageUpButton />
         <WhatsAppButton />
-        
-        {/* Google Analytics */}
-        {SITE.GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${SITE.GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${SITE.GA_ID}');
-              `}
-            </Script>
-          </>
-        )}
-
-        {/* Google Ads Conversion Tag */}
-        {SITE.GOOGLE_TAG_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${SITE.GOOGLE_TAG_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-ads" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${SITE.GOOGLE_TAG_ID}');
-              `}
-            </Script>
-          </>
-        )}
+        <ConsentAndTracking />
       </body>
     </html>
   );

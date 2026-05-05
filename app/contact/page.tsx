@@ -12,6 +12,7 @@ export default function Contact() {
     phone: '',
     subject: '',
     message: '',
+    company: '',
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [submitted, setSubmitted] = useState(false);
@@ -93,7 +94,7 @@ export default function Contact() {
 
       // Show success message
       setSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '', company: '' });
       setErrors({});
       
       // Clear success message after 5 seconds
@@ -171,30 +172,48 @@ export default function Contact() {
                   </div>
                 )}
 
+                <div className="sr-only" aria-hidden="true">
+                  <label>
+                    Company
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </label>
+                </div>
+
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Name</label>
+                    <label htmlFor="contact-name" className="text-xs uppercase tracking-[0.2em] text-slate-700">Name</label>
                     <input
+                      id="contact-name"
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
                       disabled={isSubmitting}
+                      autoComplete="name"
                       className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="Your name"
                     />
                     {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
                   </div>
                   <div>
-                    <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Email</label>
+                    <label htmlFor="contact-email" className="text-xs uppercase tracking-[0.2em] text-slate-700">Email</label>
                     <input
+                      id="contact-email"
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
                       disabled={isSubmitting}
+                      autoComplete="email"
                       className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="you@email.com"
                     />
@@ -204,21 +223,25 @@ export default function Contact() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Phone</label>
+                    <label htmlFor="contact-phone" className="text-xs uppercase tracking-[0.2em] text-slate-700">Phone</label>
                     <input
+                      id="contact-phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
                       disabled={isSubmitting}
+                      autoComplete="tel"
+                      inputMode="tel"
                       className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                       placeholder="+256 000 000 000"
                     />
                     {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
                   </div>
                   <div>
-                    <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Subject</label>
+                    <label htmlFor="contact-subject" className="text-xs uppercase tracking-[0.2em] text-slate-700">Subject</label>
                     <select
+                      id="contact-subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
@@ -238,13 +261,15 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="text-xs uppercase tracking-[0.2em] text-slate-700">Message</label>
+                  <label htmlFor="contact-message" className="text-xs uppercase tracking-[0.2em] text-slate-700">Message</label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
                     disabled={isSubmitting}
+                    autoComplete="off"
                     rows={5}
                     className="mt-2 w-full rounded-lg border border-amber-200/70 bg-white px-3 py-2 text-sm text-slate-900 focus:border-amber-500 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="Share order quantities, timelines, or any requirements..."
