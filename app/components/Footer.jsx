@@ -85,10 +85,21 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-t border-white/5 pt-6 text-[11px] text-white/30">
           <span>© 2026 Diamond Capital Africa. All rights reserved.</span>
-          <div className="flex gap-6">
+          <div className="flex gap-6 items-center">
             <Link href="/privacy-policy" className="text-white/30 hover:text-white/60 transition">
               Privacy Policy
             </Link>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new Event('dca:open-cookie-settings'));
+                }
+              }}
+              className="text-white/30 hover:text-white/60 transition underline"
+            >
+              Cookie settings
+            </button>
             <span>Serving East & Central Africa · Global delivery available</span>
           </div>
         </div>

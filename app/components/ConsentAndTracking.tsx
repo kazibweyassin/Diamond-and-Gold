@@ -6,6 +6,8 @@ import { SITE } from '@/lib/constants';
 
 const CONSENT_KEY = 'dca-cookie-consent';
 
+import { getConsentFromCookie, setConsentCookie, eraseCookie } from '@/lib/cookies';
+
 type ConsentChoice = 'accepted' | 'custom' | 'rejected' | null;
 
 type ConsentPreferences = {
@@ -16,17 +18,22 @@ type ConsentPreferences = {
 export default function ConsentAndTracking() {
   const [consentChoice, setConsentChoice] = useState<ConsentChoice>(null);
   const [preferences, setPreferences] = useState<ConsentPreferences>({
-    analytics: true,
-    marketing: true,
+    analytics: false,
+    marketing: false,
   });
   const [showOptions, setShowOptions] = useState(false);
 
   useEffect(() => {
-    const storedConsent = window.localStorage.getItem(CONSENT_KEY);
-
-    if (!storedConsent) {
+    // Prefer cookie storage (set by server/client), fallback to localStorage
+    const cookie = getConsentFromCookie();
+    if (cookie.choice) {
+      setConsentChoice(cookie.choice as ConsentChoice);
+      if (cookie.preferences) setPreferences(cookie.preferences);
       return;
     }
+
+    const storedConsent = window.localStorage.getItem(CONSENT_KEY);
+    if (!storedConsent) return;
 
     if (storedConsent === 'accepted' || storedConsent === 'rejected' || storedConsent === 'custom') {
       setConsentChoice(storedConsent);
@@ -52,6 +59,10 @@ export default function ConsentAndTracking() {
   const persistConsent = (choice: Exclude<ConsentChoice, null>, nextPreferences: ConsentPreferences) => {
     window.localStorage.setItem(CONSENT_KEY, choice);
     window.localStorage.setItem(`${CONSENT_KEY}:preferences`, JSON.stringify(nextPreferences));
+    // also persist to cookie for server-side and other clients
+    try {
+      setConsentCookie(choice, nextPreferences);
+    } catch {}
     setConsentChoice(choice);
     setPreferences(nextPreferences);
     setShowOptions(false);
@@ -72,6 +83,48 @@ export default function ConsentAndTracking() {
   const bannerVisible = consentChoice === null;
   const analyticsEnabled = consentChoice === 'accepted' || (consentChoice === 'custom' && preferences.analytics);
   const marketingEnabled = consentChoice === 'accepted' || (consentChoice === 'custom' && preferences.marketing);
+
+  // remove analytics cookies and disable gtag when analytics is turned off
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const gaId = (window as any).__NEXT_DATA__?.props?.pageProps?.GA_ID ?? (window as any).GA_ID ?? undefined;
+    const SITE_GA = gaId || undefined; // fallback
+
+    if (!analyticsEnabled) {
+      // disable gtag if measurement id known
+      if ((window as any).gtag) {
+        try {
+          eraseCookie('_ga');
+          eraseCookie('_gid');
+          eraseCookie('_gat');
+        } catch {}
+      }
+
+      // set disable flag for known GA id from SITE.GA_ID
+      if ((window as any).SITE && (window as any).SITE.GA_ID) {
+        (window as any)[`ga-disable-${(window as any).SITE.GA_ID}`] = true;
+      }
+    } else {
+      // remove disable flag when enabled
+      if ((window as any).SITE && (window as any).SITE.GA_ID) {
+        try {
+          delete (window as any)[`ga-disable-${(window as any).SITE.GA_ID}`];
+        } catch {}
+      }
+    }
+  }, [analyticsEnabled]);
+
+  // allow external UI to open cookie settings (e.g., footer button)
+  useEffect(() => {
+    function onOpen() {
+      setShowOptions(true);
+      setConsentChoice((c) => (c === null ? 'custom' : c));
+    }
+
+    window.addEventListener('dca:open-cookie-settings', onOpen as EventListener);
+    return () => window.removeEventListener('dca:open-cookie-settings', onOpen as EventListener);
+  }, []);
 
   return (
     <>
