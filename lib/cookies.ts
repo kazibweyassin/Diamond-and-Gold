@@ -18,8 +18,12 @@ export function setCookie(name: string, value: string, days = DEFAULT_OPTIONS.da
 
 export function getCookie(name: string): string | null {
   if (typeof document === 'undefined') return null;
-  const match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()\\[\\]\\/+^])/g, '\\$1') + '=([^;]*)'));
-  return match ? decodeURIComponent(match[1]) : null;
+  const raw = document.cookie || '';
+  const parts = raw.split('; ').map((p) => p.split('='));
+  for (const [k, ...v] of parts) {
+    if (k === name) return decodeURIComponent(v.join('='));
+  }
+  return null;
 }
 
 export function eraseCookie(name: string, path = DEFAULT_OPTIONS.path) {

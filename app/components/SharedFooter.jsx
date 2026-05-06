@@ -74,10 +74,10 @@ const compactDefaultSections = [
 ];
 
 export default function SharedFooter({
-  sections,
-  brandDescription,
-  copyright,
-  bottomNote,
+  sections = undefined,
+  brandDescription = undefined,
+  copyright = undefined,
+  bottomNote = undefined,
   showBrandImage = true,
   variant = 'default',
 }) {
