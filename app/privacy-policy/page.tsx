@@ -1,4 +1,6 @@
 import Header from '@/app/components/Header';
+import dynamic from 'next/dynamic';
+const SharedFooter = dynamic(() => import('@/app/components/SharedFooter'));
 
 export default function PrivacyPolicy() {
   return (
@@ -230,59 +232,7 @@ export default function PrivacyPolicy() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-amber-200/60 bg-white py-14">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-8 md:grid-cols-4">
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Company</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-800">
-                <li><a href="/about" className="hover:text-emerald-700 transition">About us</a></li>
-                <li><a href="/products" className="hover:text-emerald-700 transition">Services</a></li>
-                <li><a href="/compliance" className="hover:text-emerald-700 transition">Compliance</a></li>
-                <li><a href="/process" className="hover:text-emerald-700 transition">Process</a></li>
-                <li><a href="/faq" className="hover:text-emerald-700 transition">FAQ</a></li>
-                <li><a href="/contact" className="hover:text-emerald-700 transition">Contact</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Contact</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-800">
-                <li>Kampala, Uganda</li>
-                <li><a href="mailto:info@diamondcapitalafrica.com" className="hover:text-emerald-700 transition">info@diamondcapitalafrica.com</a></li>
-                <li><a href="tel:+256704833021" className="hover:text-emerald-700 transition">+256 (0) 704 833 021</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Compliance</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-800">
-                <li>Responsible sourcing</li>
-                <li>Custody documentation</li>
-                <li>Lab-verified purity</li>
-              </ul>
-            </div>
-
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-700">Resources</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-800">
-                <li><a href="/news" className="hover:text-emerald-700 transition">News</a></li>
-                <li><a href="/privacy-policy" className="hover:text-emerald-700 transition">Privacy</a></li>
-                <li><a href="/site-map" className="hover:text-emerald-700 transition">Site map</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-amber-200/60 px-4 pt-6 text-xs text-slate-700 md:flex-row md:items-center md:justify-between">
-            <p>&copy; 2026 Diamond Capital Africa. All rights reserved.</p>
-            <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
-              <a href="/privacy-policy" className="hover:text-amber-700 transition">Privacy Policy</a>
-              <p>Serving East & Central Africa • Global delivery available</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SharedFooter sections={undefined} brandDescription={undefined} copyright={undefined} bottomNote={undefined} />
     </main>
   );
 }
