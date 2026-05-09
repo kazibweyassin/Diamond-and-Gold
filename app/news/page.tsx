@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
-import Header from '@/app/components/Header';
+import Navbar from '@/app/components/Navbar';
 import SharedFooter from '@/app/components/SharedFooter.jsx';
 import { articlesSorted, type NewsCategory } from '@/lib/news-articles';
 
@@ -99,7 +99,7 @@ export default function News() {
 
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf2_0%,#fffdf8_34%,#f8f4eb_100%)] text-slate-900">
-      <Header cta={{ label: 'Contact us', href: '/contact' }} />
+      <Navbar />
 
       <section className="border-b border-slate-100 bg-white/90 py-16 backdrop-blur-sm">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-8">
