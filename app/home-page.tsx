@@ -895,52 +895,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWS */}
-      <hr className="rule" />
-      <section style={{ padding: '6rem 2rem' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-            <div>
-              <div className="eyebrow">Industry insights</div>
-              <h2 className="section-title">Latest gold market <strong>news</strong></h2>
-            </div>
-            <a href="/news" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>All articles →</a>
-          </div>
-          <div className="news-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '1.5rem' }}>
-            {homeNewsTeaserIds.map((articleId, i) => {
-              const article = getArticleById(articleId);
-              if (!article) return null;
-              const teaser = article.homeTeaser ?? article.excerpt;
-              return (
-                <motion.div
-                  key={articleId}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.07 }}
-                  style={{ height: '100%' }}
-                >
-                  <Link href={`/news/${articleId}`} className="news-card" style={{ height: '100%' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
-                      <span className="news-cat">{article.category}</span>
-                      <span className="news-date">{article.dateShort}</span>
-                    </div>
-                    <div className="news-title">{article.title}</div>
-                    <div className="news-excerpt">{teaser}</div>
-                    <div className="news-link">Read article →</div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-          <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-            <a href="/news" style={{ display: 'inline-block', border: '1px solid var(--rule-md)', borderRadius: 4, padding: '12px 28px', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--navy)' }}>
-              Read all articles →
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* FINAL CTA */}
       <section className="cta-section">
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 1280, margin: '0 auto', padding: '6rem 2rem' }}>
