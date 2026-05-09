@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { Shield, Clock, FileText, Globe, FileCheck, Beaker, Truck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
-import { getArticleById, homeNewsTeaserIds } from '@/lib/news-articles';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -31,7 +30,6 @@ function Footer() {
         <div>
           <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Resources</div>
           <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Link href="/news">News</Link>
             <Link href="/compliance">Documentation</Link>
             <Link href="/contact">Contact</Link>
           </div>
@@ -493,15 +491,6 @@ function Home() {
         .cred-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
         .cred-body  { font-size: 12px; color: rgba(10,22,40,0.45); line-height: 1.6; font-weight: 300; }
 
-        /* NEWS */
-        .news-card { background: #fff; border: 1px solid var(--rule-md); border-radius: 4px; padding: 2rem; display: block; transition: border-color 0.25s, box-shadow 0.25s; }
-        .news-card:hover { border-color: rgba(10,22,40,0.28); box-shadow: 0 4px 20px rgba(10,22,40,0.06); }
-        .news-cat    { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); background: rgba(184,146,42,0.08); padding: 4px 10px; border-radius: 2px; }
-        .news-date   { font-family: var(--mono); font-size: 10px; color: rgba(10,22,40,0.33); }
-        .news-title  { font-size: 16px; font-weight: 500; color: var(--navy); line-height: 1.4; margin-bottom: 0.75rem; }
-        .news-excerpt { font-size: 13px; color: rgba(10,22,40,0.5); line-height: 1.65; font-weight: 300; margin-bottom: 1.25rem; }
-        .news-link   { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--gold); }
-
         /* CTA FINAL */
         .cta-section { background: var(--navy); position: relative; overflow: hidden; }
         .cta-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 52px 52px; }
@@ -557,7 +546,6 @@ function Home() {
           .ops-cols    { grid-template-columns: 1fr !important; }
           .buyers-cols { grid-template-columns: 1fr !important; }
           .dl-cols     { grid-template-columns: 1fr !important; }
-          .news-cols   { grid-template-columns: 1fr !important; }
           .cta-cells   { grid-template-columns: 1fr !important; }
           .comp-cols   { grid-template-columns: 1fr !important; }
           .cred-grid   { grid-template-columns: 1fr !important; }
@@ -581,15 +569,14 @@ function Home() {
           .stat-val { font-size: 1.05rem; }
           .stat-lbl { font-size: 9px; }
           .section-title { font-size: 1.25rem; line-height: 1.18; }
-          .step-title, .why-title, .cred-title, .news-title { font-size: 13px; }
-          .step-body, .why-body, .cred-body, .news-excerpt, .ops-desc { font-size: 11px; line-height: 1.6; }
+          .step-title, .why-title, .cred-title { font-size: 13px; }
+          .step-body, .why-body, .cred-body, .ops-desc { font-size: 11px; line-height: 1.6; }
           .cta-section .cta-h2 { font-size: 1.65rem; line-height: 1.12; }
           .cta-section .cta-sub { font-size: 0.88rem; }
           .hero-metrics { grid-template-columns: 1fr !important; }
           .footer-grid { grid-template-columns: 1fr !important; }
           .corp-stats { grid-template-columns: 1fr !important; }
           .dl-card { padding: 1rem 1.1rem; gap: 0.85rem; align-items: flex-start; }
-          .news-card, .why-card, .cred-card { padding: 1.4rem !important; }
           .cta-section .cta-label { margin-bottom: 1rem; }
           .cta-section .cta-h2 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
           .cta-section .cta-sub { margin-bottom: 1.75rem; }
@@ -921,52 +908,6 @@ function Home() {
                 <div style={{ marginLeft: 'auto', color: 'rgba(10,22,40,0.28)', fontSize: 16 }}>↓</div>
               </a>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* NEWS */}
-      <hr className="rule" />
-      <section style={{ padding: '6rem 2rem' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-            <div>
-              <div className="eyebrow">Industry insights</div>
-              <h2 className="section-title">Latest gold market <strong>news</strong></h2>
-            </div>
-            <a href="/news" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>All articles →</a>
-          </div>
-          <div className="news-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '1.5rem' }}>
-            {homeNewsTeaserIds.map((articleId, i) => {
-              const article = getArticleById(articleId);
-              if (!article) return null;
-              const teaser = article.homeTeaser ?? article.excerpt;
-              return (
-                <motion.div
-                  key={articleId}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.07 }}
-                  style={{ height: '100%' }}
-                >
-                  <Link href={`/news/${articleId}`} className="news-card" style={{ height: '100%' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
-                      <span className="news-cat">{article.category}</span>
-                      <span className="news-date">{article.dateShort}</span>
-                    </div>
-                    <div className="news-title">{article.title}</div>
-                    <div className="news-excerpt">{teaser}</div>
-                    <div className="news-link">Read article →</div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-          <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-            <a href="/news" style={{ display: 'inline-block', border: '1px solid var(--rule-md)', borderRadius: 4, padding: '12px 28px', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--navy)' }}>
-              Read all articles →
-            </a>
           </div>
         </div>
       </section>

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import Navbar from '@/app/components/Navbar';
 import SharedFooter from '@/app/components/SharedFooter';
-import { getArticleById, homeNewsTeaserIds } from '@/lib/news-articles';
 
 function Footer() {
   return <SharedFooter variant="compact" />;
@@ -174,52 +173,6 @@ export default function Home() {
         .rule { border: none; border-top: 1px solid var(--rule-md); margin: 0 2rem; }
 
         /* HERO — with zoom animation */
-        .hero-section {
-          position: relative;
-          min-height: 100svh;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          padding-top: 60px;
-          overflow: hidden;
-        }
-        .hero-slide {
-          position: absolute;
-          inset: 0;
-          background-size: cover;
-          background-position: center;
-          transition: opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-          will-change: transform;
-        }
-        .hero-slide.active {
-          animation: gentleZoom 20s ease-in-out infinite;
-        }
-        .hero-overlay--mesh {
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(ellipse 120% 80% at 15% 20%, rgba(232, 201, 106, 0.07) 0%, transparent 45%),
-            linear-gradient(115deg, rgba(10, 22, 40, 0.92) 0%, rgba(10, 22, 40, 0.72) 42%, rgba(10, 22, 40, 0.35) 72%, rgba(10, 22, 40, 0.55) 100%);
-          pointer-events: none;
-        }
-        .hero-overlay--vignette {
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(ellipse 95% 75% at 50% 100%, rgba(0, 0, 0, 0.42) 0%, transparent 58%);
-          pointer-events: none;
-        }
-        .hero-overlay--grid {
-          position: absolute;
-          inset: 0;
-          opacity: 0.35;
-          background-image:
-            linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-          background-size: 48px 48px;
-          pointer-events: none;
-        }
-        .hero-overlay--accent {
-          position: absolute;
           top: -20%;
           right: -15%;
           width: min(55vw, 520px);
@@ -581,12 +534,11 @@ export default function Home() {
           .stat-val { font-size: clamp(1rem, 5vw, 1.2rem); }
           .stat-lbl { font-size: 9px; }
           .step-title { font-size: 14px; }
-          .step-body, .why-body, .news-excerpt, .ops-desc, .cred-body { font-size: 12px; }
+          .step-body, .why-body, .ops-desc, .cred-body { font-size: 12px; }
           .why-cols    { grid-template-columns: 1fr !important; }
           .ops-cols    { grid-template-columns: 1fr !important; }
           .buyers-cols { grid-template-columns: 1fr !important; }
           .dl-cols     { grid-template-columns: 1fr !important; }
-          .news-cols   { grid-template-columns: 1fr !important; }
           .cta-cells   { grid-template-columns: 1fr !important; }
           .comp-cols   { grid-template-columns: 1fr !important; }
           .cred-grid   { grid-template-columns: 1fr !important; }

@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { articleIds } from '@/lib/news-articles'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.diamondcapitalafrica.com'
@@ -55,12 +54,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/news`,
-      lastModified,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
       url: `${baseUrl}/faq`,
       lastModified,
       changeFrequency: 'monthly' as const,
@@ -80,12 +73,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const newsPages: MetadataRoute.Sitemap = articleIds.map((id) => ({
-    url: `${baseUrl}/news/${id}`,
-    lastModified,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
-  return [...staticPages, ...newsPages]
+  return staticPages
 }

@@ -58,7 +58,6 @@ const compactDefaultSections = [
 	{
 		label: 'Resources',
 		links: [
-			{ name: 'News', href: '/news' },
 			{ name: 'Documentation', href: '/compliance' },
 			{ name: 'Contact', href: '/contact' },
 		],

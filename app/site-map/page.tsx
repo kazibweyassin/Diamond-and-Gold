@@ -10,7 +10,6 @@ const pages = [
   { title: 'Services', href: '/products' },
   { title: 'Partners & Licenses', href: '/partners' },
   { title: 'Account Holders', href: '/account-holders' },
-  { title: 'News', href: '/news' },
   { title: 'Compliance', href: '/compliance' },
   { title: 'Process', href: '/process' },
   { title: 'FAQ', href: '/faq' },

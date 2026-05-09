@@ -9,12 +9,10 @@ const NAV_LINKS = [
   { label: 'Services',   href: '/products' },
   { label: 'Compliance', href: '/compliance' },
   { label: 'Process',    href: '/process' },
-  { label: 'News',       href: '/news' },
   { label: 'Contact',    href: '/contact' },
 ];
 
 function isNavActive(pathname, href) {
-  if (href === '/news') return pathname === '/news' || pathname.startsWith('/news/');
   return pathname === href;
 }
 
