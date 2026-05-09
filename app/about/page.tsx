@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight, BookOpenCheck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
-import SharedFooter from '@/app/components/SharedFooter';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 

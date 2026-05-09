@@ -155,7 +155,6 @@ export default function RootLayout({
       >
         {children}
         <PageUpButton />
-        <WhatsAppButton />
         <ConsentAndTracking />
       </body>
     </html>
