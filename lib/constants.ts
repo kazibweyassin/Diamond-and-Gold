@@ -36,3 +36,29 @@ export const FEATURES = {
   ENABLE_CONTACT_FORM: true,
   GOLD_TICKER_FETCH_INTERVAL: 60000, // 1 minute
 };
+
+// Partner logos
+// Add new entries here and place files in /public/partners
+export interface PartnerLogoItem {
+  name: string;
+  file: string;
+  description: string;
+}
+
+export const PARTNER_LOGOS: PartnerLogoItem[] = [
+  {
+    name: "Assay Services",
+    file: "/partners/as.png",
+    description: "Independent assay and testing partners trusted for verification.",
+  },
+  {
+    name: "ISO Certified Labs",
+    file: "/partners/iso.png",
+    description: "Independent lab partners for purity testing and reporting.",
+  },
+  {
+    name: "Ministry Authorization",
+    file: "/partners/moe-sm-1.png",
+    description: "Ugandan regulatory and mining authority validation.",
+  },
+];

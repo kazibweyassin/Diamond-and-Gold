@@ -4,11 +4,52 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { Shield, Clock, FileText, Globe, FileCheck, Beaker, Truck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
-import SharedFooter from '@/app/components/SharedFooter';
 import { getArticleById, homeNewsTeaserIds } from '@/lib/news-articles';
 
 function Footer() {
-  return <SharedFooter variant="compact" />;
+  const currentYear = new Date().getFullYear();
+  return (
+    <footer style={{ background: 'var(--navy)', color: '#fff', padding: '3rem 2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2rem', marginBottom: '2rem' }} className="footer-grid">
+        <div>
+          <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Company</div>
+          <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <Link href="/about">About us</Link>
+            <Link href="/corporate-profile">Corporate profile</Link>
+            <Link href="/process">Our process</Link>
+            <Link href="/compliance">Compliance</Link>
+          </div>
+        </div>
+        <div>
+          <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Services</div>
+          <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <Link href="/products#transaction-handling">Gold sourcing</Link>
+            <Link href="/products#secure-logistics">Logistics</Link>
+            <Link href="/products#assay-testing">Assay services</Link>
+          </div>
+        </div>
+        <div>
+          <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Resources</div>
+          <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <Link href="/news">News</Link>
+            <Link href="/compliance">Documentation</Link>
+            <Link href="/contact">Contact</Link>
+          </div>
+        </div>
+        <div>
+          <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Connect</div>
+          <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <a href="https://wa.me/256704833021" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="mailto:info@diamondcapitalafrica.com">Email</a>
+            <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer">Investor portal</a>
+          </div>
+        </div>
+      </div>
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
+        <p>&copy; {currentYear} Diamond Capital Africa. All rights reserved.</p>
+      </div>
+    </footer>
+  );
 }
 
 const SLIDES = [
@@ -771,6 +812,32 @@ function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: '0 2rem 6rem' }}>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <div className="eyebrow">Trusted partners</div>
+            <h2 className="section-title"><strong>Logos we can show</strong> on the website</h2>
+            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', marginTop: '0.5rem', fontWeight: 300 }}>
+              This is a compact, low-risk place to surface partner logos without disturbing the current page rhythm.
+            </p>
+          </div>
+          <div className="partners-logo-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1rem' }}>
+            {[
+              { name: 'Diplomatic Cargo', file: '/partners/diplomatic-cargo.svg' },
+              { name: 'McFord Advocates', file: '/partners/mcford-advocates.svg' },
+              { name: 'Assay Services', file: '/partners/as.png' },
+              { name: 'ISO Certified Labs', file: '/partners/iso.png' },
+              { name: 'Ministry Authorization', file: '/partners/moe-sm-1.png' },
+              { name: 'Diamond Capital Logistics', file: '/partners/DCL-LOGO.png' },
+            ].map((logo) => (
+              <div key={logo.name} style={{ background: 'var(--color-green-wash)', border: '1px solid var(--color-green-tint)', borderRadius: 4, padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 120 }}>
+                <img src={logo.file} alt={logo.name} loading="lazy" style={{ maxHeight: 72, maxWidth: '100%', objectFit: 'contain' }} />
+              </div>
+            ))}
           </div>
         </div>
       </section>

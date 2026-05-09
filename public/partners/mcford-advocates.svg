@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" role="img" aria-labelledby="title desc">
+  <title id="title">McFord Advocates</title>
+  <desc id="desc">McFord Advocates logo with a dark background, white classical arch mark, and white wordmark.</desc>
+  <rect width="400" height="220" fill="#2D3142"/>
+
+  <g transform="translate(0 8)">
+    <path d="M95 102C95 63.4 126.4 32 165 32s70 31.4 70 70" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+    <path d="M145 62h40" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+    <path d="M134 86h62" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+    <path d="M144 64v44M156 64v44M168 64v44M180 64v44M192 64v44" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+    <path d="M141 66l23-20 23 20" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="165" cy="52" r="7" fill="#274060" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="165" cy="52" r="2.8" fill="#9fb5c9"/>
+  </g>
+
+  <text x="200" y="160" text-anchor="middle" fill="#ffffff" font-family="Georgia, 'Times New Roman', serif" font-size="52" letter-spacing="0.5">McFord</text>
+  <text x="200" y="186" text-anchor="middle" fill="#c6cbd6" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="6">ADVOCATES</text>
+</svg>

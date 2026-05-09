@@ -78,6 +78,8 @@ export default function PartnersPage() {
       <section className="mx-auto max-w-6xl px-4 py-20">
         <div className="grid gap-8 md:grid-cols-3">
           {[
+            { name: 'Diplomatic Cargo', file: '/partners/diplomatic-cargo.svg', description: 'Freight and logistics partner branding used for quick visual recognition.' },
+            { name: 'McFord Advocates', file: '/partners/mcford-advocates.svg', description: 'Legal and advisory branding used for credibility and review.' },
             { name: 'Assay Services', file: '/partners/as.png', description: 'Independent assay and testing partners trusted for verification.' },
             { name: 'ISO Certified Labs', file: '/partners/iso.png', description: 'Independent lab partners for purity testing and reporting.' },
             { name: 'Ministry Authorization', file: '/partners/moe-sm-1.png', description: 'Ugandan regulatory and mining authority validation.' },
@@ -90,6 +92,38 @@ export default function PartnersPage() {
               <p className="mt-3 text-sm text-slate-700">{logo.description}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-20">
+        <div className="rounded-3xl border border-amber-200/70 bg-white p-8 shadow-sm">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-[0.35em] text-emerald-700/80">Trusted partner logos</p>
+              <h2 className="mt-3 text-2xl font-semibold text-slate-900">Place brand logos here for quick review</h2>
+            </div>
+            <p className="max-w-xl text-sm text-slate-700">
+              This block is the safest place to add more partner logos because it sits under the existing trust section and uses a simple grid.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { name: 'Assay Services', file: '/partners/as.png' },
+              { name: 'ISO Certified Labs', file: '/partners/iso.png' },
+              { name: 'Ministry Authorization', file: '/partners/moe-sm-1.png' },
+              { name: 'Diamond Capital Logistics', file: '/partners/DCL-LOGO.png' },
+              { name: 'Diplomatic Cargo', file: '/partners/diplomatic-cargo.svg' },
+              { name: 'McFord Advocates', file: '/partners/mcford-advocates.svg' },
+            ].map((logo) => (
+              <div key={logo.name} className="rounded-2xl border border-amber-100 bg-[#faf8f2] p-5 text-center">
+                <div className="flex h-24 items-center justify-center rounded-xl bg-white px-4">
+                  <img src={logo.file} alt={logo.name} className="max-h-16 max-w-full object-contain" loading="lazy" />
+                </div>
+                <p className="mt-3 text-sm font-medium text-slate-900">{logo.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
