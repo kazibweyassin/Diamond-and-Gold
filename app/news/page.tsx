@@ -35,7 +35,7 @@ function ArticleCard({ article, featured = false }: { article: (typeof articlesS
       ].join(' ')}
       aria-label={`Read: ${article.title}`}
     >
-      <div className={featured ? 'relative min-h-[18rem] bg-slate-50 md:min-h-full' : 'relative h-56 bg-slate-50'}>
+      <div className={featured ? 'relative h-64 md:h-80 bg-slate-50' : 'relative h-48 bg-slate-50'}>
         {/* eslint-disable-next-line @next/next/no-img-element -- remote article imagery */}
         {!imgError && (
           <img
@@ -43,6 +43,7 @@ function ArticleCard({ article, featured = false }: { article: (typeof articlesS
             alt={article.imageAlt}
             className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
             onError={() => setImgError(true)}
+            loading="lazy"
           />
         )}
 
@@ -98,10 +99,10 @@ export default function News() {
   const remainingArticles = displayed.slice(1);
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf2_0%,#fffdf8_34%,#f8f4eb_100%)] text-slate-900">
+    <main className="min-h-screen bg-white text-slate-900">
       <Navbar />
 
-      <section className="border-b border-slate-100 bg-white/90 py-16 backdrop-blur-sm">
+      <section className="border-b border-slate-100 bg-white/90 py-12 backdrop-blur-sm">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-8">
           <div>
             <p className="text-[10px] uppercase tracking-[0.38em] text-emerald-700/80">Industry Insights</p>
@@ -167,7 +168,7 @@ export default function News() {
         </div>
       </div>
 
-      <section className="mx-auto max-w-7xl px-6 py-10 lg:px-8 lg:py-12">
+      <section className="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
         {displayed.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-amber-200 bg-white px-8 py-20 text-center">
             <p className="text-sm font-medium text-slate-600">No articles in this category yet.</p>
