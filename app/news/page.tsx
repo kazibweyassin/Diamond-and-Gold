@@ -24,26 +24,35 @@ const CATEGORY_STYLES: Record<NewsCategory, string> = {
 };
 
 function ArticleCard({ article, featured = false }: { article: (typeof articlesSorted)[number]; featured?: boolean }) {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <Link
       href={`/news/${article.id}`}
       className={[
-        'group block overflow-hidden rounded-3xl border border-amber-100 bg-white shadow-[0_12px_40px_-24px_rgba(15,23,42,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-24px_rgba(15,23,42,0.45)]',
+        'group block overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-lg transition hover:-translate-y-1 hover:shadow-xl',
         featured ? 'md:grid md:grid-cols-[1.05fr_0.95fr]' : '',
       ].join(' ')}
       aria-label={`Read: ${article.title}`}
     >
-      <div className={featured ? 'relative min-h-[18rem] bg-amber-50 md:min-h-full' : 'relative h-56 bg-amber-50'}>
+      <div className={featured ? 'relative min-h-[18rem] bg-slate-50 md:min-h-full' : 'relative h-56 bg-slate-50'}>
         {/* eslint-disable-next-line @next/next/no-img-element -- remote article imagery */}
-        <img
-          src={article.image}
-          alt={article.imageAlt}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-          onError={(e) => {
-            e.currentTarget.style.display = 'none';
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent" />
+        {!imgError && (
+          <img
+            src={article.image}
+            alt={article.imageAlt}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            onError={() => setImgError(true)}
+          />
+        )}
+
+        {imgError && (
+          <div className="flex h-full w-full items-center justify-center bg-slate-100 text-sm text-slate-500">
+            Image not available
+          </div>
+        )}
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
       </div>
 
       <div className={featured ? 'p-7 md:p-8' : 'p-6'}>
@@ -56,7 +65,7 @@ function ArticleCard({ article, featured = false }: { article: (typeof articlesS
           </time>
         </div>
 
-        <h2 className={['mt-4 font-serif font-normal tracking-tight text-slate-900 transition-colors group-hover:text-amber-900', featured ? 'text-3xl leading-tight md:text-[2.7rem]' : 'text-[1.4rem] leading-snug'].join(' ')}>
+        <h2 className={['mt-4 font-serif font-normal tracking-tight text-slate-900 transition-colors group-hover:text-emerald-800', featured ? 'text-3xl leading-tight md:text-[2.7rem]' : 'text-[1.4rem] leading-snug'].join(' ')}>
           {article.title}
         </h2>
 
@@ -65,7 +74,7 @@ function ArticleCard({ article, featured = false }: { article: (typeof articlesS
         </p>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center gap-2 text-sm font-medium text-amber-800 transition group-hover:text-amber-950">
+          <span className="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 transition group-hover:text-emerald-900">
             Read article
             <span aria-hidden="true" className="transition group-hover:translate-x-0.5">→</span>
           </span>
@@ -92,10 +101,10 @@ export default function News() {
     <main className="min-h-screen bg-[linear-gradient(180deg,#fffaf2_0%,#fffdf8_34%,#f8f4eb_100%)] text-slate-900">
       <Header cta={{ label: 'Contact us', href: '/contact' }} />
 
-      <section className="border-b border-amber-100 bg-white/90 py-16 backdrop-blur-sm">
+      <section className="border-b border-slate-100 bg-white/90 py-16 backdrop-blur-sm">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-8">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.38em] text-amber-700/80">Industry Insights</p>
+            <p className="text-[10px] uppercase tracking-[0.38em] text-emerald-700/80">Industry Insights</p>
             <h1 className="mt-4 max-w-2xl font-serif text-4xl font-normal tracking-tight text-slate-900 md:text-5xl">
               Gold news and market intelligence
             </h1>
@@ -110,8 +119,8 @@ export default function News() {
               { label: 'Categories', value: String(new Set(articlesSorted.map((article) => article.category)).size) },
               { label: 'Latest', value: articlesSorted[0]?.dateShort ?? '—' },
             ].map((item) => (
-              <div key={item.label} className="rounded-2xl border border-amber-100 bg-amber-50/80 p-4 shadow-sm">
-                <div className="text-[10px] uppercase tracking-[0.3em] text-amber-700/70">{item.label}</div>
+              <div key={item.label} className="rounded-2xl border border-slate-100 bg-emerald-50/80 p-4 shadow-sm">
+                <div className="text-[10px] uppercase tracking-[0.3em] text-emerald-700/70">{item.label}</div>
                 <div className="mt-2 font-serif text-2xl text-slate-900">{item.value}</div>
               </div>
             ))}
@@ -119,7 +128,7 @@ export default function News() {
         </div>
       </section>
 
-      <div className="sticky top-0 z-20 border-b border-amber-100 bg-[#fffaf2]/90 backdrop-blur-md">
+      <div className="sticky top-0 z-20 border-b border-slate-100 bg-[#fffaf2]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-4 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by category">
             {CATEGORIES.map((cat) => {
@@ -132,8 +141,8 @@ export default function News() {
                   className={[
                     'rounded-full border px-4 py-2 text-[11px] font-semibold tracking-wide transition',
                     active
-                      ? 'border-amber-500 bg-amber-500 text-white shadow-sm'
-                      : 'border-amber-100 bg-white text-slate-600 hover:border-amber-300 hover:text-amber-900',
+                      ? 'border-emerald-600 bg-emerald-600 text-white shadow-sm'
+                      : 'border-slate-100 bg-white text-slate-600 hover:border-emerald-300 hover:text-emerald-900',
                   ].join(' ')}
                 >
                   {cat}
@@ -179,7 +188,7 @@ export default function News() {
             </div>
 
             <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-              <div className="rounded-3xl border border-amber-100 bg-white p-6 shadow-[0_14px_40px_-30px_rgba(15,23,42,0.4)]">
+              <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_14px_40px_-30px_rgba(15,23,42,0.4)]">
                 <p className="text-[10px] uppercase tracking-[0.3em] text-amber-700/70">What this section covers</p>
                 <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
                   <li>• Market prices, export flows, and central bank demand</li>
@@ -188,15 +197,15 @@ export default function News() {
                 </ul>
               </div>
 
-              <div className="rounded-3xl border border-amber-100 bg-gradient-to-br from-amber-50 to-white p-6 shadow-[0_14px_40px_-30px_rgba(15,23,42,0.4)]">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-amber-700/70">Need verified supply updates?</p>
+              <div className="rounded-3xl border border-slate-100 bg-gradient-to-br from-emerald-50 to-white p-6 shadow-[0_14px_40px_-30px_rgba(15,23,42,0.4)]">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-emerald-700/70">Need verified supply updates?</p>
                 <h2 className="mt-3 font-serif text-2xl font-normal text-slate-900">Talk to our team</h2>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                   If you need sourcing, documentation, or logistics support, we can help translate news into actual procurement decisions.
                 </p>
                 <Link
                   href="/contact"
-                  className="mt-5 inline-flex rounded-full bg-amber-700 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-amber-800"
+                  className="mt-5 inline-flex rounded-full bg-emerald-700 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-emerald-800"
                 >
                   Contact us
                 </Link>
