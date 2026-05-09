@@ -816,13 +816,13 @@ function Home() {
         </div>
       </section>
 
-      <section style={{ padding: '0 2rem 6rem' }}>
+      <section style={{ padding: '0 2rem 3rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div style={{ marginBottom: '1.5rem' }}>
             <div className="eyebrow">Trusted partners</div>
-            <h2 className="section-title"><strong>Logos we can show</strong> on the website</h2>
+            <h2 className="section-title"><strong>Some of our long term partners</strong> on the website</h2>
             <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', marginTop: '0.5rem', fontWeight: 300 }}>
-              This is a compact, low-risk place to surface partner logos without disturbing the current page rhythm.
+              These are some of the partners we work with over time for logistics, legal support, verification, and compliance visibility.
             </p>
           </div>
           <div className="partners-logo-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1rem' }}>
@@ -831,8 +831,6 @@ function Home() {
               { name: 'McFord Advocates', file: '/partners/mcford-advocates.svg' },
               { name: 'Assay Services', file: '/partners/as.png' },
               { name: 'ISO Certified Labs', file: '/partners/iso.png' },
-              { name: 'Ministry Authorization', file: '/partners/moe-sm-1.png' },
-              { name: 'Diamond Capital Logistics', file: '/partners/DCL-LOGO.png' },
             ].map((logo) => (
               <div key={logo.name} style={{ background: 'var(--color-green-wash)', border: '1px solid var(--color-green-tint)', borderRadius: 4, padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 120 }}>
                 <img src={logo.file} alt={logo.name} loading="lazy" style={{ maxHeight: 72, maxWidth: '100%', objectFit: 'contain' }} />
