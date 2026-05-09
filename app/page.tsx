@@ -5,51 +5,6 @@ import { useEffect, useState, useRef } from 'react';
 import { Shield, Clock, FileText, Globe, FileCheck, Beaker, Truck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
 
-function Footer() {
-  const currentYear = new Date().getFullYear();
-  return (
-    <footer style={{ background: 'var(--navy)', color: '#fff', padding: '3rem 2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '2rem', marginBottom: '2rem' }} className="footer-grid">
-        <div>
-          <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Company</div>
-          <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Link href="/about">About us</Link>
-            <Link href="/corporate-profile">Corporate profile</Link>
-            <Link href="/process">Our process</Link>
-            <Link href="/compliance">Compliance</Link>
-          </div>
-        </div>
-        <div>
-          <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Services</div>
-          <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Link href="/products#transaction-handling">Gold sourcing</Link>
-            <Link href="/products#secure-logistics">Logistics</Link>
-            <Link href="/products#assay-testing">Assay services</Link>
-          </div>
-        </div>
-        <div>
-          <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Resources</div>
-          <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Link href="/compliance">Documentation</Link>
-            <Link href="/contact">Contact</Link>
-          </div>
-        </div>
-        <div>
-          <div style={{ fontWeight: 600, marginBottom: '1rem' }}>Connect</div>
-          <div className="footer-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <a href="https://wa.me/256704833021" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a href="mailto:info@diamondcapitalafrica.com">Email</a>
-            <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer">Investor portal</a>
-          </div>
-        </div>
-      </div>
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
-        <p>&copy; {currentYear} Diamond Capital Africa. All rights reserved.</p>
-      </div>
-    </footer>
-  );
-}
-
 const SLIDES = [
   { image: '/ugandagold.jpg',                              label: 'Verified supply' },
   { image: '/Gold-bars.webp',                              label: 'Export-ready stock' },
@@ -1040,7 +995,7 @@ function Home() {
         </div>
       </section>
 
-      <Footer />
+      
     </main>
   );
 }
