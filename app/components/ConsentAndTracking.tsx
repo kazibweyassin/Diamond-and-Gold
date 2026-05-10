@@ -22,8 +22,12 @@ export default function ConsentAndTracking() {
     marketing: false,
   });
   const [showOptions, setShowOptions] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Only run on client after hydration
+    setMounted(true);
+    
     // Prefer cookie storage (set by server/client), fallback to localStorage
     const cookie = getConsentFromCookie();
     if (cookie.choice) {
@@ -80,7 +84,7 @@ export default function ConsentAndTracking() {
     persistConsent('rejected', { analytics: false, marketing: false });
   };
 
-  const bannerVisible = consentChoice === null;
+  const bannerVisible = mounted && consentChoice === null;
   const analyticsEnabled = consentChoice === 'accepted' || (consentChoice === 'custom' && preferences.analytics);
   const marketingEnabled = consentChoice === 'accepted' || (consentChoice === 'custom' && preferences.marketing);
 
@@ -157,101 +161,116 @@ export default function ConsentAndTracking() {
       )}
 
       {bannerVisible && (
-        <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-5xl rounded-2xl border border-slate-200 bg-white/98 p-4 shadow-2xl backdrop-blur-md md:bottom-6 md:p-5">
+        <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-2xl rounded-xl border border-green-900/20 bg-gradient-to-br from-green-50 to-white p-5 shadow-lg backdrop-blur-md md:bottom-6 md:p-6">
           <div className="flex flex-col gap-4">
-            <p className="max-w-4xl text-sm font-semibold leading-6 text-slate-900 md:text-[15px]">
-              We use cookies, tracking technologies, and third-party analytics tools to better understand who is using the website and improve your experience. By using our website you are agreeing to this. Read our privacy policy to find out what cookies are used for and how to change your settings.
-            </p>
+            <div className="flex gap-3">
+              <div className="text-2xl">🍪</div>
+              <div>
+                <h3 className="text-sm font-bold text-green-900 md:text-base">
+                  We value your privacy
+                </h3>
+                <p className="mt-1 text-xs leading-5 text-green-800 md:text-sm">
+                  We use cookies to understand your needs and improve your experience. You can choose which cookies to accept.
+                </p>
+              </div>
+            </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
               <button
                 type="button"
                 onClick={acceptAll}
-                className="inline-flex items-center justify-center rounded-md bg-[#0057d8] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0048b3]"
+                className="inline-flex items-center justify-center rounded-lg bg-green-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-800 active:scale-95 md:px-6 md:py-3"
               >
-                Accept
+                Accept all
               </button>
 
               <button
                 type="button"
                 onClick={() => setShowOptions((current) => !current)}
-                className="inline-flex items-center justify-center rounded-md bg-slate-100 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-200"
+                className="inline-flex items-center justify-center rounded-lg border border-green-300 bg-white px-5 py-2.5 text-sm font-semibold text-green-900 transition hover:bg-green-50 active:scale-95 md:px-6 md:py-3"
                 aria-expanded={showOptions}
                 aria-controls="cookie-options-panel"
               >
-                Other options
+                {showOptions ? 'Hide options' : 'Customize'}
+              </button>
+
+              <button
+                type="button"
+                onClick={rejectAll}
+                className="inline-flex items-center justify-center rounded-lg bg-transparent px-5 py-2.5 text-sm font-semibold text-green-700 transition hover:bg-green-100/50 active:scale-95 md:px-6 md:py-3"
+              >
+                Reject all
               </button>
             </div>
 
             {showOptions && (
-              <div id="cookie-options-panel" className="grid gap-0 overflow-hidden rounded-sm border border-slate-300 bg-white md:grid-cols-3">
-                <div className="border-b border-slate-300 p-4 md:border-b-0 md:border-r">
-                  <label className="flex items-start gap-3 text-sm font-semibold text-slate-900">
-                    <input type="checkbox" checked disabled className="mt-0.5 h-4 w-4 rounded border-slate-300 text-[#0057d8]" />
+              <div id="cookie-options-panel" className="space-y-3 border-t border-green-200 pt-4">
+                <div className="rounded-lg border border-green-100 bg-green-50/50 p-3">
+                  <label className="flex items-start gap-3 text-sm">
+                    <input 
+                      type="checkbox" 
+                      checked 
+                      disabled 
+                      className="mt-0.5 h-4 w-4 rounded border-green-300 bg-white text-green-700 accent-green-700"
+                    />
                     <span>
-                      Necessary Cookies
-                      <span className="mt-2 block font-normal leading-6 text-slate-800">
-                        Some cookies are necessary for the functioning of Diamond Capital Africa&apos;s website.
+                      <span className="font-semibold text-green-900">Necessary</span>
+                      <span className="mt-1 block text-xs leading-4 text-green-700">
+                        Essential for site functionality. Always enabled.
                       </span>
                     </span>
                   </label>
                 </div>
 
-                <div className="border-b border-slate-300 p-4 md:border-b-0 md:border-r">
-                  <label className="flex items-start gap-3 text-sm font-semibold text-slate-900">
+                <div className="rounded-lg border border-green-100 bg-white p-3">
+                  <label className="flex items-start gap-3 text-sm">
                     <input
                       type="checkbox"
                       checked={preferences.analytics}
                       onChange={(event) => setPreferences((current) => ({ ...current, analytics: event.target.checked }))}
-                      className="mt-0.5 h-4 w-4 rounded border-slate-300 text-[#0057d8]"
+                      className="mt-0.5 h-4 w-4 rounded border-green-300 bg-white text-green-700 accent-green-700"
                     />
                     <span>
-                      Analytics Cookies
-                      <span className="mt-2 block font-normal leading-6 text-slate-800">
-                        These cookies allow us to understand how people are using the site and improve their experience.
+                      <span className="font-semibold text-green-900">Analytics</span>
+                      <span className="mt-1 block text-xs leading-4 text-green-700">
+                        Help us understand how you use the site.
                       </span>
                     </span>
                   </label>
                 </div>
 
-                <div className="p-4">
-                  <label className="flex items-start gap-3 text-sm font-semibold text-slate-900">
+                <div className="rounded-lg border border-green-100 bg-white p-3">
+                  <label className="flex items-start gap-3 text-sm">
                     <input
                       type="checkbox"
                       checked={preferences.marketing}
                       onChange={(event) => setPreferences((current) => ({ ...current, marketing: event.target.checked }))}
-                      className="mt-0.5 h-4 w-4 rounded border-slate-300 text-[#0057d8]"
+                      className="mt-0.5 h-4 w-4 rounded border-green-300 bg-white text-green-700 accent-green-700"
                     />
                     <span>
-                      Marketing Cookies
-                      <span className="mt-2 block font-normal leading-6 text-slate-800">
-                        We use marketing cookies to better understand our audience and increase effectiveness of outreach.
+                      <span className="font-semibold text-green-900">Marketing</span>
+                      <span className="mt-1 block text-xs leading-4 text-green-700">
+                        Personalized content and ads.
                       </span>
                     </span>
                   </label>
                 </div>
+
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center pt-2">
+                  <button
+                    type="button"
+                    onClick={savePreferences}
+                    className="inline-flex items-center justify-center rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-800 active:scale-95"
+                  >
+                    Save preferences
+                  </button>
+                </div>
               </div>
             )}
 
-            {showOptions && (
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <button
-                  type="button"
-                  onClick={savePreferences}
-                  className="inline-flex items-center justify-center rounded-none bg-[#0057d8] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0048b3]"
-                >
-                  Save preferences
-                </button>
-
-                <button
-                  type="button"
-                  onClick={rejectAll}
-                  className="inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-                >
-                  Reject all
-                </button>
-              </div>
-            )}
+            <p className="text-xs text-green-700">
+              <a href="/privacy-policy" className="underline hover:text-green-800">Privacy Policy</a>
+            </p>
           </div>
         </div>
       )}
