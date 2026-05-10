@@ -36,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/news`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.75,
+    },
+    {
       url: `${baseUrl}/compliance`,
       lastModified,
       changeFrequency: 'monthly' as const,
@@ -70,6 +76,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly' as const,
       priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/news/uganda-gold-export-2024`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.65,
+    },
+    {
+      url: `${baseUrl}/news/oecd-compliance-gold-trading`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.65,
+    },
+    {
+      url: `${baseUrl}/news/gold-price-trends-2024`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.65,
     },
   ]
 
