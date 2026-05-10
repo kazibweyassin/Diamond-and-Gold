@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { services } from '@/lib/services';
 
 const NAV_LINKS = [
   { label: 'About',      href: '/about' },
-  { label: 'Services',   href: '/products' },
   { label: 'Compliance', href: '/compliance' },
   { label: 'Process',    href: '/process' },
   { label: 'Contact',    href: '/contact' },
@@ -20,6 +20,7 @@ export default function Navbar() {
   const pathname = usePathname() ?? '';
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled]     = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -69,12 +70,80 @@ export default function Navbar() {
           color: rgba(10,22,40,0.45);
         }
         .nav-links-desktop a {
-          text-decoration: none; color: inherit; transition: color 0.2s;
+          text-decoration: none;
+          color: inherit;
+          transition: color 0.2s;
+          position: relative;
+        }
+        .nav-links-desktop a::before {
+          content: '';
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+          width: 0;
+          height: 4px;
+          background: linear-gradient(90deg, #F1C40F, #E74C3C);
+          border-radius: 0;
+          transition: all 0.5s ease-in-out;
+        }
+        .nav-links-desktop a:hover::before {
+          width: 100%;
+          border-radius: 50%;
         }
         .nav-links-desktop a:hover { color: var(--navy); }
         .nav-links-desktop a.nav-link-active {
           color: var(--navy);
           font-weight: 600;
+        }
+        
+        .nav-dropdown-trigger {
+          position: relative;
+          cursor: pointer;
+          display: inline-block;
+        }
+        .nav-dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          margin-top: 0.5rem;
+          background: #fff;
+          border: 1px solid var(--rule-md);
+          border-radius: 6px;
+          box-shadow: 0 10px 40px rgba(10,22,40,0.1);
+          min-width: 260px;
+          z-index: 300;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateX(-50%) translateY(-8px);
+          transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+          pointer-events: none;
+        }
+        .nav-dropdown-trigger:hover .nav-dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+          pointer-events: auto;
+        }
+        .nav-dropdown-item {
+          display: block;
+          text-decoration: none;
+          color: var(--navy);
+          font-size: 12px;
+          font-weight: 400;
+          padding: 12px 16px;
+          transition: background 0.15s, color 0.15s;
+          border-bottom: 1px solid rgba(10,22,40,0.05);
+        }
+        .nav-dropdown-item:last-child {
+          border-bottom: none;
+        }
+        .nav-dropdown-item:hover {
+          background: rgba(184,146,42,0.06);
+          color: var(--gold);
         }
 
         .nav-ctas { display: flex; gap: 8px; align-items: center; }
@@ -189,6 +258,24 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <li className="nav-dropdown-trigger">
+              <span style={{ cursor: 'pointer', position: 'relative' }}>
+                Services
+                <span style={{ marginLeft: '4px', fontSize: '8px', verticalAlign: 'middle' }}>▼</span>
+              </span>
+              <ul className="nav-dropdown-menu">
+                {services.map((service) => (
+                  <li key={service.id}>
+                    <Link
+                      href={`/products#${service.id}`}
+                      className="nav-dropdown-item"
+                    >
+                      {service.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
           </ul>
 
           <div className="nav-ctas">
