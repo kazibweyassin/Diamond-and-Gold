@@ -142,16 +142,16 @@ export default function Compliance() {
         <p className="col-span-full text-xs uppercase tracking-[0.35em] text-amber-700/80 mb-4">Additional Services</p>
         {[
           {
-            title: "Origin Verification",
-            body: "Verified sourcing records and partner documentation for each lot.",
-          },
-          {
             title: "Assay Reports",
             body: "Independent lab testing to confirm purity and weight.",
           },
           {
             title: "Custody Chain",
             body: "Documented handling from collection to export delivery.",
+          },
+          {
+            title: "Conflict Mineral Screening",
+            body: "Verification of mineral origin compliance with international sourcing standards.",
           },
           {
             title: "KYC Support",

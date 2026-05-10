@@ -391,7 +391,6 @@ export default function About() {
       </section>
 
       {/* ── FOOTER ── */}
-      <SharedFooter variant="compact" />
     </main>
   );
 }

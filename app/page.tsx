@@ -16,7 +16,7 @@ const SLIDES = [
 const STATS = [
   { value: '99.5%+', label: 'Minimum purity',        unit: 'XAU',  icon: 'shield' },
   { value: '48–72h', label: 'Dispatch window',       unit: 'HRS',  icon: 'clock' },
-  { value: '100%',   label: 'KYC-compliant orders',  unit: 'DOCS', icon: 'file' },
+  { value: '1 kg',   label: 'Minimum order',         unit: 'MOQ',  icon: 'file' },
   { value: 'OECD',   label: 'Due diligence standard', unit: 'STD', icon: 'globe' },
 ];
 
@@ -42,7 +42,7 @@ const FEATURES = [
 ];
 
 const CREDENTIALS = [
-  { code: 'UG-MIN', title: 'Licensed Trader',          detail: 'Uganda Minerals & Mining licensed operator. Documentation available to verified buyers.' },
+  { code: 'UG-MIN', title: 'Licensed Trader',          detail: 'Uganda Minerals & Mining licensed operator. Licence available to verified buyers on request.' },
   { code: 'ISO',    title: 'Certified Assay Labs',     detail: 'Third-party purity testing via accredited independent facilities. Certificates ship with every order.' },
   { code: 'OECD',  title: 'Due Diligence Compliant',  detail: 'Full adherence to OECD Guidance for Responsible Mineral Supply Chains, 5th Edition.' },
   { code: 'INS',   title: 'Insured Logistics',         detail: 'Full-value shipment insurance with real-time tracking from dispatch to confirmed delivery.' },
