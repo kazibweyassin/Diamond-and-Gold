@@ -96,7 +96,7 @@ function GoldTicker() {
 
 function MicroLeadForm() {
   const [show, setShow] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', qty: '1' });
+  const [form, setForm] = useState({ name: '', qty: '1' });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -109,22 +109,13 @@ function MicroLeadForm() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: form.name || 'Anonymous',
-          email: form.email || '',
-          phone: '',
-          subject: 'Quick price request',
-          message: `Please send price and availability for ${form.qty} kg.`,
-        }),
-      });
-      if (res.ok) {
-        setSent(true);
-        setForm({ name: '', email: '', qty: '1' });
-        setTimeout(() => setSent(false), 6000);
-      }
+      const message = `Hello, I'm ${form.name || 'interested in'} getting a price quote for ${form.qty} kg of gold.`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/256704833021?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+      setSent(true);
+      setForm({ name: '', qty: '1' });
+      setTimeout(() => setSent(false), 6000);
     } catch (err) {
       console.error(err);
     } finally {
@@ -147,10 +138,9 @@ function MicroLeadForm() {
         <button onClick={() => setShow(true)} className="btn-primary">Get price (1 kg) →</button>
       ) : (
         <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <input name="qty" value={form.qty} onChange={handleChange} className="" style={{ width: 72, padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} />
+          <input name="qty" value={form.qty} onChange={handleChange} className="" style={{ width: 72, padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} placeholder="kg" />
           <input name="name" value={form.name} onChange={handleChange} placeholder="Name" style={{ padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} />
-          <input name="email" value={form.email} onChange={handleChange} placeholder="Email" style={{ padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} />
-          <button type="submit" disabled={loading} className="btn-ghost" style={{ padding: '8px 12px' }}>{loading ? 'Sending...' : 'Send'}</button>
+          <button type="submit" disabled={loading} className="btn-ghost" style={{ padding: '8px 12px' }}>{loading ? 'Opening...' : 'Send via WhatsApp'}</button>
           <button type="button" onClick={() => setShow(false)} className="" style={{ background: 'transparent', border: 'none', color: 'rgba(10,22,40,0.5)' }}>Cancel</button>
         </form>
       )}
@@ -158,19 +148,76 @@ function MicroLeadForm() {
   );
 }
 
+function ComplianceDownloadModal() {
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowModal(true);
+    }, 8000); // Show after 8 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!showModal) return null;
+
+  return (
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      backgroundColor: 'rgba(10, 22, 40, 0.5)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 999,
+      backdropFilter: 'blur(4px)',
+    }}>
+      <div style={{
+        backgroundColor: '#fff',
+        borderRadius: 8,
+        padding: 32,
+        maxWidth: 420,
+        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+      }}>
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontSize: 18, fontWeight: 600, color: 'var(--navy)', marginBottom: 8 }}>Ready to explore our credentials?</div>
+          <div style={{ fontSize: 14, color: 'rgba(10,22,40,0.65)', lineHeight: 1.6 }}>Download our compliance pack to verify our origin, assay standards, and industry certifications.</div>
+        </div>
+
+        <div style={{ marginTop: 24, display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+          <button onClick={() => setShowModal(false)} style={{
+            padding: '10px 20px',
+            borderRadius: 6,
+            border: '1px solid rgba(10,22,40,0.15)',
+            background: 'transparent',
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: 'pointer',
+            color: 'rgba(10,22,40,0.6)',
+          }}>
+            Maybe later
+          </button>
+          <a href="/compliance-pack.pdf" download style={{
+            padding: '10px 20px',
+            borderRadius: 6,
+            background: 'var(--navy)',
+            color: '#fff',
+            fontSize: 14,
+            fontWeight: 500,
+            cursor: 'pointer',
+            textDecoration: 'none',
+            display: 'inline-block',
+          }}>
+            Download now
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TrustBlock() {
   return (
     <div style={{ display: 'flex', gap: 12, marginTop: 18, alignItems: 'center', flexWrap: 'wrap' }}>
-      <div className="dl-card" style={{ minWidth: 220 }}>
-        <div>
-          <div style={{ fontSize: 13, fontWeight: 600 }}>Download compliance pack</div>
-          <div style={{ fontSize: 13, color: 'rgba(10,22,40,0.55)', marginTop: 6 }}>Verified origin & assay examples</div>
-        </div>
-        <div style={{ marginLeft: 'auto' }}>
-          <a href="/compliance-pack.pdf" download className="btn-ghost" style={{ display: 'inline-block' }}>Download</a>
-        </div>
-      </div>
-
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <div style={{ fontSize: 13, color: 'rgba(10,22,40,0.55)' }}>Trusted by</div>
         <div style={{ display: 'flex', gap: 8 }}>
@@ -695,8 +742,6 @@ function Home() {
                 <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">Investor portal ↗</a>
               </div>
 
-              <TrustBlock />
-
               <div className="hero-slide-row">
                 <div className="hero-slide-nav" role="tablist" aria-label="Hero imagery">
                   {SLIDES.map((s, i) => (
@@ -1103,7 +1148,7 @@ function Home() {
         </div>
       </section>
 
-      
+      <ComplianceDownloadModal />
     </main>
   );
 }
