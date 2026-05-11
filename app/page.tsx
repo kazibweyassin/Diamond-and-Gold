@@ -101,7 +101,7 @@ function MicroLeadForm() {
   const href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="btn-primary">Get price (1 kg) →</a>
+    <a href={href} target="_blank" rel="noopener noreferrer" className="btn-primary heartbeat">Get price (1 kg) →</a>
   );
 }
 
@@ -374,6 +374,20 @@ function Home() {
           filter: brightness(1.05);
           transform: translateY(-1px);
           box-shadow: 0 12px 36px rgba(184, 146, 42, 0.42);
+        }
+        @keyframes heartbeat {
+          0% { transform: scale(1); box-shadow: 0 8px 28px rgba(184,146,42,0.25); }
+          14% { transform: scale(1.06); box-shadow: 0 18px 36px rgba(184,146,42,0.35); }
+          28% { transform: scale(0.98); box-shadow: 0 6px 20px rgba(184,146,42,0.20); }
+          100% { transform: scale(1); box-shadow: 0 8px 28px rgba(184,146,42,0.25); }
+        }
+        .heartbeat {
+          will-change: transform;
+          animation: heartbeat 1.8s ease-in-out infinite;
+        }
+        .btn-primary.heartbeat:hover {
+          animation-play-state: paused;
+          transform: translateY(-1px) scale(1.03);
         }
         .btn-ghost {
           border: 1px solid rgba(255, 255, 255, 0.28);
