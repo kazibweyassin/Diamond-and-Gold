@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { Shield, Clock, FileText, Globe, FileCheck, Beaker, Truck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
+import { CONTACT } from '@/lib/constants';
 
 const SLIDES = [
   { image: '/ugandagold.jpg',                              label: 'Verified supply' },
@@ -95,56 +96,12 @@ function GoldTicker() {
 }
 
 function MicroLeadForm() {
-  const [show, setShow] = useState(false);
-  const [form, setForm] = useState({ name: '', qty: '1' });
-  const [sent, setSent] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setForm((f) => ({ ...f, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const message = `Hello, I'm ${form.name || 'interested in'} getting a price quote for ${form.qty} kg of gold.`;
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/256704833021?text=${encodedMessage}`;
-      window.open(whatsappUrl, '_blank');
-      setSent(true);
-      setForm({ name: '', qty: '1' });
-      setTimeout(() => setSent(false), 6000);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-      setShow(false);
-    }
-  };
-
-  if (sent) {
-    return (
-      <div className="dl-card" style={{ display: 'inline-flex', alignItems: 'center' }}>
-        <div style={{ fontWeight: 600 }}>Thanks — we'll follow up shortly.</div>
-      </div>
-    );
-  }
+  const whatsappNumber = CONTACT.WHATSAPP_NUMBER || '256704833021';
+  const message = "Hello, I'm requesting a price quote for 1 kg of gold.";
+  const href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-      {!show ? (
-        <button onClick={() => setShow(true)} className="btn-primary">Get price (1 kg) →</button>
-      ) : (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-          <input name="qty" value={form.qty} onChange={handleChange} className="" style={{ width: 72, padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} placeholder="kg" />
-          <input name="name" value={form.name} onChange={handleChange} placeholder="Name" style={{ padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} />
-          <button type="submit" disabled={loading} className="btn-ghost" style={{ padding: '8px 12px' }}>{loading ? 'Opening...' : 'Send via WhatsApp'}</button>
-          <button type="button" onClick={() => setShow(false)} className="" style={{ background: 'transparent', border: 'none', color: 'rgba(10,22,40,0.5)' }}>Cancel</button>
-        </form>
-      )}
-    </div>
+    <a href={href} target="_blank" rel="noopener noreferrer" className="btn-primary">Get price (1 kg) →</a>
   );
 }
 
