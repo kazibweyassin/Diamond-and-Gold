@@ -109,11 +109,20 @@ function ComplianceDownloadModal() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 8000); // Show after 8 seconds
-    return () => clearTimeout(timer);
+    // Only show if not dismissed in this session
+    const hasSeenModal = sessionStorage.getItem('complianceModalDismissed');
+    if (!hasSeenModal) {
+      const timer = setTimeout(() => {
+        setShowModal(true);
+      }, 8000); // Show after 8 seconds
+      return () => clearTimeout(timer);
+    }
   }, []);
+
+  const handleClose = () => {
+    setShowModal(false);
+    sessionStorage.setItem('complianceModalDismissed', 'true');
+  };
 
   if (!showModal) return null;
 
@@ -141,7 +150,7 @@ function ComplianceDownloadModal() {
         </div>
 
         <div style={{ marginTop: 24, display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
-          <button onClick={() => setShowModal(false)} style={{
+          <button onClick={handleClose} style={{
             padding: '10px 20px',
             borderRadius: 6,
             border: '1px solid rgba(10,22,40,0.15)',
@@ -153,7 +162,7 @@ function ComplianceDownloadModal() {
           }}>
             Maybe later
           </button>
-          <a href="/compliance-pack.pdf" download style={{
+          <a href="/compliance-pack.pdf" download onClick={handleClose} style={{
             padding: '10px 20px',
             borderRadius: 6,
             background: 'var(--navy)',
