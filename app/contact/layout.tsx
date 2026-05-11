@@ -20,5 +20,31 @@ export default function ContactLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ContactPage',
+            name: 'Contact Diamond Capital Africa',
+            url: 'https://diamondcapitalafrica.com/contact',
+            mainEntity: {
+              '@type': 'LocalBusiness',
+              name: 'Diamond Capital Africa',
+              telephone: '+256704833021',
+              email: 'info@diamondcapitalafrica.com',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Kampala',
+                addressCountry: 'UG',
+              },
+            },
+          }),
+        }}
+      />
+      {children}
+    </>
+  );
 }

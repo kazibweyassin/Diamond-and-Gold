@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Order Process - How Gold Delivery Works - Diamond Capital Africa',
+  title: 'Order Process - How Gold Delivery Works',
   description: 'Diamond Capital Africa order process: from quotation to delivery. Learn our 4-step fulfillment process, payment options, and logistics timeline.',
   keywords: 'gold order process, gold delivery, order fulfillment, gold quotation, gold payment, logistics, gold shipping',
   openGraph: {

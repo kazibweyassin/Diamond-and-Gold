@@ -58,6 +58,17 @@ function Hero() {
           <p className="mt-4 text-lg text-slate-800">
             From sourcing and refining to export and compliance.
           </p>
+          <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
+            <a href="/faq" className="rounded-full border border-emerald-700/20 bg-white/80 px-4 py-2 text-emerald-900 transition hover:bg-white">
+              Read FAQs
+            </a>
+            <a href="/compliance" className="rounded-full border border-amber-600/20 bg-white/80 px-4 py-2 text-amber-800 transition hover:bg-white">
+              View compliance docs
+            </a>
+            <a href="/contact" className="rounded-full bg-emerald-700 px-4 py-2 text-white transition hover:bg-emerald-800">
+              Request a quote
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -155,6 +166,9 @@ function CTA() {
         <div>
           <h3 className="text-xl font-semibold">Custom service package?</h3>
           <p className="text-sm text-slate-700">We structure deals to your needs.</p>
+          <p className="mt-2 text-sm text-slate-600">
+            Need answers first? Visit the <a href="/faq" className="underline text-emerald-700">FAQ</a> or review our <a href="/compliance" className="underline text-emerald-700">compliance pack</a>.
+          </p>
         </div>
         <a
           href="/contact"

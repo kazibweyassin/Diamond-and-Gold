@@ -23,6 +23,12 @@ export default function Process() {
           compliance at every stage.
         </p>
 
+        <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
+          <a href="/faq" className="rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50">Read FAQs</a>
+          <a href="/compliance" className="rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50">View compliance docs</a>
+          <a href="/products" className="rounded-full bg-amber-600 px-4 py-2 text-white transition hover:bg-amber-700">See services</a>
+        </div>
+
         <div className="mt-10 overflow-hidden rounded-2xl border border-amber-200/70 bg-white shadow-sm">
           <img
             src="/man-pouring-melted-metal-workshop-large.jpg"
@@ -66,6 +72,9 @@ export default function Process() {
               >
                 Start your order →
               </motion.a>
+              <p className="mt-3 text-sm text-slate-600">
+                Need more detail first? Check the <a href="/faq" className="text-emerald-700 underline">FAQ</a> or review our <a href="/compliance" className="text-emerald-700 underline">compliance pack</a>.
+              </p>
             </motion.div>
 
             {/* RIGHT - STEPS */}

@@ -20,5 +20,29 @@ export default function ProductsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            serviceType: 'Gold trading and export services',
+            name: 'Diamond Capital Africa Gold Trading Services',
+            provider: {
+              '@type': 'Organization',
+              name: 'Diamond Capital Africa',
+              url: 'https://diamondcapitalafrica.com',
+            },
+            areaServed: ['Uganda', 'Congo', 'Global'],
+            url: 'https://diamondcapitalafrica.com/products',
+            description:
+              'End-to-end gold trading services including sourcing, assay coordination, export logistics and compliance documentation.',
+          }),
+        }}
+      />
+      {children}
+    </>
+  );
 }

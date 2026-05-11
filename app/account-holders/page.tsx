@@ -137,6 +137,12 @@ ${formData.message}
               Submit requirements, upload KYC documents, complete verification, and activate your buyer account with DCA.
             </motion.p>
 
+            <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
+              <a href="/faq" className="rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50">Read FAQs</a>
+              <a href="/compliance" className="rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50">View compliance</a>
+              <a href="/contact" className="rounded-full bg-amber-600 px-4 py-2 text-white transition hover:bg-amber-700">Speak to us</a>
+            </div>
+
             <div className="mt-10 grid gap-4 xl:grid-cols-4">
               {[
                 { step: '01', title: 'Submit requirements', copy: 'Tell us your order, timeline, and compliance needs.' },

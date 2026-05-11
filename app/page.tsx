@@ -94,6 +94,94 @@ function GoldTicker() {
   );
 }
 
+function MicroLeadForm() {
+  const [show, setShow] = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', qty: '1' });
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name || 'Anonymous',
+          email: form.email || '',
+          phone: '',
+          subject: 'Quick price request',
+          message: `Please send price and availability for ${form.qty} kg.`,
+        }),
+      });
+      if (res.ok) {
+        setSent(true);
+        setForm({ name: '', email: '', qty: '1' });
+        setTimeout(() => setSent(false), 6000);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+      setShow(false);
+    }
+  };
+
+  if (sent) {
+    return (
+      <div className="dl-card" style={{ display: 'inline-flex', alignItems: 'center' }}>
+        <div style={{ fontWeight: 600 }}>Thanks — we'll follow up shortly.</div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      {!show ? (
+        <button onClick={() => setShow(true)} className="btn-primary">Get price (1 kg) →</button>
+      ) : (
+        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <input name="qty" value={form.qty} onChange={handleChange} className="" style={{ width: 72, padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} />
+          <input name="name" value={form.name} onChange={handleChange} placeholder="Name" style={{ padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} />
+          <input name="email" value={form.email} onChange={handleChange} placeholder="Email" style={{ padding: '8px 10px', borderRadius: 6, border: '1px solid rgba(10,22,40,0.08)' }} />
+          <button type="submit" disabled={loading} className="btn-ghost" style={{ padding: '8px 12px' }}>{loading ? 'Sending...' : 'Send'}</button>
+          <button type="button" onClick={() => setShow(false)} className="" style={{ background: 'transparent', border: 'none', color: 'rgba(10,22,40,0.5)' }}>Cancel</button>
+        </form>
+      )}
+    </div>
+  );
+}
+
+function TrustBlock() {
+  return (
+    <div style={{ display: 'flex', gap: 12, marginTop: 18, alignItems: 'center', flexWrap: 'wrap' }}>
+      <div className="dl-card" style={{ minWidth: 220 }}>
+        <div>
+          <div style={{ fontSize: 13, fontWeight: 600 }}>Download compliance pack</div>
+          <div style={{ fontSize: 13, color: 'rgba(10,22,40,0.55)', marginTop: 6 }}>Verified origin & assay examples</div>
+        </div>
+        <div style={{ marginLeft: 'auto' }}>
+          <a href="/compliance-pack.pdf" download className="btn-ghost" style={{ display: 'inline-block' }}>Download</a>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+        <div style={{ fontSize: 13, color: 'rgba(10,22,40,0.55)' }}>Trusted by</div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <img src="/partners/iso.png" alt="ISO" style={{ height: 28 }} />
+          <img src="/partners/as.png" alt="Assay" style={{ height: 28 }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Home() {
   const [slideIdx, setSlideIdx] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
@@ -539,6 +627,24 @@ function Home() {
       `}</style>
 
       <Navbar />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            name: 'Diamond Capital Africa',
+            url: 'https://diamondcapitalafrica.com',
+            telephone: '+256704833021',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Kampala',
+              addressCountry: 'UG',
+            },
+            sameAs: [],
+          }),
+        }}
+      />
 
       {/* ── HERO ── */}
       <section ref={heroRef} className="hero-section">
@@ -585,9 +691,11 @@ function Home() {
 
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
               <div className="hero-actions">
-                <a href="/products" className="btn-primary">Explore services →</a>
+                <MicroLeadForm />
                 <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">Investor portal ↗</a>
               </div>
+
+              <TrustBlock />
 
               <div className="hero-slide-row">
                 <div className="hero-slide-nav" role="tablist" aria-label="Hero imagery">

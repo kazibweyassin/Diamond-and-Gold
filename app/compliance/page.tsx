@@ -15,6 +15,12 @@ export default function Compliance() {
           We prepare complete compliance packs for every shipment to support regulatory review, KYC requirements,
           and internal risk controls.
         </p>
+
+        <div className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
+          <a href="/faq" className="rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50">Read FAQs</a>
+          <a href="/products" className="rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50">View services</a>
+          <a href="/contact" className="rounded-full bg-red-700 px-4 py-2 text-white transition hover:bg-red-800">Contact compliance</a>
+        </div>
       </section>
 
       {/* Compliance Pillars Section - New 2x2 Grid Design */}
@@ -42,6 +48,9 @@ export default function Compliance() {
               >
                 Review Our Standards
               </motion.a>
+              <p className="mt-3 text-sm text-slate-600 max-w-lg">
+                For shipment-specific questions, start with the <a href="/faq" className="text-emerald-700 underline">FAQ</a> or request a direct call via <a href="/contact" className="text-emerald-700 underline">contact</a>.
+              </p>
             </motion.div>
 
             {/* Right Side - 2x2 Grid of Compliance Cards */}

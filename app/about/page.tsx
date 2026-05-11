@@ -386,7 +386,7 @@ export default function About() {
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>{val}</div>
               </div>
             ))}
-          </motion.div>
+          </motion.div> 
         </div>
       </section>
 

@@ -48,12 +48,17 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://diamondcapitalafrica.com"),
-  title: "Diamond Capital Africa - Certified Gold Supply from Uganda & Congo",
+  title: {
+    default: "Diamond Capital Africa - Certified Gold Supply from Uganda & Congo",
+    template: "%s | Diamond Capital Africa",
+  },
   description: "Ethically sourced, lab-verified gold from Uganda and Congo. Certified 99.5%+ purity bars, competitive pricing, secure logistics. Trusted gold supplier for buyers worldwide.",
   keywords: "gold supplier, certified gold, gold bars, Uganda gold, Congo gold, precious metals, ethical sourcing, gold trading, investment gold, compliance documentation",
   authors: [{ name: "Diamond Capital Africa" }],
   creator: "Diamond Capital Africa",
   publisher: "Diamond Capital Africa",
+  category: "Business",
+  applicationName: "Diamond Capital Africa",
   viewport: "width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5",
   appleWebApp: {
     capable: true,
@@ -90,6 +95,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Diamond Capital Africa - Premium Gold from Uganda & Congo",
     description: "Certified gold supply with verified sourcing and secure logistics.",
+    images: ["https://diamondcapitalafrica.com/opengraph-image"],
   },
   alternates: {
     canonical: "https://diamondcapitalafrica.com",
