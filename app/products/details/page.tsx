@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Header from '@/app/components/Header';
 import SharedFooter from '@/app/components/SharedFooter';
+import BulkPricingCalculator from '@/app/components/BulkPricingCalculator';
 import { CONTACT } from '@/lib/constants';
 
 const PRODUCT_DETAILS = [
@@ -676,6 +677,9 @@ export default function ProductDetails() {
           </div>
         ))}
       </section>
+
+      {/* ── BULK PRICING CALCULATOR ── */}
+      <BulkPricingCalculator />
 
       {/* Bottom CTA */}
       <section style={{
