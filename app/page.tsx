@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { Shield, Clock, FileText, Globe, FileCheck, Beaker, Truck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
+import ProductShowcase from '@/app/components/ProductShowcase';
 import { CONTACT } from '@/lib/constants';
 
 const SLIDES = [
@@ -826,7 +827,10 @@ function Home() {
         </div>
       </section>
 
-      {/* OPERATIONS */}
+      {/* ── FEATURED PRODUCTS ── */}
+      <ProductShowcase />
+
+      {/* ── OPERATIONS ── */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem', background: '#fff' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
