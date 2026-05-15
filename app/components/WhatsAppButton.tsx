@@ -3,7 +3,7 @@
 import { CONTACT } from '@/lib/constants';
 
 const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hello! I'd like to inquire about visa services."
+  "Hello! I'd like to inquire about your gold services."
 );
 
 export default function WhatsAppButton() {
@@ -17,29 +17,20 @@ export default function WhatsAppButton() {
       aria-label="Chat with us on WhatsApp"
       className="
         group
-        fixed bottom-6 right-6 z-50
-        sm:bottom-8 sm:right-8
+        fixed bottom-6 right-6 z-40
         flex h-16 w-16 md:h-20 md:w-20
         items-center justify-center
         rounded-full bg-[#25D366]
-        shadow-xl shadow-[#25D366]/40
+        shadow-lg shadow-[#25D366]/40
         transition-all duration-300
-        hover:scale-125 hover:shadow-2xl hover:shadow-[#25D366]/50
+        hover:scale-110 hover:shadow-xl
         focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/50
         active:scale-95
-        cursor-pointer
       "
     >
-      {/* Pulse ring animation */}
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 rounded-full bg-[#25D366] opacity-0 animate-pulse"
-        style={{ animationDuration: '2s' }}
-      />
-
-      {/* Official WhatsApp Icon */}
+      {/* WhatsApp Icon */}
       <svg
-        className="relative h-10 w-10 md:h-12 md:w-12 text-white drop-shadow-lg"
+        className="h-10 w-10 md:h-12 md:w-12 text-white"
         viewBox="0 0 24 24"
         fill="currentColor"
         aria-hidden="true"
@@ -50,17 +41,7 @@ export default function WhatsAppButton() {
       {/* Tooltip */}
       <span
         aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute bottom-full right-0 mb-3
-          whitespace-nowrap rounded-lg
-          bg-gray-900 px-4 py-2
-          text-sm font-semibold text-white
-          opacity-0 scale-95
-          transition-all duration-200
-          group-hover:opacity-100 group-hover:scale-100
-          after:absolute after:top-full after:right-3 after:border-4 after:border-transparent after:border-t-gray-900 after:content-['']
-        "
+        className="pointer-events-none absolute bottom-full right-0 mb-3 whitespace-nowrap rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100 after:absolute after:top-full after:right-3 after:border-4 after:border-transparent after:border-t-gray-900 after:content-['']"
       >
         Chat on WhatsApp
       </span>

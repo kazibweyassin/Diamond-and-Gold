@@ -161,115 +161,108 @@ export default function ConsentAndTracking() {
       )}
 
       {bannerVisible && (
-        <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-2xl rounded-xl border border-green-900/20 bg-gradient-to-br from-green-50 to-white p-5 shadow-lg backdrop-blur-md md:bottom-6 md:p-6">
+        <div className="fixed bottom-6 right-6 z-50 max-w-sm rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl">
           <div className="flex flex-col gap-4">
-            <div className="flex gap-3">
-              <div className="text-2xl">🍪</div>
-              <div>
-                <h3 className="text-sm font-bold text-green-900 md:text-base">
-                  We value your privacy
-                </h3>
-                <p className="mt-1 text-xs leading-5 text-green-800 md:text-sm">
-                  We use cookies to understand your needs and improve your experience. You can choose which cookies to accept.
-                </p>
-              </div>
+            {/* Header */}
+            <div>
+              <h3 className="text-base font-bold text-gray-900">
+                Cookie Settings
+              </h3>
+              <p className="mt-2 text-sm text-gray-600">
+                We use cookies to improve your experience. You can customize your preferences or accept all.
+              </p>
             </div>
 
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+            {/* Buttons */}
+            <div className="flex flex-col gap-2">
               <button
                 type="button"
                 onClick={acceptAll}
-                className="inline-flex items-center justify-center rounded-lg bg-green-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-800 active:scale-95 md:px-6 md:py-3"
+                className="w-full rounded-lg bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-800 active:scale-95"
               >
-                Accept all
+                Accept All
               </button>
 
               <button
                 type="button"
                 onClick={() => setShowOptions((current) => !current)}
-                className="inline-flex items-center justify-center rounded-lg border border-green-300 bg-white px-5 py-2.5 text-sm font-semibold text-green-900 transition hover:bg-green-50 active:scale-95 md:px-6 md:py-3"
+                className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 transition hover:bg-gray-50 active:scale-95"
                 aria-expanded={showOptions}
                 aria-controls="cookie-options-panel"
               >
-                {showOptions ? 'Hide options' : 'Customize'}
+                {showOptions ? 'Hide Options' : 'Customize'}
               </button>
 
               <button
                 type="button"
                 onClick={rejectAll}
-                className="inline-flex items-center justify-center rounded-lg bg-transparent px-5 py-2.5 text-sm font-semibold text-green-700 transition hover:bg-green-100/50 active:scale-95 md:px-6 md:py-3"
+                className="w-full rounded-lg bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-200 active:scale-95"
               >
-                Reject all
+                Reject All
               </button>
             </div>
 
+            {/* Options Panel */}
             {showOptions && (
-              <div id="cookie-options-panel" className="space-y-3 border-t border-green-200 pt-4">
-                <div className="rounded-lg border border-green-100 bg-green-50/50 p-3">
-                  <label className="flex items-start gap-3 text-sm">
+              <div id="cookie-options-panel" className="space-y-2 border-t border-gray-200 pt-4">
+                <div className="rounded-lg bg-gray-50 p-3">
+                  <label className="flex items-center gap-3 text-sm">
                     <input 
                       type="checkbox" 
                       checked 
                       disabled 
-                      className="mt-0.5 h-4 w-4 rounded border-green-300 bg-white text-green-700 accent-green-700"
+                      className="h-4 w-4 rounded border-gray-300 bg-white text-gray-900 accent-gray-900"
                     />
                     <span>
-                      <span className="font-semibold text-green-900">Necessary</span>
-                      <span className="mt-1 block text-xs leading-4 text-green-700">
-                        Essential for site functionality. Always enabled.
-                      </span>
+                      <span className="font-semibold text-gray-900">Necessary</span>
+                      <span className="block text-xs text-gray-600">Always enabled</span>
                     </span>
                   </label>
                 </div>
 
-                <div className="rounded-lg border border-green-100 bg-white p-3">
-                  <label className="flex items-start gap-3 text-sm">
+                <div className="rounded-lg border border-gray-200 bg-white p-3">
+                  <label className="flex items-center gap-3 text-sm">
                     <input
                       type="checkbox"
                       checked={preferences.analytics}
                       onChange={(event) => setPreferences((current) => ({ ...current, analytics: event.target.checked }))}
-                      className="mt-0.5 h-4 w-4 rounded border-green-300 bg-white text-green-700 accent-green-700"
+                      className="h-4 w-4 rounded border-gray-300 bg-white text-gray-900 accent-gray-900"
                     />
                     <span>
-                      <span className="font-semibold text-green-900">Analytics</span>
-                      <span className="mt-1 block text-xs leading-4 text-green-700">
-                        Help us understand how you use the site.
-                      </span>
+                      <span className="font-semibold text-gray-900">Analytics</span>
+                      <span className="block text-xs text-gray-600">Usage statistics</span>
                     </span>
                   </label>
                 </div>
 
-                <div className="rounded-lg border border-green-100 bg-white p-3">
-                  <label className="flex items-start gap-3 text-sm">
+                <div className="rounded-lg border border-gray-200 bg-white p-3">
+                  <label className="flex items-center gap-3 text-sm">
                     <input
                       type="checkbox"
                       checked={preferences.marketing}
                       onChange={(event) => setPreferences((current) => ({ ...current, marketing: event.target.checked }))}
-                      className="mt-0.5 h-4 w-4 rounded border-green-300 bg-white text-green-700 accent-green-700"
+                      className="h-4 w-4 rounded border-gray-300 bg-white text-gray-900 accent-gray-900"
                     />
                     <span>
-                      <span className="font-semibold text-green-900">Marketing</span>
-                      <span className="mt-1 block text-xs leading-4 text-green-700">
-                        Personalized content and ads.
-                      </span>
+                      <span className="font-semibold text-gray-900">Marketing</span>
+                      <span className="block text-xs text-gray-600">Personalized ads</span>
                     </span>
                   </label>
                 </div>
 
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-center pt-2">
-                  <button
-                    type="button"
-                    onClick={savePreferences}
-                    className="inline-flex items-center justify-center rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-800 active:scale-95"
-                  >
-                    Save preferences
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={savePreferences}
+                  className="w-full rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gray-800 active:scale-95"
+                >
+                  Save Preferences
+                </button>
               </div>
             )}
 
-            <p className="text-xs text-green-700">
-              <a href="/privacy-policy" className="underline hover:text-green-800">Privacy Policy</a>
+            {/* Footer Link */}
+            <p className="text-xs text-gray-500">
+              <a href="/privacy-policy" className="text-gray-700 underline hover:text-gray-900">Privacy Policy</a>
             </p>
           </div>
         </div>

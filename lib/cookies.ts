@@ -11,9 +11,11 @@ const DEFAULT_OPTIONS = {
 
 export function setCookie(name: string, value: string, days = DEFAULT_OPTIONS.days, path = DEFAULT_OPTIONS.path) {
   const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  const secure = typeof window !== 'undefined' && window.location.protocol === 'https:';
-  const sameSite = secure ? 'None' : 'Lax';
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=${path}; SameSite=${sameSite}${secure ? '; Secure' : ''}`;
+  const isSecure = typeof window !== 'undefined' && window.location.protocol === 'https:';
+  const sameSite = 'Lax';
+  
+  const cookieString = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=${path}; SameSite=${sameSite}${isSecure ? '; Secure' : ''}`;
+  document.cookie = cookieString;
 }
 
 export function getCookie(name: string): string | null {

@@ -10,7 +10,7 @@ import {
 import "./globals.css";
 import PageUpButton from "./components/PageUpButton";
 import ConsentAndTracking from "./components/ConsentAndTracking";
-import ChatBot from "./components/ChatBot";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -162,7 +162,7 @@ export default function RootLayout({
         {children}
         <PageUpButton />
         <ConsentAndTracking />
-        <ChatBot />
+        <WhatsAppButton />
       </body>
     </html>
   );
