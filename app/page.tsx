@@ -703,24 +703,24 @@ function Home() {
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
               <div className="hero-badge">
                 <span className="hero-badge-dot" aria-hidden />
-                Uganda licensed operator
+                Institutional Precious Metals & Supply Chain Execution
               </div>
             </motion.div>
 
             <motion.div key={slideIdx} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
               <h1 className="hero-h1">
-                Certified gold supply<br />from Uganda —{' '}
-                <strong>verified, documented, export-ready.</strong>
+                Certified Gold Sourcing &{' '}
+                <strong>Institutional Supply Chains</strong>
               </h1>
               <p className="hero-sub">
-                Share volume, purity, and timeline. We coordinate sourcing, independent assay, compliance paperwork, and insured logistics so your shipment arrives traceable and on schedule.
+                Diamond Capital Africa bridges the gap between global buyers and strictly vetted, compliant gold production in East Africa. We deliver conflict-free, ISO-certified bullion through risk-managed transaction pipelines.
               </p>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
               <div className="hero-actions">
-                <MicroLeadForm />
-                <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" className="btn-ghost">Investor portal ↗</a>
+                <a href="/request-quote" className="btn-primary">Request a Formal Quote</a>
+                <a href="/process" className="btn-ghost">Our 4-Step Compliance Workflow ↗</a>
               </div>
 
               <div className="hero-slide-row">

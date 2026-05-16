@@ -11,6 +11,7 @@ import "./globals.css";
 import PageUpButton from "./components/PageUpButton";
 import ConsentAndTracking from "./components/ConsentAndTracking";
 import WhatsAppButton from "./components/WhatsAppButton";
+import GlobalAnalyticsTracker from "./components/GlobalAnalyticsTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -163,6 +164,7 @@ export default function RootLayout({
         <PageUpButton />
         <ConsentAndTracking />
         <WhatsAppButton />
+        <GlobalAnalyticsTracker />
       </body>
     </html>
   );

@@ -219,38 +219,38 @@ export default function ProductDetails() {
       <section style={{
         background: 'linear-gradient(180deg, #f5f0e4 0%, #faf7f0 100%)',
         borderBottom: '1px solid rgba(180,140,40,0.15)',
-        padding: '5rem 1rem 4rem',
+        padding: 'clamp(3rem, 5vw, 5rem) 1rem',
       }}>
         <div style={{ maxWidth: '960px', margin: '0 auto', textAlign: 'center' }}>
           {/* Ornamental line */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-            <div style={{ height: '1px', width: '48px', background: 'linear-gradient(90deg, transparent, #B58A0A)' }} />
-            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: '0.58rem', letterSpacing: '0.3em', color: '#B58A0A', textTransform: 'uppercase' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <div style={{ height: '1px', width: '32px', background: 'linear-gradient(90deg, transparent, #B58A0A)' }} />
+            <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 'clamp(0.55rem, 2vw, 0.58rem)', letterSpacing: '0.3em', color: '#B58A0A', textTransform: 'uppercase' }}>
               Our Products
             </span>
-            <div style={{ height: '1px', width: '48px', background: 'linear-gradient(90deg, #B58A0A, transparent)' }} />
+            <div style={{ height: '1px', width: '32px', background: 'linear-gradient(90deg, #B58A0A, transparent)' }} />
           </div>
 
           <h1 style={{
             fontFamily: "'Libre Baskerville', Georgia, serif",
-            fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
+            fontSize: 'clamp(1.8rem, 5vw, 3.5rem)',
             fontWeight: 400,
             color: '#1c160a',
             lineHeight: 1.15,
-            marginBottom: '1.25rem',
+            marginBottom: '1rem',
             letterSpacing: '-0.01em',
           }}>
             Featured Gold Products
           </h1>
           <p style={{
-            fontSize: '1.05rem',
+            fontSize: 'clamp(0.9rem, 2.5vw, 1.05rem)',
             color: '#6b5d3e',
             maxWidth: '520px',
             margin: '0 auto',
             lineHeight: 1.75,
             fontWeight: 300,
           }}>
-            Lab-verified, export-ready gold from ethical sources in Uganda &amp; Congo. Choose your purity, weight, and specification.
+            Lab-verified, export-ready gold from ethical sources. Choose your purity, weight, and specification.
           </p>
         </div>
       </section>
@@ -263,57 +263,55 @@ export default function ProductDetails() {
         background: 'rgba(250,247,240,0.95)',
         backdropFilter: 'blur(10px)',
         borderBottom: '1px solid rgba(180,140,40,0.15)',
+        overflowX: 'auto',
       }}>
-        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 1rem' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0', overflowX: 'auto' }}>
-            {PRODUCT_DETAILS.map((product, i) => (
-              <a
-                key={product.id}
-                href={`#${product.id}`}
-                onClick={() => setActiveProduct(product.id)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '1rem 1.25rem',
-                  textDecoration: 'none',
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: '0.62rem',
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: activeProduct === product.id ? '#B58A0A' : '#8a7550',
-                  borderBottom: activeProduct === product.id ? '2px solid #B58A0A' : '2px solid transparent',
-                  transition: 'all 0.2s ease',
-                  whiteSpace: 'nowrap',
-                  fontWeight: activeProduct === product.id ? 500 : 400,
-                }}
-              >
-                <span style={{
-                  fontFamily: "'DM Mono', monospace",
-                  fontSize: '0.55rem',
-                  color: activeProduct === product.id ? '#B58A0A' : 'rgba(138,117,80,0.4)',
-                }}>0{i + 1}</span>
-                {product.name}
-              </a>
-            ))}
-          </div>
+        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 1rem', display: 'flex', gap: '0' }}>
+          {PRODUCT_DETAILS.map((product, i) => (
+            <a
+              key={product.id}
+              href={`#${product.id}`}
+              onClick={() => setActiveProduct(product.id)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: 'clamp(0.75rem, 2vw, 1rem) clamp(0.75rem, 2.5vw, 1.25rem)',
+                textDecoration: 'none',
+                fontFamily: "'DM Mono', monospace",
+                fontSize: 'clamp(0.58rem, 2vw, 0.62rem)',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: activeProduct === product.id ? '#B58A0A' : '#8a7550',
+                borderBottom: activeProduct === product.id ? '2px solid #B58A0A' : '2px solid transparent',
+                transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap',
+                fontWeight: activeProduct === product.id ? 500 : 400,
+              }}
+            >
+              <span style={{
+                fontFamily: "'DM Mono', monospace",
+                fontSize: '0.55rem',
+                color: activeProduct === product.id ? '#B58A0A' : 'rgba(138,117,80,0.4)',
+              }}>0{i + 1}</span>
+              {product.name}
+            </a>
+          ))}
         </div>
       </nav>
 
       {/* Product Details */}
-      <section style={{ padding: '5rem 1rem', maxWidth: '960px', margin: '0 auto' }}>
+      <section style={{ padding: 'clamp(2rem, 5vw, 5rem) 1rem', maxWidth: '960px', margin: '0 auto' }}>
         {PRODUCT_DETAILS.map((product, productIdx) => (
           <div
             key={product.id}
             id={product.id}
             style={{
-              marginBottom: productIdx < PRODUCT_DETAILS.length - 1 ? '7rem' : '0',
+              marginBottom: productIdx < PRODUCT_DETAILS.length - 1 ? 'clamp(3rem, 7vw, 7rem)' : '0',
               scrollMarginTop: '80px',
             }}
           >
             {/* Product Header */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3.5rem', marginBottom: '3.5rem', alignItems: 'start' }}
-              className="product-grid"
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'clamp(2rem, 5vw, 3.5rem)', marginBottom: 'clamp(2rem, 5vw, 3.5rem)', alignItems: 'start' }}
+              className="product-grid sm:grid-cols-2"
             >
               {/* Left: Text */}
               <div>
@@ -325,7 +323,7 @@ export default function ProductDetails() {
                 }}>
                   <span style={{
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: '0.6rem',
+                    fontSize: 'clamp(0.5rem, 1.5vw, 0.6rem)',
                     letterSpacing: '0.25em',
                     color: '#B58A0A',
                     textTransform: 'uppercase',
@@ -339,7 +337,7 @@ export default function ProductDetails() {
 
                 <h2 style={{
                   fontFamily: "'Libre Baskerville', Georgia, serif",
-                  fontSize: 'clamp(1.8rem, 3vw, 2.4rem)',
+                  fontSize: 'clamp(1.5rem, 4vw, 2.4rem)',
                   fontWeight: 400,
                   color: '#1c160a',
                   lineHeight: 1.2,
@@ -350,7 +348,7 @@ export default function ProductDetails() {
                 </h2>
 
                 <p style={{
-                  fontSize: '0.95rem',
+                  fontSize: 'clamp(0.875rem, 2vw, 0.95rem)',
                   color: '#5a4e34',
                   lineHeight: 1.8,
                   fontWeight: 300,
@@ -367,11 +365,11 @@ export default function ProductDetails() {
                   ].map(({ label, value }) => (
                     <div key={label} style={{
                       background: '#faf7f0',
-                      padding: '1rem 1.25rem',
+                      padding: 'clamp(0.75rem, 2vw, 1rem) clamp(0.75rem, 2vw, 1.25rem)',
                     }}>
                       <p style={{
                         fontFamily: "'DM Mono', monospace",
-                        fontSize: '0.55rem',
+                        fontSize: 'clamp(0.48rem, 1.5vw, 0.55rem)',
                         letterSpacing: '0.2em',
                         color: '#B58A0A',
                         textTransform: 'uppercase',
@@ -379,7 +377,7 @@ export default function ProductDetails() {
                       }}>{label}</p>
                       <p style={{
                         fontFamily: "'Libre Baskerville', serif",
-                        fontSize: '0.9rem',
+                        fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
                         color: '#1c160a',
                         fontWeight: 400,
                       }}>{value}</p>
@@ -389,13 +387,13 @@ export default function ProductDetails() {
               </div>
 
               {/* Right: Image */}
-              <div style={{ position: 'relative' }}>
+              <div style={{ position: 'relative', display: 'none' }}>
                 <img
                   src={product.image}
                   alt={product.name}
                   style={{
                     width: '100%',
-                    height: '320px',
+                    height: 'clamp(250px, 50vw, 320px)',
                     objectFit: 'cover',
                     display: 'block',
                     filter: 'sepia(8%) contrast(1.05)',
@@ -417,12 +415,12 @@ export default function ProductDetails() {
 
             {/* Specifications */}
             <div style={{
-              marginBottom: '3rem',
+              marginBottom: 'clamp(1.5rem, 5vw, 3rem)',
               border: '1px solid rgba(180,140,40,0.15)',
               background: '#fff',
             }}>
               <div style={{
-                padding: '1.25rem 1.75rem',
+                padding: 'clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 2vw, 1.75rem)',
                 borderBottom: '1px solid rgba(180,140,40,0.12)',
                 display: 'flex',
                 alignItems: 'center',
@@ -431,12 +429,12 @@ export default function ProductDetails() {
                 <div style={{ width: '2px', height: '16px', background: '#B58A0A' }} />
                 <h3 style={{
                   fontFamily: "'Libre Baskerville', serif",
-                  fontSize: '1.05rem',
+                  fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)',
                   fontWeight: 700,
                   color: '#1c160a',
                 }}>Specifications</h3>
               </div>
-              <div style={{ padding: '0 1.75rem' }}>
+              <div style={{ padding: '0 clamp(1rem, 2vw, 1.75rem)' }}>
                 {Object.entries(product.specs).map(([key, value], i, arr) => (
                   <div
                     key={key}
@@ -444,14 +442,14 @@ export default function ProductDetails() {
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'baseline',
-                      padding: '0.9rem 0',
+                      padding: 'clamp(0.6rem, 1.5vw, 0.9rem) 0',
                       borderBottom: i < arr.length - 1 ? '1px solid rgba(180,140,40,0.08)' : 'none',
-                      gap: '2rem',
+                      gap: '1rem',
                     }}
                   >
                     <span style={{
                       fontFamily: "'DM Mono', monospace",
-                      fontSize: '0.65rem',
+                      fontSize: 'clamp(0.55rem, 1.5vw, 0.65rem)',
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
                       color: '#8a7550',
@@ -459,7 +457,7 @@ export default function ProductDetails() {
                       {key.replace(/([A-Z])/g, ' $1').trim()}
                     </span>
                     <span style={{
-                      fontSize: '0.88rem',
+                      fontSize: 'clamp(0.75rem, 2vw, 0.88rem)',
                       color: '#1c160a',
                       textAlign: 'right',
                       fontWeight: 400,
@@ -470,21 +468,21 @@ export default function ProductDetails() {
             </div>
 
             {/* Features */}
-            <div style={{ marginBottom: '3rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+            <div style={{ marginBottom: 'clamp(1.5rem, 5vw, 3rem)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: 'clamp(1rem, 3vw, 1.5rem)' }}>
                 <div style={{ width: '2px', height: '16px', background: '#B58A0A' }} />
                 <h3 style={{
                   fontFamily: "'Libre Baskerville', serif",
-                  fontSize: '1.05rem',
+                  fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)',
                   fontWeight: 700,
                   color: '#1c160a',
                 }}>Key Features</h3>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1px', background: 'rgba(180,140,40,0.12)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1px', background: 'rgba(180,140,40,0.12)' }}>
                 {product.features.map((feature, i) => (
                   <div key={i} style={{
                     background: '#faf7f0',
-                    padding: '1.5rem',
+                    padding: 'clamp(1rem, 3vw, 1.5rem)',
                   }}>
                     <div style={{
                       width: '28px',
@@ -494,13 +492,13 @@ export default function ProductDetails() {
                     }} />
                     <h4 style={{
                       fontFamily: "'Libre Baskerville', serif",
-                      fontSize: '0.9rem',
+                      fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
                       fontWeight: 700,
                       color: '#1c160a',
                       marginBottom: '0.5rem',
                     }}>{feature.title}</h4>
                     <p style={{
-                      fontSize: '0.82rem',
+                      fontSize: 'clamp(0.75rem, 2vw, 0.82rem)',
                       color: '#5a4e34',
                       lineHeight: 1.65,
                       fontWeight: 300,
@@ -511,12 +509,12 @@ export default function ProductDetails() {
             </div>
 
             {/* FAQs */}
-            <div style={{ marginBottom: '3rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+            <div style={{ marginBottom: 'clamp(1.5rem, 5vw, 3rem)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: 'clamp(1rem, 3vw, 1.5rem)' }}>
                 <div style={{ width: '2px', height: '16px', background: '#B58A0A' }} />
                 <h3 style={{
                   fontFamily: "'Libre Baskerville', serif",
-                  fontSize: '1.05rem',
+                  fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)',
                   fontWeight: 700,
                   color: '#1c160a',
                 }}>Frequently Asked Questions</h3>
@@ -524,7 +522,7 @@ export default function ProductDetails() {
               <div style={{
                 border: '1px solid rgba(180,140,40,0.15)',
                 background: '#fff',
-                padding: '0 1.75rem',
+                padding: '0 clamp(1rem, 2vw, 1.75rem)',
               }}>
                 {product.faqs.map((faq, i) => (
                   <AccordionItem key={i} q={faq.q} a={faq.a} />
@@ -535,16 +533,16 @@ export default function ProductDetails() {
             {/* CTA block */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              gridTemplateColumns: '1fr',
               gap: '1px',
               background: 'rgba(180,140,40,0.15)',
               border: '1px solid rgba(180,140,40,0.2)',
             }}
-              className="cta-grid"
+              className="cta-grid sm:grid-cols-2"
             >
               <div style={{
                 background: '#B58A0A',
-                padding: '2.5rem',
+                padding: 'clamp(1.5rem, 4vw, 2.5rem)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -553,7 +551,7 @@ export default function ProductDetails() {
                 <div>
                   <p style={{
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: '0.58rem',
+                    fontSize: 'clamp(0.48rem, 1.5vw, 0.58rem)',
                     letterSpacing: '0.25em',
                     color: 'rgba(255,255,255,0.6)',
                     textTransform: 'uppercase',
@@ -561,13 +559,13 @@ export default function ProductDetails() {
                   }}>Fast response</p>
                   <h4 style={{
                     fontFamily: "'Libre Baskerville', serif",
-                    fontSize: '1.35rem',
+                    fontSize: 'clamp(1.1rem, 3vw, 1.35rem)',
                     fontWeight: 400,
                     color: '#fff',
                     lineHeight: 1.3,
                   }}>Get a Quote on WhatsApp</h4>
                   <p style={{
-                    fontSize: '0.82rem',
+                    fontSize: 'clamp(0.75rem, 2vw, 0.82rem)',
                     color: 'rgba(255,255,255,0.7)',
                     marginTop: '0.5rem',
                     fontWeight: 300,
@@ -586,9 +584,9 @@ export default function ProductDetails() {
                     gap: '0.5rem',
                     background: '#fff',
                     color: '#B58A0A',
-                    padding: '0.75rem 1.5rem',
+                    padding: 'clamp(0.6rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem)',
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: '0.62rem',
+                    fontSize: 'clamp(0.52rem, 1.5vw, 0.62rem)',
                     letterSpacing: '0.2em',
                     textTransform: 'uppercase',
                     textDecoration: 'none',
@@ -603,7 +601,7 @@ export default function ProductDetails() {
 
               <div style={{
                 background: '#faf7f0',
-                padding: '2.5rem',
+                padding: 'clamp(1.5rem, 4vw, 2.5rem)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -612,7 +610,7 @@ export default function ProductDetails() {
                 <div>
                   <p style={{
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: '0.58rem',
+                    fontSize: 'clamp(0.48rem, 1.5vw, 0.58rem)',
                     letterSpacing: '0.25em',
                     color: '#B58A0A',
                     textTransform: 'uppercase',
@@ -620,13 +618,13 @@ export default function ProductDetails() {
                   }}>Formal enquiry</p>
                   <h4 style={{
                     fontFamily: "'Libre Baskerville', serif",
-                    fontSize: '1.35rem',
+                    fontSize: 'clamp(1.1rem, 3vw, 1.35rem)',
                     fontWeight: 400,
                     color: '#1c160a',
                     lineHeight: 1.3,
                   }}>Send a Detailed Request</h4>
                   <p style={{
-                    fontSize: '0.82rem',
+                    fontSize: 'clamp(0.75rem, 2vw, 0.82rem)',
                     color: '#5a4e34',
                     marginTop: '0.5rem',
                     fontWeight: 300,
@@ -643,9 +641,9 @@ export default function ProductDetails() {
                     gap: '0.5rem',
                     border: '1px solid rgba(180,140,40,0.3)',
                     color: '#1c160a',
-                    padding: '0.75rem 1.5rem',
+                    padding: 'clamp(0.6rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem)',
                     fontFamily: "'DM Mono', monospace",
-                    fontSize: '0.62rem',
+                    fontSize: 'clamp(0.52rem, 1.5vw, 0.62rem)',
                     letterSpacing: '0.2em',
                     textTransform: 'uppercase',
                     textDecoration: 'none',
@@ -666,7 +664,7 @@ export default function ProductDetails() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '1.5rem',
-                marginTop: '7rem',
+                marginTop: 'clamp(3rem, 7vw, 7rem)',
                 opacity: 0.35,
               }}>
                 <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, #B58A0A)' }} />
