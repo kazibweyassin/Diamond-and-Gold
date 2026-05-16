@@ -205,7 +205,7 @@ export async function POST(request: NextRequest) {
       if (process.env.RESEND_API_KEY) {
         try {
           await resend.emails.send({
-            from: 'noreply@diamondcapitalafrica.com',
+            from: 'onboarding@resend.dev',
             to: process.env.CONTACT_EMAIL || 'sales@diamondcapitalafrica.com',
             replyTo: b2bData.email,
             subject: `B2B Quote Request - ${b2bData.company_name}`,
@@ -263,7 +263,7 @@ export async function POST(request: NextRequest) {
     if (process.env.RESEND_API_KEY) {
       try {
         await resend.emails.send({
-          from: 'noreply@diamondcapitalafrica.com',
+          from: 'onboarding@resend.dev',
           to: process.env.CONTACT_EMAIL || 'info@diamondcapitalafrica.com',
           replyTo: contactData.email,
           subject: `New Contact Form Submission: ${contactData.subject}`,
