@@ -18,6 +18,7 @@ export default function RequestQuote() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -27,6 +28,7 @@ export default function RequestQuote() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMessage('');
 
     try {
       // Send to your backend
@@ -58,9 +60,15 @@ export default function RequestQuote() {
           delivery_destination: '',
           kyc_status: '',
         });
+      } else {
+        const responseData = await response.json().catch(() => null);
+        setErrorMessage(
+          responseData?.error || responseData?.message || 'We could not submit your quote request. Please try again.'
+        );
       }
     } catch (error) {
       console.error('Form submission error:', error);
+      setErrorMessage('Network error. Please check your connection and try again.');
     } finally {
       setLoading(false);
     }
@@ -157,6 +165,21 @@ export default function RequestQuote() {
             border: '1px solid rgba(181,138,10,0.15)',
             borderRadius: '4px',
           }}>
+            {errorMessage && (
+              <div style={{
+                marginBottom: '1.5rem',
+                padding: '1rem 1.25rem',
+                background: 'rgba(185, 28, 28, 0.08)',
+                border: '1px solid rgba(185, 28, 28, 0.2)',
+                borderRadius: '4px',
+                color: '#991b1b',
+                fontSize: '0.9rem',
+                lineHeight: 1.6,
+              }}>
+                {errorMessage}
+              </div>
+            )}
+
             {/* Company Information */}
             <div style={{ marginBottom: '2rem' }}>
               <h3 style={{
