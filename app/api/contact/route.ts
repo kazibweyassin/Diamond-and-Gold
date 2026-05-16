@@ -4,10 +4,12 @@ import { createClient } from '@supabase/supabase-js';
 
 // Initialize services
 const resend = new Resend(process.env.RESEND_API_KEY);
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-);
+
+// Initialize Supabase only if URL is provided
+const supabase =
+  process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    ? createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+    : null;
 
 // Simple in-memory rate limiter (replace with Redis in production)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -217,7 +219,7 @@ export async function POST(request: NextRequest) {
       }
 
       // Save to Supabase
-      if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      if (supabase) {
         try {
           const { error: dbError } = await supabase.from('b2b_quotes').insert([
             {
@@ -274,7 +276,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Save to Supabase if table exists
-    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    if (supabase) {
       try {
         await supabase.from('contact_submissions').insert([
           {
