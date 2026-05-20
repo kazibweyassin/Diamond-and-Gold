@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/app/components/Header';
+import Breadcrumbs from '@/app/components/Breadcrumbs';
 
 const COMPLIANCE_STANDARDS = [
   {
@@ -148,6 +149,11 @@ export default function Compliance() {
   return (
     <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
       <Header cta={{ label: 'Request Quote', href: '/request-quote' }} />
+
+      {/* Breadcrumbs */}
+      <div className="mx-auto max-w-6xl px-4 pt-24">
+        <Breadcrumbs />
+      </div>
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-amber-900/20 py-20 md:py-28">

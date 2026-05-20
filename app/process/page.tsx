@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/app/components/Header';
 import SharedFooter from '@/app/components/SharedFooter';
+import Breadcrumbs from '@/app/components/Breadcrumbs';
 
 export default function Process() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -116,7 +117,10 @@ export default function Process() {
   return (
     <main style={{ background: '#F7F6F2', color: '#1c160a' }}>
       <Header />
-
+      {/* Breadcrumbs */}
+      <div className="mx-auto max-w-6xl px-4 pt-24">
+        <Breadcrumbs />
+      </div>
       {/* HERO */}
       <section style={{ maxWidth: '1280px', margin: '0 auto', padding: 'clamp(3rem, 6vw, 5rem) 1.5rem' }}>
         <div style={{ marginBottom: '2rem' }}>

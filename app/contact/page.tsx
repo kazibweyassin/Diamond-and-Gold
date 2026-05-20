@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/app/components/Header';
+import Breadcrumbs from '@/app/components/Breadcrumbs';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -112,6 +113,11 @@ export default function Contact() {
   return (
     <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
       <Header cta={{ label: 'View catalog', href: '/products' }} />
+
+      {/* Breadcrumbs */}
+      <div className="mx-auto max-w-6xl px-4 pt-24">
+        <Breadcrumbs />
+      </div>
 
       <section className="relative py-16">
         {/* Map Background */}

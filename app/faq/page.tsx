@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/app/components/Header';
+import Breadcrumbs from '@/app/components/Breadcrumbs';
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -37,6 +38,11 @@ export default function FAQ() {
   return (
     <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
       <Header cta={{ label: 'Ask us directly', href: '/contact' }} />
+
+      {/* Breadcrumbs */}
+      <div className="mx-auto max-w-6xl px-4 pt-24">
+        <Breadcrumbs />
+      </div>
 
       <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr] items-start">
