@@ -126,7 +126,7 @@ function ServiceCard({ service, selectedProduct, setSelectedProduct }: any) {
   return (
     <div
       id={service.id}
-      className="scroll-mt-28 rounded-2xl border border-amber-200 bg-white overflow-hidden"
+      className="scroll-mt-20 rounded-2xl border border-amber-200 bg-white overflow-hidden"
     >
       <div className="grid md:grid-cols-2">
         <img

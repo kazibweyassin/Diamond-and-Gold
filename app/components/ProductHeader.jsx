@@ -3,15 +3,20 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export default function ProductHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const isActive = (href) => pathname === href;
 
   return (
     <header
@@ -28,22 +33,57 @@ export default function ProductHeader() {
             <Image
               src="/Logo.png"
               alt="Diamond Capital Africa"
-              width={46}
-              height={46}
+              width={90}
+              height={40}
               className="object-contain"
             />
           </Link>
 
           {/* Focused Navigation */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <Link href="/" className="text-slate-900">
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+            <Link href="/" className={`relative transition ${
+              isActive('/') ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
+            }`}>
               Home
+              {isActive('/') && (
+                <motion.span
+                  layoutId="underline"
+                  className="absolute left-0 -bottom-1 h-[2px] w-full bg-amber-600"
+                />
+              )}
             </Link>
-            <Link href="/process" className="text-slate-600 hover:text-slate-900">
+            <Link href="/products" className={`relative transition ${
+              isActive('/products') ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
+            }`}>
+              Services
+              {isActive('/products') && (
+                <motion.span
+                  layoutId="underline"
+                  className="absolute left-0 -bottom-1 h-[2px] w-full bg-amber-600"
+                />
+              )}
+            </Link>
+            <Link href="/process" className={`relative transition ${
+              isActive('/process') ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
+            }`}>
               Process
+              {isActive('/process') && (
+                <motion.span
+                  layoutId="underline"
+                  className="absolute left-0 -bottom-1 h-[2px] w-full bg-amber-600"
+                />
+              )}
             </Link>
-            <Link href="/compliance" className="text-slate-600 hover:text-slate-900">
+            <Link href="/compliance" className={`relative transition ${
+              isActive('/compliance') ? 'text-slate-900' : 'text-slate-600 hover:text-slate-900'
+            }`}>
               Compliance
+              {isActive('/compliance') && (
+                <motion.span
+                  layoutId="underline"
+                  className="absolute left-0 -bottom-1 h-[2px] w-full bg-amber-600"
+                />
+              )}
             </Link>
           </nav>
 
