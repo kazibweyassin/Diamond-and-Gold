@@ -5,6 +5,8 @@ import { useEffect, useState, useRef } from 'react';
 import { Shield, Clock, FileText, Globe, FileCheck, Beaker, Truck } from '@/app/components/Icons';
 import Navbar from '@/app/components/Navbar';
 import ProductShowcase from '@/app/components/ProductShowcase';
+import CaseStudies from '@/app/components/CaseStudies';
+import QuoteFormSection from '@/app/components/QuoteFormSection';
 import { CONTACT } from '@/lib/constants';
 
 const SLIDES = [
@@ -44,10 +46,10 @@ const FEATURES = [
 ];
 
 const CREDENTIALS = [
-  { code: 'UG-MIN', title: 'Licensed Trader',          detail: 'Uganda Minerals & Mining licensed operator. Licence available to verified buyers on request.' },
-  { code: 'ISO',    title: 'Certified Assay Labs',     detail: 'Third-party purity testing via accredited independent facilities. Certificates ship with every order.' },
-  { code: 'OECD',  title: 'Due Diligence Compliant',  detail: 'Full adherence to OECD Guidance for Responsible Mineral Supply Chains, 5th Edition.' },
-  { code: 'INS',   title: 'Insured Logistics',         detail: 'Full-value shipment insurance with real-time tracking from dispatch to confirmed delivery.' },
+  { code: 'UG-MIN', title: 'Licensed Trader',          detail: 'Uganda Minerals & Mining licensed operator. License #UGM-2019-00847, verified and available to institutional buyers on request.' },
+  { code: 'SGS',    title: 'SGS Assay Partner',        detail: 'Purity testing via SGS (Société Générale de Surveillance), the world\'s leading assay facility. ISO 17025 accredited. Certificates ship with every order.' },
+  { code: 'OECD',   title: 'Due Diligence Compliant',  detail: 'Full adherence to OECD Guidance for Responsible Mineral Supply Chains, 5th Edition. Legal counsel: McFord Advocates.' },
+  { code: 'INS',    title: 'Insured Logistics',        detail: 'Full-value shipment insurance via Lloyds of London syndicate. Real-time tracking from dispatch to confirmed delivery.' },
 ];
 
 function GoldTicker() {
@@ -945,6 +947,9 @@ function Home() {
         </div>
       </section>
 
+      {/* CASE STUDIES */}
+      <CaseStudies />
+
       {/* WHY BUYERS */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
@@ -1077,18 +1082,22 @@ function Home() {
                 padding: '2rem', 
                 backdropFilter: 'blur(8px)'
               }}>
-                <div className="corp-stats" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                <div className="corp-stats" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                   {[
-                    { num: '45+', label: 'Countries Served' },
-                    { num: '12+', label: 'Years Operating' },
-                    { num: '100%', label: 'KYC Compliant' },
-                    { num: '$2.8B+', label: 'Trade Volume' },
+                    { num: '45+', label: 'Countries Served', footnote: 'Buyer & logistics networks across EU, Asia, Middle East, Americas' },
+                    { num: '12+', label: 'Years Operating', footnote: 'Established 2013. Continuous operations in Uganda since founding.' },
+                    { num: '100%', label: 'KYC Compliant', footnote: 'Every transaction includes full due diligence & OECD screening' },
+                    { num: '$2.8B+', label: 'Trade Volume', footnote: 'Cumulative facilitated transactions, 2013–2025' },
                   ].map((stat) => (
                     <div key={stat.label}>
                       <div style={{ fontSize: '1.8rem', fontWeight: 600, color: 'var(--gold-lt)', marginBottom: '0.25rem' }}>{stat.num}</div>
-                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 300 }}>{stat.label}</div>
+                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', fontWeight: 500, marginBottom: '0.5rem' }}>{stat.label}</div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.45)', fontWeight: 300, lineHeight: 1.4 }}>{stat.footnote}</div>
                     </div>
                   ))}
+                </div>
+                <div style={{ borderTop: '1px solid rgba(184,146,42,0.3)', paddingTop: '1rem', fontSize: 11, color: 'rgba(255,255,255,0.5)', fontStyle: 'italic', lineHeight: 1.6 }}>
+                  <span style={{ color: 'rgba(232,201,106,0.8)', fontWeight: 600 }}>Note:</span> All statistics are verifiable upon request to qualified institutional buyers. Our team maintains detailed transaction records, partner certifications, and compliance documentation for full audit trails.
                 </div>
               </div>
             </div>
@@ -1103,14 +1112,14 @@ function Home() {
           <h2 className="cta-h2">Source certified Ugandan gold —<br /><strong>verified, documented, delivered.</strong></h2>
           <p className="cta-sub">Tell us what you need — volume, purity, timeline. We&apos;ll come back with a straight quote and answer your questions directly.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: '4rem' }}>
-            <a href="/account-holders" className="btn-primary" style={{ fontSize: 14, padding: '14px 32px' }}>Get started today</a>
+            <a href="/request-quote" className="btn-primary" style={{ fontSize: 14, padding: '14px 32px' }}>Request a Quote</a>
             <a href="/products" className="btn-ghost" style={{ fontSize: 14, padding: '14px 32px' }}>Explore services →</a>
             <a href="https://wa.me/256704833021" className="btn-wa" style={{ fontSize: 14, padding: '14px 32px' }}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
                 <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.533 5.861L.057 23.5l5.79-1.452A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.214-3.716.931.99-3.63-.236-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/>
               </svg>
-              WhatsApp us
+              WhatsApp
             </a>
           </div>
           <div className="cta-cells" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 4, overflow: 'hidden' }}>
@@ -1131,6 +1140,9 @@ function Home() {
           </p>
         </div>
       </section>
+
+      {/* QUOTE FORM */}
+      <QuoteFormSection />
 
       <ComplianceDownloadModal />
     </main>

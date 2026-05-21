@@ -7,6 +7,7 @@ import { services } from '@/lib/services';
 
 const NAV_LINKS = [
   { label: 'About',      href: '/about' },
+  { label: 'Team',       href: '/team' },
   { label: 'News',       href: '/news' },
   { label: 'Compliance', href: '/compliance' },
   { label: 'Process',    href: '/process' },

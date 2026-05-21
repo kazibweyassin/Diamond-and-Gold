@@ -47,18 +47,23 @@ export interface PartnerLogoItem {
 
 export const PARTNER_LOGOS: PartnerLogoItem[] = [
   {
-    name: "Assay Services",
-    file: "/partners/as.png",
-    description: "Independent assay and testing partners trusted for verification.",
+    name: "SGS",
+    file: "/partners/sgs.png",
+    description: "SGS (Société Générale de Surveillance) - ISO 17025 accredited assay and purity testing.",
   },
   {
-    name: "ISO Certified Labs",
-    file: "/partners/iso.png",
-    description: "Independent lab partners for purity testing and reporting.",
+    name: "Lloyds of London",
+    file: "/partners/lloyds.png",
+    description: "Full-value shipment insurance and logistics underwriting.",
   },
   {
-    name: "Ministry Authorization",
+    name: "Uganda Ministry",
     file: "/partners/moe-sm-1.png",
-    description: "Ugandan regulatory and mining authority validation.",
+    description: "Uganda Minerals & Mining regulatory authority.",
+  },
+  {
+    name: "McFord Advocates",
+    file: "/partners/mcford.png",
+    description: "Legal counsel for OECD compliance and due diligence.",
   },
 ];

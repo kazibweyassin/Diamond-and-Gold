@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import { CONTACT } from '@/lib/constants';
+import { useState, useEffect } from 'react';
+import { CONTACT, GOLD_PRICING } from '@/lib/constants';
 
 const PRODUCTS = [
-  { id: 'gold-bars-99-5', name: '99.5% Gold Bars', basePrice: 65 },
-  { id: 'refined-gold-99-99', name: '99.99% Refined Gold', basePrice: 68 },
-  { id: 'artisanal-gold-raw', name: 'Artisanal Raw Gold', basePrice: 55 },
-  { id: 'investment-gold-bars', name: 'Investment Gold Bars', basePrice: 65 },
+  { id: 'gold-bars-99-5', name: '99.5% Gold Bars', purity: 0.995 },
+  { id: 'refined-gold-99-99', name: '99.99% Refined Gold', purity: 0.9999 },
+  { id: 'artisanal-gold-raw', name: 'Artisanal Raw Gold (97%)', purity: 0.97 },
+  { id: 'investment-gold-bars', name: 'Investment Gold Bars', purity: 0.995 },
 ];
 
 const BULK_DISCOUNTS = [
@@ -21,6 +21,31 @@ const BULK_DISCOUNTS = [
 export default function BulkPricingCalculator() {
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS[0].id);
   const [quantity, setQuantity] = useState('1');
+  const [spotPrice, setSpotPrice] = useState(3327.45); // Default fallback
+  const [loading, setLoading] = useState(true);
+
+  // Fetch live gold spot price
+  useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        const response = await fetch('https://metals.live/api/latest');
+        const data = await response.json();
+        if (data.spot?.gold) {
+          setSpotPrice(data.spot.gold);
+        }
+      } catch (err) {
+        console.error('Failed to fetch gold price:', err);
+        // Use fallback price on error
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPrice();
+    // Refresh every 60 seconds
+    const interval = setInterval(fetchPrice, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   const product = PRODUCTS.find(p => p.id === selectedProduct);
   const qty = parseFloat(quantity) || 0;
@@ -29,13 +54,19 @@ export default function BulkPricingCalculator() {
     d => qty >= d.min && qty < d.max
   ) || BULK_DISCOUNTS[0];
 
-  const basePrice = (product?.basePrice || 0) * qty;
+  // Calculate price per kg based on spot price
+  // Spot price is per troy oz, 1 kg = 32.1507 troy oz
+  const pricePerKgSpot = spotPrice * GOLD_PRICING.GRAM_TO_KG;
+  const pricePerKgPurity = pricePerKgSpot * (product?.purity || 0.995);
+  const pricePerKgWithPremium = pricePerKgPurity * (1 + GOLD_PRICING.DCA_PREMIUM);
+
+  const basePrice = pricePerKgWithPremium * qty;
   const discount = (basePrice * discountTier.discount) / 100;
   const finalPrice = basePrice - discount;
 
   const handleWhatsAppClick = () => {
     const productName = product?.name || 'Gold';
-    const message = `Hi, I'm interested in a bulk order: ${qty} kg of ${productName}. Current pricing estimate: $${finalPrice.toFixed(2)}. Can you confirm current pricing and provide a formal quote?`;
+    const message = `Hi, I'm interested in a bulk order: ${qty} kg of ${productName}. Current pricing estimate: $${finalPrice.toFixed(2)} (based on spot $${spotPrice.toFixed(2)}/oz). Can you confirm current pricing and provide a formal quote?`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/${CONTACT.WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
   };
@@ -49,12 +80,30 @@ export default function BulkPricingCalculator() {
             Bulk Pricing Calculator
           </h2>
           <p className="mt-3 text-lg text-slate-700">
-            Estimate your order cost with our volume-based discount tiers.
+            Live pricing based on current gold spot rate. Volume discounts applied automatically.
           </p>
         </div>
 
         {/* Calculator */}
         <div className="rounded-2xl border border-amber-200 bg-white p-5 sm:p-8 lg:p-10">
+          {/* Live Spot Price Display */}
+          <div className="mb-6 rounded-lg bg-gradient-to-r from-amber-50 to-yellow-50 p-4 sm:p-5">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-slate-600">Live Spot Price (XAU/USD)</p>
+                <p className="mt-1 text-2xl font-bold text-slate-900">
+                  ${loading ? '···' : spotPrice.toFixed(2)} <span className="text-sm font-normal text-slate-600">/troy oz</span>
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-slate-600">Per kilogram</p>
+                <p className="mt-1 text-xl font-bold text-amber-700">
+                  ${loading ? '···' : (spotPrice * GOLD_PRICING.GRAM_TO_KG).toFixed(2)}
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="grid gap-6 sm:grid-cols-2">
             {/* Product Selector */}
             <div>
@@ -68,7 +117,7 @@ export default function BulkPricingCalculator() {
               >
                 {PRODUCTS.map((p) => (
                   <option key={p.id} value={p.id}>
-                    {p.name} (${p.basePrice}/kg)
+                    {p.name}
                   </option>
                 ))}
               </select>
@@ -116,15 +165,31 @@ export default function BulkPricingCalculator() {
           {/* Pricing Breakdown */}
           <div className="mt-7 space-y-2 rounded-lg bg-gradient-to-br from-slate-50 to-slate-100 p-4 sm:mt-8 sm:space-y-3 sm:p-6">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-700 sm:text-sm">Base Price</span>
+              <span className="text-xs text-slate-700 sm:text-sm">Price per kg (spot + purity)</span>
               <span className="text-sm font-semibold text-slate-900 sm:text-base">
-                ${basePrice.toFixed(2)}
+                ${loading ? '···' : pricePerKgPurity.toFixed(2)}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
+              <span className="text-xs text-slate-700 sm:text-sm">DCA Facilitation Premium (1.8%)</span>
+              <span className="text-sm font-semibold text-slate-900 sm:text-base">
+                ${loading ? '···' : (pricePerKgPurity * GOLD_PRICING.DCA_PREMIUM).toFixed(2)}/kg
+              </span>
+            </div>
+
+            <div className="border-t border-slate-200 pt-2 sm:pt-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-slate-700 sm:text-sm">Subtotal ({qty} kg)</span>
+                <span className="text-sm font-semibold text-slate-900 sm:text-base">
+                  ${loading ? '···' : basePrice.toFixed(2)}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
               <span className="text-xs text-slate-700 sm:text-sm">
-                Discount {discountTier.discount > 0 && `(${discountTier.discount}%)`}
+                Volume Discount {discountTier.discount > 0 && `(${discountTier.discount}%)`}
               </span>
               <span className={`text-sm font-semibold sm:text-base ${discount > 0 ? 'text-emerald-700' : 'text-slate-900'}`}>
                 {discount > 0 ? '-' : ''}${discount.toFixed(2)}
@@ -135,7 +200,7 @@ export default function BulkPricingCalculator() {
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-slate-900 sm:text-base">Estimated Total</span>
                 <span className="text-xl font-bold text-emerald-700 sm:text-2xl">
-                  ${finalPrice.toFixed(2)}
+                  ${loading ? '···' : finalPrice.toFixed(2)}
                 </span>
               </div>
             </div>
@@ -174,7 +239,8 @@ export default function BulkPricingCalculator() {
           <div className="mt-7 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-3">
             <button
               onClick={handleWhatsAppClick}
-              className="flex-1 rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-800 active:scale-95 sm:py-3"
+              disabled={loading}
+              className="flex-1 rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-800 active:scale-95 disabled:opacity-50 sm:py-3"
             >
               Get Quote on WhatsApp
             </button>
@@ -186,9 +252,9 @@ export default function BulkPricingCalculator() {
             </a>
           </div>
 
-          {/* Disclaimer */}
+          {/* Info */}
           <p className="mt-5 text-center text-xs text-slate-600 sm:mt-6">
-            Prices are estimates based on current spot rates. Final pricing confirmed upon request.
+            Prices update every 60 seconds. Final quote confirmed upon request.
           </p>
         </div>
       </div>
