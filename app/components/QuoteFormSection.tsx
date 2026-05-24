@@ -348,7 +348,7 @@ export function QuoteFormSection() {
           )}
         </form>
 
-        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', marginTop: '1.5rem' }}>
+        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: '1.5rem' }}>
           Prefer to discuss first?{' '}
           <a href="/contact" style={{ color: '#B8922A', textDecoration: 'none', fontWeight: 600 }}>
             Contact our team

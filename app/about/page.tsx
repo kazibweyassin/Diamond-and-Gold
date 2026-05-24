@@ -80,13 +80,13 @@ export default function About() {
         .hero-stat:last-child { border-right: none; }
         .stat-unit { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; color: var(--gold-lt); margin-bottom: 4px; }
         .stat-val  { font-size: 1.4rem; font-weight: 600; color: #fff; letter-spacing: -0.02em; line-height: 1; margin-bottom: 3px; }
-        .stat-lbl  { font-size: 10px; color: rgba(255,255,255,0.4); font-weight: 300; }
+        .stat-lbl  { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 300; }
 
         .principle-row { display: grid; grid-template-columns: 72px 200px 1fr; gap: 0; padding: 2.2rem 0; border-bottom: 1px solid var(--rule-md); align-items: start; }
         .principle-row:first-child { border-top: 1px solid var(--rule-md); }
         .p-code  { font-family: var(--mono); font-size: 11px; color: var(--gold); padding-top: 2px; }
         .p-title { font-size: 15px; font-weight: 600; color: var(--navy); }
-        .p-body  { font-size: 13px; line-height: 1.75; color: rgba(10,22,40,0.5); font-weight: 300; }
+        .p-body  { font-size: 13px; line-height: 1.75; color: rgba(10,22,40,0.7); font-weight: 300; }
 
         .gallery-mosaic { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--rule-md); }
         .gallery-item { position: relative; overflow: hidden; }
@@ -102,7 +102,7 @@ export default function About() {
         .cred-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(10,22,40,0.06); }
         .cred-code  { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--gold); background: rgba(184,146,42,0.08); padding: 4px 10px; border-radius: 2px; display: inline-block; margin-bottom: 1.2rem; }
         .cred-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
-        .cred-body  { font-size: 12px; color: rgba(10,22,40,0.45); line-height: 1.6; font-weight: 300; }
+        .cred-body  { font-size: 13px; color: rgba(10,22,40,0.6); line-height: 1.6; font-weight: 300; }
 
         .cta-band { background: var(--navy); position: relative; overflow: hidden; }
         .cta-band::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 52px 52px; }
@@ -110,7 +110,7 @@ export default function About() {
         .btn-gold:hover { background: #9a7820; }
         .btn-outline-w { border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.72); font-size: 13px; padding: 13px 28px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
         .btn-outline-w:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
-        .footer-links a { font-size: 13px; color: rgba(255,255,255,0.38); transition: color 0.2s; font-weight: 300; }
+        .footer-links a { font-size: 13px; color: rgba(255,255,255,0.75); transition: color 0.2s; font-weight: 300; }
         .footer-links a:hover { color: var(--gold); }
 
         @media (max-width: 1024px) {
@@ -174,7 +174,7 @@ export default function About() {
             <strong style={{ fontWeight: 600, color: 'var(--gold-lt)' }}>openly, with paperwork you can actually verify.</strong>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.42, duration: 0.6, ease: EASE }}
-            style={{ fontSize: 15, lineHeight: 1.75, fontWeight: 300, color: 'rgba(255,255,255,0.52)', maxWidth: 520, marginBottom: '2.5rem' }}>
+            style={{ fontSize: 15, lineHeight: 1.75, fontWeight: 300, color: 'rgba(255,255,255,0.7)', maxWidth: 520, marginBottom: '2.5rem' }}>
             Based in Kampala, working directly with licensed miners across Uganda. If you need to buy gold responsibly, this is how we can help.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.56, duration: 0.5, ease: EASE }}>
@@ -197,16 +197,16 @@ export default function About() {
           <motion.div className="intro-text" {...fadeLeft()} style={{ padding: '5rem 4rem 5rem 2rem', borderRight: '1px solid var(--rule-md)' }}>
             <div className="eyebrow">About us</div>
             <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>Integrity-led gold trading<br /><strong>for global buyers.</strong></h2>
-            <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(10,22,40,0.55)', fontWeight: 300, marginBottom: '1.25rem' }}>
+            <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(10,22,40,0.7)', fontWeight: 300, marginBottom: '1.25rem' }}>
               We are based in Kampala with verified partners across Uganda and Congo. Every order comes with proper documentation, independent quality checks, and logistics we handle start to finish.
             </p>
-            <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(10,22,40,0.55)', fontWeight: 300, marginBottom: '2.5rem' }}>
+            <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(10,22,40,0.7)', fontWeight: 300, marginBottom: '2.5rem' }}>
               Our mission is simple: supply good gold at fair terms — without cutting corners on where it came from or how it gets to you.
             </p>
             <div style={{ borderTop: '1px solid var(--rule-md)' }}>
               {[{ k: 'Traceability', v: 'End-to-end' }, { k: 'Compliance', v: 'Documented' }, { k: 'Quality control', v: 'Lab verified' }, { k: 'Delivery', v: 'Insured & tracked' }].map(({ k, v }) => (
                 <div key={k} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 0', borderBottom: '1px solid var(--rule-md)' }}>
-                  <span style={{ fontSize: 13, color: 'rgba(10,22,40,0.5)', fontWeight: 300 }}>{k}</span>
+                  <span style={{ fontSize: 13, color: 'rgba(10,22,40,0.7)', fontWeight: 300 }}>{k}</span>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--gold)', letterSpacing: '0.06em' }}>{v}</span>
                 </div>
               ))}
@@ -232,7 +232,7 @@ export default function About() {
           <motion.div {...fadeLeft()}>
             <div className="eyebrow">Our principles</div>
             <h2 className="section-title">What we believe in,<br /><strong>and how it shows up at work.</strong></h2>
-            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.45)', lineHeight: 1.75, marginTop: '1.25rem', fontWeight: 300 }}>
+            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.7)', lineHeight: 1.75, marginTop: '1.25rem', fontWeight: 300 }}>
               These are the reasons we turn down business we are not comfortable with, and the reason clients come back.
             </p>
           </motion.div>
@@ -284,7 +284,7 @@ export default function About() {
           </motion.div>
           <div className="ops-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: 'var(--rule-md)' }}>
             <motion.div {...fadeLeft()} style={{ background: '#fff', padding: '3rem' }}>
-              <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(10,22,40,0.55)', fontWeight: 300, marginBottom: '2rem' }}>
+              <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(10,22,40,0.7)', fontWeight: 300, marginBottom: '2rem' }}>
                 We follow Uganda's mining regulations, OECD due diligence guidelines, and the expectations of the international buyers we work with.
               </p>
               {['Origin verification and custody tracking', 'Independent purity testing at certified labs', 'Export readiness and logistics compliance', 'Community engagement and environmental awareness'].map((item, i) => (
@@ -300,7 +300,7 @@ export default function About() {
                 <motion.div key={op.label} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, ease: EASE }}
                   style={{ paddingBottom: i < OPERATIONS.length - 1 ? '2rem' : 0, borderBottom: i < OPERATIONS.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold-lt)', marginBottom: 8 }}>{op.label}</div>
-                  <div style={{ fontSize: 13, lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', fontWeight: 300 }}>{op.body}</div>
+                  <div style={{ fontSize: 13, lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', fontWeight: 300 }}>{op.body}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -314,12 +314,12 @@ export default function About() {
           <motion.div {...fadeLeft()} style={{ position: 'relative', overflow: 'hidden' }}>
             <img src="https://images.unsplash.com/photo-1624365168056-daf44387e2ae?q=80&w=900&auto=format&fit=crop" alt="Gold verification" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'saturate(0.8)', display: 'block', minHeight: 380 }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,22,40,0.5) 0%, transparent 60%)' }} />
-            <div style={{ position: 'absolute', bottom: '2rem', left: '2rem', fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)' }}>Gold verification — laboratory</div>
+            <div style={{ position: 'absolute', bottom: '2rem', left: '2rem', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)' }}>Gold verification — laboratory</div>
           </motion.div>
           <motion.div {...fadeRight()} style={{ padding: '4rem 3rem', background: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <div className="eyebrow">Regulatory alignment</div>
             <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>Everything buyers need,<br /><strong>prepared in advance.</strong></h2>
-            <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(10,22,40,0.5)', fontWeight: 300, marginBottom: '2rem' }}>
+            <p style={{ fontSize: 13, lineHeight: 1.8, color: 'rgba(10,22,40,0.7)', fontWeight: 300, marginBottom: '2rem' }}>
               Before anything ships, we prepare the full documentation pack — origin verification, assay reports, custody records. Your compliance team won't have to ask twice.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -368,7 +368,7 @@ export default function About() {
               Source certified Ugandan gold —{' '}
               <strong style={{ fontWeight: 600, color: 'var(--gold-lt)' }}>with people who answer your calls.</strong>
             </h2>
-            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.75, fontWeight: 300, maxWidth: 480, marginBottom: '2.5rem' }}>
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, fontWeight: 300, maxWidth: 480, marginBottom: '2.5rem' }}>
               Tell us what you need — volume, purity, timeline. We will come back with a straight quote and answer your questions directly.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
@@ -382,7 +382,7 @@ export default function About() {
           <motion.div {...fadeRight()} style={{ display: 'flex', flexDirection: 'column', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 4, overflow: 'hidden' }}>
             {[{ label: 'Direct line', val: '+256 (0) 704 833 021' }, { label: 'Email', val: 'info@diamondcapitalafrica.com' }, { label: 'Location', val: 'Kampala, Uganda' }, { label: 'Response time', val: 'Within 24 hours' }].map(({ label, val }, i) => (
               <div key={label} style={{ padding: '1.25rem 1.5rem', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none', background: 'rgba(255,255,255,0.025)' }}>
-                <div style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: 6 }}>{label}</div>
+                <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', marginBottom: 6 }}>{label}</div>
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>{val}</div>
               </div>
             ))}

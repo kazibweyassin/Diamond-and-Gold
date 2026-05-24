@@ -51,7 +51,7 @@ export function CaseStudies() {
           <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 300, letterSpacing: '-0.025em', color: '#0A1628', lineHeight: 1.18 }}>
             Verified client relationships <strong style={{ fontWeight: 600 }}>and transaction scales</strong>
           </h2>
-          <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', marginTop: '0.75rem', fontWeight: 300 }}>
+          <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.7)', marginTop: '0.75rem', fontWeight: 300 }}>
             Anonymized for confidentiality. References and detailed case studies available to institutional buyers on request.
           </p>
         </div>
@@ -90,7 +90,7 @@ export function CaseStudies() {
                       key={idx}
                       style={{
                         fontSize: 12,
-                        color: 'rgba(10,22,40,0.55)',
+                        color: 'rgba(10,22,40,0.7)',
                         marginBottom: idx < study.details.length - 1 ? 8 : 0,
                         display: 'flex',
                         gap: 10,

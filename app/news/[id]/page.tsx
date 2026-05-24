@@ -38,10 +38,10 @@ export default function ArticlePage({ params }: { params: Promise<{ id: string }
         .article-header { background: linear-gradient(135deg, var(--navy) 0%, rgba(10,22,40,0.85) 100%); padding: 4rem 2rem; position: relative; overflow: hidden; }
         .article-header::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 52px 52px; }
         .article-header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; color: #fff; }
-        .breadcrumb { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.52); margin-bottom: 1.5rem; }
+        .breadcrumb { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; }
         .breadcrumb a { color: #4ADE80; transition: color 0.2s; }
         .breadcrumb a:hover { color: #fff; }
-        .article-tag { display: inline-block; font-family: ui-monospace, monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: #4ADE80; background: rgba(74, 222, 128, 0.1); padding: 4px 10px; border-radius: 2px; margin-bottom: 1rem; }
+        .article-tag { display: inline-block; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #4ADE80; background: rgba(74, 222, 128, 0.15); padding: 4px 10px; border-radius: 2px; margin-bottom: 1rem; }
         .article-header h1 { font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 1.5rem; }
         .article-meta { display: flex; align-items: center; gap: 1rem; font-family: ui-monospace, monospace; font-size: 12px; color: rgba(255,255,255,0.6); }
         .article-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.2); }
@@ -75,7 +75,7 @@ export default function ArticlePage({ params }: { params: Promise<{ id: string }
         .related-card { background: #fff; border: 1px solid var(--rule-md); border-radius: 4px; padding: 1.5rem; transition: border-color 0.25s; }
         .related-card:hover { border-color: rgba(10,22,40,0.28); }
         .related-card h3 { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 0.75rem; line-height: 1.4; }
-        .related-meta { font-family: ui-monospace, monospace; font-size: 10px; color: rgba(10,22,40,0.45); margin-bottom: 0.75rem; }
+        .related-meta { font-family: ui-monospace, monospace; font-size: 11px; color: rgba(10,22,40,0.6); margin-bottom: 0.75rem; }
         .related-link { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--gold); font-weight: 500; }
         .related-link:hover { color: var(--navy); }
 
@@ -208,7 +208,7 @@ export default function ArticlePage({ params }: { params: Promise<{ id: string }
           <h2 style={{ fontSize: 28, fontWeight: 300, marginBottom: '1rem', letterSpacing: '-0.025em' }}>
             Ready to source certified gold?
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.52)', fontSize: 14, marginBottom: '2rem', maxWidth: 500, margin: '0 auto 2rem' }}>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, marginBottom: '2rem', maxWidth: 500, margin: '0 auto 2rem' }}>
             Contact us for current pricing, available volumes, and compliance documentation.
           </p>
           <Link

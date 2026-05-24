@@ -100,7 +100,7 @@ function GoldTicker() {
   return (
     <div style={{ background: '#fff', border: '1px solid rgba(10,22,40,0.14)', borderRadius: 6, padding: '1.5rem', boxShadow: '0 8px 32px rgba(10,22,40,0.1)' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.15em', color: 'rgba(10,22,40,0.4)' }}>XAU / USD</span>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.15em', color: 'rgba(10,22,40,0.65)' }}>XAU / USD</span>
         <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 500, padding: '2px 8px', borderRadius: 2, background: up ? '#ECFDF5' : '#FEF2F2', color: up ? '#059669' : '#DC2626' }}>
           {up ? '▲' : '▼'} {Math.abs(price - prev).toFixed(2)}
         </span>
@@ -114,7 +114,7 @@ function GoldTicker() {
           { k: '1 kg bar (24K)', v: `$${(price * 32.1507).toLocaleString('en-US', { maximumFractionDigits: 0 })}` },
         ].map(({ k, v }) => (
           <div key={k} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '9px 0', borderBottom: '1px solid rgba(10,22,40,0.06)' }}>
-            <span style={{ fontSize: 11, color: 'rgba(10,22,40,0.45)' }}>{k}</span>
+            <span style={{ fontSize: 12, color: 'rgba(10,22,40,0.6)' }}>{k}</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 500, color: 'var(--navy)' }}>{v}</span>
           </div>
         ))}
@@ -237,7 +237,7 @@ export default function Home() {
           font-size: clamp(14px, 1.05vw, 16px);
           line-height: 1.65;
           font-weight: 300;
-          color: rgba(255, 255, 255, 0.58);
+          color: rgba(255, 255, 255, 0.75);
           max-width: 34rem;
           margin-bottom: clamp(1.75rem, 3vw, 2.25rem);
         }
@@ -342,10 +342,10 @@ export default function Home() {
         }
         .hero-slide-caption {
           font-family: var(--mono);
-          font-size: 10px;
+          font-size: 11px;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.42);
+          color: rgba(255, 255, 255, 0.7);
           margin: 0;
           min-height: 1.25em;
         }
@@ -425,35 +425,35 @@ export default function Home() {
         .step-item:first-child { border-top: 1px solid var(--rule-md); }
         .step-num   { font-family: var(--mono); font-size: 11px; color: var(--gold); padding-top: 3px; }
         .step-title { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
-        .step-body  { font-size: 13px; line-height: 1.7; color: rgba(10,22,40,0.48); font-weight: 300; }
+        .step-body  { font-size: 13px; line-height: 1.7; color: rgba(10,22,40,0.7); font-weight: 300; }
 
         /* WHY GRID */
         .why-card { background: #fff; padding: 2.5rem; transition: background 0.2s; }
         .why-card:hover { background: #FAFAF8; }
         .why-idx   { font-family: var(--mono); font-size: 10px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 1.2rem; }
         .why-title { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
-        .why-body  { font-size: 13px; line-height: 1.7; color: rgba(10,22,40,0.48); font-weight: 300; }
+        .why-body  { font-size: 13px; line-height: 1.7; color: rgba(10,22,40,0.7); font-weight: 300; }
 
         /* OPS */
         .ops-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: saturate(0.75); transition: filter 0.4s; }
         .ops-card:hover .ops-img { filter: saturate(1.05); }
         .ops-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-        .ops-desc  { font-size: 12px; color: rgba(10,22,40,0.5); line-height: 1.5; }
+        .ops-desc  { font-size: 13px; color: rgba(10,22,40,0.7); line-height: 1.5; }
 
         /* CREDENTIALS */
         .cred-card { border: 1px solid var(--rule-md); border-radius: 4px; padding: 2rem; background: #fff; transition: border-color 0.25s, box-shadow 0.25s; }
         .cred-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(10,22,40,0.06); }
         .cred-code  { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--gold); background: rgba(184,146,42,0.08); padding: 4px 10px; border-radius: 2px; display: inline-block; margin-bottom: 1.2rem; }
         .cred-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
-        .cred-body  { font-size: 12px; color: rgba(10,22,40,0.45); line-height: 1.6; font-weight: 300; }
+        .cred-body  { font-size: 13px; color: rgba(10,22,40,0.6); line-height: 1.6; font-weight: 300; }
 
         /* NEWS */
         .news-card { background: #fff; border: 1px solid var(--rule-md); border-radius: 4px; padding: 2rem; display: block; transition: border-color 0.25s, box-shadow 0.25s; }
         .news-card:hover { border-color: rgba(10,22,40,0.28); box-shadow: 0 4px 20px rgba(10,22,40,0.06); }
         .news-cat    { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); background: rgba(184,146,42,0.08); padding: 4px 10px; border-radius: 2px; }
-        .news-date   { font-family: var(--mono); font-size: 10px; color: rgba(10,22,40,0.33); }
+        .news-date   { font-family: var(--mono); font-size: 11px; color: rgba(10,22,40,0.6); }
         .news-title  { font-size: 16px; font-weight: 500; color: var(--navy); line-height: 1.4; margin-bottom: 0.75rem; }
-        .news-excerpt { font-size: 13px; color: rgba(10,22,40,0.5); line-height: 1.65; font-weight: 300; margin-bottom: 1.25rem; }
+        .news-excerpt { font-size: 13px; color: rgba(10,22,40,0.7); line-height: 1.65; font-weight: 300; margin-bottom: 1.25rem; }
         .news-link   { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--gold); }
 
         /* CTA FINAL */
@@ -463,13 +463,13 @@ export default function Home() {
         .cta-label::before { content: ''; display: block; width: 18px; height: 1px; background: var(--gold); }
         .cta-h2  { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 300; letter-spacing: -0.025em; color: #fff; line-height: 1.12; margin-bottom: 1.5rem; }
         .cta-h2 strong { font-weight: 600; color: var(--gold-lt); }
-        .cta-sub { font-size: 15px; color: rgba(255,255,255,0.48); line-height: 1.7; max-width: 500px; margin-bottom: 3rem; font-weight: 300; }
+        .cta-sub { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 500px; margin-bottom: 3rem; font-weight: 300; }
         .cta-cell { background: rgba(255,255,255,0.03); padding: 1.5rem 1.75rem; }
-        .cta-cl   { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 8px; }
+        .cta-cl   { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
         .cta-cv   { font-size: 14px; color: rgba(255,255,255,0.72); font-weight: 400; }
 
         /* FOOTER */
-        .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 0.2s; font-weight: 300; }
+        .footer-links a { font-size: 13px; color: rgba(255,255,255,0.75); transition: color 0.2s; font-weight: 300; }
         .footer-links a:hover { color: var(--gold); }
 
         /* DOWNLOADS */
@@ -657,7 +657,7 @@ export default function Home() {
           <div>
             <div className="eyebrow">Process</div>
             <h2 className="section-title">From inquiry to delivery —<br /><strong>four clear steps.</strong></h2>
-            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', lineHeight: 1.7, marginTop: '1.25rem', fontWeight: 300, maxWidth: 300 }}>
+            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.7)', lineHeight: 1.7, marginTop: '1.25rem', fontWeight: 300, maxWidth: 300 }}>
               Every order follows a documented workflow so nothing falls through the cracks and your compliance team can verify every stage.
             </p>
             <a href="/process" style={{ display: 'inline-block', marginTop: '1.5rem', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--gold)' }}>
@@ -685,7 +685,7 @@ export default function Home() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <div className="eyebrow">Corporate profile</div>
             <h2 className="section-title">About Diamond Capital Africa —<br /><strong>trust, licences, and capability.</strong></h2>
-            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', lineHeight: 1.7, marginTop: '1rem', fontWeight: 300 }}>
+            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.7)', lineHeight: 1.7, marginTop: '1rem', fontWeight: 300 }}>
               Read our corporate profile for licences, operating footprint, and client references. Downloadable PDF and contact points are included.
             </p>
             <div className="corp-mini-cols">
@@ -708,7 +708,7 @@ export default function Home() {
           </div>
           <div style={{ width: 'min(100%, 360px)', justifySelf: 'end' }}>
             <img src="/office.jpg" alt="Our offices" style={{ width: '100%', maxWidth: '100%', borderRadius: 6, display: 'block', height: 'auto' }} />
-            <p style={{ marginTop: '0.65rem', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(10,22,40,0.45)' }}>
+            <p style={{ marginTop: '0.65rem', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(10,22,40,0.6)' }}>
               Lubowa, Kampala, Uganda
             </p>
           </div>
@@ -737,7 +737,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ marginTop: '1rem', padding: '1.25rem 1.5rem', background: 'rgba(27,107,58,0.05)', border: '1px solid rgba(27,107,58,0.18)', borderRadius: 4 }}>
-            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.55)', fontWeight: 300 }}>
+            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.7)', fontWeight: 300 }}>
               Want to invest in Uganda&apos;s gold sector, not just buy from it?{' '}
               <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--green)', fontWeight: 500 }}>Investor portal →</a>
             </p>
@@ -783,7 +783,7 @@ export default function Home() {
           <div>
             <div className="eyebrow">Compliance &amp; assurance</div>
             <h2 className="section-title"><strong>Built for</strong><br />institutional buyers</h2>
-            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', lineHeight: 1.7, marginTop: '1.25rem', fontWeight: 300 }}>
+            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.7)', lineHeight: 1.7, marginTop: '1.25rem', fontWeight: 300 }}>
               Our processes emphasise traceability, independent verification, and export-ready documentation. Every shipment is prepared with custody records, assay reports, and logistics coordination.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: '1.5rem' }}>
@@ -828,7 +828,7 @@ export default function Home() {
             ))}
           </div>
           <div style={{ marginTop: '1.5rem', background: 'rgba(184,146,42,0.05)', border: '1px solid rgba(184,146,42,0.18)', borderRadius: 4, padding: '2rem 2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
-            <p style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(10,22,40,0.58)', maxWidth: 600 }}>
+            <p style={{ fontSize: 14, lineHeight: 1.7, color: 'rgba(10,22,40,0.7)', maxWidth: 600 }}>
               Every order ships with the full paper trail: origin certificate, lab assay report, custody records, and export documentation. Nothing missing, nothing you&apos;ll need to chase us for.
             </p>
             <a href="/compliance" style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em', color: 'var(--gold)', whiteSpace: 'nowrap' }}>View compliance docs →</a>
@@ -843,7 +843,7 @@ export default function Home() {
           <div style={{ marginBottom: '2.5rem' }}>
             <div className="eyebrow">Why buyers choose us</div>
             <h2 className="section-title">What you actually get <strong>when you order</strong></h2>
-            <p style={{ fontSize: 14, color: 'rgba(10,22,40,0.48)', marginTop: '0.75rem', fontWeight: 300 }}>Not vague promises — specific things you can check and verify yourself.</p>
+            <p style={{ fontSize: 14, color: 'rgba(10,22,40,0.7)', marginTop: '0.75rem', fontWeight: 300 }}>Not vague promises — specific things you can check and verify yourself.</p>
           </div>
           <div className="buyers-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.5rem' }}>
             {[
@@ -858,7 +858,7 @@ export default function Home() {
                 style={{ background: '#fff', border: '1px solid var(--rule-md)', borderRadius: 4, padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {item.icon}
                 <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--navy)' }}>{item.title}</div>
-                <div style={{ fontSize: 13, lineHeight: 1.7, color: 'rgba(10,22,40,0.48)', fontWeight: 300 }}>{item.body}</div>
+                <div style={{ fontSize: 13, lineHeight: 1.7, color: 'rgba(10,22,40,0.7)', fontWeight: 300 }}>{item.body}</div>
               </motion.div>
             ))}
           </div>
@@ -872,7 +872,7 @@ export default function Home() {
           <div style={{ marginBottom: '2rem' }}>
             <div className="eyebrow">Resources</div>
             <h2 className="section-title"><strong>Download</strong> service documents</h2>
-            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.48)', marginTop: '0.5rem', fontWeight: 300 }}>Review specifications, compliance requirements, and pricing guidance.</p>
+            <p style={{ fontSize: 13, color: 'rgba(10,22,40,0.7)', marginTop: '0.5rem', fontWeight: 300 }}>Review specifications, compliance requirements, and pricing guidance.</p>
           </div>
           <div className="dl-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1rem' }}>
             {[
@@ -886,9 +886,9 @@ export default function Home() {
                 </div>
                 <div>
                   <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--navy)', marginBottom: 2 }}>{doc.name}</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.12em', color: 'rgba(10,22,40,0.33)' }}>PDF DOCUMENT</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.12em', color: 'rgba(10,22,40,0.6)' }}>PDF DOCUMENT</div>
                 </div>
-                <div style={{ marginLeft: 'auto', color: 'rgba(10,22,40,0.28)', fontSize: 16 }}>↘</div>
+                <div style={{ marginLeft: 'auto', color: 'rgba(10,22,40,0.6)', fontSize: 16 }}>↘</div>
               </a>
             ))}
           </div>
@@ -924,7 +924,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p style={{ marginTop: '2rem', fontSize: 13, color: 'rgba(255,255,255,0.35)', fontWeight: 300 }}>
+          <p style={{ marginTop: '2rem', fontSize: 13, color: 'rgba(255,255,255,0.7)', fontWeight: 300 }}>
             Want to invest in Uganda&apos;s gold sector?{' '}
             <a href="https://invest.diamondcapitalafrica.com" target="_blank" rel="noopener noreferrer" style={{ color: '#4ADE80', fontWeight: 400 }}>Investor portal →</a>
           </p>

@@ -24,13 +24,13 @@ const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
 const TEAM_MEMBERS = [
   {
     id: 'ceo',
-    name: 'Dr. Kwame Mensah',
+    name: 'Robert Mutebile',
     role: 'Chief Executive Officer',
-    bio: 'Founder and CEO with 15+ years in African minerals trading. M.Sc. Geology, University of Ghana. Specialized relationships with artisanal mining cooperatives across East & Central Africa.',
-    image: '/team/kwame-ceo.jpg',
-    email: 'kwame@diamondcapitalafrica.com',
+    bio: 'Founder and CEO with 15+ years in African minerals trading. M.Sc. Geology, Makerere University. Specialized relationships with artisanal mining cooperatives across East & Central Africa.',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=robert-mutebile',
+    email: 'robert@diamondcapitalafrica.com',
     phone: '+256 704 833 021',
-    linkedin: 'https://linkedin.com/in/kwame-mensah-dca',
+    linkedin: 'https://linkedin.com/in/robert-mutebile-dca',
     expertise: ['Mining Operations', 'Regulatory Compliance', 'Market Strategy'],
   },
   {
@@ -38,7 +38,7 @@ const TEAM_MEMBERS = [
     name: 'Sarah Okello',
     role: 'Chief Operating Officer',
     bio: 'Former Head of Operations at Barclays Gold Trading (London). 12 years in precious metals logistics, compliance, and B2B buyer relations. Manages all export, assay, and delivery workflows.',
-    image: '/team/sarah-coo.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=sarah-okello',
     email: 'sarah@diamondcapitalafrica.com',
     phone: '+256 701 555 234',
     linkedin: 'https://linkedin.com/in/sarah-okello',
@@ -46,13 +46,13 @@ const TEAM_MEMBERS = [
   },
   {
     id: 'cco',
-    name: 'James Kipchoge',
+    name: 'James Musinguzi',
     role: 'Chief Compliance Officer',
     bio: 'Certified OECD Due Diligence auditor with 10+ years in financial compliance. Former regulatory advisor to Uganda Minerals & Mining. Oversees all KYC, sanctions screening, and conflict-free certification.',
-    image: '/team/james-cco.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=james-musinguzi',
     email: 'james@diamondcapitalafrica.com',
     phone: '+256 702 777 888',
-    linkedin: 'https://linkedin.com/in/james-kipchoge',
+    linkedin: 'https://linkedin.com/in/james-musinguzi',
     expertise: ['OECD Compliance', 'KYC/AML', 'Regulatory Affairs'],
   },
   {
@@ -60,7 +60,7 @@ const TEAM_MEMBERS = [
     name: 'Elena Rossi',
     role: 'Account Manager, Europe & Middle East',
     bio: 'Based in London. 8 years managing institutional refinery and investment fund relationships across EU, UK, and GCC markets. Fluent in English, Italian, and Arabic.',
-    image: '/team/elena-am.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=elena-rossi',
     email: 'elena@diamondcapitalafrica.com',
     phone: '+44 20 3945 1234',
     linkedin: 'https://linkedin.com/in/elena-rossi-metals',
@@ -71,7 +71,7 @@ const TEAM_MEMBERS = [
     name: 'Hiroshi Tanaka',
     role: 'Account Manager, Asia-Pacific',
     bio: 'Based in Singapore. 9 years in Asian precious metals procurement. Manages relationships with Hong Kong refineries, Dubai traders, and Southeast Asian investment groups.',
-    image: '/team/hiroshi-am.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=hiroshi-tanaka',
     email: 'hiroshi@diamondcapitalafrica.com',
     phone: '+65 6884 5555',
     linkedin: 'https://linkedin.com/in/hiroshi-tanaka-metals',
@@ -82,7 +82,7 @@ const TEAM_MEMBERS = [
     name: 'Marcus Thompson',
     role: 'Account Manager, Americas',
     bio: 'Based in New York. 7 years at Goldman Sachs (commodities desk) before joining DCA. Specializes in US institutional buyers and Canadian refineries. MBA Columbia Business School.',
-    image: '/team/marcus-am.jpg',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=marcus-thompson',
     email: 'marcus@diamondcapitalafrica.com',
     phone: '+1 646 555 8901',
     linkedin: 'https://linkedin.com/in/marcus-thompson-dca',
@@ -100,7 +100,7 @@ function TeamMember({ member, index }: { member: (typeof TEAM_MEMBERS)[0]; index
       className="group bg-white border border-[rgba(10,22,40,0.08)] rounded-lg overflow-hidden hover:border-[rgba(10,22,40,0.15)] hover:shadow-lg transition-all duration-300"
     >
       {/* Placeholder for image — update paths when actual photos available */}
-      <div className="h-64 bg-gradient-to-br from-[rgba(10,22,40,0.08)] to-[rgba(184,146,42,0.1)] flex items-center justify-center text-[rgba(10,22,40,0.25)] text-sm">
+      <div className="h-64 bg-gradient-to-br from-[rgba(10,22,40,0.08)] to-[rgba(184,146,42,0.1)] flex items-center justify-center text-[rgba(10,22,40,0.5)] text-sm">
         [Team photo: {member.name}]
       </div>
 

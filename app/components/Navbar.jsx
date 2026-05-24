@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'About',      href: '/about' },
   { label: 'Team',       href: '/team' },
   { label: 'News',       href: '/news' },
+  { label: 'FAQ',        href: '/faq' },
   { label: 'Compliance', href: '/compliance' },
   { label: 'Process',    href: '/process' },
   { label: 'Contact',    href: '/contact' },
@@ -68,8 +69,8 @@ export default function Navbar() {
 
         .nav-links-desktop {
           display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0;
-          font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-          color: rgba(10,22,40,0.45);
+          font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+          color: rgba(10,22,40,0.6);
         }
         .nav-links-desktop a {
           text-decoration: none;

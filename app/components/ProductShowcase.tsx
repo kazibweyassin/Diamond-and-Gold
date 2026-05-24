@@ -339,10 +339,10 @@ export default function ProductShowcase() {
               position: 'absolute',
               [v as string]: -1, [h as string]: -1,
               width: '18px', height: '18px',
-              borderTop: v === 'top' ? '1px solid rgba(181,138,10,0.45)' : 'none',
-              borderBottom: v === 'bottom' ? '1px solid rgba(181,138,10,0.45)' : 'none',
-              borderLeft: h === 'left' ? '1px solid rgba(181,138,10,0.45)' : 'none',
-              borderRight: h === 'right' ? '1px solid rgba(181,138,10,0.45)' : 'none',
+              borderTop: v === 'top' ? '1px solid rgba(181,138,10,0.6)' : 'none',
+              borderBottom: v === 'bottom' ? '1px solid rgba(181,138,10,0.6)' : 'none',
+              borderLeft: h === 'left' ? '1px solid rgba(181,138,10,0.6)' : 'none',
+              borderRight: h === 'right' ? '1px solid rgba(181,138,10,0.6)' : 'none',
             }} />
           ))}
 

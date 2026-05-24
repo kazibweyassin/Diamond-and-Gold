@@ -11,6 +11,7 @@ import "./globals.css";
 import PageUpButton from "./components/PageUpButton";
 import WhatsAppButton from "./components/WhatsAppButton";
 import GlobalAnalyticsTracker from "./components/GlobalAnalyticsTracker";
+import TidioChat from "./components/TidioChat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -194,6 +195,7 @@ export default function RootLayout({
         <PageUpButton />
         <WhatsAppButton />
         <GlobalAnalyticsTracker />
+        <TidioChat />
       </body>
     </html>
   );

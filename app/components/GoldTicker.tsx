@@ -141,7 +141,7 @@ export default function GoldTicker() {
               { label: 'Purity', value: '99.5%' },
             ].map(({ label, value }) => (
               <div key={label} className="bg-stone-50 rounded-lg p-2">
-                <div className="text-[11px] text-stone-400 mb-1">{label}</div>
+                <div className="text-[12px] text-stone-400 mb-1">{label}</div>
                 <div className="text-sm font-medium">{value}</div>
               </div>
             ))}
