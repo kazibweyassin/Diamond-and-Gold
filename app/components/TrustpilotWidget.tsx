@@ -83,9 +83,9 @@ export function TrustpilotWidget() {
         <div
           className="trustpilot-widget"
           data-locale="en-US"
-          data-templateId="56278e9abfbbba0ab44d1d5f"
-          data-businessunitId="678f6d8d9e4c8c0012a4c5d6"
-          data-schemaType="Organization"
+          data-templateid="56278e9abfbbba0ab44d1d5f"
+          data-businessunitid="678f6d8d9e4c8c0012a4c5d6"
+          data-schematype="Organization"
           style={{
             position: 'relative',
             display: 'flex',
