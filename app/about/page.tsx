@@ -137,14 +137,14 @@ export default function About() {
         }
         @media (max-width: 560px) {
           .hero-content { padding: 0 1rem 1.5rem; }
-          .hero-badge { font-size: 8px; letter-spacing: 0.12em; padding: 5px 11px; margin-bottom: 1rem; }
+          .hero-badge { font-size: 10px; letter-spacing: 0.12em; padding: 5px 11px; margin-bottom: 1rem; }
           .hero-title { font-size: 1.8rem; line-height: 1.08; margin-bottom: 1rem; }
           .hero-subtitle { font-size: 0.88rem; line-height: 1.55; }
           .hero-stats { margin-top: 1.75rem; }
           .hero-stat { padding: 0.9rem 0.85rem; }
-          .stat-unit { font-size: 7px; }
+          .stat-unit { font-size: 8px; }
           .stat-val { font-size: 1.1rem; }
-          .stat-lbl { font-size: 8px; }
+          .stat-lbl { font-size: 10px; }
           .section { padding: 3rem 1rem; }
           .section-title { font-size: 1.25rem; line-height: 1.15; }
           .p-title, .service-title, .cred-title, .value-title, .ops-label { font-size: 13px; }

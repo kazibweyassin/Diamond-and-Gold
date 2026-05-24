@@ -437,7 +437,7 @@ export default function Home() {
         /* OPS */
         .ops-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: saturate(0.75); transition: filter 0.4s; }
         .ops-card:hover .ops-img { filter: saturate(1.05); }
-        .ops-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+        .ops-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
         .ops-desc  { font-size: 13px; color: rgba(10,22,40,0.7); line-height: 1.5; }
 
         /* CREDENTIALS */
@@ -450,7 +450,7 @@ export default function Home() {
         /* NEWS */
         .news-card { background: #fff; border: 1px solid var(--rule-md); border-radius: 4px; padding: 2rem; display: block; transition: border-color 0.25s, box-shadow 0.25s; }
         .news-card:hover { border-color: rgba(10,22,40,0.28); box-shadow: 0 4px 20px rgba(10,22,40,0.06); }
-        .news-cat    { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); background: rgba(184,146,42,0.08); padding: 4px 10px; border-radius: 2px; }
+        .news-cat    { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); background: rgba(184,146,42,0.08); padding: 4px 10px; border-radius: 2px; }
         .news-date   { font-family: var(--mono); font-size: 11px; color: rgba(10,22,40,0.6); }
         .news-title  { font-size: 16px; font-weight: 500; color: var(--navy); line-height: 1.4; margin-bottom: 0.75rem; }
         .news-excerpt { font-size: 13px; color: rgba(10,22,40,0.7); line-height: 1.65; font-weight: 300; margin-bottom: 1.25rem; }
@@ -526,13 +526,13 @@ export default function Home() {
           .hero-metrics { grid-template-columns: repeat(2, 1fr) !important; }
           .corp-profile-grid { grid-template-columns: 1fr !important; }
           .corp-mini-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-          .hero-badge { font-size: 9px; }
+          .hero-badge { font-size: 10px; }
           .hero-h1 { font-size: clamp(1.9rem, 7.8vw, 2.4rem); }
           .hero-sub { font-size: 13px; line-height: 1.55; }
           .section-title { font-size: clamp(1.55rem, 7vw, 2rem); }
-          .stat-unit { font-size: 7px; }
+          .stat-unit { font-size: 8px; }
           .stat-val { font-size: clamp(1rem, 5vw, 1.2rem); }
-          .stat-lbl { font-size: 9px; }
+          .stat-lbl { font-size: 10px; }
           .step-title { font-size: 14px; }
           .step-body, .why-body, .ops-desc, .cred-body { font-size: 12px; }
           .why-cols    { grid-template-columns: 1fr !important; }

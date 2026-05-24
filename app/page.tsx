@@ -556,7 +556,7 @@ function Home() {
         /* OPS */
         .ops-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: saturate(0.75); transition: filter 0.4s; }
         .ops-card:hover .ops-img { filter: saturate(1.05); }
-        .ops-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+        .ops-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
         .ops-desc  { font-size: 12px; color: rgba(10,22,40,0.7); line-height: 1.5; }
 
         /* CREDENTIALS */
@@ -635,12 +635,12 @@ function Home() {
           main.font-dca-marketing > section {
             padding: 3rem 0.9rem !important;
           }
-          .hero-badge { font-size: 8px; padding: 6px 12px; letter-spacing: 0.12em; }
+          .hero-badge { font-size: 10px; padding: 6px 12px; letter-spacing: 0.12em; }
           .hero-badge-dot { width: 6px; height: 6px; }
           .hero-h1 { font-size: 1.65rem; line-height: 1.08; }
           .hero-sub { font-size: 0.86rem; line-height: 1.55; margin-bottom: 1.5rem; }
-          .hero-slide-caption { font-size: 9px; }
-          .stat-unit { font-size: 8px; }
+          .hero-slide-caption { font-size: 10px; }
+          .stat-unit { font-size: 9px; }
           .stat-val { font-size: 1.05rem; }
           .stat-lbl { font-size: 10px; }
           .section-title { font-size: 1.25rem; line-height: 1.18; }

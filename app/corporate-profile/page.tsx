@@ -347,14 +347,14 @@ export default function CorporateProfile() {
         @media (max-width: 560px) {
           .hero-container { height: 360px; }
           .hero-content { padding: 0 1rem 1.5rem; }
-          .hero-badge { font-size: 8px; letter-spacing: 0.12em; padding: 5px 11px; margin-bottom: 1rem; }
+          .hero-badge { font-size: 10px; letter-spacing: 0.12em; padding: 5px 11px; margin-bottom: 1rem; }
           .hero-title { font-size: 2rem; line-height: 1.06; margin-bottom: 1rem; }
           .hero-subtitle { font-size: 0.9rem; line-height: 1.55; }
           .hero-stats { margin-top: 1.5rem; }
           .hero-stat { padding: 1rem; }
-          .stat-unit { font-size: 7px; }
+          .stat-unit { font-size: 8px; }
           .stat-val { font-size: 1.15rem; }
-          .stat-lbl { font-size: 8px; }
+          .stat-lbl { font-size: 10px; }
           .section { padding: 3rem 1rem; }
           .section-title { font-size: 1.25rem; line-height: 1.15; }
           .service-title, .p-title, .cred-title, .value-title, .ops-label { font-size: 13px; }
