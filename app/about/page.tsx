@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight, BookOpenCheck } from '@/app/components/Icons';
-import Navbar from '@/app/components/Navbar';
+import Header from '@/app/components/Header';
 import SharedFooter from '@/app/components/SharedFooter';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -13,6 +13,7 @@ const fadeUp = (delay = 0) => ({
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.6, delay, ease: EASE },
+  
 });
 const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -32 },

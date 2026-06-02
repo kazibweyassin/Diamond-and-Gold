@@ -54,6 +54,28 @@ const CREDENTIALS = [
   { code: 'INS',    title: 'Insured Logistics',        detail: 'Full-value shipment insurance via Lloyds of London syndicate. Real-time tracking from dispatch to confirmed delivery.' },
 ];
 
+const SCHEMA_DATA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Diamond Capital Africa",
+  "url": "https://diamondcapitalafrica.com",
+  "logo": "https://diamondcapitalafrica.com/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Plot 24, Nakasero Road",
+    "addressLocality": "Kampala",
+    "addressCountry": "UG"
+  },
+  "description": "Institutional gold sourcing and supply chain asset management in Africa, fully compliant with OECD standards.",
+  "knowsAbout": [
+    "Gold sourcing",
+    "OECD compliance",
+    "Responsible mining",
+    "Assay verification",
+    "Precious metals logistics"
+  ]
+};
+
 function GoldTicker() {
   const [price, setPrice] = useState(3327.45);
   const [prev, setPrev] = useState(3327.45);
@@ -114,12 +136,11 @@ function ComplianceDownloadModal() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // Only show if not dismissed in this session
     const hasSeenModal = sessionStorage.getItem('complianceModalDismissed');
     if (!hasSeenModal) {
       const timer = setTimeout(() => {
         setShowModal(true);
-      }, 8000); // Show after 8 seconds
+      }, 8000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -659,6 +680,8 @@ function Home() {
       `}</style>
 
       <Navbar />
+
+      {/* ── JSON-LD: LocalBusiness ── */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -676,6 +699,12 @@ function Home() {
             sameAs: [],
           }),
         }}
+      />
+
+      {/* ── JSON-LD: Organization (from SCHEMA_DATA constant) ── */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(SCHEMA_DATA) }}
       />
 
       {/* ── HERO ── */}
@@ -801,8 +830,7 @@ function Home() {
         </div>
       </section>
 
-      {/* ── rest of the sections (unchanged) ── */}
-      {/* WHY CHOOSE US */}
+      {/* ── WHY CHOOSE US ── */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -865,7 +893,7 @@ function Home() {
         </div>
       </section>
 
-      {/* COMPLIANCE */}
+      {/* ── COMPLIANCE ── */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '4rem', alignItems: 'start' }} className="comp-cols">
@@ -899,6 +927,7 @@ function Home() {
         </div>
       </section>
 
+      {/* ── PARTNERS ── */}
       <section style={{ padding: '0 2rem 3rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div style={{ marginBottom: '1.5rem' }}>
@@ -912,7 +941,7 @@ function Home() {
             {[
               { name: 'Diplomatic Cargo', file: '/partners/diplomatic-cargo.svg' },
               { name: 'McFord Advocates', file: '/partners/mcford-advocates.svg' },
-              { name: 'Assay Services', file: '/partners/as.png' },
+              { name: 'Assay Services',   file: '/partners/as.png' },
               { name: 'ISO Certified Labs', file: '/partners/iso.png' },
             ].map((logo) => (
               <div key={logo.name} style={{ background: 'var(--color-green-wash)', border: '1px solid var(--color-green-tint)', borderRadius: 4, padding: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 120 }}>
@@ -923,7 +952,7 @@ function Home() {
         </div>
       </section>
 
-      {/* CREDENTIALS */}
+      {/* ── CREDENTIALS ── */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem', background: '#fff' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -949,10 +978,10 @@ function Home() {
         </div>
       </section>
 
-      {/* CASE STUDIES */}
+      {/* ── CASE STUDIES ── */}
       <CaseStudies />
 
-      {/* WHY BUYERS */}
+      {/* ── WHY BUYERS ── */}
       <hr className="rule" />
       <section style={{ padding: '6rem 2rem' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -981,7 +1010,7 @@ function Home() {
         </div>
       </section>
 
-      {/* DOWNLOADS */}
+      {/* ── DOWNLOADS ── */}
       <hr className="rule" />
       <section style={{ padding: '5rem 2rem', background: '#fff' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
@@ -1011,9 +1040,9 @@ function Home() {
         </div>
       </section>
 
-      {/* CORPORATE PROFILE SECTION */}
+      {/* ── CORPORATE PROFILE ── */}
       <section style={{ background: 'linear-gradient(135deg, #0A1628 0%, #1a2d42 100%)', padding: '4rem 2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -1033,11 +1062,11 @@ function Home() {
                 Discover our operational structure, certifications, business pillars, and the values that guide every precious metal transaction. Full transparency on sourcing, verification, and compliance.
               </p>
               <div className="corp-actions" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <a 
-                  href="/corporate-profile" 
-                  style={{ 
-                    display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 28px', 
-                    background: 'var(--gold)', color: '#0A1628', fontWeight: 600, fontSize: 13, 
+                <a
+                  href="/corporate-profile"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 28px',
+                    background: 'var(--gold)', color: '#0A1628', fontWeight: 600, fontSize: 13,
                     borderRadius: 4, textDecoration: 'none', transition: 'all 0.3s ease',
                     border: 'none', cursor: 'pointer'
                   }}
@@ -1055,12 +1084,12 @@ function Home() {
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
                 </a>
-                <a 
-                  href="/about" 
-                  style={{ 
-                    display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 28px', 
-                    background: 'transparent', color: '#fff', fontWeight: 600, fontSize: 13, 
-                    border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, textDecoration: 'none', 
+                <a
+                  href="/about"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 28px',
+                    background: 'transparent', color: '#fff', fontWeight: 600, fontSize: 13,
+                    border: '1px solid rgba(255,255,255,0.2)', borderRadius: 4, textDecoration: 'none',
                     transition: 'all 0.3s ease', cursor: 'pointer'
                   }}
                   onMouseEnter={(e) => {
@@ -1077,19 +1106,19 @@ function Home() {
               </div>
             </div>
             <div style={{ position: 'relative' }}>
-              <div style={{ 
-                background: 'rgba(184,146,42,0.1)', 
-                border: '1px solid rgba(184,146,42,0.3)', 
-                borderRadius: 8, 
-                padding: '2rem', 
+              <div style={{
+                background: 'rgba(184,146,42,0.1)',
+                border: '1px solid rgba(184,146,42,0.3)',
+                borderRadius: 8,
+                padding: '2rem',
                 backdropFilter: 'blur(8px)'
               }}>
                 <div className="corp-stats" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
                   {[
-                    { num: '45+', label: 'Countries Served', footnote: 'Buyer & logistics networks across EU, Asia, Middle East, Americas' },
-                    { num: '12+', label: 'Years Operating', footnote: 'Established 2013. Continuous operations in Uganda since founding.' },
-                    { num: '100%', label: 'KYC Compliant', footnote: 'Every transaction includes full due diligence & OECD screening' },
-                    { num: '$2.8B+', label: 'Trade Volume', footnote: 'Cumulative facilitated transactions, 2013–2025' },
+                    { num: '45+',  label: 'Countries Served',  footnote: 'Buyer & logistics networks across EU, Asia, Middle East, Americas' },
+                    { num: '12+',  label: 'Years Operating',   footnote: 'Established 2013. Continuous operations in Uganda since founding.' },
+                    { num: '100%', label: 'KYC Compliant',     footnote: 'Every transaction includes full due diligence & OECD screening' },
+                    { num: '$2.8B+', label: 'Trade Volume',    footnote: 'Cumulative facilitated transactions, 2013–2025' },
                   ].map((stat) => (
                     <div key={stat.label}>
                       <div style={{ fontSize: '1.8rem', fontWeight: 600, color: 'var(--gold-lt)', marginBottom: '0.25rem' }}>{stat.num}</div>
@@ -1107,13 +1136,13 @@ function Home() {
         </motion.div>
       </section>
 
-      {/* INVESTOR PORTAL */}
+      {/* ── INVESTOR PORTAL ── */}
       <InvestorPortalSection />
 
-      {/* TRUSTPILOT REVIEWS */}
+      {/* ── TRUSTPILOT ── */}
       <TrustpilotWidget />
 
-      {/* FINAL CTA */}
+      {/* ── FINAL CTA ── */}
       <section className="cta-section">
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 1280, margin: '0 auto', padding: '6rem 2rem' }}>
           <div className="cta-label">Available for immediate orders</div>
@@ -1149,7 +1178,7 @@ function Home() {
         </div>
       </section>
 
-      {/* QUOTE FORM */}
+      {/* ── QUOTE FORM ── */}
       <QuoteFormSection />
 
       <ComplianceDownloadModal />
