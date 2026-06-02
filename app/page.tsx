@@ -56,25 +56,40 @@ const CREDENTIALS = [
 
 const SCHEMA_DATA = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Diamond Capital Africa",
-  "url": "https://diamondcapitalafrica.com",
-  "logo": "https://diamondcapitalafrica.com/logo.png",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Plot 24, Nakasero Road",
-    "addressLocality": "Kampala",
-    "addressCountry": "UG"
-  },
-  "description": "Institutional gold sourcing and supply chain asset management in Africa, fully compliant with OECD standards.",
-  "knowsAbout": [
-    "Gold sourcing",
-    "OECD compliance",
-    "Responsible mining",
-    "Assay verification",
-    "Precious metals logistics"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://diamondcapitalafrica.com",
+      "name": "Diamond Capital Africa",
+      "url": "https://www.diamondcapitalafrica.com/",
+      "logo": "https://diamondcapitalafrica.com",
+      "description": "Institutional gold sourcing and supply chain asset management in Africa, fully compliant with OECD standards.",
+      "knowsAbout": ["Gold sourcing", "OECD compliance", "Responsible mining"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kampala",
+        "addressCountry": "UG"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "99.5% Gold Bars",
+      "description": "Cast bars with export-ready purity certified by independent labs.",
+      "category": "Precious Metals",
+      "material": "Gold",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "eligibleQuantity": {
+          "@type": "QuantitativeValue",
+          "value": 1,
+          "unitText": "KGM" // Maps directly to your 1 kg MOQ
+        }
+      }
+    }
   ]
 };
+
 
 function GoldTicker() {
   const [price, setPrice] = useState(3327.45);
