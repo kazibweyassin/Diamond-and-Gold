@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import Navbar from '@/app/components/Navbar';
+import Header from '@/app/components/Header';
 
 const MailIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -27,7 +27,7 @@ const TEAM_MEMBERS = [
     name: 'Robert Mutebile',
     role: 'Chief Executive Officer',
     bio: 'Founder and CEO with 15+ years in African minerals trading. M.Sc. Geology, Makerere University. Specialized relationships with artisanal mining cooperatives across East & Central Africa.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=robert-mutebile',
+    image: null, // Real photo recommended. Currently using professional initials treatment.
     email: 'robert@diamondcapitalafrica.com',
     phone: '+256 704 833 021',
     linkedin: 'https://linkedin.com/in/robert-mutebile-dca',
@@ -38,7 +38,7 @@ const TEAM_MEMBERS = [
     name: 'Sarah Okello',
     role: 'Chief Operating Officer',
     bio: 'Former Head of Operations at Barclays Gold Trading (London). 12 years in precious metals logistics, compliance, and B2B buyer relations. Manages all export, assay, and delivery workflows.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=sarah-okello',
+    image: null, // Real photo recommended.
     email: 'sarah@diamondcapitalafrica.com',
     phone: '+256 701 555 234',
     linkedin: 'https://linkedin.com/in/sarah-okello',
@@ -49,7 +49,7 @@ const TEAM_MEMBERS = [
     name: 'James Musinguzi',
     role: 'Chief Compliance Officer',
     bio: 'Certified OECD Due Diligence auditor with 10+ years in financial compliance. Former regulatory advisor to Uganda Minerals & Mining. Oversees all KYC, sanctions screening, and conflict-free certification.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=james-musinguzi',
+    image: null, // Real photo recommended.
     email: 'james@diamondcapitalafrica.com',
     phone: '+256 702 777 888',
     linkedin: 'https://linkedin.com/in/james-musinguzi',
@@ -60,7 +60,7 @@ const TEAM_MEMBERS = [
     name: 'Elena Rossi',
     role: 'Account Manager, Europe & Middle East',
     bio: 'Based in London. 8 years managing institutional refinery and investment fund relationships across EU, UK, and GCC markets. Fluent in English, Italian, and Arabic.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=elena-rossi',
+    image: null, // Real photo recommended.
     email: 'elena@diamondcapitalafrica.com',
     phone: '+44 20 3945 1234',
     linkedin: 'https://linkedin.com/in/elena-rossi-metals',
@@ -71,7 +71,7 @@ const TEAM_MEMBERS = [
     name: 'Hiroshi Tanaka',
     role: 'Account Manager, Asia-Pacific',
     bio: 'Based in Singapore. 9 years in Asian precious metals procurement. Manages relationships with Hong Kong refineries, Dubai traders, and Southeast Asian investment groups.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=hiroshi-tanaka',
+    image: null, // Real photo recommended.
     email: 'hiroshi@diamondcapitalafrica.com',
     phone: '+65 6884 5555',
     linkedin: 'https://linkedin.com/in/hiroshi-tanaka-metals',
@@ -82,7 +82,7 @@ const TEAM_MEMBERS = [
     name: 'Marcus Thompson',
     role: 'Account Manager, Americas',
     bio: 'Based in New York. 7 years at Goldman Sachs (commodities desk) before joining DCA. Specializes in US institutional buyers and Canadian refineries. MBA Columbia Business School.',
-    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=marcus-thompson',
+    image: null, // Real photo recommended.
     email: 'marcus@diamondcapitalafrica.com',
     phone: '+1 646 555 8901',
     linkedin: 'https://linkedin.com/in/marcus-thompson-dca',
@@ -99,9 +99,15 @@ function TeamMember({ member, index }: { member: (typeof TEAM_MEMBERS)[0]; index
       viewport={{ once: true }}
       className="group bg-white border border-[rgba(10,22,40,0.08)] rounded-lg overflow-hidden hover:border-[rgba(10,22,40,0.15)] hover:shadow-lg transition-all duration-300"
     >
-      {/* Placeholder for image — update paths when actual photos available */}
-      <div className="h-64 bg-gradient-to-br from-[rgba(10,22,40,0.08)] to-[rgba(184,146,42,0.1)] flex items-center justify-center text-[rgba(10,22,40,0.5)] text-sm">
-        [Team photo: {member.name}]
+      {/* Professional placeholder for team photo. Replace with real headshots for maximum credibility. */}
+      <div className="h-64 bg-[#0A1628] flex items-center justify-center relative overflow-hidden">
+        <div className="text-center z-10">
+          <div className="mx-auto mb-3 w-16 h-16 rounded-full bg-[#B8922A]/20 flex items-center justify-center text-[#B8922A] text-2xl font-semibold tracking-tight">
+            {member.name.split(' ').map(n => n[0]).join('')}
+          </div>
+          <div className="text-[10px] uppercase tracking-[0.2em] text-[#B8922A]/70 font-mono">KAMPALA • UGANDA</div>
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(#B8922A_0.6px,transparent_1px)] bg-[length:3px_3px] opacity-10" />
       </div>
 
       <div className="p-6 space-y-4">
@@ -159,7 +165,7 @@ function TeamMember({ member, index }: { member: (typeof TEAM_MEMBERS)[0]; index
 export default function TeamPage() {
   return (
     <>
-      <Navbar />
+      <Header variant="marketing" cta={{ label: 'Request a Quote', href: '/request-quote' }} />
       <main className="bg-[#F7F6F2]">
         {/* Hero */}
         <section className="pt-40 pb-20 px-4 md:px-8">

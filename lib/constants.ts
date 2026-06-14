@@ -67,3 +67,17 @@ export const PARTNER_LOGOS: PartnerLogoItem[] = [
     description: "Legal counsel for OECD compliance and due diligence.",
   },
 ];
+
+// Product detail page links (for navigation, showcases, and quick access)
+export interface ProductLink {
+  id: string;
+  label: string;
+  href: string;
+}
+
+export const productLinks: ProductLink[] = [
+  { id: 'gold-bars-99-5',      label: '99.5% Gold Bars',          href: '/products/details#gold-bars-99-5' },
+  { id: 'refined-gold-99-99',  label: '99.99% Refined Gold',      href: '/products/details#refined-gold-99-99' },
+  { id: 'artisanal-gold-raw',  label: 'Artisanal Raw Gold',       href: '/products/details#artisanal-gold-raw' },
+  { id: 'investment-gold-bars', label: 'Investment Gold Bars',    href: '/products/details#investment-gold-bars' },
+];

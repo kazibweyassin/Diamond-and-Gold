@@ -308,27 +308,10 @@ export function QuoteFormSection() {
             transition={{ delay: 0.4 }}
             type="submit"
             disabled={loading}
-            style={{
-              gridColumn: '1 / -1',
-              padding: '14px 28px',
-              background: 'linear-gradient(165deg, #c9a54a 0%, #B8922A 45%, #9a7820 100%)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: 4,
-              fontSize: 13,
-              fontWeight: 600,
-              cursor: loading ? 'not-allowed' : 'pointer',
-              opacity: loading ? 0.7 : 1,
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              if (!loading) (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1.05)';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.filter = 'brightness(1)';
-            }}
+            className="btn-primary col-span-full w-full justify-center text-sm"
+            style={{ borderRadius: 4 }}
           >
-            {loading ? 'Submitting...' : 'Get Quote →'}
+            {loading ? 'Submitting...' : 'Get Formal Quote →'}
           </motion.button>
 
           {error && (

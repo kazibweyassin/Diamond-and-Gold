@@ -9,8 +9,29 @@ import { notFound } from 'next/navigation';
 import Header from '@/app/components/Header';
 import SharedFooter from '@/app/components/SharedFooter';
 import { getArticleById, getAllArticles } from '@/lib/news-articles';
+import type { Metadata } from 'next';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const article = getArticleById(resolvedParams.id);
+  if (!article) {
+    return { title: 'Article Not Found | Diamond Capital Africa' };
+  }
+  return {
+    title: `${article.title} | Diamond Capital Africa`,
+    description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      images: article.image ? [{ url: article.image }] : undefined,
+    },
+    alternates: {
+      canonical: `https://diamondcapitalafrica.com/news/${article.id}`,
+    },
+  };
+}
 
 export default function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
@@ -26,6 +47,37 @@ export default function ArticlePage({ params }: { params: Promise<{ id: string }
   const nextArticle = currentIndex > 0 ? allArticles[currentIndex - 1] : null;
 
   return (
+    <>
+      <Header cta={{ label: 'Request a Quote', href: '/request-quote' }} />
+
+      {/* Article structured data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: article.title,
+            description: article.excerpt,
+            author: {
+              '@type': 'Organization',
+              name: article.author || 'Diamond Capital Africa',
+            },
+            datePublished: article.date,
+            image: article.image ? `https://diamondcapitalafrica.com${article.image}` : undefined,
+            publisher: {
+              '@type': 'Organization',
+              name: 'Diamond Capital Africa',
+              logo: 'https://diamondcapitalafrica.com/Logo.png',
+            },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `https://diamondcapitalafrica.com/news/${article.id}`,
+            },
+          }),
+        }}
+      />
+
     <main style={{ minHeight: '100vh', background: '#F7F6F2', color: '#0D0D0D' }}>
       <style>{`
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -88,7 +140,7 @@ export default function ArticlePage({ params }: { params: Promise<{ id: string }
         }
       `}</style>
 
-      <Header cta={{ label: 'Request Quote', href: '/contact' }} />
+      {/* Header already rendered above */}
 
       {/* Article Header */}
       <section className="article-header">

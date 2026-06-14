@@ -116,7 +116,7 @@ export default function Process() {
 
   return (
     <main style={{ background: '#F7F6F2', color: '#1c160a' }}>
-      <Header />
+      <Header cta={{ label: 'Request Formal Quote', href: '/request-quote' }} />
       {/* Breadcrumbs */}
       <div className="mx-auto max-w-6xl px-4 pt-24">
         <Breadcrumbs />

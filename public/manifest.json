@@ -1,25 +1,25 @@
 {
   "name": "Diamond Capital Africa - Premium Gold Supply",
   "short_name": "Diamond Capital Africa",
-  "description": "Ethically sourced, certified gold from Uganda and Congo",
+  "description": "Ethically sourced, certified gold from Uganda and Congo. Institutional supplier of 99.5%+ assay-verified bars with full OECD-compliant documentation.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#0b1116",
-  "background_color": "#ffffff",
+  "theme_color": "#0A1628",
+  "background_color": "#F7F6F2",
   "icons": [
     {
-      "src": "/icon.png",
-      "sizes": "32x32",
+      "src": "/Logo.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/apple-icon.png",
-      "sizes": "180x180",
+      "src": "/Logo.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
       "src": "/favicon.svg",
@@ -29,18 +29,5 @@
     }
   ],
   "categories": ["business", "shopping"],
-  "screenshots": [
-    {
-      "src": "https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg",
-      "sizes": "540x720",
-      "type": "image/jpeg",
-      "form_factor": "narrow"
-    },
-    {
-      "src": "https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg",
-      "sizes": "1280x720",
-      "type": "image/jpeg",
-      "form_factor": "wide"
-    }
-  ]
+  "screenshots": []
 }

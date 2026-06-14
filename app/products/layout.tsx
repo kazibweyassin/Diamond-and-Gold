@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Gold Trading Services - Diamond Capital Africa',
-  description: 'End-to-end gold trading services: sourcing, sales & export, assay coordination, logistics, compliance documentation, and secure vaulting. Professional gold trading solutions.',
-  keywords: 'gold trading services, gold sourcing, gold export, assay coordination, gold logistics, compliance documentation, gold vaulting',
+  title: 'Gold Trading Services & Certified Gold Bars | Diamond Capital Africa',
+  description: 'End-to-end services: ethically sourced 99.5%+ and 99.99% gold bars, assay testing, secure logistics, compliance documentation, and vaulting from Uganda & Congo. Institutional gold supply.',
+  keywords: ['gold trading services', 'certified gold bars Uganda', 'assay coordination', 'gold export Africa', 'ethical gold supplier', '99.99% refined gold', 'secure logistics gold', 'compliance documentation'],
   openGraph: {
-    title: 'Gold Trading Services - Diamond Capital Africa',
-    description: 'Comprehensive gold trading services: sourcing, export, assay, logistics, compliance, and vaulting.',
+    title: 'Gold Trading Services & Certified Gold Bars | Diamond Capital Africa',
+    description: 'Sourcing, refining, assay, export logistics and full compliance for institutional buyers. 99.5%+ bars with complete paper trail.',
     url: 'https://diamondcapitalafrica.com/products',
-    type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Diamond Capital Africa gold products and services' }],
   },
   alternates: {
     canonical: 'https://diamondcapitalafrica.com/products',

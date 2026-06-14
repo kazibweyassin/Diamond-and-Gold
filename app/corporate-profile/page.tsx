@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import Navbar from '@/app/components/Navbar';
+import Header from '@/app/components/Header';
 import SharedFooter from '@/app/components/SharedFooter';
 import { Lucid, Shovel, Globe, Microscope, BrickWallShield, Truck, Scale, FileCheck, Shield } from '@/app/components/Icons';
 
@@ -363,7 +363,7 @@ export default function CorporateProfile() {
         }
       `}</style>
 
-      <Navbar />
+      <Header variant="default" cta={{ label: 'Request Quote', href: '/request-quote' }} />
 
       {/* Hero Section */}
       <section ref={heroRef} className="hero-container">

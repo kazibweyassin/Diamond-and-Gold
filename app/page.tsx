@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { Shield, Clock, FileText, Globe, FileCheck, Beaker, Truck } from '@/app/components/Icons';
-import Navbar from '@/app/components/Navbar';
+import Header from '@/app/components/Header';
 import ProductShowcase from '@/app/components/ProductShowcase';
 import CaseStudies from '@/app/components/CaseStudies';
 import QuoteFormSection from '@/app/components/QuoteFormSection';
@@ -694,7 +694,7 @@ function Home() {
         }
       `}</style>
 
-      <Navbar />
+      <Header variant="marketing" cta={{ label: 'Request Formal Quote', href: '/request-quote' }} />
 
       {/* ── JSON-LD: LocalBusiness ── */}
       <script
@@ -854,7 +854,7 @@ function Home() {
               <div className="eyebrow">Why choose us</div>
               <h2 className="section-title">We know the mines, hold the<br /><strong>licences, and have done this before.</strong></h2>
             </div>
-            <a href="/contact" style={{ background: 'var(--navy)', color: '#fff', fontSize: 12, fontWeight: 500, padding: '12px 24px', borderRadius: 4, whiteSpace: 'nowrap' }}>Contact us →</a>
+            <a href="/contact" className="btn-secondary">Contact us →</a>
           </div>
           <div className="why-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '1px', background: 'var(--rule-md)', border: '1px solid var(--rule-md)', borderRadius: 6, overflow: 'hidden' }}>
             {FEATURES.map((f, i) => (

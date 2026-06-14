@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Our Company & Values',
-  description: 'Learn about Diamond Capital Africa: our mission for responsible gold trading, operational standards, compliance certifications, and field operations in Uganda and Congo.',
-  keywords: 'about Diamond Capital Africa, gold company, responsible sourcing, compliance, mining operations, company mission',
+  title: 'About Diamond Capital Africa | Ethical Gold Supplier Uganda & Congo',
+  description: 'Diamond Capital Africa: Integrity-led gold trading from Uganda and Congo. Verified operations, full OECD compliance, assay-certified supply chains, and transparent custody for institutional buyers worldwide.',
+  keywords: ['about Diamond Capital Africa', 'ethical gold supplier Uganda', 'Congo gold exporter', 'responsible sourcing gold', 'OECD compliant gold', 'assay certified gold bars', 'Kampala gold trading'],
   openGraph: {
-    title: 'About Our Company & Values',
-    description: 'Mission-driven gold supplier with verified operations and compliance standards.',
+    title: 'About Diamond Capital Africa | Ethical Gold Supplier from Uganda & Congo',
+    description: 'Mission-driven, fully documented gold supply with on-the-ground verification and institutional-grade compliance.',
     url: 'https://diamondcapitalafrica.com/about',
-    type: 'website',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Diamond Capital Africa operations' }],
   },
   alternates: {
     canonical: 'https://diamondcapitalafrica.com/about',

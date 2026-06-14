@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
-import Navbar from '@/app/components/Navbar';
+import Header from '@/app/components/Header';
 import SharedFooter from '@/app/components/SharedFooter';
 
 function Footer() {

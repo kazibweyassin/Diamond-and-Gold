@@ -64,7 +64,7 @@ export const services: Service[] = [
     terms: 'Audit support',
     description: 'Structured documentation for origin, KYC, export compliance and sustainability reporting.',
     features: ['Origin verification', 'Custody records', 'KYC support', 'Export compliance'],
-    image: '/GLgGd4NhWQy3r5s-1000x600.jpg',
+    image: '/assaying.jpg',
   },
   {
     id: 'vaulting-storage',

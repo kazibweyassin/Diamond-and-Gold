@@ -154,12 +154,12 @@ export default function About() {
         }
       `}</style>
 
-      <Navbar />
+      <Header variant="marketing" cta={{ label: 'Contact our team', href: '/contact' }} />
 
       {/* ── HERO ── */}
       <section ref={heroRef} style={{ position: 'relative', minHeight: '88vh', display: 'flex', alignItems: 'flex-end', overflow: 'hidden', paddingTop: 60 }}>
         <motion.div style={{ position: 'absolute', inset: 0, y: heroImgY }}>
-          <img src="https://images.pexels.com/photos/4441607/pexels-photo-4441607.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Diamond Capital Africa field operations" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
+          <img src="/man-pouring-melted-metal-workshop-large.jpg" alt="Diamond Capital Africa field operations and gold processing in Uganda" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }} />
         </motion.div>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(108deg, rgba(10,22,40,0.9) 0%, rgba(10,22,40,0.55) 55%, rgba(10,22,40,0.18) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,22,40,0.65) 0%, transparent 50%)' }} />
@@ -215,9 +215,9 @@ export default function About() {
           </motion.div>
 
           <motion.div {...fadeRight()} style={{ position: 'relative', overflow: 'hidden', minHeight: 420 }}>
-            <img src="https://images.pexels.com/photos/19038661/pexels-photo-19038661.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Assay coordination" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'saturate(0.8)', display: 'block', transition: 'filter 0.5s, transform 0.6s' }}
-              onMouseEnter={e => { (e.target as HTMLImageElement).style.filter = 'saturate(1.1)'; (e.target as HTMLImageElement).style.transform = 'scale(1.03)'; }}
-              onMouseLeave={e => { (e.target as HTMLImageElement).style.filter = 'saturate(0.8)'; (e.target as HTMLImageElement).style.transform = 'scale(1)'; }}
+            <img src="/assaying.jpg" alt="Assay coordination and independent gold purity testing at certified laboratories" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'saturate(0.85)', display: 'block', transition: 'filter 0.5s, transform 0.6s' }}
+              onMouseEnter={e => { (e.target as HTMLImageElement).style.filter = 'saturate(1.05)'; (e.target as HTMLImageElement).style.transform = 'scale(1.02)'; }}
+              onMouseLeave={e => { (e.target as HTMLImageElement).style.filter = 'saturate(0.85)'; (e.target as HTMLImageElement).style.transform = 'scale(1)'; }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 50%, rgba(10,22,40,0.45) 100%)' }} />
             <span style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', fontFamily: 'var(--mono)', fontSize: 9, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>
@@ -313,7 +313,7 @@ export default function About() {
       <section style={{ borderBottom: '1px solid var(--rule-md)', overflow: 'hidden' }}>
         <div className="comp-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: 420 }}>
           <motion.div {...fadeLeft()} style={{ position: 'relative', overflow: 'hidden' }}>
-            <img src="https://images.unsplash.com/photo-1624365168056-daf44387e2ae?q=80&w=900&auto=format&fit=crop" alt="Gold verification" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'saturate(0.8)', display: 'block', minHeight: 380 }} />
+            <img src="/goldsmelting.webp" alt="Gold verification, smelting and quality control process" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'saturate(0.85)', display: 'block', minHeight: 380 }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,22,40,0.5) 0%, transparent 60%)' }} />
             <div style={{ position: 'absolute', bottom: '2rem', left: '2rem', fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)' }}>Gold verification — laboratory</div>
           </motion.div>

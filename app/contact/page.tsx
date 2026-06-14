@@ -6,6 +6,15 @@ import { motion } from 'framer-motion';
 import Header from '@/app/components/Header';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
 
+export const metadata = {
+  title: 'Contact Diamond Capital Africa | Gold Supply Quote',
+  description: 'Get in touch for certified gold bars, bulk quotes, compliance documentation or partnership opportunities. Based in Kampala, Uganda. Response within 24 hours.',
+  openGraph: {
+    title: 'Contact Us | Certified Gold Supplier Uganda & Congo',
+    description: 'Institutional inquiries for ethical, documented gold supply. Formal quotes and full compliance support.',
+  },
+};
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -112,7 +121,7 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-[#fdfbf7] text-slate-900">
-      <Header cta={{ label: 'View catalog', href: '/products' }} />
+      <Header variant="default" cta={{ label: 'Request Quote', href: '/request-quote' }} />
 
       {/* Breadcrumbs */}
       <div className="mx-auto max-w-6xl px-4 pt-24">

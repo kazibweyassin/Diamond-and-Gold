@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { productLinks } from '@/lib/constants';
 
 const FEATURED_PRODUCTS = [
   {
-    id: 'gold-bars-99.5',
+    id: 'gold-bars-99-5',
     name: '99.5% Gold Bars',
     purity: '99.5%+',
     form: 'Cast bars',
@@ -14,10 +15,9 @@ const FEATURED_PRODUCTS = [
     image: '/Gold-bars.webp',
     specs: ['ISO-certified', '24–72h assay', 'Insured shipping'],
     cta: 'Request Quote',
-    href: '/products/details#gold-bars-99-5',
   },
   {
-    id: 'refined-gold-99.99',
+    id: 'refined-gold-99-99',
     name: '99.99% Refined Gold',
     purity: '99.99%',
     form: 'High-purity ingots',
@@ -26,7 +26,6 @@ const FEATURED_PRODUCTS = [
     image: '/goldsmelting.webp',
     specs: ['Custom alloys', 'Eco-friendly', 'Lab certified'],
     cta: 'Explore Details',
-    href: '/products/details#refined-gold-99-99',
   },
   {
     id: 'artisanal-gold-raw',
@@ -38,10 +37,9 @@ const FEATURED_PRODUCTS = [
     image: '/ugandagold.jpg',
     specs: ['Origin certified', 'OECD compliant', 'Competitive pricing'],
     cta: 'Get Started',
-    href: '/products/details#artisanal-gold-raw',
   },
   {
-    id: 'gold-investment-bars',
+    id: 'investment-gold-bars',
     name: 'Investment Gold Bars',
     purity: '99.5%+',
     form: 'Standard ingots',
@@ -50,7 +48,6 @@ const FEATURED_PRODUCTS = [
     image: '/Gold-bars.webp',
     specs: ['Tradeable', 'Insured logistics', 'Full documentation'],
     cta: 'View Pricing',
-    href: '/products/details#investment-gold-bars',
   },
 ];
 
@@ -69,6 +66,9 @@ const ArrowIcon = () => (
 
 export default function ProductShowcase() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const getProductHref = (id: string) =>
+    productLinks.find((l) => l.id === id)?.href || `/products/details#${id}`;
 
   return (
     <section
@@ -296,7 +296,7 @@ export default function ProductShowcase() {
 
                   {/* CTA */}
                   <Link
-                    href={product.href}
+                    href={getProductHref(product.id)}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -378,35 +378,13 @@ export default function ProductShowcase() {
           </p>
 
           <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link
-              href="/contact"
-              style={{
-                padding: '0.8rem 2.25rem',
-                background: '#B58A0A',
-                color: '#fff',
-                fontFamily: "'DM Mono', monospace",
-                fontSize: '0.6rem',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                fontWeight: 500,
-              }}
-            >
+            <Link href="/request-quote" className="btn-primary !text-xs !py-3 !px-6 !rounded-md">
               Request Custom Quote
             </Link>
             <Link
               href="/products"
-              style={{
-                padding: '0.8rem 2.25rem',
-                border: '1px solid rgba(181,138,10,0.3)',
-                color: '#5a4e34',
-                fontFamily: "'DM Mono', monospace",
-                fontSize: '0.6rem',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                background: 'transparent',
-              }}
+              className="btn-ghost !text-xs !py-3 !px-6"
+              style={{ color: '#5a4e34', borderColor: 'rgba(181,138,10,0.3)' }}
             >
               View All Services
             </Link>
@@ -415,9 +393,7 @@ export default function ProductShowcase() {
 
       </div>
 
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@300;400&family=DM+Mono:wght@400;500&display=swap');
-      `}</style>
+      {/* External font imports removed for performance. Rely on root layout fonts (Playfair + Source Sans + mono). Custom product treatment maintained via inline where necessary. */}
     </section>
   );
 }

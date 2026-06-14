@@ -66,6 +66,131 @@ h6 {
 	letter-spacing: -0.01em;
 }
 
+/* Unified premium button & CTA system for consistency across the site */
+.btn-primary {
+  background: linear-gradient(165deg, #c9a54a 0%, #B8922A 45%, #9a7820 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 13px 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+  box-shadow: 0 8px 28px rgba(184, 146, 42, 0.35);
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 36px rgba(184, 146, 42, 0.42);
+}
+.btn-ghost {
+  border: 1px solid rgba(10, 22, 40, 0.35);
+  color: #0A1628;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 13px 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover {
+  background: #fff;
+  border-color: #0A1628;
+}
+.btn-wa {
+  background: #25D366;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 13px 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-wa:hover {
+  background: #20bd5a;
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: #0A1628;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 22px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background .2s;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background: #152a44;
+}
+
+/* Extracted reusable marketing styles (used heavily in home, news, about) */
+.eyebrow {
+  font-family: var(--font-dca-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+  line-height: 1.15;
+}
+.section-title strong {
+  font-weight: 600;
+}
+.rule {
+  border: none;
+  border-top: 1px solid var(--rule-md);
+  margin: 0 2rem;
+}
+
+/* Additional extracted marketing utilities for long pages */
+.hero-badge, .stat-unit {
+  font-family: var(--font-dca-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.stat-val {
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
 .font-dca-marketing {
 	font-family: var(--font-source-sans), "Helvetica Neue", Arial, sans-serif;
 }

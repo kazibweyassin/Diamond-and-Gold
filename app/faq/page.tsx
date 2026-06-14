@@ -4,6 +4,18 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/app/components/Header';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Gold Trading FAQ | Diamond Capital Africa',
+  description: 'Answers to common questions about buying certified gold from Uganda & Congo: documentation, security, KYC, OECD compliance, assay process, and who we work with.',
+  keywords: ['gold trading FAQ', 'buy gold Uganda', 'gold export documentation', 'KYC gold supplier', 'OECD compliant gold', 'assay certified gold'],
+  openGraph: {
+    title: 'Gold Trading FAQ | Diamond Capital Africa',
+    description: 'Clear answers on compliance, security, sourcing and buying process for institutional gold buyers.',
+  },
+  alternates: { canonical: 'https://diamondcapitalafrica.com/faq' },
+};
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -128,6 +140,22 @@ export default function FAQ() {
           </div>
         </div>
       </section>
+
+      {/* FAQPage structured data for rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((f) => ({
+              '@type': 'Question',
+              name: f.question,
+              acceptedAnswer: { '@type': 'Answer', text: f.answer },
+            })),
+          }),
+        }}
+      />
 
       <footer className="border-t border-amber-200/60 bg-white py-14">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.2fr_1fr_1fr_1fr]">

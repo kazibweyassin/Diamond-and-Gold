@@ -209,9 +209,7 @@ export default function ProductDetails() {
 
   return (
     <main style={{ minHeight: '100vh', background: '#faf7f0', fontFamily: "'DM Sans', sans-serif" }}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
-      `}</style>
+      {/* Fonts served via next/font in root layout. Removed external @import for performance and CLS. */}
 
       <Header />
 

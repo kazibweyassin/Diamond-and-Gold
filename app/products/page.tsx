@@ -41,8 +41,8 @@ function Hero() {
   return (
     <section className="relative h-[45vh] min-h-[420px] overflow-hidden">
       <img
-        src="https://images.unsplash.com/photo-1545873692-64145c8c42ed?q=80&w=1600"
-        alt="Gold trading services"
+        src="/Gold-bars.webp"
+        alt="Premium certified gold bars and institutional precious metals trading services"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent" />
